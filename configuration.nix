@@ -6,10 +6,15 @@
 
 { config, pkgs, ... }:
 
+let
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+in
+
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      (import "${home-manager}/nixos")
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -17,7 +22,8 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "finch"; # Define your hostname.
-  networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.networkmanager.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/London";
@@ -68,17 +74,55 @@
   users.users.kiran = {
     isNormalUser = true;
     home = "/home/kiran";
-    description "Kiran Ostrolenk";
+    description = "Kiran Ostrolenk";
+    shell = pkgs.zsh;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
-
+  
+  home-manager.users.kiran = { pkgs, ... }: {
+    # home.packages = [ pkgs.atool pkgs.httpie ];
+    programs.zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      enableCompletion = true;
+      enableSyntaxHighlighting = true;
+      enableVteIntegration = true;
+      autocd = true;
+      history.save = 10000000;
+      history.size = 1000000000;
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "spaceship-prompt/spaceship-prompt"; tags = [ use:spaceship.zsh from:github as:theme ]; }
+        ];
+      };
+    };
+    programs.vim = {
+      enable = true;
+      plugins = with pkgs.vimPlugins; [ vim-airline ];
+      settings = { ignorecase = true; };
+      extraConfig = ''
+        set mouse=a
+      '';
+    };
+    programs.git = {
+      enable = true;
+      userName  = "Kiran Ostrolenk";
+      userEmail = "kiran.ostrolenk@codethink.co.uk";
+    };
+  };
+  
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  # environment.systemPackages = with pkgs; [
-  #   vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  #   wget
-  #   firefox
-  # ];
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    wget
+    firefox
+  ];
+
+  # For zsh completion
+  environment.pathsToLink = [ "/share/zsh" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
