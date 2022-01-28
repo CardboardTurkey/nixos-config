@@ -213,7 +213,7 @@ in
     };
     programs.vim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [ vim-airline ];
+      plugins = with pkgs.vimPlugins; [ nord-vim ];
       settings = { ignorecase = true; };
       extraConfig = ''
         set mouse-=a
