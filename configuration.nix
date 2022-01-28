@@ -8,6 +8,19 @@
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  codium-extensions = (with pkgs.vscode-extensions; [
+        # bbenoist.Nix
+        jnoortheen.nix-ide
+        arcticicestudio.nord-visual-studio-code
+        ms-python.python
+      ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "remote-ssh-edit";
+        publisher = "ms-vscode-remote";
+        version = "0.47.2";
+        sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+      }
+    ];
 in
 
 {
@@ -46,6 +59,11 @@ in
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
+
+  fonts.fonts = with pkgs; [
+    noto-fonts-emoji
+    font-awesome
+  ];
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -110,6 +128,43 @@ in
         zle -N my-backward-delete-word
         bindkey '^H' my-backward-delete-word
         bindkey '^[[3;5~' kill-word
+
+        ## COMPRESSION FUNCTION ##
+        compress() {
+            FILE=$1
+            shift
+            case $FILE in
+                *.tar.bz2) tar cjf $FILE $*  ;;
+                *.tar.gz)  tar czf $FILE $*  ;;
+                *.tgz)     tar czf $FILE $*  ;;
+                *.zip)     zip $FILE $*      ;;
+                *.rar)     rar $FILE $*      ;;
+                *)         echo "Filetype not recognized" ;;
+          esac
+        }
+
+        ## EXTRACT FUNCTION ##
+        extract () {
+            if [ -f $1 ] ; then
+                case $1 in
+                    *.tar.bz2)   tar xjf $1     ;;
+                    *.tar.gz)    tar xzf $1     ;;
+                    *.bz2)       bunzip2 $1     ;;
+                    *.rar)       unrar e $1     ;;
+                    *.gz)        gunzip $1      ;;
+                    *.tar)       tar xf $1      ;;
+                    *.tbz2)      tar xjf $1     ;;
+                    *.tgz)       tar xzf $1     ;;
+                    *.zip)       unzip $1       ;;
+                    *.Z)         uncompress $1  ;;
+                    *.7z)        7z x $1        ;;
+                    *)     echo "'$1' cannot be extracted via extract()" ;;
+                esac
+            else
+                echo "'$1' is not a valid file"
+            fi
+        }
+
       '';
       zplug = {
         enable = true;
@@ -172,12 +227,15 @@ in
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
-      extensions = [ pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code ];
+      extensions = codium-extensions;
+      userSettings = {
+        "workbench.colorTheme" = "Nord";
+        "editor.fontSize" = 20;
+        "editor.fontFamily" = "'DejaVu Sans Mono', 'Font Awesome 5 Brands', 'Font Awesome 5 Free', 'Font Awesome 5 Free Solid'";
+      };
     };
   };
   
-  nixpkgs.config.allowUnfree = true;
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
