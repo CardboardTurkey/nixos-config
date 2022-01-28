@@ -32,7 +32,7 @@ in
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.enp0s20f0u2u1.useDHCP = true;
+  # networking.interfaces.enp0s20f0u2u1.useDHCP = true;
   networking.interfaces.enp0s31f6.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
 
@@ -42,10 +42,10 @@ in
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -90,19 +90,78 @@ in
       autocd = true;
       history.save = 10000000;
       history.size = 1000000000;
+      # completionInit = "zstyle ':completion:*' menu select\nautoload -Uz compinit\ncompinit";
+      completionInit = ''
+        zstyle ':completion:*' menu select
+        autoload -Uz compinit
+        compinit
+      '';
+      initExtra = ''
+        # Keybindings
+        bindkey "^[[1~" beginning-of-line
+        bindkey "^[[4~" end-of-line
+        bindkey "''${terminfo[kdch1]}" delete-char
+        bindkey "^[[1;5C" forward-word
+        bindkey "^[[1;5D" backward-word
+        my-backward-delete-word() {
+          local WORDCHARS=''${WORDCHARS/\//}
+          zle backward-delete-word
+        }
+        zle -N my-backward-delete-word
+        bindkey '^H' my-backward-delete-word
+        bindkey '^[[3;5~' kill-word
+      '';
       zplug = {
         enable = true;
         plugins = [
           { name = "spaceship-prompt/spaceship-prompt"; tags = [ use:spaceship.zsh from:github as:theme ]; }
         ];
       };
+      envExtra = ''
+        export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+        export MANPAGER="sh -c 'col -bx | bat --theme Dracula -l man -p'"
+        export BETTER_EXCEPTIONS=1
+      '';
+    };
+    programs.bat = {
+      enable = true;
+      config = { theme = "Nord"; };
+    };
+    programs.termite = {
+      enable = true;
+      enableVteIntegration = true;
+      allowBold = true;
+      backgroundColor = "#2e3440";
+      colorsExtra = ''
+        color0  = #3b4252
+        color1  = #bf616a
+        color2  = #a3be8c
+        color3  = #ebcb8b
+        color4  = #81a1c1
+        color5  = #b48ead
+        color6  = #88c0d0
+        color7  = #e5e9f0
+        color8  = #4c566a
+        color9  = #bf616a
+        color10 = #a3be8c
+        color11 = #ebcb8b
+        color12 = #81a1c1
+        color13 = #b48ead
+        color14 = #8fbcbb
+        color15 = #eceff4
+      '';
+      cursorColor = "#d8dee9";
+      cursorForegroundColor = "#2e3440";
+      foregroundColor = "#d8dee9";
+      foregroundBoldColor = "#d8dee9";
+      font = "DejaVu Sans Mono 20";
     };
     programs.vim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [ vim-airline ];
       settings = { ignorecase = true; };
       extraConfig = ''
-        set mouse=a
+        set mouse-=a
       '';
     };
     programs.git = {
@@ -110,8 +169,15 @@ in
       userName  = "Kiran Ostrolenk";
       userEmail = "kiran.ostrolenk@codethink.co.uk";
     };
+    programs.vscode = {
+      enable = true;
+      package = pkgs.vscodium;
+      extensions = [ pkgs.vscode-extensions.arcticicestudio.nord-visual-studio-code ];
+    };
   };
   
+  nixpkgs.config.allowUnfree = true;
+
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
