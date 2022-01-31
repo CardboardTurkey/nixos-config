@@ -180,18 +180,31 @@ in
         }
 
       '';
-      zplug = {
-        enable = true;
-        plugins = [
-          { name = "spaceship-prompt/spaceship-prompt"; tags = [ use:spaceship.zsh from:github as:theme ]; }
-        ];
-      };
       envExtra = ''
         export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
         export MANPAGER="sh -c 'col -bx | bat --theme Dracula -l man -p'"
         export BETTER_EXCEPTIONS=1
         export TERM=xterm-termite
       '';
+      shellAliases = {
+        "nix-shell" = "nix-shell --command zsh";
+      };
+    };
+    programs.starship = {
+      enable = true;
+      enableZshIntegration = true;
+      enableBashIntegration = true;
+      # Configuration written to ~/.config/starship.toml
+      settings = {
+        character = {
+          success_symbol = "[](bold green)";
+          error_symbol = "[](bold red)";
+        };
+      };
+    };
+    programs.keychain = {
+      enable = true;
+      enableZshIntegration = true;
     };
     programs.bat = {
       enable = true;
