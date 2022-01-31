@@ -251,6 +251,9 @@ in
     vim
     wget
     firefox
+    thunderbird
+    pass
+    quasselClient
   ];
 
   # For zsh completion
