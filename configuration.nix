@@ -26,7 +26,7 @@ in
 {
   imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+      ./ThinkPadT14.nix
       (import "${home-manager}/nixos")
     ];
 
