@@ -69,6 +69,7 @@ in
   };
 
   fonts.fonts = with pkgs; [
+    (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
     noto-fonts-emoji
     font-awesome
   ];
@@ -107,6 +108,11 @@ in
   
   home-manager.users.kiran = { pkgs, ... }: {
     # home.packages = [ pkgs.atool pkgs.httpie ];
+    programs.tmux = {
+      enable = true;
+      plugins = with pkgs.tmuxPlugins; [ nord ];
+      prefix = "C-a";
+    };
     programs.zsh = {
       enable = true;
       enableAutosuggestions = true;
@@ -184,6 +190,7 @@ in
         export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
         export MANPAGER="sh -c 'col -bx | bat --theme Dracula -l man -p'"
         export BETTER_EXCEPTIONS=1
+        export TERM=xterm-termite
       '';
     };
     programs.bat = {
@@ -217,7 +224,7 @@ in
       cursorForegroundColor = "#2e3440";
       foregroundColor = "#d8dee9";
       foregroundBoldColor = "#d8dee9";
-      font = "DejaVu Sans Mono 20";
+      font = "DejaVuSansMono Nerd Font Mono 20";
     };
     programs.vim = {
       enable = true;
@@ -231,6 +238,19 @@ in
       enable = true;
       userName  = "Kiran Ostrolenk";
       userEmail = "kiran.ostrolenk@codethink.co.uk";
+      extraConfig =  { 
+        core = { editor = "vim"; } ; 
+        pull = { rebase = "true"; } ; 
+        alias = {
+          co = "checkout";
+          ci = "commit";
+          st = "status";
+          br = "branch";
+          hist = "log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short";
+          type = "cat-file -t";
+          dump = "cat-file -p";
+        };
+      };
     };
     programs.vscode = {
       enable = true;
