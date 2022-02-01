@@ -108,10 +108,39 @@ in
   
   home-manager.users.kiran = { pkgs, ... }: {
     # home.packages = [ pkgs.atool pkgs.httpie ];
+    gtk = {
+      enable = true;
+      iconTheme = {
+        package = pkgs.zafiro-icons;
+        name = "Zafiro";
+      };
+      font = {
+        name = "DejaVu Sans 12";
+      };
+      theme = {
+        name = "Nordic";
+        package = pkgs.nordic;
+      };
+      gtk3.extraCss = ''
+        .termite { 
+          padding:25px;
+          padding-bottom: 5px; 
+        }
+      '';
+    };
     programs.tmux = {
       enable = true;
       plugins = with pkgs.tmuxPlugins; [ nord ];
       prefix = "C-a";
+      terminal = "xterm-termite";
+      historyLimit = 500000;
+      extraConfig = ''
+        # split panes using | and -
+        bind | split-window -h
+        bind - split-window -v
+        unbind '"'
+        unbind %
+      '';
     };
     programs.zsh = {
       enable = true;
@@ -184,10 +213,9 @@ in
         export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
         export MANPAGER="sh -c 'col -bx | bat --theme Dracula -l man -p'"
         export BETTER_EXCEPTIONS=1
-        export TERM=xterm-termite
       '';
       shellAliases = {
-        "nix-shell" = "nix-shell --command zsh";
+        "nix-zshell" = "nix-shell --command zsh";
       };
     };
     programs.starship = {
@@ -310,6 +338,7 @@ in
     thunderbird
     pass
     quasselClient
+    lxappearance
   ];
 
   # For zsh completion
