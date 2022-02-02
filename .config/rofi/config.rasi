@@ -1,0 +1,6 @@
+configuration {
+	modi: "drun,run,window,ssh,combi";
+	terminal: "termite";
+	ssh-client: "ssh";
+	ssh-command: "{terminal} -e "{ssh-client} {host}"";
+}

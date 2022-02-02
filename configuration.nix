@@ -4,7 +4,7 @@
 
 # https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
@@ -14,13 +14,29 @@ let
         arcticicestudio.nord-visual-studio-code
         ms-python.python
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "remote-ssh-edit";
-        publisher = "ms-vscode-remote";
-        version = "0.47.2";
-        sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
-      }
-    ];
+        {
+          name = "remote-ssh-edit";
+          publisher = "ms-vscode-remote";
+          version = "0.47.2";
+          sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
+        }
+      ];
+  # i3
+  mod = "Mod4";
+  ws-term = "0";
+  ws-code = "1";
+  ws-fire = "2";
+  ws-spot = "3";
+  ws-pdf = "4";
+  ws-mail = "5";
+  ws-img = "6";
+  ws-irc = "7";
+  ws-chrm = "8";
+
+  # lock_screen = pkgs.writeScriptBin "lock_screen" ''
+  #   for i in $(${pkgs.lxc}/bin/lxc list -c 4 --format json | ${pkgs.jq}/bin/jq --raw-output 'map(select(.state.network.eth0.addresses[0].address != null)) | .[] | .state.network.eth0.addresses[0].address'); do echo -n "$i,"; done
+  # '';
+
 in
 
 {
@@ -29,6 +45,8 @@ in
       ./ThinkPadT14.nix
       (import "${home-manager}/nixos")
     ];
+
+  nixpkgs.overlays = [ (import ./overlays) ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -74,13 +92,38 @@ in
     font-awesome
   ];
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  # libexec for i3 and latter for zsh completion
+  environment.pathsToLink = [ "/libexec" "/share/zsh" ]; # links /libexec from derivations to /run/current-system/sw 
 
+  # i3
+  
+  # services.dbus.packages = with pkgs; [ gnome3.dconf ];
+  services.xserver = {
+    enable = true;
 
+    desktopManager = {
+      xterm.enable = false;
+    };
+
+    # displayManager = {
+    #   # defaultSession = "none+i3";
+    #   # startx.enable = true;
+    # };
+
+    windowManager.i3 = {
+      enable = true;
+    #   extraPackages = with pkgs; [
+    #     dmenu #application launcher most people use
+    #     i3status # gives you the default i3 status bar
+    #     i3lock #default i3 screen locker
+    #     i3blocks #if you are planning on using i3blocks over i3status
+    #  ];
+    };
+  };
+    
   # Enable the GNOME Desktop Environment.
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
   
 
   # Configure keymap in X11
@@ -88,7 +131,7 @@ in
   services.xserver.xkbOptions = "ctrl:nocaps";
 
   # Enable CUPS to print documents.
-  # services.printing.enable = true;
+  services.printing.enable = true;
 
   # Enable sound.
   sound.enable = true;
@@ -108,6 +151,83 @@ in
   
   home-manager.users.kiran = { pkgs, ... }: {
     # home.packages = [ pkgs.atool pkgs.httpie ];
+
+    # Rofi stuff
+    home = {
+      file."powermenu" = {
+        executable = true;
+        text = ''
+          if [ -z "$@" ]; then
+              echo -en "Shutdown\0icon\x1fxfsm-shutdown\n"
+              echo -en "Logout\0icon\x1fxfsm-logout\n"
+              echo -en "Suspend\0icon\x1fhibernate\n"
+              echo -en "Reboot\0icon\x1fxfsm-reboot\n"
+          else
+              if [ "$1" = "Shutdown" ]; then
+                  poweroff
+              elif [ "$1" = "Logout" ]; then
+                  i3-msg exit
+              elif [ "$1" = "Reboot" ]; then
+                  reboot
+              elif [ "$1" = "Hibernate" ]; then
+                  systemctl hibernate
+              fi
+          fi
+        '';
+        target = ".local/bin/powermenu";
+      };
+    };
+    xdg = {
+      configFile."rofi".source = ./.config/rofi;
+    };
+
+    xsession.windowManager.i3 = {
+      enable = true;
+      config = {
+        modifier = mod;
+        bars = [ ];
+        fonts = {
+          names = [ "DejaVu Sans Mono" "FontAwesome5Free" ];
+          style = "Bold Semi-Condensed";
+          size = 11.0;
+        };
+        keybindings = lib.mkOptionDefault {
+          "XF86AudioMute"         = "exec amixer set Master toggle";
+          "XF86AudioLowerVolume"  = "exec amixer set Master 4%-";
+          "XF86AudioRaiseVolume"  = "exec amixer set Master 4%+";
+          "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
+          "XF86MonBrightnessUp"   = "exec brightnessctl set 4%+";
+          "${mod}+Control+Return" = "exec termite";
+          "${mod}+Return"           = "workspace 1; exec pgrep termite || termite";
+          "${mod}+Control+space"  = "focus mode_toggle";
+          "${mod}+Control+Left"   = "workspace prev";
+          "${mod}+Control+Right"  = "workspace next";
+        };
+        assigns = {
+          "${ws-code}" = [{ class="VSCodium";}];
+          "${ws-fire}" = [{ class="Firefox";}];
+          "${ws-chrm}" = [{ class="Google-chrome";}];
+          "${ws-spot}" = [{ class="spotify";}];
+          "${ws-pdf}"  = [{ class="Evince";}];
+          "${ws-mail}" = [{ class="Mail";}];
+          "${ws-img}"  = [{ class="viewnior";}];
+          "${ws-irc}"  = [{ title="quassel";}];        
+        };
+        startup = [
+          { command = "nitrogen --restore"; always = true; notification = false; }
+        ];
+      }; 
+      extraConfig = ''
+        for_window [class="Mail"] focus
+        for_window [class="vscodium"] focus
+        for_window [class="firefox"] focus
+        for_window [class="viewnior"] focus
+        for_window [class="Evince"] focus   
+
+        default_border pixel 1
+        default_floating_border pixel 1
+      '';
+    };
     gtk = {
       enable = true;
       iconTheme = {
@@ -127,6 +247,10 @@ in
           padding-bottom: 5px; 
         }
       '';
+    };
+    services.betterlockscreen = {
+      enable = true;
+      arguments = [ "dimblur" "-t" "'The way is shut'" ];
     };
     programs.tmux = {
       enable = true;
@@ -269,7 +393,7 @@ in
     };
     programs.vim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [ nord-vim ];
+      plugins = with pkgs.vimPlugins; [ nord-vim i3config-vim ];
       settings = { ignorecase = true; };
       extraConfig = ''
         set mouse-=a
@@ -339,10 +463,11 @@ in
     pass
     quasselClient
     lxappearance
+    brightnessctl
+    my-script
+    rofi
+    ripgrep
   ];
-
-  # For zsh completion
-  environment.pathsToLink = [ "/share/zsh" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
