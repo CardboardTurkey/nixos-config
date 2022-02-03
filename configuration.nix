@@ -340,6 +340,7 @@ in
     quasselClient
     lxappearance
     ripgrep
+    rofi
   ];
 
   # For zsh completion
