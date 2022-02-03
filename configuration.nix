@@ -339,6 +339,7 @@ in
     pass
     quasselClient
     lxappearance
+    ripgrep
   ];
 
   # For zsh completion
