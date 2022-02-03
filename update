@@ -1,0 +1,19 @@
+#! /usr/bin/env bash
+
+set -e
+cd ~/gitlab.codethink/codethings/kiranostrolenk/nixos-config
+git update-index --refresh
+git diff-index --quiet HEAD --
+
+datey=$(date +%d_%m_%y)
+branch=$(git branch --show-current)
+message=$(git log -1 --pretty=%B | head -1 | sed 's/ /_/g')
+
+profile_name="$branch $message $datey"
+
+if echo "$profile_name" | rg '/'
+then
+    echo 'No / you fool'
+fi
+
+sudo nixos-rebuild switch -p "$profile_name"
