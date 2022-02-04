@@ -338,6 +338,7 @@ in
     firefox
     thunderbird
     pass
+    wl-clipboard
     quasselClient
     lxappearance
     ripgrep
