@@ -1,10 +1,13 @@
 #! /usr/bin/env bash
 
-set -e
 cd ~/gitlab.codethink/codethings/kiranostrolenk/nixos-config
 git update-index --refresh
-git diff-index --quiet HEAD --
-
+if ! git diff-index --quiet HEAD --
+then
+	[ -z "$@" ] && exit 1
+	read com_message
+	git commit -a -m "$com_message"
+fi
 datey=$(date +%d_%m_%y)
 branch=$(git branch --show-current)
 message=$(git log -1 --pretty=%B | head -1 | sed 's/ /_/g')

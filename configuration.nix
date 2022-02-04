@@ -341,6 +341,8 @@ in
     quasselClient
     lxappearance
     ripgrep
+    zip
+    unzip
   ];
 
   # For zsh completion
