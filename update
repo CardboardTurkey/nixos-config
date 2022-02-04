@@ -5,14 +5,22 @@ git update-index --refresh
 if ! git diff-index --quiet HEAD --
 then
 	[ -z "$@" ] && exit 1
+	git diff
 	read com_message
 	git commit "$@" -m "$com_message"
 fi
-datey=$(date +%d_%m_%y)
-branch=$(git branch --show-current)
+datey=$(date +%Hh_%Mm-%d_%m_%y)
 message=$(git log -1 --pretty=%B | head -1 | sed 's/ /_/g')
 
-profile_name="$branch $message $datey"
+profile_name="$message_$datey"
+
+echo "profile name: $profile_name"
+read -p "Ok?" -n 1 -r
+echo    # (optional) move to a new line
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+    exit 1
+fi
 
 if echo "$profile_name" | rg '/'
 then
