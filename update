@@ -6,7 +6,7 @@ if ! git diff-index --quiet HEAD --
 then
 	[ -z "$@" ] && exit 1
 	read com_message
-	git commit -a -m "$com_message"
+	git commit "$@" -m "$com_message"
 fi
 datey=$(date +%d_%m_%y)
 branch=$(git branch --show-current)
