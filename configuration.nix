@@ -96,6 +96,8 @@ in
 
   # Enable touchpad support (enabled default in most desktopManager).
   services.xserver.libinput.enable = true;
+  services.xserver.libinput.tapping = true;
+  services.xserver.libinput.clickMethod = "buttonareas";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kiran = {
