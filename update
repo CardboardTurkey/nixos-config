@@ -12,7 +12,7 @@ fi
 datey=$(date +%Hh_%Mm-%d_%m_%y)
 message=$(git log -1 --pretty=%B | head -1 | sed 's/ /_/g')
 
-profile_name="$message_$datey"
+profile_name="${message}_${datey}"
 
 echo "profile name: $profile_name"
 read -p "Ok?" -n 1 -r
