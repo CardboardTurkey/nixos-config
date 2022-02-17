@@ -9,7 +9,7 @@ then
 	read com_message
 	git commit "$@" -m "$com_message"
 fi
-datey=$(date +%d-%m-%y_%H:%M)
+datey=$(date +%d-%m-%y_%H-%M)
 message=$(git log -1 --pretty=%B | head -1 | sed 's/ /_/g')
 
 profile_name="${datey}_${message}"
