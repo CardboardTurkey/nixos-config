@@ -13,6 +13,7 @@ let
         jnoortheen.nix-ide
         arcticicestudio.nord-visual-studio-code
         ms-python.python
+        matklad.rust-analyzer
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "remote-ssh-edit";
@@ -348,6 +349,7 @@ in
     zip
     unzip
     rustup
+    gcc
   ];
 
   # For zsh completion
