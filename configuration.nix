@@ -347,6 +347,7 @@ in
     ripgrep
     zip
     unzip
+    rustup
   ];
 
   # For zsh completion
