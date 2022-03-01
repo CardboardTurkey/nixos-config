@@ -213,7 +213,8 @@ in
         }
         if [[ -f ~/gitlab.codethink/codethings/kiranostrolenk/notes/notes.md ]]
         then
-          bat ~/gitlab.codethink/codethings/kiranostrolenk/notes/notes.md
+          (cd ~/gitlab.codethink/codethings/kiranostrolenk/notes/
+          bat notes.md)
         fi
       '';
       envExtra = ''
