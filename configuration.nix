@@ -211,7 +211,10 @@ in
                 echo "'$1' is not a valid file"
             fi
         }
-
+        if [[ -f ~/gitlab.codethink/codethings/kiranostrolenk/notes/notes.md ]]
+        then
+          bat ~/gitlab.codethink/codethings/kiranostrolenk/notes/notes.md
+        fi
       '';
       envExtra = ''
         export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
