@@ -350,6 +350,7 @@ in
     unzip
     rustup
     gcc
+    ipscan
   ];
 
   # For zsh completion
