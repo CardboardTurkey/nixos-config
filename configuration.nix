@@ -25,6 +25,8 @@ let
 in
 
 {
+  nixpkgs.overlays = [ (self: super: { local = import ./my-pkgs { pkgs = super; }; }) ];
+
   imports =
     [ # Include the results of the hardware scan.
       ./ThinkPadT14.nix
@@ -351,6 +353,7 @@ in
     unzip
     rustup
     gcc
+    local.scripts
   ];
 
   # For zsh completion
