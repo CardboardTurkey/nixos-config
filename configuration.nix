@@ -276,13 +276,10 @@ in
       foregroundBoldColor = "#d8dee9";
       font = "DejaVuSansMono Nerd Font Mono 20";
     };
-    programs.vim = {
+    programs.neovim = {
       enable = true;
       plugins = with pkgs.vimPlugins; [ nord-vim ];
-      settings = { ignorecase = true; };
-      extraConfig = ''
-        set mouse-=a
-      '';
+      vimAlias = true;
     };
     programs.git = {
       enable = true;
