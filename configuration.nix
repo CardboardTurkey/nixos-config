@@ -82,11 +82,22 @@ in
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
+  services.xserver.windowManager.i3.enable = true;
+  services.xserver.displayManager = { 
+    defaultSession = "none+i3"; 
+      lightdm = { 
+        enable = true; 
+        greeter.enable = false; 
+        autoLogin = { 
+          enable = true; 
+          user = "kiran"; 
+        }; 
+      }; 
+  };
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # services.xserver.displayManager.gdm.enable = true;
+  # services.xserver.desktopManager.gnome.enable = true;
   
 
   # Configure keymap in X11
@@ -133,6 +144,9 @@ in
           padding-bottom: 5px; 
         }
       '';
+    };
+    xdg = {
+      configFile."i3".source = ./config/i3;
     };
     programs.tmux = {
       enable = true;
