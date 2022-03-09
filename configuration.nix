@@ -227,6 +227,7 @@ in
       shellAliases = {
         "nix-zshell" = "nix-shell --command zsh";
         "ls" = "ls --color=auto";
+	"less" = "bat --plain";
       };
     };
     programs.starship = {
