@@ -87,11 +87,7 @@ in
     defaultSession = "none+i3"; 
       lightdm = { 
         enable = true; 
-        greeter.enable = false; 
-        autoLogin = { 
-          enable = true; 
-          user = "kiran"; 
-        }; 
+        greeter.enable = true; 
       }; 
   };
 
