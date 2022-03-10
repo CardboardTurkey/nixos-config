@@ -103,6 +103,9 @@ in
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  # Needed for something, not sure what
+  services.dbus.packages = with pkgs; [ gnome3.dconf ];
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
