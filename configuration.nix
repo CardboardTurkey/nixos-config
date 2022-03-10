@@ -121,6 +121,7 @@ in
     rustup
     gcc
     local.scripts
+    htop
   ];
 
   # For zsh completion
