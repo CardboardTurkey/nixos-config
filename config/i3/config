@@ -7,6 +7,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Colours
 
@@ -67,23 +68,11 @@ bindsym Control+$mod+Return exec termite
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -133,7 +122,7 @@ set $ws10 "10"
 # Assign workspaces:
 assign [class="Sublime_text"] $code
 assign [class="vscodium"] $code
-assign [class="firefox"] $frfx
+assign [class="Firefox"] $frfx
 assign [class="Google-chrome"] $chr
 assign [class="spotify"] $spot
 assign [class="Evince"] $pdf
@@ -176,10 +165,10 @@ bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
 
 # Change monitor
-bindsym Mod4+Down move workspace to output down
-bindsym Mod4+Up move workspace to output up
-bindsym Mod4+Left move workspace to output left
-bindsym Mod4+Right move workspace to output right
+bindsym $mod+$alt+Down move workspace to output down
+bindsym $mod+$alt+Up move workspace to output up
+bindsym $mod+$alt+Left move workspace to output left
+bindsym $mod+$alt+Right move workspace to output right
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
