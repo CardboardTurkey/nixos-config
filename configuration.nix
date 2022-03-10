@@ -16,7 +16,7 @@ in
   nixpkgs.overlays = [ (self: super: { local = import ./my-pkgs { pkgs = super; }; }) ];
 
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware/ThinkPadT14.nix
       (import "${home-manager}/nixos")
       ./home/terminal.nix

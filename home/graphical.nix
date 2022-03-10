@@ -20,15 +20,15 @@ let
   # i3
   mod = "Mod4";
   alt = "Mod1";
-  ws-term = "0";
-  ws-code = "1";
-  ws-fire = "2";
-  ws-spot = "3";
-  ws-pdf = "4";
-  ws-mail = "5";
-  ws-img = "6";
-  ws-irc = "7";
-  ws-chrm = "8";
+  ws-term = "1";
+  ws-code = "2";
+  ws-fire = "3";
+  ws-spot = "4";
+  ws-pdf  = "5";
+  ws-mail = "6";
+  ws-img  = "7";
+  ws-irc  = "8";
+  ws-chrm = "9";
 
 in
 
