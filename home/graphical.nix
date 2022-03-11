@@ -36,6 +36,9 @@ in
   # Needed by gtk?
   programs.dconf.enable = true;
 
+  # For udev rule
+  services.autorandr.enable = true;
+
   home-manager.users.kiran = { pkgs, ... }: {
     # home.packages = [ pkgs.atool pkgs.httpie ];
     gtk = {
