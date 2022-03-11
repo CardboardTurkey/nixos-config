@@ -79,10 +79,10 @@ in
           "${mod}+Control+space"  = "focus mode_toggle";
           "${mod}+Control+Left"   = "workspace prev";
           "${mod}+Control+Right"  = "workspace next";
-          "${mod}+$alt+Down"      = "move workspace to output down";
-          "${mod}+$alt+Up"        = "move workspace to output up";
-          "${mod}+$alt+Left"      = "move workspace to output left";
-          "${mod}+$alt+Right"     = "move workspace to output right";
+          "${mod}+${alt}+Down"      = "move workspace to output down";
+          "${mod}+${alt}+Up"        = "move workspace to output up";
+          "${mod}+${alt}+Left"      = "move workspace to output left";
+          "${mod}+${alt}+Right"     = "move workspace to output right";
         };
         assigns = {
           "${ws-code}" = [{ class="VSCodium";}];
