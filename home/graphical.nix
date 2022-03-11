@@ -79,10 +79,10 @@ in
           "${mod}+Control+space"  = "focus mode_toggle";
           "${mod}+Control+Left"   = "workspace prev";
           "${mod}+Control+Right"  = "workspace next";
-          "${mod}+${alt}+Down"      = "move workspace to output down";
-          "${mod}+${alt}+Up"        = "move workspace to output up";
-          "${mod}+${alt}+Left"      = "move workspace to output left";
-          "${mod}+${alt}+Right"     = "move workspace to output right";
+          "${mod}+${alt}+Down"    = "move workspace to output down";
+          "${mod}+${alt}+Up"      = "move workspace to output up";
+          "${mod}+${alt}+Left"    = "move workspace to output left";
+          "${mod}+${alt}+Right"   = "move workspace to output right";
         };
         assigns = {
           "${ws-code}" = [{ class="VSCodium";}];
@@ -117,6 +117,50 @@ in
         "workbench.colorTheme" = "Nord";
         "editor.fontSize" = 20;
         "editor.fontFamily" = "'DejaVu Sans Mono', 'Font Awesome 5 Brands', 'Font Awesome 5 Free', 'Font Awesome 5 Free Solid'";
+      };
+    };
+    programs.autorandr = {
+      enable = true;
+      profiles = {
+        "laptop" = {
+          fingerprint = {
+            eDP-1 = "*";
+          };
+          config = {
+            eDP-1 = {
+              enable = true;
+              crtc = 0;
+              primary = true;
+              position = "0x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+          };
+          # hooks.postswitch = builtins.readFile ./work-postswitch.sh;
+        };
+        "work" = {
+          fingerprint = {
+            eDP-1 = "*";
+            HDMI-2 = "*";
+          };
+          config = {
+            eDP-1 = {
+              enable = true;
+              crtc = 0;
+              position = "3840x1080";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+            HDMI-2 = {
+              enable = true;
+              crtc = 0;
+              primary = true;
+              position = "0x0";
+              mode = "3840x2160";
+              rate = "60.00";
+            };
+          };
+        };
       };
     };
   };
