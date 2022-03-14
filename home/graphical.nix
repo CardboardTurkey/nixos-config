@@ -95,7 +95,7 @@ in
           "${ws-pdf}"  = [{ class="Evince";}];
           "${ws-mail}" = [{ class="Mail";}];
           "${ws-img}"  = [{ class="viewnior";}];
-          "${ws-irc}"  = [{ title="quassel";}];        
+          "${ws-irc}"  = [{ class="quasselclient";}];        
         };
         startup = [
           { command = "nitrogen --restore"; always = true; notification = false; }
