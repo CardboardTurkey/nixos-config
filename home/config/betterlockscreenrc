@@ -1,0 +1,37 @@
+# ~/.config/betterlockscreenrc
+
+# default options
+display_on=0
+span_image=false
+lock_timeout=300
+fx_list=(dim blur dimblur pixel dimpixel color)
+dim_level=40
+blur_level=1
+pixel_scale=10,1000
+solid_color=333333
+wallpaper_cmd="feh --bg-fill"
+quiet=false
+# i3lockcolor_bin="i3lock-color" # Manually set command for i3lock-color
+
+# default theme
+loginbox=3b425266
+loginshadow=3b425200
+locktext="The way is shut"
+font="sans-serif"
+ringcolor=e5e9f0ff
+insidecolor=3b425200
+separatorcolor=3b425200
+ringvercolor=e5e9f0ff
+insidevercolor=3b425200
+ringwrongcolor=e5e9f0ff
+insidewrongcolor=bf616aff
+timecolor=e5e9f0ff
+time_format="%H:%M:%S"
+greetercolor=e5e9f0ff
+layoutcolor=e5e9f0ff
+keyhlcolor=bf616aff
+bshlcolor=bf616aff
+verifcolor=e5e9f0ff
+wrongcolor=bf616aff
+modifcolor=bf616aff
+bgcolor=3b4252ff

@@ -122,6 +122,9 @@ in
         "editor.fontFamily" = "'DejaVu Sans Mono', 'Font Awesome 5 Brands', 'Font Awesome 5 Free', 'Font Awesome 5 Free Solid'";
       };
     };
+    xdg = {
+      configFile."betterlockscreenrc".source = ./config/betterlockscreenrc;
+    };
     services.betterlockscreen ={
       enable = true;
     };
