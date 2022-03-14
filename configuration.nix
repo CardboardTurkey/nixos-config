@@ -116,6 +116,7 @@ in
     gcc
     local.scripts
     htop
+    nitrogen
   ];
 
   # For zsh completion
