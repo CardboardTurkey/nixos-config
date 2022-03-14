@@ -33,6 +33,9 @@ let
 in
 
 {
+
+  imports = [ ./polybar.nix ];
+
   # Needed by gtk?
   programs.dconf.enable = true;
 
