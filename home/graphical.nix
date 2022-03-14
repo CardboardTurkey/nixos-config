@@ -127,6 +127,7 @@ in
     };
     services.betterlockscreen ={
       enable = true;
+      arguments = [ "dim" ];
     };
     services.screen-locker = {
       enable = true;
