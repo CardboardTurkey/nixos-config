@@ -122,6 +122,12 @@ in
         "editor.fontFamily" = "'DejaVu Sans Mono', 'Font Awesome 5 Brands', 'Font Awesome 5 Free', 'Font Awesome 5 Free Solid'";
       };
     };
+    services.betterlockscreen ={
+      enable = true;
+    };
+    services.screen-locker = {
+      enable = true;
+    };
     programs.autorandr = {
       enable = true;
       profiles = {
