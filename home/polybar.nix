@@ -19,6 +19,13 @@ in
   home-manager.users.kiran = { pkgs, ... }: {
     services.polybar = {
       enable = true;
+      package = pkgs.polybar.override {
+        i3Support = true;
+        alsaSupport = true;
+        iwSupport = true;
+        pulseSupport = true;
+      };
+      # Doesnt seem to be doing anything:
       script = ''
         export MON_MAIN=$(xrandr | grep primary | cut -d' ' -f1)
         polybar the_bar &
@@ -46,9 +53,9 @@ in
           module-margin-right = "2";
 
           font-0 = "DejaVuSansMono Nerd Font Mono:style=Book:size=20;3";
-          font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=30;3";
-          font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=30;3";
-          font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=30;3";
+          font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=20;3";
+          font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=20;3";
+          font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=20;3";
           font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
 
           modules-left = "i3";
