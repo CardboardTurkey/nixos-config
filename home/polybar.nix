@@ -38,8 +38,6 @@ in
           line-color = "#f00";
 
           border-size = "0";
-          border-bottom-size = "0";
-          border-color = "#00000000";
 
           padding-left = "0";
           padding-right = "2";
