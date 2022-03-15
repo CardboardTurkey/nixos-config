@@ -52,7 +52,7 @@ in
           module-margin-left = "1";
           module-margin-right = "2";
 
-          font-0 = "DejaVuSansMono Nerd Font Mono:style=Book:size=20px;3";
+          font-0 = "DejaVuSansMono Nerd Font Mono:style=Book:pixelsize=20;3";
           font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=20;3";
           font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=20;3";
           font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=20;3";
