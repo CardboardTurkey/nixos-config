@@ -4,4 +4,5 @@ sudo ./link.sh
 
 # TODO
 
-Switch to alacitty.
+* Switch to alacitty.
+* Add hash table dirs (populate repos?)
