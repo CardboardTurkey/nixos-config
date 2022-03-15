@@ -45,10 +45,10 @@ in
           module-margin-left = "1";
           module-margin-right = "2";
 
-          font-0 = "DejaVuSansMono Nerd Font Mono:style=Book:pixelsize=13;3";
-          font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=13;3";
-          font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=13;3";
-          font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=13;3";
+          font-0 = "DejaVuSansMono Nerd Font Mono:style=Book:size=20;3";
+          font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=30;3";
+          font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=30;3";
+          font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=30;3";
           font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
 
           modules-left = "i3";
@@ -63,6 +63,7 @@ in
           blacklist-0 = "num lock";
 
           format-prefix = " ";
+          format-prefix-font = 2;
           format-prefix-foreground = "${nord11}";
           format-prefix-underline = "${nord11}";
 
