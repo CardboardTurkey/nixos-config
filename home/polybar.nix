@@ -52,10 +52,10 @@ in
           module-margin-left = "1";
           module-margin-right = "2";
 
-          font-0 = "DejaVu Sans Mono:style=Book:pixelsize=20;3";
-          font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=20;3";
-          font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=20;3";
-          font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=20;3";
+          font-0 = "DejaVu Sans Mono:style=Book:pixelsize=15;3";
+          font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=15;3";
+          font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=15;3";
+          font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=15;3";
           font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
 
           modules-left = "i3";
@@ -107,24 +107,20 @@ in
           ws-icon-7 = "8;";
           ws-icon-default = "";
 
-          label-mode-padding = "2";
-          label-mode-foreground = "#000";
-          label-mode-background = "${primary}";
-
           label-focused = "%icon%";
           label-focused-background = "${background-alt}";
           label-focused-underline = "${primary}";
-          label-focused-padding = "2";
+          label-focused-padding = "1";
 
           label-unfocused = "%icon%";
-          label-unfocused-padding = "2";
+          label-unfocused-padding = "\${self.label-focused-padding}";
 
           label-visible = "%icon%";
-          label-visible-padding = "\${self.label-unfocused-padding}";
+          label-visible-padding = "\${self.label-focused-padding}";
 
           label-urgent = "%icon%";
           label-urgent-background = "${alert}";
-          label-urgent-padding = "2";
+          label-urgent-padding = "\${self.label-focused-padding}";
         };
       };
     };
