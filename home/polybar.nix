@@ -64,6 +64,8 @@ in
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
+
+          enable-ipc = true;
         };
         "module/xkeyboard" = {
           type = "internal/xkeyboard";
