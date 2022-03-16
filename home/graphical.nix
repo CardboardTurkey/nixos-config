@@ -139,6 +139,12 @@ in
     };
     programs.autorandr = {
       enable = true;
+      hooks.postswitch = {
+        "reload-polybar" = ''
+          export MON_MAIN=$(xrandr | grep primary | cut -d' ' -f1)
+          polybar the_bar &
+        '';
+      };
       profiles = {
         "laptop" = {
           fingerprint = {
