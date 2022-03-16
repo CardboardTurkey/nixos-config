@@ -193,7 +193,30 @@ in
               crtc = 0;
               primary = true;
               position = "0x0";
-              mode = "3840x2160";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+          };
+        };
+        "dp2" = {
+          fingerprint = {
+            eDP-1 = "*";
+            DP-2 = "*";
+          };
+          config = {
+            eDP-1 = {
+              enable = true;
+              crtc = 0;
+              position = "1920x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+            DP-2 = {
+              enable = true;
+              crtc = 0;
+              primary = true;
+              position = "0x0";
+              mode = "1920x1080";
               rate = "60.00";
             };
           };
