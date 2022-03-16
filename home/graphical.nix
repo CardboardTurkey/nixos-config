@@ -145,7 +145,9 @@ in
           if pgrep polybar; then 
             polybar-msg cmd quit
           fi
-          polybar the_bar &
+          echo "---" | tee -a /tmp/polybar.log
+          polybar the_bar 2>&1 | tee -a /tmp/polybar1.log & disown
+          echo "launched" | tee -a /tmp/polybar.log
         '';
       };
       profiles = {
