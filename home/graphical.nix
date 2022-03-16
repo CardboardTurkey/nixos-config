@@ -142,7 +142,9 @@ in
       hooks.postswitch = {
         "reload-polybar" = ''
           export MON_MAIN=$(xrandr | grep primary | cut -d' ' -f1)
-          polybar-msg cmd quit
+          if pgrep polybar; then 
+            polybar-msg cmd quit
+          fi
           polybar the_bar &
         '';
       };
