@@ -80,6 +80,7 @@ in
           "XF86AudioRaiseVolume"  = "exec amixer set Master 4%+";
           "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
           "XF86MonBrightnessUp"   = "exec brightnessctl set 4%+";
+          "XF86Display"           = "exec autorandr --change";
           "${mod}+L"              = "exec betterlockscreen -l dim";
           "${mod}+Control+Return" = "exec termite";
           "${mod}+Return"         = "workspace 1; exec pgrep termite || termite";
