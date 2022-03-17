@@ -157,6 +157,7 @@ in
           type = "internal/battery";
           # full-at = "99";
           battery = "BAT0";
+          adapter = "AC";
           format-charging = "<animation-charging> <label-charging>";
           format-discharging = "<ramp-capacity> <label-discharging>";
           format-full = "<ramp-capacity> <label-full>";
