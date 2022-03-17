@@ -35,7 +35,6 @@ in
           screenchange-reload = "true";
         };
         "bar/the_bar" = {
-          monitor = "\${env:MON_MAIN}";
           width = "100%";
           height = "35";
           radius = "0.0";
