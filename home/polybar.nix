@@ -31,6 +31,9 @@ in
         polybar the_bar &
       '';
       settings = {
+        "settings" = {
+          screenchange-reload = "true";
+        };
         "bar/the_bar" = {
           monitor = "\${env:MON_MAIN}";
           width = "100%";

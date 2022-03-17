@@ -141,13 +141,7 @@ in
       enable = true;
       hooks.postswitch = {
         "reload-polybar" = ''
-          sleep 5
           export MON_MAIN=$(xrandr | grep primary | cut -d' ' -f1)
-          polybar-msg cmd quit
-          sleep 5
-          echo "---" | tee -a /tmp/polybar.log
-          polybar the_bar 2>&1 | tee -a /tmp/polybar.log & disown
-          echo "launched" | tee -a /tmp/polybar.log
         '';
       };
       profiles = {
