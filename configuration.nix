@@ -117,6 +117,7 @@ in
     local.scripts
     htop
     nitrogen
+    arandr
   ];
 
   # For zsh completion
