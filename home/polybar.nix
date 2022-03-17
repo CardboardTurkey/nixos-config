@@ -73,7 +73,7 @@ in
           type = "internal/xkeyboard";
           blacklist-0 = "num lock";
 
-          format-prefix = " ";
+          format-prefix = " ";
           format-prefix-foreground = "${nord11}";
           format-prefix-underline = "${nord11}";
 
@@ -95,7 +95,7 @@ in
           time = "%H:%M";
           time-alt = "%H:%M:%S";
 
-          format = " <label>";
+          format = " <label>";
           format-foreground = "${nord15}";
           format-underline = "${nord15}";
 
