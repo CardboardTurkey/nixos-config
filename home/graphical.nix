@@ -113,8 +113,8 @@ in
         for_window [class="viewnior"] focus
         for_window [class="Evince"] focus   
 
-        default_border pixel 1
-        default_floating_border pixel 1
+        default_border pixel 0
+        default_floating_border pixel 0
       '';
     };
     programs.vscode = {
