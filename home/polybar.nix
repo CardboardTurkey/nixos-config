@@ -73,7 +73,7 @@ in
           type = "internal/xkeyboard";
           blacklist-0 = "num lock";
 
-          format-prefix = " ";
+          format-prefix = "";
           format-prefix-foreground = "${nord11}";
           format-prefix-underline = "${nord11}";
 
@@ -84,6 +84,23 @@ in
           label-indicator-margin = "1";
           label-indicator-background = "${nord11}";
           label-indicator-underline = "${nord11}";
+        };
+        "module/date" = {
+          type = "internal/date";
+          interval = "1.0";
+
+          date = "";
+          date-alt = " %A, %d %B %Y";
+
+          time = "%H:%M";
+          time-alt = "%H:%M:%S";
+
+          format = "<label>";
+          format-foreground = "${nord15}";
+          format-underline = "${nord15}";
+
+          label = "%time%%date%";
+          label-foreground = "${foreground}";
         };
         "module/filesystem" = {
           type = "internal/fs";
