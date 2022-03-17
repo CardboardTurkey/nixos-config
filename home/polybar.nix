@@ -54,7 +54,7 @@ in
           module-margin-left = "1";
           module-margin-right = "2";
 
-          font-0 = "DejaVu Sans Mono:style=Book:pixelsize=15;3";
+          font-0 = "DejaVu Sans:style=Book:pixelsize=15;3";
           font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=15;3";
           font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=15;3";
           font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=15;3";
@@ -73,7 +73,7 @@ in
           type = "internal/xkeyboard";
           blacklist-0 = "num lock";
 
-          format-prefix = "";
+          format-prefix = " ";
           format-prefix-foreground = "${nord11}";
           format-prefix-underline = "${nord11}";
 
@@ -95,7 +95,7 @@ in
           time = "%H:%M";
           time-alt = "%H:%M:%S";
 
-          format = "<label>";
+          format = " <label>";
           format-foreground = "${nord15}";
           format-underline = "${nord15}";
 
@@ -131,7 +131,7 @@ in
           label-focused = "%icon%";
           label-focused-background = "${background-alt}";
           label-focused-underline = "${primary}";
-          label-focused-padding = "1";
+          label-focused-padding = "2";
 
           label-unfocused = "%icon%";
           label-unfocused-padding = "\${self.label-focused-padding}";
