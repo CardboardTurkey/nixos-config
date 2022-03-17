@@ -164,9 +164,9 @@ in
 
           format-low = "<label-low> <animation-low>";
 
-          label-charging = "Charging %percentage%%";
-          label-discharging = "Discharging %percentage%%";
-          label-full = "Fully charged";
+          label-charging = "%percentage%%";
+          label-discharging = "%percentage%%";
+          label-full = "👌";
 
           label-low = "BATTERY LOW";
 
@@ -181,7 +181,7 @@ in
           animation-charging-2 = "";
           animation-charging-3 = "";
           animation-charging-4 = "";
-          animation-charging-framerate = "750";
+          animation-charging-framerate = "900";
 
           animation-discharging-0 = "";
           animation-discharging-1 = "";
@@ -190,8 +190,8 @@ in
           animation-discharging-4 = "";
           animation-discharging-framerate = "500";
 
-          animation-low-0 = "!";
-          animation-low-1 = "";
+          animation-low-0 = "";
+          animation-low-1 = "";
           animation-low-framerate = "200";
         };
       };
