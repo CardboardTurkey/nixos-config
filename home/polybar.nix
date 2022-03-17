@@ -92,6 +92,25 @@ in
           label-indicator-background = "${nord11}";
           label-indicator-underline = "${nord11}";
         };
+        "module/wlan" = {
+          type = "internal/network";
+          interface = "wlp0s20f3";
+          interval = "1.0";
+
+          format-connected = "<label-connected> <ramp-signal>";
+          format-connected-underline = "#9f78e1";
+          label-connected-foreground = "#9f78e1";
+          label-connected = "";
+
+          format-disconnected = "";
+
+          ramp-signal-0 = "😵";
+          ramp-signal-1 = "😟";
+          ramp-signal-2 = "😐";
+          ramp-signal-3 = "😀";
+          ramp-signal-4 = "🥵";
+          ramp-signal-foreground = "${foreground-alt}";
+        };
         "module/date" = {
           type = "internal/date";
           interval = "1.0";
