@@ -61,13 +61,20 @@ in
           font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
 
           modules-left = "i3";
-          modules-center = "player-mpris-tail";
+          # modules-center = "player-mpris-tail";
           modules-right = "pulseaudio filesystem battery xkeyboard memory cpu wlan eth date";
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
 
           enable-ipc = true;
+        };
+        "module/memory" = {
+          type = "internal/memory";
+          format-prefix = "";
+          format-prefix-foreground = "${nord8}";
+          format-underline = "${nord8}";
+          label = "%percentage_used%%";
         };
         "module/xkeyboard" = {
           type = "internal/xkeyboard";
