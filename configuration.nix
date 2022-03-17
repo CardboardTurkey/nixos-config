@@ -61,6 +61,7 @@ in
     (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
     noto-fonts-emoji
     font-awesome
+    ttf_bitstream_vera
   ];
 
   # Enable the X11 windowing system.
