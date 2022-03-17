@@ -27,7 +27,7 @@ in
       };
       # Doesnt seem to be doing anything:
       script = ''
-        export MON_MAIN=$(xrandr | grep primary | cut -d' ' -f1)
+        polybar-msg cmd quit
         polybar the_bar &
       '';
       settings = {
