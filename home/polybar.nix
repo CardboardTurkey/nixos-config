@@ -71,7 +71,7 @@ in
         };
         "module/memory" = {
           type = "internal/memory";
-          format-prefix = "";
+          format-prefix = " ";
           format-prefix-foreground = "${nord8}";
           format-underline = "${nord8}";
           label = "%percentage_used%%";
@@ -102,12 +102,11 @@ in
           time = "%H:%M";
           time-alt = "%H:%M:%S";
 
-          format = " <label>";
-          format-foreground = "${nord15}";
+          format-prefix = " ";
+          format-prefix-foreground = "${nord15}";
           format-underline = "${nord15}";
 
           label = "%time%%date%";
-          label-foreground = "${foreground}";
         };
         "module/filesystem" = {
           type = "internal/fs";
