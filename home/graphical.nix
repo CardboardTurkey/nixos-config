@@ -233,9 +233,35 @@ in
             };
           };
         };
-        "dp21_dp23" = {
+        "dp21_dp23_edp" = {
           fingerprint = {
             eDP-1 = "*";
+            DP-2-1 = "*";
+            DP-2-3 = "*";
+          };
+          config = {
+            eDP-1 = {
+              enable = false;
+            };
+            DP-2-1 = {
+              enable = true;
+              crtc = 0;
+              position = "1920x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+            DP-2-3 = {
+              enable = true;
+              crtc = 1;
+              primary = true;
+              position = "0x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+          };
+        };
+        "dp21_dp23" = {
+          fingerprint = {
             DP-2-1 = "*";
             DP-2-3 = "*";
           };
