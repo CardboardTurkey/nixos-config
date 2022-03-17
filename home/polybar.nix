@@ -62,7 +62,7 @@ in
 
           modules-left = "i3";
           modules-center = "player-mpris-tail";
-          modules-right = "pulseaudio filesystem battery-combined-udev xkeyboard memory cpu wlan eth date";
+          modules-right = "pulseaudio filesystem battery xkeyboard memory cpu wlan eth date";
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
@@ -152,6 +152,46 @@ in
           bar-volume-empty = "─";
           bar-volume-empty-font = "2";
           bar-volume-empty-foreground = "${foreground-alt}";
+        };
+        "module/battery" = {
+          type = "internal/battery";
+          # full-at = "99";
+          battery = "BAT0";
+          format-charging = "<animation-charging> <label-charging>";
+          format-discharging = "<ramp-capacity> <label-discharging>";
+          format-full = "<ramp-capacity> <label-full>";
+
+          format-low = "<label-low> <animation-low>";
+
+          label-charging = "Charging %percentage%%";
+          label-discharging = "Discharging %percentage%%";
+          label-full = "Fully charged";
+
+          label-low = "BATTERY LOW";
+
+          ramp-capacity-0 = "";
+          ramp-capacity-1 = "";
+          ramp-capacity-2 = "";
+          ramp-capacity-3 = "";
+          ramp-capacity-4 = "";
+
+          animation-charging-0 = "";
+          animation-charging-1 = "";
+          animation-charging-2 = "";
+          animation-charging-3 = "";
+          animation-charging-4 = "";
+          animation-charging-framerate = "750";
+
+          animation-discharging-0 = "";
+          animation-discharging-1 = "";
+          animation-discharging-2 = "";
+          animation-discharging-3 = "";
+          animation-discharging-4 = "";
+          animation-discharging-framerate = "500";
+
+          animation-low-0 = "!";
+          animation-low-1 = "";
+          animation-low-framerate = "200";
         };
       };
     };
