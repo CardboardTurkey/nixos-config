@@ -7,6 +7,8 @@
 { config, lib, pkgs, ... }:
 let
 
+  # See https://www.nordtheme.com/docs/colors-and-palettes
+
   # Dark blue/black
   nord0 = "#2e3440";
   nord1 = "#3b4252";
@@ -37,7 +39,7 @@ let
   nord14 = "#a3be8c";
   # Purple
   nord15 = "#b48ead";
-  
+
 in
 {
   home-manager.users.kiran = { pkgs, ... }: {
@@ -89,31 +91,12 @@ in
 
           modules-left = "i3";
           # modules-center = "player-mpris-tail";
-          modules-right = "pulseaudio battery filesystem memory cpu wlan eth xkeyboard date";
+          modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard date";
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
 
           enable-ipc = true;
-        };
-        "module/eth" = {
-          type = "internal/network";
-          interface = "enp0s31f6";
-          interval = "3.0";
-
-          format-connected = "<label-connected> <ramp-signal>";
-          format-connected-underline = "#9f78e1";
-          label-connected-foreground = "#9f78e1";
-          label-connected = "";
-
-          format-disconnected = "";
-
-          ramp-signal-0 = "😵";
-          ramp-signal-1 = "😟";
-          ramp-signal-2 = "😐";
-          ramp-signal-3 = "😀";
-          ramp-signal-4 = "🥵";
-          ramp-signal-foreground = "${nord4}";
         };
         "module/cpu" = {
           type = "internal/cpu";
@@ -146,10 +129,29 @@ in
           label-indicator-background = "${nord11}";
           label-indicator-underline = "${nord11}";
         };
-        "module/wlan" = {
+        "module/wired-network" = {
           type = "internal/network";
-          interface = "wlp0s20f3";
+          interface = "enp0s31f6";
           interval = "1.0";
+
+          format-connected = "<label-connected> <ramp-signal>";
+          format-connected-underline = "#9f78e1";
+          label-connected-foreground = "#9f78e1";
+          label-connected = "";
+
+          format-disconnected = "";
+
+          ramp-signal-0 = "😵";
+          ramp-signal-1 = "😟";
+          ramp-signal-2 = "😐";
+          ramp-signal-3 = "😀";
+          ramp-signal-4 = "🥵";
+          ramp-signal-foreground = "${nord4}";
+        };
+        "module/wireless-network" = {
+          type = "internal/network";
+          interval = "1.0";
+          interface = "wlp0s20f3";
 
           format-connected = "<label-connected> <ramp-signal>";
           format-connected-underline = "#9f78e1";
