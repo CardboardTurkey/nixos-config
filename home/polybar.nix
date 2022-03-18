@@ -72,6 +72,33 @@ in
 
           enable-ipc = true;
         };
+        "module/eth" = {
+          type = "internal/network";
+          interface = "enp0s31f6";
+          interval = "3.0";
+
+          format-connected = "<label-connected> <ramp-signal>";
+          format-connected-underline = "#9f78e1";
+          label-connected-foreground = "#9f78e1";
+          label-connected = "";
+
+          format-disconnected = "";
+
+          ramp-signal-0 = "😵";
+          ramp-signal-1 = "😟";
+          ramp-signal-2 = "😐";
+          ramp-signal-3 = "😀";
+          ramp-signal-4 = "🥵";
+          ramp-signal-foreground = "${foreground-alt}";
+        };
+        "module/cpu" = {
+          type = "internal/cpu";
+          interval = "2";
+          format-prefix = "";
+          format-prefix-foreground = "${nord12}";
+          format-underline = "${nord12}";
+          label = "%percentage:2%%";
+        };
         "module/memory" = {
           type = "internal/memory";
           format-prefix = " ";
