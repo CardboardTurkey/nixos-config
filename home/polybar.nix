@@ -167,7 +167,14 @@ in
 
           mount-0 = "/";
 
-          label-mounted = " %percentage_used%%";
+          format-mounted = "%{F${nord15}}%{F-}  <label-mounted>";
+          format-mounted-underline = "${nord15}";
+
+          format-unmounted = "<label-unmounted>";
+          format-unmounted-underline = "${nord15}";
+
+
+          label-mounted = "%percentage_used%%";
           label-unmounted = "%mountpoint% not mounted";
           label-unmounted-foreground = "${foreground-alt}";
         };
