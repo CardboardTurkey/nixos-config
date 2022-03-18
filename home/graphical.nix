@@ -81,7 +81,7 @@ in
           "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
           "XF86MonBrightnessUp"   = "exec brightnessctl set 4%+";
           "XF86Display"           = "exec autorandr --change";
-          "${mod}+L"              = "exec betterlockscreen -l dim";
+          "${mod}+L"              = "exec betterlockscreen -l blur";
           "${mod}+Control+Return" = "exec termite";
           "${mod}+Return"         = "workspace 1; exec pgrep termite || termite";
           "${mod}+Control+space"  = "focus mode_toggle";
@@ -132,7 +132,7 @@ in
     };
     services.betterlockscreen ={
       enable = true;
-      arguments = [ "dim" ];
+      arguments = [ "blur" ];
     };
     services.screen-locker = {
       enable = true;
