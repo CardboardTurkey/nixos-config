@@ -135,8 +135,8 @@ in
           interval = "1.0";
 
           format-connected = "<label-connected> <ramp-signal>";
-          format-connected-underline = "#9f78e1";
-          label-connected-foreground = "#9f78e1";
+          format-connected-underline = "${nord13}";
+          label-connected-foreground = "${nord13}";
           label-connected = "";
 
           format-disconnected = "";
@@ -154,8 +154,8 @@ in
           interface = "wlp0s20f3";
 
           format-connected = "<label-connected> <ramp-signal>";
-          format-connected-underline = "#9f78e1";
-          label-connected-foreground = "#9f78e1";
+          format-connected-underline = "${nord13}";
+          label-connected-foreground = "${nord13}";
           label-connected = "";
 
           format-disconnected = "";
