@@ -70,7 +70,6 @@ in
           foreground = "${nord6}";
 
           line-size = "3";
-          line-color = "#f00";
 
           border-size = "0";
 
