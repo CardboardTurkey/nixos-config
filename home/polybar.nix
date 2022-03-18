@@ -1,3 +1,7 @@
+# TODO: sort out colours
+# * Define them all as variables
+# * Nordify everything or make some softer in bar
+
 { config, lib, pkgs, ... }:
 let
   background = "#2e3440";
