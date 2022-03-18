@@ -69,7 +69,7 @@ in
 
           modules-left = "i3";
           # modules-center = "player-mpris-tail";
-          modules-right = "pulseaudio filesystem battery xkeyboard memory cpu wlan eth date";
+          modules-right = "pulseaudio battery filesystem memory cpu wlan eth xkeyboard date";
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
@@ -167,7 +167,7 @@ in
 
           mount-0 = "/";
 
-          format-mounted = "%{F${nord15}}%{F-}  <label-mounted>";
+          format-mounted = "%{F${nord15}}%{F-} <label-mounted>";
           format-mounted-underline = "${nord15}";
 
           format-unmounted = "<label-unmounted>";
