@@ -163,8 +163,7 @@ in
 
           mount-0 = "/";
 
-          prefix = " ";
-          label-mounted = "%percentage_used%%";
+          label-mounted = " %percentage_used%%";
           label-unmounted = "%mountpoint% not mounted";
           label-unmounted-foreground = "${foreground-alt}";
         };
