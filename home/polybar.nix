@@ -2,22 +2,42 @@
 # * Define them all as variables
 # * Nordify everything or make some softer in bar
 
+
+
 { config, lib, pkgs, ... }:
 let
-  background = "#2e3440";
-  background-alt = "#434c5e";
-  foreground = "#eceff4";
-  foreground-alt = "#555";
-  primary = "#ebcb8b";
-  secondary = "#e60053";
-  alert = "#bf616a";
+
+  # Dark blue/black
+  nord0 = "#2e3440";
+  nord1 = "#3b4252";
+  nord2 = "#434c5e";
   nord3 = "#4c566a";
+
+  # Light greys
+  nord4 = "#d8dee9";
+  nord5 = "#e5e9f0";
+  nord6 = "#eceff4";
+
+  # Turquoise
+  nord7 = "#8fbcbb";
+  # Light blue
   nord8 = "#88c0d0";
+  # Blue
   nord9 = "#81a1c1";
+  # Darker blue
+  nord10 = "#5e81ac";
+
+  # Red
   nord11 = "#bf616a";
+  # Orange
   nord12 = "#d08770";
+  # Yellow
+  nord13 = "#ebcb8b";
+  # Green
   nord14 = "#a3be8c";
+  # Purple
   nord15 = "#b48ead";
+  
 in
 {
   home-manager.users.kiran = { pkgs, ... }: {
@@ -44,8 +64,8 @@ in
           radius = "0.0";
           fixed-center = "false";
 
-          background = "${background}";
-          foreground = "${foreground}";
+          background = "${nord0}";
+          foreground = "${nord6}";
 
           line-size = "3";
           line-color = "#f00";
@@ -93,7 +113,7 @@ in
           ramp-signal-2 = "😐";
           ramp-signal-3 = "😀";
           ramp-signal-4 = "🥵";
-          ramp-signal-foreground = "${foreground-alt}";
+          ramp-signal-foreground = "${nord4}";
         };
         "module/cpu" = {
           type = "internal/cpu";
@@ -143,7 +163,7 @@ in
           ramp-signal-2 = "😐";
           ramp-signal-3 = "😀";
           ramp-signal-4 = "🥵";
-          ramp-signal-foreground = "${foreground-alt}";
+          ramp-signal-foreground = "${nord4}";
         };
         "module/date" = {
           type = "internal/date";
@@ -176,7 +196,7 @@ in
 
           label-mounted = "%percentage_used%%";
           label-unmounted = "%mountpoint% not mounted";
-          label-unmounted-foreground = "${foreground-alt}";
+          label-unmounted-foreground = "${nord4}";
         };
         "module/i3" = {
           type = "internal/i3";
@@ -195,8 +215,8 @@ in
           ws-icon-default = "";
 
           label-focused = "%icon%";
-          label-focused-background = "${background-alt}";
-          label-focused-underline = "${primary}";
+          label-focused-background = "${nord2}";
+          label-focused-underline = "${nord13}";
           label-focused-padding = "2";
 
           label-unfocused = "%icon%";
@@ -206,7 +226,7 @@ in
           label-visible-padding = "\${self.label-focused-padding}";
 
           label-urgent = "%icon%";
-          label-urgent-background = "${alert}";
+          label-urgent-background = "${nord11}";
           label-urgent-padding = "\${self.label-focused-padding}";
         };
         "module/pulseaudio" = {
@@ -231,7 +251,7 @@ in
           bar-volume-indicator = "";
           bar-volume-fill = "─";
           bar-volume-empty = "─";
-          bar-volume-empty-foreground = "${foreground-alt}";
+          bar-volume-empty-foreground = "${nord4}";
         };
         "module/battery" = {
           type = "internal/battery";
