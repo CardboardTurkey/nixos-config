@@ -238,16 +238,16 @@ in
           label-volume-foreground = "\${root.foreground}";
 
           label-muted = " muted";
-          label-muted-foreground = "#666";
+          label-muted-foreground = "${nord3}";
 
           bar-volume-width = "10";
-          bar-volume-foreground-0 = "#55aa55";
-          bar-volume-foreground-1 = "#55aa55";
-          bar-volume-foreground-2 = "#55aa55";
-          bar-volume-foreground-3 = "#55aa55";
-          bar-volume-foreground-4 = "#55aa55";
-          bar-volume-foreground-5 = "#f5a70a";
-          bar-volume-foreground-6 = "#ff5555";
+          bar-volume-foreground-0 = "${nord14}";
+          bar-volume-foreground-1 = "${nord14}";
+          bar-volume-foreground-2 = "${nord14}";
+          bar-volume-foreground-3 = "${nord14}";
+          bar-volume-foreground-4 = "${nord14}";
+          bar-volume-foreground-5 = "${nord12}";
+          bar-volume-foreground-6 = "${nord11}";
           bar-volume-gradient = "false";
           bar-volume-indicator = "";
           bar-volume-fill = "─";
