@@ -28,17 +28,6 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.initrd.luks.devices = {
-    crypted = {
-      device = "/dev/disk/by-uuid/d0ad36ad-4630-4764-ae08-a8c3e788d521";
-      preLVM = true;
-      allowDiscards = true;
-    };
-  };
-
-  # Maybe fix touchpad?
-  boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
-
   networking.hostName = "finch"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;
@@ -50,6 +39,8 @@ in
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
+  networking.interfaces.${config.eth}.useDHCP = true;
+  networking.interfaces.${config.wlan}.useDHCP = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";

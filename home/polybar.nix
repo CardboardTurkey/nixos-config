@@ -8,23 +8,27 @@
 
 { config, lib, pkgs, ... }:
 let
+  # Hardware
+  # Defined in `../core/hardware.nix`
+  eth_interface = "${config.eth}";
+  wlan_interface = "${config.wlan}";
+  battery = "${config.battery}";
+  adapter = "${config.adapter}";
+
   # Lets choose some colours!
   # Nord colours defined in `../core/nord.nix`
   foreground = "${config.nord6}";
   background = "${config.nord0}";
-
   # Workspace colours
   ws_focused = "${config.nord2}";
   ws_underline = "${config.nord13}";
   ws_urgent = "${config.nord11}";
-
   # Pulseaudio colours
   muted_colour = "${config.nord3}";
   quiet_colour = "${config.nord14}";
   loud_colour = "${config.nord12}";
   booming_colour = "${config.nord11}";
   volume_bar = "${config.nord4}";
-
   # The other module colours
   date_colour = "${config.nord15}";
   xkeyboard_colour = "${config.nord10}";
@@ -121,7 +125,7 @@ in
         };
         "module/wired-network" = {
           type = "internal/network";
-          interface = "enp0s31f6";
+          interface = "${eth_interface}";
           interval = "1.0";
 
           format-connected = "<label-connected> <ramp-signal>";
@@ -140,7 +144,7 @@ in
         "module/wireless-network" = {
           type = "internal/network";
           interval = "1.0";
-          interface = "wlp0s20f3";
+          interface = "${wlan_interface}";
 
           format-connected = "<label-connected> <ramp-signal>";
           format-connected-underline = "${wireless_colour}";
@@ -247,8 +251,8 @@ in
         "module/battery" = {
           type = "internal/battery";
           # full-at = "99";
-          battery = "BAT0";
-          adapter = "AC";
+          battery = "${battery}";
+          adapter = "${adapter}";
 
           format-charging = "<animation-charging> <label-charging>";
           format-discharging = "<ramp-capacity> <label-discharging>";
