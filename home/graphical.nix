@@ -103,7 +103,8 @@ in
           "${ws-irc}"  = [{ class="quasselclient";}];        
         };
         startup = [
-          { command = "nitrogen --restore"; always = true; notification = false; }
+          { command = "nitrogen --restore"; always = true; }
+          { command = "polybar-msg cmd quit; polybar the_bar&disown"; always = true; }
         ];
       }; 
       extraConfig = ''
