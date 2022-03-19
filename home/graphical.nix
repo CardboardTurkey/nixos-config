@@ -127,6 +127,13 @@ in
         "editor.fontFamily" = "'DejaVu Sans Mono', 'Font Awesome 5 Brands', 'Font Awesome 5 Free', 'Font Awesome 5 Free Solid'";
       };
     };
+    services.picom = {
+      enable = true;
+      blur = true;
+      fade = true;
+      inactiveOpacity = "0.8";
+      shadow = true;
+    };
     xdg = {
       configFile."betterlockscreenrc".source = ./config/betterlockscreenrc;
     };
