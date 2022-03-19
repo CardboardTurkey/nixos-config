@@ -33,9 +33,9 @@ let
   cpu_colour = "${config.nord8}";
   memory_colour = "${config.nord7}";
   filesystem_colour = "${config.nord14}";
-  battery_colour = "${config.nord13}";
+  battery_colour = "${config.nord4}";
   battery_warning = "${config.nord11}";
-  
+
 in
 {
   home-manager.users.kiran = { pkgs, ... }: {
