@@ -2,40 +2,7 @@
 
 { config, lib, pkgs, ... }:
 let
-
-  # See https://www.nordtheme.com/docs/colors-and-palettes
-
-  # Dark blue/black
-  nord0 = "#2e3440";
-  nord1 = "#3b4252";
-  nord2 = "#434c5e";
-  nord3 = "#4c566a";
-
-  # Light greys
-  nord4 = "#d8dee9";
-  nord5 = "#e5e9f0";
-  nord6 = "#eceff4";
-
-  # Turquoise
-  nord7 = "#8fbcbb";
-  # Light blue
-  nord8 = "#88c0d0";
-  # Blue
-  nord9 = "#81a1c1";
-  # Darker blue
-  nord10 = "#5e81ac";
-
-  # Red
-  nord11 = "#bf616a";
-  # Orange
-  nord12 = "#d08770";
-  # Yellow
-  nord13 = "#ebcb8b";
-  # Green
-  nord14 = "#a3be8c";
-  # Purple
-  nord15 = "#b48ead";
-
+  hi = "ten";
 in
 {
   home-manager.users.kiran = { pkgs, ... }: {
@@ -62,8 +29,8 @@ in
           radius = "0.0";
           fixed-center = "false";
 
-          background = "${nord0}";
-          foreground = "${nord6}";
+          background = "${config.nord0}";
+          foreground = "${config.nord6}";
 
           line-size = "3";
 
@@ -97,15 +64,15 @@ in
           type = "internal/cpu";
           interval = "2";
           format-prefix = "";
-          format-prefix-foreground = "${nord12}";
-          format-underline = "${nord12}";
+          format-prefix-foreground = "${config.nord12}";
+          format-underline = "${config.nord12}";
           label = "%percentage:2%%";
         };
         "module/memory" = {
           type = "internal/memory";
           format-prefix = " ";
-          format-prefix-foreground = "${nord8}";
-          format-underline = "${nord8}";
+          format-prefix-foreground = "${config.nord8}";
+          format-underline = "${config.nord8}";
           label = "%percentage_used%%";
         };
         "module/xkeyboard" = {
@@ -113,16 +80,16 @@ in
           blacklist-0 = "num lock";
 
           format-prefix = " ";
-          format-prefix-foreground = "${nord11}";
-          format-prefix-underline = "${nord11}";
+          format-prefix-foreground = "${config.nord11}";
+          format-prefix-underline = "${config.nord11}";
 
           label-layout = "%layout%";
-          label-layout-underline = "${nord11}";
+          label-layout-underline = "${config.nord11}";
 
           label-indicator-padding = "2";
           label-indicator-margin = "1";
-          label-indicator-background = "${nord11}";
-          label-indicator-underline = "${nord11}";
+          label-indicator-background = "${config.nord11}";
+          label-indicator-underline = "${config.nord11}";
         };
         "module/wired-network" = {
           type = "internal/network";
@@ -130,8 +97,8 @@ in
           interval = "1.0";
 
           format-connected = "<label-connected> <ramp-signal>";
-          format-connected-underline = "${nord13}";
-          label-connected-foreground = "${nord13}";
+          format-connected-underline = "${config.nord13}";
+          label-connected-foreground = "${config.nord13}";
           label-connected = "";
 
           format-disconnected = "";
@@ -141,7 +108,7 @@ in
           ramp-signal-2 = "😐";
           ramp-signal-3 = "😀";
           ramp-signal-4 = "🥵";
-          ramp-signal-foreground = "${nord4}";
+          ramp-signal-foreground = "${config.nord4}";
         };
         "module/wireless-network" = {
           type = "internal/network";
@@ -149,8 +116,8 @@ in
           interface = "wlp0s20f3";
 
           format-connected = "<label-connected> <ramp-signal>";
-          format-connected-underline = "${nord13}";
-          label-connected-foreground = "${nord13}";
+          format-connected-underline = "${config.nord13}";
+          label-connected-foreground = "${config.nord13}";
           label-connected = "";
 
           format-disconnected = "";
@@ -160,7 +127,7 @@ in
           ramp-signal-2 = "😐";
           ramp-signal-3 = "😀";
           ramp-signal-4 = "🥵";
-          ramp-signal-foreground = "${nord4}";
+          ramp-signal-foreground = "${config.nord4}";
         };
         "module/date" = {
           type = "internal/date";
@@ -173,8 +140,8 @@ in
           time-alt = "%H:%M:%S";
 
           format-prefix = " ";
-          format-prefix-foreground = "${nord15}";
-          format-underline = "${nord15}";
+          format-prefix-foreground = "${config.nord15}";
+          format-underline = "${config.nord15}";
 
           label = "%time%%date%";
         };
@@ -184,16 +151,16 @@ in
 
           mount-0 = "/";
 
-          format-mounted = "%{F${nord15}}%{F-} <label-mounted>";
-          format-mounted-underline = "${nord15}";
+          format-mounted = "%{F${config.nord15}}%{F-} <label-mounted>";
+          format-mounted-underline = "${config.nord15}";
 
           format-unmounted = "<label-unmounted>";
-          format-unmounted-underline = "${nord15}";
+          format-unmounted-underline = "${config.nord15}";
 
 
           label-mounted = "%percentage_used%%";
           label-unmounted = "%mountpoint% not mounted";
-          label-unmounted-foreground = "${nord4}";
+          label-unmounted-foreground = "${config.nord4}";
         };
         "module/i3" = {
           type = "internal/i3";
@@ -212,8 +179,8 @@ in
           ws-icon-default = "";
 
           label-focused = "%icon%";
-          label-focused-background = "${nord2}";
-          label-focused-underline = "${nord13}";
+          label-focused-background = "${config.nord2}";
+          label-focused-underline = "${config.nord13}";
           label-focused-padding = "2";
 
           label-unfocused = "%icon%";
@@ -223,7 +190,7 @@ in
           label-visible-padding = "\${self.label-focused-padding}";
 
           label-urgent = "%icon%";
-          label-urgent-background = "${nord11}";
+          label-urgent-background = "${config.nord11}";
           label-urgent-padding = "\${self.label-focused-padding}";
         };
         "module/pulseaudio" = {
@@ -234,21 +201,21 @@ in
           label-volume-foreground = "\${root.foreground}";
 
           label-muted = " muted";
-          label-muted-foreground = "${nord3}";
+          label-muted-foreground = "${config.nord3}";
 
           bar-volume-width = "10";
-          bar-volume-foreground-0 = "${nord14}";
-          bar-volume-foreground-1 = "${nord14}";
-          bar-volume-foreground-2 = "${nord14}";
-          bar-volume-foreground-3 = "${nord14}";
-          bar-volume-foreground-4 = "${nord14}";
-          bar-volume-foreground-5 = "${nord12}";
-          bar-volume-foreground-6 = "${nord11}";
+          bar-volume-foreground-0 = "${config.nord14}";
+          bar-volume-foreground-1 = "${config.nord14}";
+          bar-volume-foreground-2 = "${config.nord14}";
+          bar-volume-foreground-3 = "${config.nord14}";
+          bar-volume-foreground-4 = "${config.nord14}";
+          bar-volume-foreground-5 = "${config.nord12}";
+          bar-volume-foreground-6 = "${config.nord11}";
           bar-volume-gradient = "false";
           bar-volume-indicator = "";
           bar-volume-fill = "─";
           bar-volume-empty = "─";
-          bar-volume-empty-foreground = "${nord4}";
+          bar-volume-empty-foreground = "${config.nord4}";
         };
         "module/battery" = {
           type = "internal/battery";

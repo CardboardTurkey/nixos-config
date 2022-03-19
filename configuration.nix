@@ -21,6 +21,7 @@ in
       (import "${home-manager}/nixos")
       ./home/terminal.nix
       ./home/graphical.nix
+      ./core
     ];
 
   # Use the systemd-boot EFI boot loader.
