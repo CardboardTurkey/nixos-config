@@ -133,6 +133,7 @@ in
       fade = true;
       inactiveOpacity = "0.8";
       shadow = true;
+      shadowExclude = [ "!I3_FLOATING_WINDOW@:c" ];
     };
     xdg = {
       configFile."betterlockscreenrc".source = ./config/betterlockscreenrc;
