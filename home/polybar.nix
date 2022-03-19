@@ -1,7 +1,7 @@
-# Nord colours defined in `../core/nord.nix`
-
 { config, lib, pkgs, ... }:
 let
+  # Lets choose some colours!
+  # Nord colours defined in `../core/nord.nix`
   foreground = "${config.nord6}";
   background = "${config.nord0}";
 
@@ -19,12 +19,13 @@ let
 
   # The other module colours
   date_colour = "${config.nord15}";
-  xkeyboard_colour = "${config.nord7}";
-  wired_colour = "${config.nord8}";
-  wireless_colour = "${config.nord8}";
-  cpu_colour = "${config.nord9}";
-  memory_colour = "${config.nord10}";
-  filesystem_colour = "${config.nord12}";
+  xkeyboard_colour = "${config.nord10}";
+  wired_colour = "${config.nord9}";
+  wireless_colour = "${config.nord9}";
+  cpu_colour = "${config.nord8}";
+  memory_colour = "${config.nord7}";
+  filesystem_colour = "${config.nord14}";
+  battery_colour = "${config.nord4}";
 in
 {
   home-manager.users.kiran = { pkgs, ... }: {
@@ -242,11 +243,16 @@ in
           # full-at = "99";
           battery = "BAT0";
           adapter = "AC";
+
           format-charging = "<animation-charging> <label-charging>";
           format-discharging = "<ramp-capacity> <label-discharging>";
           format-full = "<ramp-capacity> <label-full>";
-
           format-low = "<label-low> <animation-low>";
+
+          format-charging-underline = "${battery_colour}";
+          format-discharging-underline = "${battery_colour}";
+          format-full-underline = "${battery_colour}";
+          format-low-underline = "${battery_colour}";
 
           label-charging = "%percentage%%";
           label-discharging = "%percentage%%";
@@ -254,28 +260,28 @@ in
 
           label-low = "BATTERY LOW";
 
-          ramp-capacity-0 = "";
-          ramp-capacity-1 = "";
-          ramp-capacity-2 = "";
-          ramp-capacity-3 = "";
-          ramp-capacity-4 = "";
+          ramp-capacity-0 = "%{F${battery_colour}}%{F-}";
+          ramp-capacity-1 = "%{F${battery_colour}}%{F-}";
+          ramp-capacity-2 = "%{F${battery_colour}}%{F-}";
+          ramp-capacity-3 = "%{F${battery_colour}}%{F-}";
+          ramp-capacity-4 = "%{F${battery_colour}}%{F-}";
 
-          animation-charging-0 = "";
-          animation-charging-1 = "";
-          animation-charging-2 = "";
-          animation-charging-3 = "";
-          animation-charging-4 = "";
+          animation-charging-0 = "%{F${battery_colour}}%{F-}";
+          animation-charging-1 = "%{F${battery_colour}}%{F-}";
+          animation-charging-2 = "%{F${battery_colour}}%{F-}";
+          animation-charging-3 = "%{F${battery_colour}}%{F-}";
+          animation-charging-4 = "%{F${battery_colour}}%{F-}";
           animation-charging-framerate = "900";
 
-          animation-discharging-0 = "";
-          animation-discharging-1 = "";
-          animation-discharging-2 = "";
-          animation-discharging-3 = "";
-          animation-discharging-4 = "";
+          animation-discharging-0 = "%{F${battery_colour}}%{F-}";
+          animation-discharging-1 = "%{F${battery_colour}}%{F-}";
+          animation-discharging-2 = "%{F${battery_colour}}%{F-}";
+          animation-discharging-3 = "%{F${battery_colour}}%{F-}";
+          animation-discharging-4 = "%{F${battery_colour}}%{F-}";
           animation-discharging-framerate = "500";
 
           animation-low-0 = "";
-          animation-low-1 = "";
+          animation-low-1 = "%{F${battery_colour}}%{F-}";
           animation-low-framerate = "200";
         };
       };
