@@ -131,9 +131,16 @@ in
       enable = true;
       blur = true;
       fade = true;
+      fadeDelta = 5;
       inactiveOpacity = "0.8";
-      shadow = true;
-      shadowExclude = [ "!I3_FLOATING_WINDOW@:c" ];
+      experimentalBackends = true;
+      extraOptions = ''
+        blur:
+        {
+        method="dual_kawase";
+        strength=5;
+        }
+      '';
     };
     xdg = {
       configFile."betterlockscreenrc".source = ./config/betterlockscreenrc;
