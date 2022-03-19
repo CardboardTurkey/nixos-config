@@ -131,7 +131,6 @@ in
       enable = true;
       blur = true;
       fade = true;
-      fadeDelta = 5;
       inactiveOpacity = "0.8";
       experimentalBackends = true;
       extraOptions = ''
