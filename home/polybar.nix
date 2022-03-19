@@ -18,13 +18,13 @@ let
   volume_bar = "${config.nord4}";
 
   # The other module colours
-  cpu_colour = "${config.nord12}";
-  memory_colour = "${config.nord8}";
-  xkeyboard_colour = "${config.nord11}";
-  wired_colour = "${config.nord13}";
-  wireless_colour = "${config.nord13}";
   date_colour = "${config.nord15}";
-  filesystem_colour = "${config.nord15}";
+  xkeyboard_colour = "${config.nord7}";
+  wired_colour = "${config.nord8}";
+  wireless_colour = "${config.nord8}";
+  cpu_colour = "${config.nord9}";
+  memory_colour = "${config.nord10}";
+  filesystem_colour = "${config.nord12}";
 in
 {
   home-manager.users.kiran = { pkgs, ... }: {
