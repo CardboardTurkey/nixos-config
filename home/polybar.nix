@@ -1,8 +1,4 @@
-# TODO: sort out colours
-# * Define them all as variables
-# * Nordify everything or make some softer in bar
-
-
+# TODO: Less colour variation?
 
 { config, lib, pkgs, ... }:
 let
@@ -207,9 +203,9 @@ in
 
           ws-icon-0 = "1;";
           ws-icon-1 = "2;";
-          ws-icon-2 = "3;";
-          ws-icon-3 = "4;";
-          ws-icon-4 = "5;";
+          ws-icon-3 = "3;";
+          ws-icon-4 = "4;";
+          ws-icon-2 = "5;";
           ws-icon-5 = "6;";
           ws-icon-6 = "7;";
           ws-icon-7 = "8;";
