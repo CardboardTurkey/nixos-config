@@ -62,8 +62,7 @@ in
           padding-left = "0";
           padding-right = "2";
 
-          module-margin-left = "1";
-          module-margin-right = "2";
+          module-margin = "2";
 
           # Prefer Bitstream as it has minimal unicode coverage and so Font awesome and Noto can display icons
           # Add DejaVu as fallback
@@ -108,7 +107,6 @@ in
 
           label-layout = "%layout%";
           label-layout-underline = "${xkeyboard_colour}";
-          label-layout-margin-right = "2px";
 
         };
         "module/wired-network" = {
@@ -214,8 +212,7 @@ in
         "module/pulseaudio" = {
           type = "internal/pulseaudio";
 
-          format-volume = "<label-volume> <bar-volume>";
-          format-volume-margin-right = "5px";
+          format-volume = "<bar-volume> <label-volume>";
 
           label-volume = "%percentage%%";
           label-volume-foreground = "${foreground}";
