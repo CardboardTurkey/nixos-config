@@ -25,7 +25,7 @@ let
   cpu_colour = "${config.nord8}";
   memory_colour = "${config.nord7}";
   filesystem_colour = "${config.nord14}";
-  battery_colour = "${config.nord4}";
+  battery_colour = "${config.nord13}";
 in
 {
   home-manager.users.kiran = { pkgs, ... }: {
@@ -109,10 +109,6 @@ in
           label-layout = "%layout%";
           label-layout-underline = "${xkeyboard_colour}";
 
-          label-indicator-padding = "2";
-          label-indicator-margin = "1";
-          label-indicator-background = "${xkeyboard_colour}";
-          label-indicator-underline = "${xkeyboard_colour}";
         };
         "module/wired-network" = {
           type = "internal/network";
