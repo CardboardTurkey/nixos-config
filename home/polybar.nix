@@ -34,6 +34,8 @@ let
   memory_colour = "${config.nord7}";
   filesystem_colour = "${config.nord14}";
   battery_colour = "${config.nord13}";
+  battery_warning = "${config.nord11}";
+  
 in
 {
   home-manager.users.kiran = { pkgs, ... }: {
@@ -284,7 +286,7 @@ in
           animation-discharging-4 = "%{F${battery_colour}}%{F-}";
           animation-discharging-framerate = "500";
 
-          animation-low-0 = "";
+          animation-low-0 = "%{F${battery_warning}}%{F-}";
           animation-low-1 = "%{F${battery_colour}}%{F-}";
           animation-low-framerate = "200";
         };
