@@ -1,3 +1,11 @@
+# This config uses the following fonts:
+# with pkgs; [
+#   (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
+#   noto-fonts-emoji
+#   font-awesome
+#   ttf_bitstream_vera
+# ];
+
 { config, lib, pkgs, ... }:
 let
   # Lets choose some colours!
