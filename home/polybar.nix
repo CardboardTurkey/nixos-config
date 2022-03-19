@@ -108,7 +108,7 @@ in
 
           label-layout = "%layout%";
           label-layout-underline = "${xkeyboard_colour}";
-          label-layout-margin-right = "5px";
+          label-layout-margin-right = "2px";
 
         };
         "module/wired-network" = {
@@ -215,6 +215,8 @@ in
           type = "internal/pulseaudio";
 
           format-volume = "<label-volume> <bar-volume>";
+          format-volume-margin-right = "5px";
+
           label-volume = "%percentage%%";
           label-volume-foreground = "${foreground}";
 
