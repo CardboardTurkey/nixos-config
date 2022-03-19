@@ -108,6 +108,7 @@ in
 
           label-layout = "%layout%";
           label-layout-underline = "${xkeyboard_colour}";
+          label-layout-margin-right = "5px";
 
         };
         "module/wired-network" = {
