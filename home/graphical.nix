@@ -83,7 +83,7 @@ in
           "XF86Display"           = "exec autorandr --change";
           "${mod}+L"              = "exec betterlockscreen -l blur";
           "${mod}+Control+Return" = "exec termite";
-          "${mod}+Return"         = "workspace 1; exec pgrep termite || termite";
+          "${mod}+Return"         = "workspace 1; exec pgrep termite || termite -e tmuxup";
           "${mod}+Control+space"  = "focus mode_toggle";
           "${mod}+Control+Left"   = "workspace prev";
           "${mod}+Control+Right"  = "workspace next";

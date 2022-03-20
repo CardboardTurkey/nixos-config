@@ -1,0 +1,9 @@
+#!/usr/bin/env zsh
+# if no session is started, start a new session
+test -z ${TMUX} && tmux new -s  -d && tmux new -s 
+
+# when quitting tmux, try to attach
+while test -z ${TMUX}; do
+tmux attach || break
+done
+
