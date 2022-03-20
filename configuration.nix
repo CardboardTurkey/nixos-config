@@ -18,10 +18,9 @@ in
   imports =
     [
       ./hardware/ThinkPadT14.nix
-      (import "${home-manager}/nixos")
-      ./home/terminal.nix
-      ./home/graphical.nix
       ./core
+      (import "${home-manager}/nixos")
+      ./user-programs
     ];
 
   # Use the systemd-boot EFI boot loader.
