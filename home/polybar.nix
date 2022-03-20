@@ -31,13 +31,13 @@ let
   volume_bar = "${config.nord4}";
   # The other module colours
   date_colour = "${config.nord15}";
-  xkeyboard_colour = "${config.nord10}";
-  wired_colour = "${config.nord9}";
-  wireless_colour = "${config.nord9}";
-  cpu_colour = "${config.nord8}";
-  memory_colour = "${config.nord7}";
-  filesystem_colour = "${config.nord14}";
-  battery_colour = "${config.nord4}";
+  xkeyboard_colour = "${config.nord12}";
+  wired_colour = "${config.nord13}";
+  wireless_colour = "${config.nord13}";
+  cpu_colour = "${config.nord10}";
+  memory_colour = "${config.nord9}";
+  filesystem_colour = "${config.nord8}";
+  battery_colour = "${config.nord7}";
   battery_warning = "${config.nord11}";
 
 in
