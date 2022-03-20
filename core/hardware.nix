@@ -16,10 +16,12 @@ with lib;
     battery = mkOption {
       default = "BAT0";
       type = with types; uniq str;
+      description = "As given in /sys/class/power_supply/";
     };
     adapter = mkOption {
       default = "AC";
       type = with types; uniq str;
+      description = "As given in /sys/class/power_supply/";
     };
   };
 }
