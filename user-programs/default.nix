@@ -10,6 +10,7 @@
       ./graphical/lockscreen.nix
       ./graphical/picom.nix
       ./graphical/polybar.nix
+      ./graphical/rofi.nix
 
       ./terminal/git.nix
       ./terminal/misc.nix

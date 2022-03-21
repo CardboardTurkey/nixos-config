@@ -37,6 +37,7 @@ in
           "XF86MonBrightnessUp"   = "exec brightnessctl set 4%+";
           "XF86Display"           = "exec autorandr --change";
           "${mod}+L"              = "exec betterlockscreen -l blur";
+          "${mod}+period"              = "exec rofi -show emoji -modi emoji";
           "${mod}+Control+Return" = "exec termite";
           "${mod}+Return"         = "workspace 1; exec pgrep termite || termite -e tmuxup";
           "${mod}+Control+space"  = "focus mode_toggle";
