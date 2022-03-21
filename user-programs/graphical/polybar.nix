@@ -79,7 +79,7 @@ in
           module-margin = "2";
 
           # Prefer Bitstream as it has minimal unicode coverage and so Font awesome and Noto can display icons
-          # Add DejaVu as fallback
+          # Add DejaVu (Nerd font) as fallback
           font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=15;3";
           font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=15;3";
           font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=15;3";
