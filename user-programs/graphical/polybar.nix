@@ -1,11 +1,3 @@
-# This config uses the following fonts:
-# with pkgs; [
-#   (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
-#   noto-fonts-emoji
-#   font-awesome
-#   ttf_bitstream_vera
-# ];
-
 { config, lib, pkgs, ... }:
 let
   # Hardware
@@ -42,6 +34,14 @@ let
 
 in
 {
+
+  fonts.fonts = with pkgs; [
+    dejavu_fonts
+    noto-fonts-emoji
+    font-awesome
+    ttf_bitstream_vera
+  ];
+
   home-manager.users.kiran = { pkgs, ... }: {
     services.polybar = {
       enable = true;
