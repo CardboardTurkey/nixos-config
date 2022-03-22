@@ -36,7 +36,7 @@ in
 {
 
   fonts.fonts = with pkgs; [
-    dejavu_fonts
+    (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
     noto-fonts-emoji
     font-awesome
     ttf_bitstream_vera
