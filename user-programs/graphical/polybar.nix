@@ -47,7 +47,6 @@ in
       enable = true;
       package = pkgs.polybar.override {
         i3Support = true;
-        alsaSupport = true;
         iwSupport = true;
         pulseSupport = true;
       };
