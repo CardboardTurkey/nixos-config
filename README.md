@@ -3,7 +3,7 @@
 sudo ./link.sh
 
 # Demo
-![demo gif](stuff/demo.gif)
+[click here](stuff/demo.mp4)
 
 # TODO
 
