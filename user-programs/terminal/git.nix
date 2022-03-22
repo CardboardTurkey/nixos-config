@@ -6,6 +6,10 @@
       enable = true;
       userName  = "Kiran Ostrolenk";
       userEmail = "kiran.ostrolenk@codethink.co.uk";
+      lfs = {
+        enable = true;
+        skipSmudge = true;
+      };
       extraConfig =  { 
         core = { editor = "vim"; } ; 
         pull = { rebase = "true"; } ; 
