@@ -2,6 +2,9 @@
 
 sudo ./link.sh
 
+# Demo
+![demo gif](stuff/demo.gif)
+
 # TODO
 
 * Switch to alacitty.
