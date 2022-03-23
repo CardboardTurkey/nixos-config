@@ -10,6 +10,10 @@
       opacityRule = [ "100:name *= 'i3lock'" ];
       experimentalBackends = true;
       extraOptions = ''
+        focus-exclude = [ 
+          "class_g = 'rofi'",
+          "!I3_FLOATING_WINDOW@:c && !class_g = 'firefox'",
+        ];
         blur:
         {
         method="dual_kawase";
