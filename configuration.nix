@@ -99,7 +99,6 @@ in
     pass
     wl-clipboard
     quasselClient
-    lxappearance
     ripgrep
     zip
     unzip
