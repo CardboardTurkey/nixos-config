@@ -54,9 +54,9 @@ in
           "${ws-chrm}" = [{ class="Google-chrome";}];
           "${ws-spot}" = [{ class="spotify";}];
           "${ws-pdf}"  = [{ class="Evince";}];
-          "${ws-mail}" = [{ class="Mail";}];
+          "${ws-mail}" = [{ class="Thunderbird";}];
           "${ws-img}"  = [{ class="viewnior";}];
-          "${ws-irc}"  = [{ class="quasselclient";}];        
+          "${ws-irc}"  = [{ class="quassel";}];        
         };
         startup = [
           { command = "nitrogen --restore"; always = true; }
