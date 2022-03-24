@@ -19,12 +19,6 @@
         name = "Nordic";
         package = pkgs.nordic;
       };
-      gtk3.extraCss = ''
-        .termite { 
-          padding:25px;
-          padding-bottom: 5px; 
-        }
-      '';
     };
   };
 }

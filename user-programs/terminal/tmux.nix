@@ -6,7 +6,7 @@
       enable = true;
       plugins = with pkgs.tmuxPlugins; [ nord ];
       prefix = "C-a";
-      terminal = "xterm-termite";
+      terminal = "alacritty";
       historyLimit = 500000;
       extraConfig = ''
         # split panes using | and -

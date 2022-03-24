@@ -8,7 +8,7 @@
       };
       extraConfig = {
         modi = "drun,run,window,ssh,combi";
-        terminal = "termite";
+        terminal = "alacritty";
         icon-theme = "Zafiro-icons";
       };
     };

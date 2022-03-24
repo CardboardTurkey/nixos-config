@@ -39,8 +39,8 @@ in
           "${mod}+space"          = "exec rofi -show drun -theme clean";
           "${mod}+L"              = "exec betterlockscreen -l blur";
           "${mod}+period"              = "exec rofi -show emoji -modi emoji";
-          "${mod}+Control+Return" = "exec termite";
-          "${mod}+Return"         = "workspace 1; exec pgrep termite || termite -e tmuxup";
+          "${mod}+Control+Return" = "exec alacritty";
+          "${mod}+Return"         = "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
           "${mod}+Control+space"  = "focus mode_toggle";
           "${mod}+Control+Left"   = "workspace prev";
           "${mod}+Control+Right"  = "workspace next";
