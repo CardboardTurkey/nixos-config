@@ -13,6 +13,7 @@
         focus-exclude = [ 
           "class_g = 'rofi'",
           "I3_FLOATING_WINDOW@:c",
+          "fullscreen",
         ];
         blur-method = "dual_kawase";
         blur-strength = 16;
