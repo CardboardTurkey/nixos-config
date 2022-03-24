@@ -16,6 +16,7 @@
       ./terminal/misc.nix
       ./terminal/starship.nix
       ./terminal/termite.nix
+      ./terminal/alacritty.nix
       ./terminal/tmux.nix
       ./terminal/zsh.nix
     ];
