@@ -36,6 +36,7 @@ in
           "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
           "XF86MonBrightnessUp"   = "exec brightnessctl set 4%+";
           "XF86Display"           = "exec autorandr --change";
+          "${mod}+space"          = "exec rofi -show drun -theme clean";
           "${mod}+L"              = "exec betterlockscreen -l blur";
           "${mod}+period"              = "exec rofi -show emoji -modi emoji";
           "${mod}+Control+Return" = "exec termite";
