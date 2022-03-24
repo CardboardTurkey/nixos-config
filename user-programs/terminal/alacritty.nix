@@ -8,6 +8,13 @@
         font = {
           family = "DejaVuSansMono Nerd Font Mono";
           size = 18;
+          offset.x = 1;
+        };
+        window = {
+          opacity = 0.8;
+          padding.x = 25;
+          padding.y = 15;
+          dynamic_padding = true;
         };
         colors = {
           primary = {
