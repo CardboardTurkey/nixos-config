@@ -12,6 +12,7 @@
       extraOptions = ''
         focus-exclude = [ 
           "class_g = 'rofi'",
+          "I3_FLOATING_WINDOW@:c && class_g = 'firefox'",
         ];
         blur-method = "dual_kawase";
         blur-strength = 16;
