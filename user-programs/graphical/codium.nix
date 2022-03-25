@@ -28,7 +28,10 @@ in
       userSettings = {
         "workbench.colorTheme" = "Nord";
         "editor.fontSize" = 20;
-        "editor.fontFamily" = "'DejaVu Sans Mono', 'Font Awesome 5 Brands', 'Font Awesome 5 Free', 'Font Awesome 5 Free Solid'";
+        "editor.fontFamily" = "'DejaVuSansMono Nerd Font'";
+        "update.mode" = "none";
+        "[nix]"."editor.tabSize" = 2;
+        "editor.fontLigatures" = true;
       };
     };
   };
