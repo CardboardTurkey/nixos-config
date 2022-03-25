@@ -13,3 +13,5 @@ sudo ./link.sh
 	* Grab gitlab repos (need to setup ssh keys)
 	* Add dirs to hash table
 	* Set wallpaper and lock screen as: https://wallhaven.cc/w/lmjzjr (use https://www.codyhiar.com/blog/how-to-set-desktop-wallpaper-on-nixos/)
+
+Actually apparently I should use a derivation. Wtf are those lol
