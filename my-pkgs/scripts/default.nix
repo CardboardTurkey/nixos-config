@@ -1,4 +1,3 @@
-#with import <nixpkgs> {};
 { stdenv, pkgs, ... } :
 stdenv.mkDerivation {
   pname = "scripts";
