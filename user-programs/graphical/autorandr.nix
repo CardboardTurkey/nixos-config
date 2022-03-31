@@ -43,7 +43,7 @@
             };
           };
         };
-        "hmdi2" = {
+        "any_hmdi2_edp" = {
           fingerprint = {
             eDP-1 = "*";
             HDMI-2 = "*";
@@ -85,7 +85,7 @@
             };
           };
         };
-        "dp2" = {
+        "any_dp2_edp" = {
           fingerprint = {
             eDP-1 = "*";
             DP-2 = "*";
@@ -108,7 +108,7 @@
             };
           };
         };
-        "dp21_dp23_edp" = {
+        "any_dp21_dp23_off_edp" = {
           fingerprint = {
             eDP-1 = "*";
             DP-2-1 = "*";
@@ -135,7 +135,7 @@
             };
           };
         };
-        "dp21_dp23" = {
+        "any_dp21_dp23" = {
           fingerprint = {
             DP-2-1 = "*";
             DP-2-3 = "*";
