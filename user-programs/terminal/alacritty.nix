@@ -18,51 +18,51 @@
         };
         colors = {
           primary = {
-            background = "#2e3440";
-            foreground = "#d8dee9";
+            background = "#${config.nord0}";
+            foreground = "#${config.nord4}";
             dim_foreground = "#a5abb6";
           };
           cursor = {
-            text = "#2e3440";
-            cursor = "#d8dee9";
+            text = "#${config.nord0}";
+            cursor = "#${config.nord4}";
           };
           vi_mode_cursor = {
-            text = "#2e3440";
-            cursor = "#d8dee9";
+            text = "#${config.nord0}";
+            cursor = "#${config.nord4}";
           };
           selection = {
             text = "CellForeground";
-            background = "#4c566a";
+            background = "#${config.nord3}";
           };
           search = {
             matches = {
               foreground = "CellBackground";
-              background = "#88c0d0";
+              background = "#${config.nord8}";
             };
             bar = {
-              background = "#434c5e";
-              foreground = "#d8dee9";
+              background = "#${config.nord2}";
+              foreground = "#${config.nord4}";
             };
           };
           normal = {
-            black = "#3b4252";
-            red = "#bf616a";
-            green = "#a3be8c";
-            yellow = "#ebcb8b";
-            blue = "#81a1c1";
-            magenta = "#b48ead";
-            cyan = "#88c0d0";
-            white = "#e5e9f0";
+            black = "#${config.nord1}";
+            red = "#${config.nord11}";
+            green = "#${config.nord14}";
+            yellow = "#${config.nord13}";
+            blue = "#${config.nord9}";
+            magenta = "#${config.nord15}";
+            cyan = "#${config.nord8}";
+            white = "#${config.nord5}";
           };
           bright = {
-            black = "#4c566a";
-            red = "#bf616a";
-            green = "#a3be8c";
-            yellow = "#ebcb8b";
-            blue = "#81a1c1";
-            magenta = "#b48ead";
-            cyan = "#8fbcbb";
-            white = "#eceff4";
+            black = "#${config.nord3}";
+            red = "#${config.nord11}";
+            green = "#${config.nord14}";
+            yellow = "#${config.nord13}";
+            blue = "#${config.nord9}";
+            magenta = "#${config.nord15}";
+            cyan = "#${config.nord7}";
+            white = "#${config.nord6}";
           };
           dim = {
             black = "#373e4d";
