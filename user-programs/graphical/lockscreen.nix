@@ -14,27 +14,27 @@
         wallpaper_cmd="${pkgs.feh}/bin/feh --bg-fill --no-xinerama $HOME/.background-image"
         quiet=false
 
-        loginbox=2e3440ff
-        # loginshadow=3b425200
+        loginbox=${config.nord0}ff
+        # loginshadow=${config.nord1}00
         locktext="The way is shut"
         font="sans-serif"
-        ringcolor=d8dee9ff
-        insidecolor=3b425200
-        separatorcolor=3b425200
-        ringvercolor=d8dee9ff
-        insidevercolor=3b425200
-        ringwrongcolor=d8dee9ff
-        insidewrongcolor=bf616aff
-        timecolor=d8dee9ff
+        ringcolor=${config.nord4}ff
+        insidecolor=${config.nord1}00
+        separatorcolor=${config.nord1}00
+        ringvercolor=${config.nord4}ff
+        insidevercolor=${config.nord1}00
+        ringwrongcolor=${config.nord4}ff
+        insidewrongcolor=${config.nord11}ff
+        timecolor=${config.nord4}ff
         time_format="%H:%M:%S"
-        greetercolor=81a1c1ff
-        layoutcolor=88c0d0ff
-        keyhlcolor=bf616aff
-        bshlcolor=bf616aff
-        verifcolor=d8dee9ff
-        wrongcolor=bf616aff
-        modifcolor=bf616aff
-        bgcolor=3b4252ff
+        greetercolor=${config.nord9}ff
+        layoutcolor=${config.nord8}ff
+        keyhlcolor=${config.nord11}ff
+        bshlcolor=${config.nord11}ff
+        verifcolor=${config.nord4}ff
+        wrongcolor=${config.nord11}ff
+        modifcolor=${config.nord11}ff
+        bgcolor=${config.nord1}ff
       '';
     };
     services.betterlockscreen ={
