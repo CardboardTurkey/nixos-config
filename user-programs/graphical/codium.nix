@@ -3,8 +3,7 @@
 let
 
   codium-extensions = (with pkgs.vscode-extensions; [
-        # bbenoist.Nix
-        jnoortheen.nix-ide
+        bbenoist.nix
         arcticicestudio.nord-visual-studio-code
         ms-python.python
         matklad.rust-analyzer
