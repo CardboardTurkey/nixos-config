@@ -50,6 +50,7 @@ in
           "${mod}+L"              = "exec betterlockscreen -l blur";
           "${mod}+period"         = "exec rofi -show emoji -modi emoji";
           "${mod}+Shift+S"        = "exec flameshot gui";
+          "${mod}+P"              = "exec rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu";
         };
         assigns = {
           "${ws-code}" = [{ class="VSCodium";}];
