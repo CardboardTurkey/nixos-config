@@ -28,7 +28,7 @@ in
       userSettings = {
         "workbench.colorTheme" = "Nord";
         "editor.fontSize" = 20;
-        "editor.fontFamily" = "'DejaVuSansMono Nerd Font'";
+        "editor.fontFamily" = "'Hasklug Nerd Font'";
         "update.mode" = "none";
         "[nix]"."editor.tabSize" = 2;
         "editor.fontLigatures" = true;
