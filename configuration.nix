@@ -17,7 +17,8 @@ in
 
   imports =
     [
-      ./hardware/ThinkPadT14.nix
+      /etc/nixos/hardware-configuration.nix
+      ./hardware-extra.nix
       ./core
       (import "${home-manager}/nixos")
       ./user-programs
@@ -26,6 +27,13 @@ in
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.initrd.luks.devices = {
+    crypted = {
+      device = "/dev/disk/by-uuid/${config.root}";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
 
   networking.hostName = "finch"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -33,13 +41,6 @@ in
 
   # Set your time zone.
   time.timeZone = "Europe/London";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.${config.eth}.useDHCP = true;
-  networking.interfaces.${config.wlan}.useDHCP = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_GB.UTF-8";
