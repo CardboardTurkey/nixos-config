@@ -38,10 +38,10 @@ in
           "${mod}+${alt}+Left"    = "move workspace to output left";
           "${mod}+${alt}+Right"   = "move workspace to output right";
           "XF86AudioMute"         = "exec amixer set Master toggle";
-          "XF86AudioLowerVolume"  = "exec amixer set Master 4%-";
-          "XF86AudioRaiseVolume"  = "exec amixer set Master 4%+";
-          "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
-          "XF86MonBrightnessUp"   = "exec brightnessctl set 4%+";
+          "XF86AudioLowerVolume"  = "exec amixer set Master 5%-";
+          "XF86AudioRaiseVolume"  = "exec amixer set Master 5%+";
+          "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
+          "XF86MonBrightnessUp"   = "exec brightnessctl set 5%+";
           "XF86Display"           = "exec autorandr --change";
           "Print"                 = "exec flameshot full";
           "${mod}+Return"         = "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
