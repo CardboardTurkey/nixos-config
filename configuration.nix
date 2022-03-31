@@ -55,14 +55,21 @@ in
   ];
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.windowManager.i3.enable = true;
-  services.xserver.displayManager = { 
-    defaultSession = "none+i3"; 
+  services.xserver = {
+    enable = true;
+    windowManager.i3.enable = true;
+    displayManager = { 
+      defaultSession = "none+i3"; 
       lightdm = { 
         enable = true; 
         greeter.enable = true; 
-      }; 
+      };
+    };
+    desktopManager = {
+      wallpaper = {
+        mode = "fill";
+      };
+    };
   };
 
   # Configure keymap in X11
@@ -106,7 +113,7 @@ in
     gcc
     local.scripts
     htop
-    nitrogen
+    feh
     arandr
     brightnessctl
   ];

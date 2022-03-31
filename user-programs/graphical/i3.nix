@@ -60,7 +60,6 @@ in
           "${ws-irc}"  = [{ class="quassel";}];        
         };
         startup = [
-          { command = "nitrogen --restore"; always = true; }
           { command = "polybar-msg cmd quit; polybar the_bar&disown"; always = true; }
         ];
       }; 

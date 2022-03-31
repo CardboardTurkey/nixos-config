@@ -11,7 +11,7 @@
         blur_level=1
         pixel_scale=10,1000
         solid_color=333333
-        wallpaper_cmd="nitrogen --restore"
+        wallpaper_cmd="${pkgs.feh}/bin/feh --bg-fill --no-xinerama $HOME/.background-image"
         quiet=false
 
         loginbox=${config.nord0}ff
