@@ -30,17 +30,6 @@ in
           size = 11.0;
         };
         keybindings = lib.mkOptionDefault {
-          "XF86AudioMute"         = "exec amixer set Master toggle";
-          "XF86AudioLowerVolume"  = "exec amixer set Master 4%-";
-          "XF86AudioRaiseVolume"  = "exec amixer set Master 4%+";
-          "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
-          "XF86MonBrightnessUp"   = "exec brightnessctl set 4%+";
-          "XF86Display"           = "exec autorandr --change";
-          "${mod}+space"          = "exec rofi -show drun -theme clean";
-          "${mod}+L"              = "exec betterlockscreen -l blur";
-          "${mod}+period"              = "exec rofi -show emoji -modi emoji";
-          "${mod}+Control+Return" = "exec alacritty";
-          "${mod}+Return"         = "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
           "${mod}+Control+space"  = "focus mode_toggle";
           "${mod}+Control+Left"   = "workspace prev";
           "${mod}+Control+Right"  = "workspace next";
@@ -48,6 +37,19 @@ in
           "${mod}+${alt}+Up"      = "move workspace to output up";
           "${mod}+${alt}+Left"    = "move workspace to output left";
           "${mod}+${alt}+Right"   = "move workspace to output right";
+          "XF86AudioMute"         = "exec amixer set Master toggle";
+          "XF86AudioLowerVolume"  = "exec amixer set Master 4%-";
+          "XF86AudioRaiseVolume"  = "exec amixer set Master 4%+";
+          "XF86MonBrightnessDown" = "exec brightnessctl set 4%-";
+          "XF86MonBrightnessUp"   = "exec brightnessctl set 4%+";
+          "XF86Display"           = "exec autorandr --change";
+          "Print"                 = "exec flameshot full";
+          "${mod}+Return"         = "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
+          "${mod}+Control+Return" = "exec alacritty";
+          "${mod}+space"          = "exec rofi -show drun -theme clean";
+          "${mod}+L"              = "exec betterlockscreen -l blur";
+          "${mod}+period"         = "exec rofi -show emoji -modi emoji";
+          "${mod}+Shift+S"        = "exec flameshot gui";
         };
         assigns = {
           "${ws-code}" = [{ class="VSCodium";}];

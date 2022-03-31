@@ -116,6 +116,7 @@ in
     feh
     arandr
     brightnessctl
+    flameshot
   ];
 
   # For zsh completion
