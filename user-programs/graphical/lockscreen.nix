@@ -14,8 +14,8 @@
         wallpaper_cmd="${pkgs.feh}/bin/feh --bg-fill --no-xinerama $HOME/.background-image"
         quiet=false
 
-        loginbox=${config.nord0}ff
-        # loginshadow=${config.nord1}00
+        loginbox=2e3440ff
+        # loginshadow=3b425200
         locktext="The way is shut"
         font="sans-serif"
         ringcolor=d8dee9ff
@@ -25,7 +25,7 @@
         insidevercolor=3b425200
         ringwrongcolor=d8dee9ff
         insidewrongcolor=bf616aff
-        timecolor=5e81acff
+        timecolor=d8dee9ff
         time_format="%H:%M:%S"
         greetercolor=81a1c1ff
         layoutcolor=88c0d0ff
