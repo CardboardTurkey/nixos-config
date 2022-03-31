@@ -9,28 +9,28 @@ let
 
   # Lets choose some colours!
   # Nord colours defined in `../core/nord.nix`
-  foreground = "${config.nord6}";
-  background = "${config.nord0}";
+  foreground = "#${config.nord6}";
+  background = "#${config.nord0}";
   # Workspace colours
-  ws_focused = "${config.nord2}";
-  ws_underline = "${config.nord13}";
-  ws_urgent = "${config.nord11}";
+  ws_focused = "#${config.nord2}";
+  ws_underline = "#${config.nord13}";
+  ws_urgent = "#${config.nord11}";
   # Pulseaudio colours
-  muted_colour = "${config.nord3}";
-  quiet_colour = "${config.nord14}";
-  loud_colour = "${config.nord12}";
-  booming_colour = "${config.nord11}";
-  volume_bar = "${config.nord4}";
+  muted_colour = "#${config.nord3}";
+  quiet_colour = "#${config.nord14}";
+  loud_colour = "#${config.nord12}";
+  booming_colour = "#${config.nord11}";
+  volume_bar = "#${config.nord4}";
   # The other module colours
-  date_colour = "${config.nord15}";
-  xkeyboard_colour = "${config.nord12}";
-  wired_colour = "${config.nord13}";
-  wireless_colour = "${config.nord13}";
-  cpu_colour = "${config.nord10}";
-  memory_colour = "${config.nord9}";
-  filesystem_colour = "${config.nord8}";
-  battery_colour = "${config.nord7}";
-  battery_warning = "${config.nord11}";
+  date_colour = "#${config.nord15}";
+  xkeyboard_colour = "#${config.nord12}";
+  wired_colour = "#${config.nord13}";
+  wireless_colour = "#${config.nord13}";
+  cpu_colour = "#${config.nord10}";
+  memory_colour = "#${config.nord9}";
+  filesystem_colour = "#${config.nord8}";
+  battery_colour = "#${config.nord7}";
+  battery_warning = "#${config.nord11}";
 
 in
 {
