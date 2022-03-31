@@ -2,9 +2,6 @@
 
 sudo ./link.sh
 
-# Demo
-[click here](stuff/demo.mp4)
-
 # TODO
 
 * Add dunst
