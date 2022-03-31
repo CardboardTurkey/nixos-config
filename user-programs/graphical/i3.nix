@@ -11,9 +11,8 @@ let
   ws-spot = "4";
   ws-pdf  = "5";
   ws-mail = "6";
-  ws-img  = "7";
-  ws-irc  = "8";
-  ws-chrm = "9";
+  ws-irc  = "7";
+  ws-chrm = "8";
 
 in
 
@@ -54,12 +53,11 @@ in
         };
         assigns = {
           "${ws-code}" = [{ class="VSCodium";}];
-          "${ws-fire}" = [{ class="Firefox";}];
+          "${ws-fire}" = [{ class="Firefox";} { class="firefox-default"; }];
           "${ws-chrm}" = [{ class="Google-chrome";}];
           "${ws-spot}" = [{ class="spotify";}];
-          "${ws-pdf}"  = [{ class="Evince";}];
+          "${ws-pdf}"  = [{ class="Evince";} { class="viewnior";}];
           "${ws-mail}" = [{ class="Thunderbird";}];
-          "${ws-img}"  = [{ class="viewnior";}];
           "${ws-irc}"  = [{ class="quassel";}];        
         };
         startup = [
