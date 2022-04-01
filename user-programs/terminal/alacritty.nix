@@ -8,7 +8,6 @@
         font = {
           family = "DejaVuSansMono Nerd Font Mono";
           size = 15;
-          offset.x = 1;
         };
         window = {
           opacity = 0.8;
