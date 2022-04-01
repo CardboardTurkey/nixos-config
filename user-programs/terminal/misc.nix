@@ -14,6 +14,9 @@
       enable = true;
       plugins = with pkgs.vimPlugins; [ nord-vim ];
       vimAlias = true;
+      extraConfig = ''
+        colorscheme nord
+      '';
     };
   };
 }
