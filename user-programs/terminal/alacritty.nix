@@ -7,13 +7,13 @@
       settings = {
         font = {
           family = "DejaVuSansMono Nerd Font Mono";
-          size = 18;
+          size = 15;
           offset.x = 1;
         };
         window = {
           opacity = 0.8;
-          padding.x = 25;
-          padding.y = 15;
+          padding.x = 5;
+          padding.y = 5;
           dynamic_padding = true;
         };
         colors = {
