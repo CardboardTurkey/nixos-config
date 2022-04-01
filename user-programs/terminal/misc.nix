@@ -16,6 +16,7 @@
       vimAlias = true;
       extraConfig = ''
         colorscheme nord
+        set rnu
       '';
     };
   };
