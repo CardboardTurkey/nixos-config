@@ -18,6 +18,7 @@
         ];
         blur-method = "dual_kawase";
         blur-strength = 16;
+        blur-background-exclude = [ "class_g = 'Dunst'", ]
       '';
     };
   };

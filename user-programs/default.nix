@@ -11,6 +11,7 @@
       ./graphical/picom.nix
       ./graphical/polybar.nix
       ./graphical/rofi.nix
+      ./graphical/dunst.nix
 
       ./terminal/git.nix
       ./terminal/misc.nix
