@@ -14,3 +14,7 @@ sudo ./link.sh
 	* Set wallpaper and lock screen as: https://wallhaven.cc/w/lmjzjr (use https://www.codyhiar.com/blog/how-to-set-desktop-wallpaper-on-nixos/)
 
 Actually apparently I should use a derivation. Wtf are those lol
+
+# Links
+
+	* https://www.adamalbrecht.com/blog/2019/10/21/spell-check-in-vim-for-markdown-and-git-commit-messages/
