@@ -12,7 +12,7 @@
     };
     programs.neovim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [ nord-nvim ];
+      plugins = with pkgs.vimPlugins; [ nord-vim ];
       vimAlias = true;
     };
   };
