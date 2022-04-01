@@ -17,6 +17,10 @@
       extraConfig = ''
         colorscheme nord
         set rnu
+        autocmd FileType markdown setlocal spell
+        autocmd FileType gitcommit setlocal spell
+        autocmd FileType markdown setlocal complete+=kspell
+        autocmd FileType gitcommit setlocal complete+=kspell        
       '';
     };
   };
