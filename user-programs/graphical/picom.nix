@@ -9,6 +9,7 @@
       vSync = true;
       inactiveOpacity = "0.8";
       opacityRule = [ "100:name *= 'i3lock'" ];
+      blurExclude = [ "class_g = 'Dunst'" ];
       experimentalBackends = true;
       extraOptions = ''
         focus-exclude = [ 
@@ -19,7 +20,6 @@
         ];
         blur-method = "dual_kawase";
         blur-strength = 16;
-        blur-background-exclude = [ "class_g = 'Dunst'", ]
       '';
     };
   };
