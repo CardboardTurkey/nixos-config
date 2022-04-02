@@ -13,6 +13,7 @@
       extraOptions = ''
         focus-exclude = [ 
           "class_g = 'rofi'",
+          "class_g = 'polybar'",
           "I3_FLOATING_WINDOW@:c",
           "fullscreen",
         ];
