@@ -1,6 +1,5 @@
 #! /usr/bin/env bash
 
-cd ~/gitlab.codethink/codethings/kiranostrolenk/nixos-config
 git update-index --refresh
 if ! git diff-index --quiet HEAD --
 then
