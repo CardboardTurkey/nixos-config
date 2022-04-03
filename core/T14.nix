@@ -33,5 +33,10 @@ with lib;
       type = with types; uniq str;
       description = "Root partition id";
     };
+    hostname = mkOption {
+      default = "finch";
+      type = with types; uniq str;
+      description = "Network hostname";
+    };
   };
 }
