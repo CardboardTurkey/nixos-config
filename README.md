@@ -17,4 +17,4 @@ Actually apparently I should use a derivation. Wtf are those lol
 
 # Links
 
-	* https://www.adamalbrecht.com/blog/2019/10/21/spell-check-in-vim-for-markdown-and-git-commit-messages/
+* https://www.adamalbrecht.com/blog/2019/10/21/spell-check-in-vim-for-markdown-and-git-commit-messages/
