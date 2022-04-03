@@ -204,7 +204,7 @@ in
           ws-icon-2 = "5;";
           ws-icon-5 = "6;";
           ws-icon-6 = "7;";
-          ws-icon-7 = "8;";
+          ws-icon-7 = "8;";
           ws-icon-default = "";
 
           label-focused = "%icon%";
