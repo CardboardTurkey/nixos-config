@@ -12,6 +12,7 @@
       ./graphical/polybar.nix
       ./graphical/rofi.nix
       ./graphical/dunst.nix
+      ./graphical/wallpaper.nix
 
       ./terminal/git.nix
       ./terminal/misc.nix
