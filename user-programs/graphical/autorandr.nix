@@ -6,6 +6,12 @@
   home-manager.users.kiran = { pkgs, ... }: {
     programs.autorandr = {
       enable = true;
+      hooks.postswitch = {
+        "backgrounds" = ''
+          feh --bg-fill $HOME/.background-image
+          pgrep betterlockscreen || betterlockscreen -u ~/.background-image
+        '';
+      };
       profiles = {
         "laptop" = {
           fingerprint = {
@@ -21,7 +27,6 @@
               rate = "60.00";
             };
           };
-          # hooks.postswitch = builtins.readFile ./work-postswitch.sh;
         };
         "hdmi_4k" = {
           fingerprint = {
