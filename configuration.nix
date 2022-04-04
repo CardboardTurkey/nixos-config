@@ -136,6 +136,11 @@ in
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
+  # Fingerprint scanning
+  services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = true;
+  security.pam.services.i3lock.fprintAuth = true; 
+
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
