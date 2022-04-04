@@ -53,7 +53,7 @@ in
         };
         assigns = {
           "${ws-code}" = [{ class="VSCodium";}];
-          "${ws-fire}" = [{ class="fsirefox";} { class="firefox-default"; }];
+          "${ws-fire}" = [{ class="firefox";} { class="firefox-default"; }];
           "${ws-chrm}" = [{ class="Google-chrome";}];
           "${ws-spot}" = [{ class="spotify";}];
           "${ws-pdf}"  = [{ class="Evince";} { class="viewnior";}];
