@@ -4,6 +4,7 @@ let
 
   codium-extensions = (with pkgs.vscode-extensions; [
         bbenoist.nix
+	tamasfe.even-better-toml
         arcticicestudio.nord-visual-studio-code
         ms-python.python
         matklad.rust-analyzer
