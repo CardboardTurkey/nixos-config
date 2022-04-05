@@ -26,11 +26,37 @@ let
   xkeyboard_colour = "#${config.nord12}";
   wired_colour = "#${config.nord13}";
   wireless_colour = "#${config.nord13}";
+  dirtygit-colour = "#${config.nord11}";
   cpu_colour = "#${config.nord10}";
   memory_colour = "#${config.nord9}";
   filesystem_colour = "#${config.nord8}";
   battery_colour = "#${config.nord7}";
   battery_warning = "#${config.nord11}";
+
+  dirtygit = pkgs.writeShellScriptBin  "dirtygit" ''
+    git_dirs=(
+      "$HOME/gitlab/kiranostrolenk/nixos-config"
+      "$HOME/gitlab/kiran-rust-course/project"
+      "$HOME/gitlab/kiran-rust-course/session-materials"
+    )
+
+    search_string='use "git pull"|Your branch is ahead of|Changes not staged for commit:'
+
+    dirty_dirs=()
+
+    for dir in "''${git_dirs[@]}"
+    do
+      cd $dir
+      git status | rg "$search_string" 1> /dev/null && dirty_dirs+=$dir
+    done
+
+    if ! [ -z "$dirty_dirs" ]; then
+      echo  ⚠️
+      echo "$dirty_dirs"
+    else
+      echo ""
+    fi
+  '';
 
 in
 {
@@ -41,6 +67,8 @@ in
     font-awesome
     ttf_bitstream_vera
   ];
+
+  environment.systemPackages = [ dirtygit ];
 
   home-manager.users.kiran = { pkgs, ... }: {
     services.polybar = {
@@ -88,12 +116,20 @@ in
 
           modules-left = "i3";
           # modules-center = "player-mpris-tail";
-          modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard date";
+          modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirty-git date";
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
 
           enable-ipc = true;
+        };
+        "module/dirty-git" = {
+          type = "custom/script";
+          exec = "dirtygit";
+          tail = "true";
+          interval = 10;
+          format-foreground = "${dirtygit-colour}";
+          format-underline = "${dirtygit-colour}";
         };
         "module/cpu" = {
           type = "internal/cpu";
