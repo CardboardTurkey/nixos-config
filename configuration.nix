@@ -118,6 +118,8 @@ in
     arandr
     brightnessctl
     flameshot
+    pciutils
+    usbutils
   ];
 
   # For zsh completion
