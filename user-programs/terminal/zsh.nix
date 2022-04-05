@@ -11,7 +11,11 @@
       autocd = true;
       history.save = 10000000;
       history.size = 1000000000;
-      # completionInit = "zstyle ':completion:*' menu select\nautoload -Uz compinit\ncompinit";
+      dirHashes = {
+        nix    = "$HOME/gitlab/kiranostrolenk/nixos-config";
+        pdg    = "$HOME/gitlab/kiranostrolenk/pdgid";
+        course = "$HOME/gitlab/kiran-rust-course";
+      };
       completionInit = ''
         zstyle ':completion:*' menu select
         autoload -Uz compinit
