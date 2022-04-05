@@ -21,7 +21,7 @@ in
       ./hardware-extra.nix
       ./core
       (import "${home-manager}/nixos")
-      ./user-programs
+      ./user-config
     ];
 
   # Use the systemd-boot EFI boot loader.

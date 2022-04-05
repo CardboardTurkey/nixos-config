@@ -13,9 +13,9 @@
       };
     };
     xdg = {
-      configFile."rofi/clean.rasi".source = ../config/rofi/clean.rasi;
-      configFile."rofi/colors.rasi".source = ../config/rofi/colors.rasi;
-      configFile."rofi/powermenu.rasi".source = ../config/rofi/powermenu.rasi;
+      configFile."rofi/clean.rasi".source = ../files/rofi/clean.rasi;
+      configFile."rofi/colors.rasi".source = ../files/rofi/colors.rasi;
+      configFile."rofi/powermenu.rasi".source = ../files/rofi/powermenu.rasi;
     };
   };
 }
