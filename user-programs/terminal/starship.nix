@@ -12,6 +12,10 @@
           success_symbol = "[](bold green)";
           error_symbol = "[](bold red)";
         };
+	rust = {
+	  symbol = " ";
+	  format = "via [$symbol](red)[($version )]($style)";
+	};
       };
     };
   };
