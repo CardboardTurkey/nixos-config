@@ -20,5 +20,7 @@
       ./terminal/alacritty.nix
       ./terminal/tmux.nix
       ./terminal/zsh.nix
+
+      ./other/bluetooth.nix
     ];
 }
