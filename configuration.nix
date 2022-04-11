@@ -113,6 +113,7 @@ in
     rustup
     gcc
     local.scripts
+    local.logiops
     htop
     feh
     arandr
