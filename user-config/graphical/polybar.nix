@@ -36,6 +36,7 @@ let
   dirtygit = pkgs.writeShellScriptBin  "dirtygit" ''
     git_dirs=(
       "$HOME/gitlab/kiranostrolenk/nixos-config"
+      "$HOME/gitlab/kiranostrolenk/flashcard"
       "$HOME/gitlab/kiran-rust-course/project"
       "$HOME/gitlab/kiran-rust-course/session-materials"
     )
