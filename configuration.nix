@@ -121,6 +121,7 @@ in
     flameshot
     pciutils
     usbutils
+    python3
     xfce.thunar
     # Optionals
     xfce.xfconf # Needed to save the preferences
