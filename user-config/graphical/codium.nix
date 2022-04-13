@@ -8,6 +8,7 @@ let
         arcticicestudio.nord-visual-studio-code
         ms-python.python
         matklad.rust-analyzer
+	serayuzgur.crates
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "remote-ssh-edit";
