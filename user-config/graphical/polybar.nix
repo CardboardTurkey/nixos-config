@@ -33,7 +33,7 @@ let
   battery_colour = "#${config.nord7}";
   battery_warning = "#${config.nord11}";
 
-  dirtygit = pkgs.writeShellScriptBin  "dirtygit" ''
+  dirtygit = pkgs.writeShellScriptBin  "dg" ''
     git_dirs=(
       "$HOME/gitlab/kiranostrolenk/nixos-config"
       "$HOME/gitlab/kiranostrolenk/flashcard"
@@ -126,7 +126,7 @@ in
         };
         "module/dirty-git" = {
           type = "custom/script";
-          exec = "dirtygit";
+          exec = "dg";
           tail = "true";
           interval = 10;
           format-foreground = "${dirtygit-colour}";
