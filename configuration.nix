@@ -80,6 +80,15 @@ in
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
+  # Battery threshold
+  services.tlp = {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 70;
+      STOP_CHARGE_THRESH_BAT0 = 90;
+    };
+  };
+
   # Enable sound.
   sound.enable = true;
   hardware.pulseaudio.enable = true;
