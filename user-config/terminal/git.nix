@@ -10,6 +10,7 @@
         enable = true;
         skipSmudge = true;
       };
+      ignores = [ "target" ".direnv/" ];
       extraConfig =  { 
         core = { editor = "vim"; } ; 
         pull = { rebase = "true"; } ; 
