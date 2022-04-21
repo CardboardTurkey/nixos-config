@@ -72,9 +72,9 @@
                 echo "'$1' is not a valid file"
             fi
         }
-        if [[ -f ~/gitlab.codethink/codethings/kiranostrolenk/notes/notes.md ]]
+        if [[ -f ~/ct-gitlab/codethings/kiranostrolenk/notes/notes.md ]]
         then
-          (cd ~/gitlab.codethink/codethings/kiranostrolenk/notes/
+          (cd ~/ct-gitlab/codethings/kiranostrolenk/notes/
           bat notes.md)
         fi
       '';
