@@ -131,6 +131,7 @@ in
     pciutils
     usbutils
     python3
+    signal-desktop
     xfce.thunar
     # Optionals
     xfce.xfconf # Needed to save the preferences
