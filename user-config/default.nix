@@ -22,5 +22,6 @@
       ./terminal/zsh.nix
 
       ./other/bluetooth.nix
+      ./other/x11_keyboard.nix
     ];
 }

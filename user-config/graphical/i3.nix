@@ -17,6 +17,12 @@ let
 in
 
 {
+
+  environment.systemPackages = with pkgs; [
+    # For swapping keys
+    xdotool
+  ];
+
   home-manager.users.kiran = { pkgs, ... }: {
     xsession.windowManager.i3 = {
       enable = true;

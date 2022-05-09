@@ -73,10 +73,6 @@ in
     };
   };
 
-  # Configure keymap in X11
-  services.xserver.layout = "us";
-  services.xserver.xkbOptions = "ctrl:nocaps";
-
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
@@ -132,6 +128,8 @@ in
     usbutils
     python3
     signal-desktop
+    xorg.xev
+    xorg.xmodmap
     xfce.thunar
     # Optionals
     xfce.xfconf # Needed to save the preferences
