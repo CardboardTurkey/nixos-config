@@ -16,6 +16,10 @@
 	  symbol = " ";
 	  format = "via [$symbol](red)[($version )]($style)";
 	};
+	python = {
+	  symbol = "🐍 ";
+	  format = "via [$symbol](yellow)[($version )]($style)";
+	};
       };
     };
   };
