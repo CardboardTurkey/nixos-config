@@ -23,5 +23,6 @@
 
       ./other/bluetooth.nix
       ./other/x11_keyboard.nix
+      ./other/fontconfig.nix
     ];
 }
