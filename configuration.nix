@@ -22,6 +22,7 @@ in
       ./core
       (import "${home-manager}/nixos")
       ./user-config
+      ./system-config
     ];
 
   # Use the systemd-boot EFI boot loader.
