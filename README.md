@@ -20,3 +20,9 @@ Actually apparently I should use a derivation. Wtf are those lol
 * [fprintd off when lid closed](https://unix.stackexchange.com/questions/678609/how-to-disable-fingerprint-authentication-when-laptop-lid-is-closed)
 * [debug proton](https://forums.linuxmint.com/viewtopic.php?t=353144)
 * [So _THAT'S_ how you add derivations to your config](https://discourse.nixos.org/t/howto-merge-a-derivation-nix-to-etc-nixos-configuration-nix/12797/3)
+
+# Wallpapers
+
+1. https://w.wallhaven.cc/full/lm/wallhaven-lmjzjr.jpg
+2. https://nordthemewallpapers.com/Backgrounds/All/img/minimal-22-nordified.jpg
+3. https://nordthemewallpapers.com/Backgrounds/All/img/spacemars.jpg
