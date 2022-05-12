@@ -10,7 +10,7 @@ let
   # Lets choose some colours!
   # Nord colours defined in `../core/nord.nix`
   foreground = "#${config.nord6}";
-  background = "#${config.nord0}";
+  background = "#00${config.nord0}";
   # Workspace colours
   ws_focused = "#${config.nord2}";
   ws_underline = "#${config.nord13}";
