@@ -127,7 +127,6 @@ in
     flameshot
     pciutils
     usbutils
-    python3
     signal-desktop
     xorg.xev
     xorg.xmodmap
