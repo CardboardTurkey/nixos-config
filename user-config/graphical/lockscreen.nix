@@ -14,8 +14,8 @@
         wallpaper_cmd="${pkgs.feh}/bin/feh --bg-fill --no-xinerama $HOME/.background-image"
         quiet=false
 
-        loginbox=${config.nord0}ff
-        # loginshadow=${config.nord1}00
+        loginbox=${config.nord0}
+        loginshadow=${config.nord0}
         locktext="The way is shut"
         font="sans-serif"
         ringcolor=${config.nord4}ff
