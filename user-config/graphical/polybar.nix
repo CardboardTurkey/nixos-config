@@ -52,7 +52,7 @@ let
     done
 
     if ! [ -z "$dirty_dirs" ]; then
-      echo  ⚠️
+      echo ⚠️
       echo "$dirty_dirs"
     else
       echo ""
@@ -109,9 +109,9 @@ in
           # Prefer Bitstream as it has minimal unicode coverage and so Font awesome and Noto can display icons
           # Add DejaVu (Nerd font) as fallback
           font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=15;3";
-          font-1 = "Font Awesome 5 Free,Font Awesome 5 Free Regular:style=Regular:size=15;3";
-          font-2 = "Font Awesome 5 Free,Font Awesome 5 Free Solid:style=Solid:size=15;3";
-          font-3 = "Font Awesome 5 Brands,Font Awesome 5 Brands Regular:style=Regular:style=Solid:size=15;3";
+          font-1 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Regular:size=15;3";
+          font-2 = "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Solid:size=15;3";
+          font-3 = "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:style=Solid:size=15;3";
           font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
           font-5 = "DejaVu Sans:style=Roman:pixelsize=15;3";
 
@@ -129,8 +129,13 @@ in
           exec = "dg";
           tail = "true";
           interval = 10;
-          format-foreground = "${dirtygit-colour}";
+          format-prefix-foreground = "${dirtygit-colour}";
+          format-prefix = "";
+          format-prefix-padding-right = "5pt";
           format-underline = "${dirtygit-colour}";
+
+          label-font = 5;
+          label-padding-right = "5pt";
         };
         "module/cpu" = {
           type = "internal/cpu";
@@ -151,7 +156,8 @@ in
           type = "internal/xkeyboard";
           blacklist-0 = "num lock";
 
-          format-prefix = " ";
+          format-prefix = "";
+          format-prefix-padding-right = "5pt";
           format-prefix-foreground = "${xkeyboard_colour}";
           format-prefix-underline = "${xkeyboard_colour}";
 
@@ -166,8 +172,10 @@ in
 
           format-connected = "<label-connected> <ramp-signal>";
           format-connected-underline = "${wired_colour}";
+          format-connected-font = "5";
           label-connected-foreground = "${wired_colour}";
           label-connected = "";
+          label-connected-padding-right = "5pt";
 
           format-disconnected = "";
 
@@ -182,10 +190,12 @@ in
           interval = "1.0";
           interface = "${wlan_interface}";
 
-          format-connected = "<label-connected> <ramp-signal>";
+          format-connected = "<label-connected><ramp-signal>";
           format-connected-underline = "${wireless_colour}";
+          format-connected-font = "5";
           label-connected-foreground = "${wireless_colour}";
           label-connected = "";
+          label-connected-padding-right = "5pt";
 
           format-disconnected = "";
 
@@ -236,7 +246,7 @@ in
 
           ws-icon-0 = "1;";
           ws-icon-1 = "2;";
-          ws-icon-3 = "3;";
+          ws-icon-3 = "3;";
           ws-icon-4 = "4;";
           ws-icon-2 = "5;";
           ws-icon-5 = "6;";
