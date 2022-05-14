@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }:
 
 let
-  myCustomLayout = pkgs.writeText "symbols/us-kiran" ''
-      xkb_symbols "us-kiran"
+  myCustomLayout = pkgs.writeText "symbols/⚙" ''
+      xkb_symbols "⚙"
       {
         include "us(basic)"
         key <BKSL> {    [ backslash, asciitilde ]   };
@@ -15,11 +15,13 @@ in
   environment.systemPackages = with pkgs; [
     xorg.xkbcomp
   ];
-  services.xserver.xkbOptions = "ctrl:nocaps";
-  services.xserver.extraLayouts.us-kiran = {
-    description = "US layout but a bit fucked";
-    languages   = [ "eng" ];
-    symbolsFile = "${myCustomLayout}";
+  services.xserver = { 
+    layout = "⚙";
+    extraLayouts."⚙" = {
+      description = "US layout but a bit fucked";
+      languages   = [ "eng" ];
+      symbolsFile = "${myCustomLayout}";
+    };
+    xkbOptions = "ctrl:nocaps";
   };
-  services.xserver.layout = "us-kiran";
 }
