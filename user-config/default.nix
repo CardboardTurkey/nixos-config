@@ -20,6 +20,7 @@
       ./terminal/alacritty.nix
       ./terminal/tmux.nix
       ./terminal/zsh.nix
+      ./terminal/neovim.nix
 
       ./other/bluetooth.nix
       ./other/fontconfig.nix
