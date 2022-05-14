@@ -15,7 +15,7 @@
         nix    = "$HOME/gitlab/kiranostrolenk/nixos-config";
         pdg    = "$HOME/gitlab/kiranostrolenk/pdgid";
         flash  = "$HOME/gitlab/kiranostrolenk/flashcard";
-        course = "$HOME/gitlab/kiran-rust-course";
+        rust = "$HOME/gitlab/kiran-rust-course/project";
       };
       completionInit = ''
         zstyle ':completion:*' menu select
