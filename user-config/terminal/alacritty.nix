@@ -6,7 +6,7 @@
       enable = true;
       settings = {
         font = {
-          family = "DejaVuSansMono Nerd Font Mono";
+          family = "monospace";
           size = 15;
         };
         window = {
