@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ ... }:
 
 {
   home-manager.users.kiran = { pkgs, ... }: {

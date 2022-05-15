@@ -1,7 +1,7 @@
 # This file contains definitions of the nord colours
 # See https://www.nordtheme.com/docs/colors-and-palettes
 
-{ config, pkgs, lib, ...}:
+{ lib, ...}:
 
 with lib;
 {

@@ -1,4 +1,4 @@
-{ stdenv, pkgs, ... } :
+{ stdenv, ... } :
 stdenv.mkDerivation {
   pname = "scripts";
   version = "0.0.1";

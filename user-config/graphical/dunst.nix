@@ -122,7 +122,7 @@
 #
 # vim: ft=cfg
 
-{ config, lib, pkgs, ... }:
+{ config, ... }:
 
 {
   home-manager.users.kiran = { pkgs, ... }: {

@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 let
   # Hardware
   # Defined in `../core/hardware.nix`

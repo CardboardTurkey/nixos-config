@@ -4,7 +4,7 @@
 # test
 # https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134
 
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 let
 
@@ -55,24 +55,6 @@ in
     noto-fonts-emoji
     font-awesome
   ];
-
-  # Enable the X11 windowing system.
-  services.xserver = {
-    enable = true;
-    windowManager.i3.enable = true;
-    displayManager = { 
-      defaultSession = "none+i3"; 
-      lightdm = { 
-        enable = true; 
-        greeter.enable = true; 
-      };
-    };
-    desktopManager = {
-      wallpaper = {
-        mode = "fill";
-      };
-    };
-  };
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;

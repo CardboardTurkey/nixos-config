@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   myCustomLayout = pkgs.writeText "symbols/us+" ''
