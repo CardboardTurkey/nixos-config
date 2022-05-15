@@ -3,7 +3,7 @@
 {
   imports = 
     [
-      ./nord.nix
+      ./common.nix
       ./hardware.nix
     ];
 }

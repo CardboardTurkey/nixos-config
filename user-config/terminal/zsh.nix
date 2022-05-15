@@ -1,6 +1,9 @@
 { ... }:
 
 {
+  # For zsh compeletion (apparently)
+  environment.pathsToLink = [ "/share/zsh" ];
+  
   home-manager.users.kiran = { pkgs, ... }: {
     programs.zsh = {
       enable = true;

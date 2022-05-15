@@ -3,7 +3,7 @@
 let
 
   # i3
-  mod = "Mod4";
+  mod = "${config.i3_mod}";
   alt = "Mod1";
   ws-term = "1";
   ws-code = "2";
@@ -30,7 +30,7 @@ in
         modifier = mod;
         bars = [ ];
         fonts = {
-          names = [ "DejaVu Sans Mono" "FontAwesome5Free" ];
+          names = [ "DejaVuSansMono Nerd Font" ];
           style = "Bold Semi-Condensed";
           size = 11.0;
         };
@@ -47,15 +47,8 @@ in
           "XF86AudioRaiseVolume"  = "exec amixer set Master 5%+";
           "XF86MonBrightnessDown" = "exec brightnessctl set 5%-";
           "XF86MonBrightnessUp"   = "exec brightnessctl set 5%+";
-          "XF86Display"           = "exec autorandr --change";
           "Print"                 = "exec flameshot full";
-          "${mod}+Return"         = "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
-          "${mod}+Control+Return" = "exec alacritty";
-          "${mod}+space"          = "exec rofi -show drun -theme clean";
-          "${mod}+L"              = "exec betterlockscreen -l blur";
-          "${mod}+period"         = "exec rofi -show emoji -modi emoji";
           "${mod}+Shift+S"        = "exec flameshot gui";
-          "${mod}+P"              = "exec rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu";
         };
         assigns = {
           "${ws-code}" = [{ class="VSCodium";}];
@@ -66,9 +59,6 @@ in
           "${ws-mail}" = [{ class="Thunderbird";}];
           "${ws-irc}"  = [{ class="quassel";}];        
         };
-        startup = [
-          { command = "polybar-msg cmd quit; polybar the_bar&disown"; always = true; }
-        ];
       }; 
       extraConfig = ''
         for_window [class="Mail"] focus

@@ -76,11 +76,7 @@ in
     usbutils
     signal-desktop
     xorg.xev
-    xorg.xmodmap
   ];
-
-  # For zsh completion
-  environment.pathsToLink = [ "/share/zsh" ];
 
   # Fingerprint scanning
   services.fprintd.enable = true;

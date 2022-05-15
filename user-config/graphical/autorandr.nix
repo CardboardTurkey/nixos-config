@@ -1,9 +1,22 @@
-{ config, ... }:
+{ config, lib, ... }:
 
 {
   # For udev rule
   services.autorandr.enable = true;
+
   home-manager.users.kiran = { pkgs, ... }: {
+
+    xsession.windowManager.i3 = {
+      config = {
+        keybindings = lib.mkOptionDefault {
+          "XF86Display" = "exec autorandr --change";
+        };
+        startup = [
+          { command = "autorandr --change"; always = true; }
+        ];
+      };
+    };
+
     programs.autorandr = {
       enable = true;
       hooks.postswitch = {

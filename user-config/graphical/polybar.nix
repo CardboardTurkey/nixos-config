@@ -72,6 +72,15 @@ in
   environment.systemPackages = [ dirtygit ];
 
   home-manager.users.kiran = { pkgs, ... }: {
+
+    xsession.windowManager.i3 = {
+      config = {
+        startup = [
+          { command = "polybar-msg cmd quit; polybar the_bar&disown"; always = true; }
+        ];
+      };
+    };
+    
     services.polybar = {
       enable = true;
       package = pkgs.polybar.override {
