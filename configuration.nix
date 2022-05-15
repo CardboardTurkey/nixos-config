@@ -25,39 +25,11 @@ in
       ./system-config
     ];
 
-  # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  boot.initrd.luks.devices = {
-    crypted = {
-      device = "/dev/disk/by-uuid/${config.root}";
-      preLVM = true;
-      allowDiscards = true;
-    };
-  };
-
-  networking.hostName = "${config.hostname}"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "Europe/London";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_GB.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
   fonts.fonts = with pkgs; [
     (nerdfonts.override { fonts = [ "DejaVuSansMono" "Hasklig" ]; })
     noto-fonts-emoji
     font-awesome
   ];
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
 
   # Battery threshold
   services.tlp = {
@@ -67,13 +39,6 @@ in
       STOP_CHARGE_THRESH_BAT0 = 90;
     };
   };
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.kiran = {
@@ -116,19 +81,6 @@ in
 
   # For zsh completion
   environment.pathsToLink = [ "/share/zsh" ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
 
   # Fingerprint scanning
   services.fprintd.enable = true;
