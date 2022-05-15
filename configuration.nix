@@ -112,13 +112,7 @@ in
     signal-desktop
     xorg.xev
     xorg.xmodmap
-    xfce.thunar
-    # Optionals
-    xfce.xfconf # Needed to save the preferences
-    xfce.exo # Used by default for `open terminal here`, but can be changed 
   ];
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
 
   # For zsh completion
   environment.pathsToLink = [ "/share/zsh" ];
