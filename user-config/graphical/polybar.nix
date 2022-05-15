@@ -298,7 +298,7 @@ in
           bar-volume-foreground-5 = "${loud_colour}";
           bar-volume-foreground-6 = "${booming_colour}";
           bar-volume-gradient = "false";
-          bar-volume-indicator = "";
+          bar-volume-indicator = "";
           bar-volume-fill = "─";
           bar-volume-empty = "─";
           bar-volume-empty-foreground = "${volume_bar}";
