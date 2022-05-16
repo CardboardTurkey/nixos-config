@@ -1,8 +1,8 @@
 { pkgs, ... }:
 
 let
-  myCustomLayout = pkgs.writeText "symbols/mia" ''
-      xkb_symbols "mia"
+  myCustomLayout = pkgs.writeText "symbols/ko" ''
+      xkb_symbols "ko"
       {
         include "us(basic)"
         key <BKSL> {    [ backslash, asciitilde ]   };
@@ -16,8 +16,8 @@ in
     xorg.xkbcomp
   ];
   services.xserver = { 
-    layout = "mia";
-    extraLayouts."mia" = {
+    layout = "ko";
+    extraLayouts."ko" = {
       description = "US layout but a bit fucked";
       languages   = [ "eng" ];
       symbolsFile = "${myCustomLayout}";
