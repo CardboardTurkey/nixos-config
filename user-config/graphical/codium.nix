@@ -9,6 +9,7 @@ let
         ms-python.python
         matklad.rust-analyzer
 	serayuzgur.crates
+	vadimcn.vscode-lldb
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "remote-ssh-edit";
