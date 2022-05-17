@@ -10,6 +10,7 @@ let
         matklad.rust-analyzer
 	serayuzgur.crates
 	vadimcn.vscode-lldb
+	streetsidesoftware.code-spell-checker
       ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "remote-ssh-edit";
