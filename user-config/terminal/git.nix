@@ -10,7 +10,7 @@
         enable = true;
         skipSmudge = true;
       };
-      ignores = [ "target" ".direnv/" ];
+      ignores = [ "target" ".direnv" ".vscode" ];
       extraConfig =  { 
         core = { editor = "vim"; } ; 
         pull = { rebase = "true"; } ; 
