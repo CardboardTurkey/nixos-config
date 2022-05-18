@@ -15,9 +15,9 @@
       history.save = 10000000;
       history.size = 1000000000;
       dirHashes = {
-        nix    = "$HOME/gitlab/kiranostrolenk/nixos-config";
-        pdg    = "$HOME/gitlab/kiranostrolenk/pdgid";
-        flash  = "$HOME/gitlab/kiranostrolenk/flashcard";
+        nix    = "$HOME/gitlab/cardboardturkey/nixos-config";
+        pdg    = "$HOME/gitlab/cardboardturkey/pdgid";
+        flash  = "$HOME/gitlab/cardboardturkey/flashcard";
         rust = "$HOME/gitlab/kiran-rust-course/project";
       };
       completionInit = ''
@@ -75,9 +75,9 @@
                 echo "'$1' is not a valid file"
             fi
         }
-        if [[ -f ~/ct-gitlab/codethings/kiranostrolenk/notes/notes.md ]]
+        if [[ -f ~/ct-gitlab/codethings/cardboardturkey/notes/notes.md ]]
         then
-          (cd ~/ct-gitlab/codethings/kiranostrolenk/notes/
+          (cd ~/ct-gitlab/codethings/cardboardturkey/notes/
           bat notes.md)
         fi
       '';
