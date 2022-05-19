@@ -36,8 +36,8 @@ in
         };
         keybindings = lib.mkOptionDefault {
           "${mod}+Control+space"  = "focus mode_toggle";
-          "${mod}+Control+Left"   = "workspace prev";
-          "${mod}+Control+Right"  = "workspace next";
+          "Mod5+Left"             = "workspace prev";
+          "Mod5+Right"            = "workspace next";
           "${mod}+${alt}+Down"    = "move workspace to output down";
           "${mod}+${alt}+Up"      = "move workspace to output up";
           "${mod}+${alt}+Left"    = "move workspace to output left";

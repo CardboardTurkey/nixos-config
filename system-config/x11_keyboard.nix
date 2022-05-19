@@ -5,8 +5,14 @@ let
       xkb_symbols "ko"
       {
         include "us(basic)"
-        key <BKSL> {    [ backslash, asciitilde ]   };
-        key <TLDE> {    [       bar, grave      ]   };
+
+        key <BKSL> {	[ backslash, asciitilde ]	};
+        key <TLDE> {    [       bar, grave      ]	};
+
+	key <CAPS> {	[ Control_L, Control_L	]	};
+	replace key <LCTL> {	[ Hyper_L ]	};
+	modifier_map Control { <CAPS> };
+	modifier_map Mod5    { <LCTL> };
       };
     '';
 in
@@ -22,6 +28,5 @@ in
       languages   = [ "eng" ];
       symbolsFile = "${myCustomLayout}";
     };
-    xkbOptions = "ctrl:swapcaps";
   };
 }
