@@ -22,6 +22,6 @@ in
       languages   = [ "eng" ];
       symbolsFile = "${myCustomLayout}";
     };
-    xkbOptions = "ctrl:nocaps";
+    xkbOptions = "ctrl:swapcaps";
   };
 }
