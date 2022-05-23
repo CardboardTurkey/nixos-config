@@ -15,5 +15,7 @@
       nix-direnv.enable = true;
       enableZshIntegration = true;
     };
+    # nix-index
+    programs.command-not-found.enable = true;
   };
 }
