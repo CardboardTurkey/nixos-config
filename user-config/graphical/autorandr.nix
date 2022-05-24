@@ -9,7 +9,7 @@
     xsession.windowManager.i3 = {
       config = {
         keybindings = lib.mkOptionDefault {
-          "XF86Display" = "exec autorandr --change";
+          "Mod5+X" = "exec autorandr --change";
         };
         startup = [
           { command = "autorandr --change"; always = true; }
