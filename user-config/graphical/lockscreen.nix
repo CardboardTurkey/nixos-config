@@ -1,16 +1,29 @@
-{ config, lib, ... }:
+{ config, lib, pkgs, ... }:
+
+let
+
+  lock_cmd = "exec dunstctl set-paused true; exec betterlockscreen -l blur; exec dunstctl set-paused false";
+
+in
 
 {
+
+  environment.systemPackages = with pkgs; [
+    betterlockscreen
+  ];
+
   home-manager.users.kiran = { pkgs, ... }: {
-    
     xsession.windowManager.i3 = {
       config = {
         keybindings = lib.mkOptionDefault {
-          "${config.i3_mod}+L" = "exec betterlockscreen -l blur";
+          "${config.i3_mod}+L" = "${lock_cmd}";
         };
       };
     };
-
+    services.screen-locker = {
+      enable = true;
+      lockCmd = "${lock_cmd}";
+    };
     xdg = {
       configFile."betterlockscreenrc".text = ''
         span_image=true
@@ -45,13 +58,6 @@
         modifcolor=${config.nord11}ff
         bgcolor=${config.nord1}ff
       '';
-    };
-    services.betterlockscreen ={
-      enable = true;
-      arguments = [ "blur" ];
-    };
-    services.screen-locker = {
-      enable = true;
     };
   };
 }
