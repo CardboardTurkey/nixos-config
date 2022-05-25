@@ -35,6 +35,7 @@ in
         "update.mode" = "none";
         "[nix]"."editor.tabSize" = 2;
         "editor.fontLigatures" = true;
+        "debug.allowBreakpointsEverywhere" = true;
       };
     };
   };
