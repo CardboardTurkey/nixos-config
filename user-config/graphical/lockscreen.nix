@@ -2,27 +2,33 @@
 
 let
 
-  lock_cmd = "exec dunstctl set-paused true; exec betterlockscreen -l blur; exec dunstctl set-paused false";
+  lock_cmd = pkgs.writeShellScriptBin  "quietlock" ''
+    dunstctl set-paused true
+    ${pkgs.betterlockscreen}/bin/betterlockscreen -l blur
+    dunstctl set-paused false
+  '';
+  lock_refresh = "pgrep betterlockscreen || ${pkgs.betterlockscreen}/bin/betterlockscreen -u ~/.background-image";
 
 in
 
 {
 
-  environment.systemPackages = with pkgs; [
-    betterlockscreen
-  ];
-
   home-manager.users.kiran = { pkgs, ... }: {
     xsession.windowManager.i3 = {
       config = {
         keybindings = lib.mkOptionDefault {
-          "${config.i3_mod}+L" = "${lock_cmd}";
+          "${config.i3_mod}+L" = "exec ${lock_cmd}/bin/quietlock";
         };
       };
     };
     services.screen-locker = {
       enable = true;
-      lockCmd = "${lock_cmd}";
+      lockCmd = "${lock_cmd}/bin/quietlock";
+    };
+    programs.autorandr = {
+      hooks.postswitch = {
+        "lockscreen" = "${lock_refresh}";
+      };
     };
     xdg = {
       configFile."betterlockscreenrc".text = ''

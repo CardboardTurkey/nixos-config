@@ -20,10 +20,7 @@
     programs.autorandr = {
       enable = true;
       hooks.postswitch = {
-        "backgrounds" = ''
-          feh --bg-fill $HOME/.background-image
-          pgrep betterlockscreen || betterlockscreen -u ~/.background-image
-        '';
+        "background" = "feh --bg-fill $HOME/.background-image";
       };
       profiles = {
         "laptop" = {
