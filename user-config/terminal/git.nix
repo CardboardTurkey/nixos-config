@@ -1,11 +1,11 @@
-{ ... }:
+{ config, ... }:
 
 {
   home-manager.users.kiran = { pkgs, ... }: {   
     programs.git = {
       enable = true;
       userName  = "Kiran Ostrolenk";
-      userEmail = "kiran.ostrolenk@codethink.co.uk";
+      userEmail = "${config.email}";
       lfs = {
         enable = true;
         skipSmudge = true;

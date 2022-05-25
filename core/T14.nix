@@ -3,6 +3,11 @@
 with lib;
 {
   options = {
+    email = mkOption {
+      default = "kiran.ostrolenk@codethink.co.uk";
+      type = with types; uniq str;
+      description = "Email address (for git)";
+    };
     eth = mkOption {
       default = "enp0s31f6";
       type = with types; uniq str;
