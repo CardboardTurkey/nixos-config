@@ -138,7 +138,7 @@ in
           type = "custom/script";
           exec = "dg";
           tail = "true";
-          interval = 10;
+          interval = 2;
           format-prefix-foreground = "${dirtygit-colour}";
           format-prefix = "";
           format-prefix-padding-right = "5pt";
