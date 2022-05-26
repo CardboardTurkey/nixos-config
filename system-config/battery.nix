@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # Battery threshold

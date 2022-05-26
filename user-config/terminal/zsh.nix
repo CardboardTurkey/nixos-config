@@ -1,4 +1,4 @@
-{ ... }:
+_:
 
 {
   # For zsh compeletion (apparently)
