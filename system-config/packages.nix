@@ -26,5 +26,6 @@
     usbutils
     signal-desktop
     xorg.xev
+    pavucontrol
   ];
 }
