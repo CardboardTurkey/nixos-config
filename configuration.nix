@@ -4,7 +4,6 @@
 
   imports =
     [
-      /etc/nixos/hardware-configuration.nix
       ./machine-config.nix
       ./core
     ];

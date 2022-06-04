@@ -4,6 +4,7 @@
 
   imports =
     [ 
+      /etc/nixos/hardware-configuration.nix
       ../../system-config
       ../../user-config
     ];
