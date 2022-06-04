@@ -1,6 +1,12 @@
 # NixOS config
 
+## Setup links
+
 sudo ./link.sh
+
+## Get partition UUID
+
+`ls -l /dev/disk/by-uuid`
 
 # TODO
 
