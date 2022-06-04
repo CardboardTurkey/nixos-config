@@ -12,5 +12,6 @@
       ./packages.nix
       ./users.nix
       ./boring_stuff.nix
+      ./tailscale.nix
     ];
 }
