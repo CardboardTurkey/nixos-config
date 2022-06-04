@@ -1,8 +1,11 @@
 { pkgs, config, ... }:
 
 {
-  services.tailscale.enable = true;
-  networking.firewall.allowedUDPPorts = [ config.services.tailscale.port ];
-  networking.firewall.checkReversePath = "loose";
   environment.systemPackages = with pkgs; [ tailscale ];
+  services.tailscale.enable = true;
+  networking.firewall = {
+    enable = true;
+    allowedUDPPorts = [ config.services.tailscale.port ];
+    checkReversePath = "loose";
+  };
 }

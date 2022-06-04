@@ -9,7 +9,8 @@
       ./battery.nix
       ./font.nix
       ./fprintd.nix
-      ./packages.nix
+      ./pkgs_core.nix
+      ./pkgs_aux.nix
       ./users.nix
       ./boring_stuff.nix
       ./tailscale.nix

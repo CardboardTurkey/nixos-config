@@ -1,31 +1,15 @@
 { config, pkgs, ... }:
 
-let
-
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-
-in
-
 {
-  nixpkgs.overlays = [ (self: super: { local = import ./my-pkgs { pkgs = super; }; }) ];
 
   imports =
     [
       /etc/nixos/hardware-configuration.nix
-      ./hardware-extra.nix
+      ./machine-config.nix
       ./core
-      ./system-config
-      (import "${home-manager}/nixos")
-      ./user-config
     ];
 
   nix.extraOptions = "experimental-features = nix-command flakes";
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

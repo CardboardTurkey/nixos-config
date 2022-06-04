@@ -1,2 +1,2 @@
 core/hardware.nix
-hardware-extra.nix
+machine-config.nix

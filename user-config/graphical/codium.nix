@@ -2,7 +2,7 @@
 
 let
 
-  codium-extensions = (with pkgs.vscode-extensions; [
+  codium-extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
         tamasfe.even-better-toml
         arcticicestudio.nord-visual-studio-code
@@ -12,7 +12,7 @@ let
         vadimcn.vscode-lldb
         streetsidesoftware.code-spell-checker
         ms-vscode-remote.remote-ssh
-      ]);
+      ];
 
 in
 
