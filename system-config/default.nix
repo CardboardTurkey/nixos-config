@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = 
@@ -12,7 +12,11 @@
       ./pkgs_core.nix
       ./pkgs_aux.nix
       ./users.nix
-      ./boring_stuff.nix
       ./tailscale.nix
+      ./openssh.nix
+      ./location.nix
+      ./gnupg.nix
+      ./network.nix
+      ./sound.nix
     ];
 }
