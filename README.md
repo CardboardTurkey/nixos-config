@@ -4,6 +4,8 @@
 
 `sudo ./link.sh MACHINE_NAME`
 
+Don't forget `sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos`.
+
 ### Pi
 
 Can use sean's image because it already has a swap space applied. Remember to update channel first.
