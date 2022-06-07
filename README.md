@@ -1,8 +1,12 @@
 # NixOS config
 
-## Setup links
+## Setup
 
-sudo ./link.sh
+`sudo ./link.sh MACHINE_NAME`
+
+### Pi
+
+Can use sean's image because it already has a swap space applied. Remember to update channel first.
 
 ## Get partition UUID
 
@@ -11,15 +15,13 @@ sudo ./link.sh
 # TODO
 
 * Setup steam desktop and XDG add to path
-* Break up system config
 * Make dirtygit a rust daemon
 * Add hints to alacritty
 * Script for first boot using [userActivationScript](https://search.nixos.org/options?channel=21.11&show=system.userActivationScripts&from=0&size=50&sort=relevance&type=packages&query=system.userac) or [fetchFromGithub](https://www.reddit.com/r/NixOS/comments/g8c734/comment/fonoh0p/?utm_source=share&utm_medium=web2x&context=3):
 	* Grab gitlab repos (need to setup ssh keys)
 	* Add dirs to hash table
 * Breakup misc and boring stuff
-
-Actually apparently I should use a derivation. Wtf are those lol
+* Add ssh method to initial pi
 
 # Links
 
