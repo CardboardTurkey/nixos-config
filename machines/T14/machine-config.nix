@@ -7,6 +7,7 @@
       /etc/nixos/hardware-configuration.nix
       ../../system-config
       ../../user-config
+      ../../projects
     ];
 
   boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];
