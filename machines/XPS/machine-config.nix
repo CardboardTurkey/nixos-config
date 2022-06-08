@@ -13,14 +13,9 @@ in
 {
 
   imports =
-    [ 
-      /etc/nixos/hardware-configuration.nix
-      ../../system-config
-      ../../user-config
-      ../../projects
+    [
+      ../laptop_common.nix
     ];
-
-  boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];
 
   services.xserver.displayManager.autoLogin = { 
     enable = true; 
