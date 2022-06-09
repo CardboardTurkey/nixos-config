@@ -11,16 +11,12 @@ let
         serayuzgur.crates
         vadimcn.vscode-lldb
         streetsidesoftware.code-spell-checker
-        ms-vscode-remote.remote-ssh
       ];
 
 in
 
 {
 
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "vscode-extension-ms-vscode-remote-remote-ssh"
-  ];
   home-manager.users.kiran = { pkgs, ... }: {
     programs.vscode = {
       enable = true;
