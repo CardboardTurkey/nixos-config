@@ -9,7 +9,6 @@ let
         ms-python.python
         matklad.rust-analyzer
         serayuzgur.crates
-        vadimcn.vscode-lldb
         streetsidesoftware.code-spell-checker
       ];
 
