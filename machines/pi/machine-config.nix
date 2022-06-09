@@ -22,6 +22,10 @@ in
       ../../user-config/terminal/starship.nix
       ../../user-config/terminal/zsh.nix
       ../../user-config/terminal/neovim.nix
+      ../../user-config/terminal/bat.nix
+      ../../user-config/terminal/keychain.nix
+      ../../user-config/terminal/nix_index.nix
+      ../../user-config/terminal/direnv.nix
     ];
 
   fileSystems = {

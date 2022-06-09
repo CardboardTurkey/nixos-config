@@ -21,12 +21,15 @@ in
       ./graphical/wallpaper.nix
 
       ./terminal/git.nix
-      ./terminal/misc.nix
       ./terminal/starship.nix
       ./terminal/alacritty.nix
       ./terminal/tmux.nix
       ./terminal/zsh.nix
       ./terminal/neovim.nix
+      ./terminal/bat.nix
+      ./terminal/direnv.nix
+      ./terminal/nix_index.nix
+      ./terminal/keychain.nix
 
       ./other/bluetooth.nix
       ./other/fontconfig.nix
