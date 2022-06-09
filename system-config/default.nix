@@ -18,5 +18,6 @@
       ./gnupg.nix
       ./network.nix
       ./sound.nix
+      ./office_vpn.nix
     ];
 }
