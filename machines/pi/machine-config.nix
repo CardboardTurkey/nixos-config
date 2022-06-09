@@ -38,7 +38,6 @@ in
     version = 3;
   };
   boot.loader.grub.enable = false;
-  boot.loader.generic-extlinux-compatible.enable = true;
 
   users.users.kiran.openssh.authorizedKeys.keys = [ "${workPubSSHKey}" ];
 
