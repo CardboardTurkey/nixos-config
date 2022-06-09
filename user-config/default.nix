@@ -30,6 +30,7 @@ in
       ./terminal/direnv.nix
       ./terminal/nix_index.nix
       ./terminal/keychain.nix
+      ./terminal/ssh.nix
 
       ./other/bluetooth.nix
       ./other/fontconfig.nix
