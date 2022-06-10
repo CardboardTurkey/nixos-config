@@ -14,13 +14,6 @@ _:
       autocd = true;
       history.save = 10000000;
       history.size = 1000000000;
-      dirHashes = {
-        nix   = "$HOME/gitlab/cardboardturkey/nixos-config";
-        pdg   = "$HOME/gitlab/cardboardturkey/pdgid";
-        flash = "$HOME/gitlab/cardboardturkey/flashcard";
-        rust  = "$HOME/gitlab/kiran-rust-course/project";
-        todo  = "$HOME/ct-gitlab/codethings/kiranostrolenk/notes";
-      };
       completionInit = ''
         zstyle ':completion:*' menu select
         autoload -Uz compinit
