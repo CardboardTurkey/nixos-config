@@ -19,5 +19,6 @@
       ./network.nix
       ./sound.nix
       ./office_vpn.nix
+      ./docker.nix
     ];
 }

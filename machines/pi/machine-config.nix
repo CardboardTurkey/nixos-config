@@ -18,6 +18,7 @@ in
       ../../system-config/network.nix
       ../../system-config/location.nix
       ../../system-config/openssh.nix
+      ../../system-config/docker.nix
 
       ../../user-config/terminal/git.nix
       ../../user-config/terminal/starship.nix
