@@ -29,6 +29,7 @@ in
         "[nix]"."editor.tabSize" = 2;
         "editor.fontLigatures" = true;
         "debug.allowBreakpointsEverywhere" = true;
+	"editor.inlayHints.fontSize" = 15;
       };
     };
   };
