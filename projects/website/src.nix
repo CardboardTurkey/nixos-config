@@ -1,21 +1,17 @@
-{ lib, ... }:
-
-let
-  web_dir = "$HOME/gitlab/cardboardturkey/website";
-in
+{ lib, config, ... }:
 
 {
   home-manager.users.kiran = { pkgs, lib, ... }: {
     programs.zsh = {
       dirHashes = {
-        web = "${web_dir}";
+        web = "${config.web_dir}";
       };
     };
     home.activation = {
       web-setup = lib.hm.dag.entryAfter ["writeBoundary"] ''
-        if ! [ -d "${web_dir}" ] 
+        if ! [ -d "${config.web_dir}" ] 
         then
-          $DRY_RUN_CMD ${pkgs.git}/bin/git clone git@gitlab.com:CardboardTurkey/website.git ${web_dir}
+          $DRY_RUN_CMD ${pkgs.git}/bin/git clone git@gitlab.com:CardboardTurkey/website.git ${config.web_dir}
         fi
       '';
     };

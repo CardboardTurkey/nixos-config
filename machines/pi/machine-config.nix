@@ -28,6 +28,8 @@ in
       ../../user-config/terminal/keychain.nix
       ../../user-config/terminal/nix_index.nix
       ../../user-config/terminal/direnv.nix
+      
+      ../../projects/website/server.nix
     ];
 
   fileSystems = {

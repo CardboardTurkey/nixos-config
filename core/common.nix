@@ -11,6 +11,11 @@ with lib;
       type = with types; uniq str;
       description = "Modifier name to go in i3 config";
     };
+    web_dir = mkOption {
+      default = "/home/kiran/gitlab/cardboardturkey/website";
+      type = with types; uniq str;
+      description = "Modifier name to go in i3 config";
+    };
     nord0 = mkOption {
       default = "2e3440";
       type = with types; uniq str;
