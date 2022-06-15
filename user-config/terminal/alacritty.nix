@@ -17,7 +17,7 @@
       settings = {
         font = {
           family = "monospace";
-          size = 15;
+          size = 11;
         };
         window = {
           opacity = 0.9;
