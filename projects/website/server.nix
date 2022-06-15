@@ -33,4 +33,20 @@
     reload = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose restart webserver";
     preStop = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose stop webserver";
   };
+
+  systemd.user.services.renew-cert = {
+    enable = true;
+    after = [ "webserver.service" ];
+    path = [ pkgs.docker-compose pkgs.docker ];
+    requires = [ "webserver.service" "docker.service" ];
+    serviceConfig = {
+      WorkingDirectory = "${config.web_dir}";
+    };
+    script = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose run --rm certbot renew";
+  };
+  systemd.user.timers.renew-cert = {
+    enable = true;
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = [ "monthly" ];
+  };
 }
