@@ -47,6 +47,13 @@ in
   };
   boot.loader.grub.enable = false;
 
+  # Preserve space by disabling documentation and enaudo ling
+  # automatic garbage collection
+  documentation.nixos.enable = false;
+  nix.gc.automatic = true;
+  nix.gc.options = "--delete-older-than 10d";
+  boot.cleanTmpDir = true;
+
   users.users.kiran.openssh.authorizedKeys.keys = [ "${T14_ssh_key}" "${XPS_ssh_key}" ];
 
   # rpi3 only has 1gb ram so we need a swap file (maybe I should make it bigger )
