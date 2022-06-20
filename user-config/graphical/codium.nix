@@ -10,6 +10,7 @@ let
         matklad.rust-analyzer
         serayuzgur.crates
         streetsidesoftware.code-spell-checker
+        vadimcn.vscode-lldb
       ];
 
 in
