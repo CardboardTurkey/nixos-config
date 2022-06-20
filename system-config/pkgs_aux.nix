@@ -18,5 +18,6 @@
     signal-desktop
     xorg.xev
     pavucontrol
+    python
   ];
 }
