@@ -35,4 +35,7 @@ in
       ./other/bluetooth.nix
       ./other/fontconfig.nix
     ];
+  home-manager.users.kiran = { ... }: {
+    home.stateVersion = "22.11";
+  };
 }

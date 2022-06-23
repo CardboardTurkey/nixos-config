@@ -32,6 +32,10 @@ in
       ../../projects/website/server.nix
     ];
 
+  home-manager.users.kiran = { ... }: {
+    home.stateVersion = "22.11";
+  };
+
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/NIXOS_SD";
