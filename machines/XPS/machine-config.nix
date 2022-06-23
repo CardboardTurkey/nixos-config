@@ -1,7 +1,13 @@
 { config, lib, pkgs, ... }:
-let
+with pkgs;
 
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
+let
+  patchDesktop = pkg: appName: from: to: lib.hiPrio (runCommand "$patched-desktop-entry-for-${appName}" {} ''
+    ${coreutils}/bin/mkdir -p $out/share/applications
+    ${gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
+  '');
+
+  nvidia-offload = writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
@@ -35,17 +41,20 @@ in
   # ------
 
   programs.steam.enable = true;
+  environment.systemPackages = [
+    steam (patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
+    nvidia-offload
+  ];
 
   # ------
   # NVIDIA
   # ------
-  environment.systemPackages = [ nvidia-offload ];
   
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.opengl.enable = true;
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
-  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
   hardware.nvidia.prime = {
     offload.enable = true;
