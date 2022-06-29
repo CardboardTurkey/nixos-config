@@ -20,5 +20,6 @@
       ./sound.nix
       ./office_vpn.nix
       ./docker.nix
+      ./boot.nix
     ];
 }
