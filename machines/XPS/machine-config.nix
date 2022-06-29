@@ -23,11 +23,6 @@ in
       ../laptop_common.nix
     ];
 
-  services.xserver.displayManager.autoLogin = { 
-    enable = true; 
-    user = "kiran"; 
-  };
-
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
     "steam"
     "steam-original"
