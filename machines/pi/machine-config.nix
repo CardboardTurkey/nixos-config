@@ -32,7 +32,7 @@ in
       ../../projects/website/server.nix
     ];
 
-  home-manager.users.kiran = { ... }: {
+  home-manager.users.kiran = _: {
     home.stateVersion = "22.11";
   };
 

@@ -3,16 +3,16 @@
 let
 
   codium-extensions = with pkgs.vscode-extensions; [
-        jnoortheen.nix-ide
-        tamasfe.even-better-toml
-        arcticicestudio.nord-visual-studio-code
-        ms-python.python
-        matklad.rust-analyzer
-        serayuzgur.crates
-        streetsidesoftware.code-spell-checker
-        vadimcn.vscode-lldb
-        b4dm4n.vscode-nixpkgs-fmt
-      ];
+    jnoortheen.nix-ide
+    tamasfe.even-better-toml
+    arcticicestudio.nord-visual-studio-code
+    ms-python.python
+    matklad.rust-analyzer
+    serayuzgur.crates
+    streetsidesoftware.code-spell-checker
+    vadimcn.vscode-lldb
+    b4dm4n.vscode-nixpkgs-fmt
+  ];
 
 in
 
@@ -36,6 +36,10 @@ in
         "editor.fontLigatures" = true;
         "debug.allowBreakpointsEverywhere" = true;
         "editor.inlayHints.fontSize" = 15;
+        "[nix]" = {
+          "editor.tabSize" = 2;
+          "editor.defaultFormatter" = "jnoortheen.nix-ide";
+        };
       };
     };
   };
