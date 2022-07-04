@@ -11,11 +11,16 @@ let
         serayuzgur.crates
         streetsidesoftware.code-spell-checker
         vadimcn.vscode-lldb
+        b4dm4n.vscode-nixpkgs-fmt
       ];
 
 in
 
 {
+
+  environment.systemPackages = with pkgs; [
+    nixpkgs-fmt
+  ];
 
   home-manager.users.kiran = { pkgs, ... }: {
     programs.vscode = {
@@ -30,7 +35,7 @@ in
         "[nix]"."editor.tabSize" = 2;
         "editor.fontLigatures" = true;
         "debug.allowBreakpointsEverywhere" = true;
-	"editor.inlayHints.fontSize" = 15;
+        "editor.inlayHints.fontSize" = 15;
       };
     };
   };
