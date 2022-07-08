@@ -32,7 +32,6 @@ in
         "editor.fontSize" = 20;
         "editor.fontFamily" = "'Hasklug Nerd Font'";
         "update.mode" = "none";
-        "[nix]"."editor.tabSize" = 2;
         "editor.fontLigatures" = true;
         "debug.allowBreakpointsEverywhere" = true;
         "editor.inlayHints.fontSize" = 15;
