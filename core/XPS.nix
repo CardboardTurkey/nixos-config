@@ -34,7 +34,7 @@ with lib;
       description = "Fingerprint for laptop screen";
     };
     root = mkOption {
-      default = "79e4df30-5680-436c-a72c-3edea6260383";
+      default = "a9cd1bf6-feb8-41ad-be79-e85f9827fbb1";
       type = with types; uniq str;
       description = "Root partition id";
     };
