@@ -4,7 +4,7 @@ let
 
   lock_cmd = pkgs.writeShellScriptBin  "quietlock" ''
     dunstctl set-paused true
-    ${pkgs.betterlockscreen}/bin/betterlockscreen -l blur
+    ${pkgs.betterlockscreen}/bin/betterlockscreen -l dim
     dunstctl set-paused false
   '';
   lock_refresh = "pgrep betterlockscreen || ${pkgs.betterlockscreen}/bin/betterlockscreen -u ~/.background-image";
