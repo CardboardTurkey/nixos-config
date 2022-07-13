@@ -6,6 +6,12 @@
 
 Don't forget `sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos`.
 
+### First boot
+
+* Edit link.sh to append `/mnt`
+* Remove projects or get key in
+* Set root uuid in core using `ls -l /dev/disk/by-uuid`
+
 ### Pi
 
 Can use sean's image because it already has a swap space applied. Remember to update channel first.
