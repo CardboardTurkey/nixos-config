@@ -100,7 +100,7 @@ in
         };
         "bar/the_bar" = {
           width = "100%";
-          height = "40";
+          height = "37";
           radius = "0.0";
           fixed-center = "false";
 
