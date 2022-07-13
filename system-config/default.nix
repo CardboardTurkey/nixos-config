@@ -21,5 +21,6 @@
       ./office_vpn.nix
       ./docker.nix
       ./boot.nix
+      ./logind.nix
     ];
 }
