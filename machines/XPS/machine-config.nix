@@ -29,6 +29,7 @@ in
     "steam-runtime"
     "nvidia-x11"
     "nvidia-settings"
+    "discord"
   ];
 
   # ------
@@ -39,6 +40,7 @@ in
   environment.systemPackages = [
     steam (patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
     nvidia-offload
+    discord
   ];
 
   # ------
