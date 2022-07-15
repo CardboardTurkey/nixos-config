@@ -130,32 +130,32 @@
       enable = true;
       settings = {
         global = {
-          font = "DejaVuSans Nerd Font 17px";
+          font = "DejaVuSans Nerd Font 19px";
           follow = "keyboard";
           frame_width = 0;
           separator_color = "#${config.nord5}";
           width = "(0, 500)";
           min_icon_size = 30;
-          max_icon_size = 50;
-          corner_radius = 10;
+          max_icon_size = 70;
+          # corner_radius = 10;
           icon_path = "${pkgs.zafiro-icons}/share/icons/Zafiro-icons/places/48:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/actions:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/actions/16:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/actions/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/actions/48:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/actions/22-Dark:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/status:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/status/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/categories:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/categories/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/panel:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/panel/16-light:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/panel/16:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/panel/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/panel/22-light:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/emotes:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/mimetypes:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/mimetypes/48:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/emblems:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/emblems/16:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/previews:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/apps:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/apps/16:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/apps/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/apps/48:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/apps/scalable:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/devices:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/devices/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons/devices/48";
           progress_bar_height = 30;
           idle_threshold = 5;
-	  padding = 12;
-	  horizontal_padding = 12;
+          padding = 25;
+          horizontal_padding = 25;
         };
         urgency_low = {
-          background = "#${config.nord0}";
+          background = "#${config.nord0}A0";
           foreground = "#${config.nord5}";
           timeout = 5;
         };
         urgency_normal = {
-          background = "#${config.nord3}";
+          background = "#${config.nord3}A0";
           foreground = "#${config.nord5}";
           timeout = 5;
         };
         urgency_critical = {
-          background = "#${config.nord11}";
+          background = "#${config.nord11}A0";
           foreground = "#${config.nord6}";
           timeout = 0;
         };

@@ -8,6 +8,12 @@ _:
       vSync = true;
       inactiveOpacity = 0.8;
       opacityRules = [ "100:name *= 'i3lock'" ];
+      shadow = true;
+      shadowExclude = [
+          "class_g = 'Rofi'"
+          "class_g = 'Polybar'"
+      ];
+      shadowOpacity = .75;
       backend = "glx";
       experimentalBackends = true;
       settings = {
@@ -24,6 +30,9 @@ _:
             "I3_FLOATING_WINDOW@:c"
             "fullscreen"
         ];
+        # shadowOffset complains for some reason
+        shadow-offset-x = -10;
+        shadow-offset-y = -10;
       };
     };
   };
