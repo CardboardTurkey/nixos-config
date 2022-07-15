@@ -17,7 +17,7 @@
       settings = {
         font = {
           family = "monospace";
-          size = 11;
+          size = 14;
         };
         window = {
           # opacity = 0.75;
@@ -25,6 +25,7 @@
           padding.y = 5;
           dynamic_padding = true;
         };
+        env.WINIT_X11_SCALE_FACTOR = "1";
         colors = {
           primary = {
             background = "#${config.nord0}";
