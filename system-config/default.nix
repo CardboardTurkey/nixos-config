@@ -8,7 +8,7 @@
       ./xserver.nix
       ./battery.nix
       ./font.nix
-      ./fprintd.nix
+      # ./fprintd.nix # doesn't work nicely :(
       ./pkgs_core.nix
       ./pkgs_aux.nix
       ./users.nix
