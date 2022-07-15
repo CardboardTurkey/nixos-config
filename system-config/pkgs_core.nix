@@ -13,5 +13,6 @@
     usbutils
     htop
     tree
+    killall
   ];
 }
