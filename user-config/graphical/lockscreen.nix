@@ -32,6 +32,7 @@ in
     };
     xdg = {
       configFile."betterlockscreenrc".text = ''
+        display_on=1
         span_image=true
         lock_timeout=300
         fx_list=(dim blur dimblur pixel dimpixel color)
@@ -43,7 +44,6 @@ in
         quiet=false
 
         loginbox=${config.nord0}
-        loginshadow=${config.nord0}
         locktext="The way is shut"
         font="sans-serif"
         ringcolor=${config.nord4}ff
