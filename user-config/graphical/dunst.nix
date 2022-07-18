@@ -145,17 +145,17 @@
           horizontal_padding = 25;
         };
         urgency_low = {
-          background = "#${config.nord0}A0";
+          background = "#${config.nord0}D0";
           foreground = "#${config.nord5}";
           timeout = 5;
         };
         urgency_normal = {
-          background = "#${config.nord3}A0";
+          background = "#${config.nord3}D0";
           foreground = "#${config.nord5}";
           timeout = 5;
         };
         urgency_critical = {
-          background = "#${config.nord11}A0";
+          background = "#${config.nord11}D0";
           foreground = "#${config.nord6}";
           timeout = 0;
         };
