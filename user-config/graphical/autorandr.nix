@@ -102,13 +102,31 @@
         };
         "dp1_only" = {
           fingerprint = {
-            DP-1 = "00ffffffffffff005a6322f5010101010814010380341d782eeed5a555489b26125054bfef80d1c0b300a9409500904081808140714f023a801871382d40582c450009252100001e000000ff005239533130303830303333330a000000fd00324b165211000a202020202020000000fc00564732343237574d0a2020202000bd";
+            DP-1 = "*";
           };
           config = {
             eDP-1 = {
               enable = false;
             };
             DP-1 = {
+              enable = true;
+              crtc = 1;
+              primary = true;
+              position = "0x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+          };
+        };
+        "dp2_only" = {
+          fingerprint = {
+            DP-2 = "*";
+          };
+          config = {
+            eDP-1 = {
+              enable = false;
+            };
+            DP-2 = {
               enable = true;
               crtc = 1;
               primary = true;
