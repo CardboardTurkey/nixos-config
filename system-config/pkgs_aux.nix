@@ -20,5 +20,6 @@
     pavucontrol
     python
     gimp
+    ffmpeg
   ];
 }
