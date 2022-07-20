@@ -19,5 +19,6 @@
     xorg.xev
     pavucontrol
     python
+    gimp
   ];
 }
