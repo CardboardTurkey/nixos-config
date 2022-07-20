@@ -14,16 +14,12 @@ message=$(git log -1 --pretty=%B | head -1 | sed 's/ /_/g')
 profile_name="${datey}_${message}"
 
 echo "profile name: $profile_name"
-read -p "Ok?" -n 1 -r
 echo    # (optional) move to a new line
-if [[ ! $REPLY =~ ^[Yy]$ ]]
-then
-    exit 1
-fi
 
 if echo "$profile_name" | rg "[/':]"
 then
     echo 'No / you fool'
+    exit 1
 fi
 
 sudo nixos-rebuild switch -p "$profile_name"
