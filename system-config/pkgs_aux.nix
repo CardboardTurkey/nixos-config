@@ -7,8 +7,6 @@
     firefox
     thunderbird
     quasselClient
-    rustup
-    gcc
     local.scripts
     local.logiops
     feh
