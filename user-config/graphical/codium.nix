@@ -11,7 +11,7 @@ let
     serayuzgur.crates
     streetsidesoftware.code-spell-checker
     vadimcn.vscode-lldb
-    b4dm4n.vscode-nixpkgs-fmt
+    arrterian.nix-env-selector
   ];
 
 in
@@ -19,7 +19,7 @@ in
 {
 
   environment.systemPackages = with pkgs; [
-    nixpkgs-fmt
+    rnix-lsp
   ];
 
   home-manager.users.kiran = { pkgs, ... }: {
@@ -35,6 +35,7 @@ in
         "editor.fontLigatures" = true;
         "debug.allowBreakpointsEverywhere" = true;
         "editor.inlayHints.fontSize" = 15;
+        "nix.enableLanguageServer" = true;
         "[nix]" = {
           "editor.tabSize" = 2;
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
