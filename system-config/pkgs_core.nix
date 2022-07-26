@@ -14,6 +14,5 @@
     htop
     tree
     killall
-    busybox
   ];
 }
