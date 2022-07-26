@@ -22,5 +22,6 @@
       ./docker.nix
       ./boot.nix
       ./logind.nix
+      ./printing.nix
     ];
 }
