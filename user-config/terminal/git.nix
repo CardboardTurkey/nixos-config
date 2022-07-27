@@ -24,6 +24,7 @@
           dump = "cat-file -p";
           last = "log -1";
         };
+        global = { basedir = "/home/kiran/gitlab/"; };
       };
       delta = {
         enable = true;
