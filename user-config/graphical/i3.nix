@@ -55,7 +55,7 @@ in
           "${ws-fire}" = [{ class="firefox"; } { class="firefox-default"; }];
           "${ws-spot}" = [{ class="spotify"; }];
           "${ws-pdf}"  = [{ class="Evince";} { class="viewnior"; }];
-          "${ws-mail}" = [{ class="Thunderbird"; }];
+          "${ws-mail}" = [{ class="thunderbird"; }];
           "${ws-irc}"  = [{ class="quassel"; } { class="Signal"; }];
           "${ws-stm}"  = [{ class="Steam"; }];
         };
