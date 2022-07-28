@@ -21,6 +21,7 @@ in
       ./graphical/wallpaper.nix
 
       ./terminal/git.nix
+      ./terminal/lsd.nix
       ./terminal/starship.nix
       ./terminal/alacritty.nix
       ./terminal/tmux.nix
