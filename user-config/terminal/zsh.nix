@@ -14,6 +14,7 @@ _:
       autocd = true;
       history.save = 10000000;
       history.size = 1000000000;
+      dirHashes.nix = "$HOME/gitlab/cardboardturkey/nixos-config";
       completionInit = ''
         zstyle ':completion:*' menu select
         autoload -Uz compinit
