@@ -29,6 +29,7 @@ in
       extensions = codium-extensions;
       userSettings = {
         "workbench.colorTheme" = "Nord";
+        "files.autoSave" = "afterDelay";
         "editor.fontSize" = 20;
         "editor.fontFamily" = "'Hasklug Nerd Font'";
         "update.mode" = "none";
