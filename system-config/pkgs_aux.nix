@@ -16,7 +16,7 @@
     signal-desktop
     xorg.xev
     pavucontrol
-    python
+    python3
     gimp
     ffmpeg
   ];
