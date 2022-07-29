@@ -10,7 +10,7 @@ _:
       enable = true;
       iconTheme = {
         package = pkgs.zafiro-icons;
-        name = "Zafiro-icons";
+        name = "Zafiro-icons-Dark";
       };
       font = {
         name = "DejaVu Sans 12";

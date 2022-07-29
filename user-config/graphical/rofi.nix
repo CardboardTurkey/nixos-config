@@ -9,7 +9,7 @@
       extraConfig = {
         modi = "drun,run,window,ssh,combi";
         terminal = "alacritty";
-        icon-theme = "Zafiro-icons";
+        icon-theme = "Zafiro-icons-Dark";
       };
     };
     xdg = {
