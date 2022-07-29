@@ -6,7 +6,7 @@ let
     jnoortheen.nix-ide
     tamasfe.even-better-toml
     arcticicestudio.nord-visual-studio-code
-    ms-python.python
+    # ms-python.python
     matklad.rust-analyzer
     serayuzgur.crates
     streetsidesoftware.code-spell-checker
