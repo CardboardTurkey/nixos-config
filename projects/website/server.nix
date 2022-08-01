@@ -29,9 +29,9 @@
     serviceConfig = {
       WorkingDirectory = "${config.web_dir}";
     };
-    script = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose up webserver";
-    reload = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose restart webserver";
-    preStop = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose stop webserver";
+    script = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose up";
+    reload = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose restart";
+    preStop = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker compose stop";
   };
 
   systemd.user.services.renew-cert = {
