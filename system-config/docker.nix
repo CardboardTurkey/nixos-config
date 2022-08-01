@@ -1,6 +1,16 @@
 { pkgs, ... }:
 
 {
+  environment.systemPackages = with pkgs; [
+    docker-compose
+  ];
+
+  home-manager.users.kiran = {
+    programs.zsh = {
+      envExtra = "export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock";
+    };
+  };
+
   virtualisation.docker = {
     enable = true;
     enableOnBoot = true;
@@ -12,7 +22,4 @@
       enable = true;
     };
   };
-  environment.systemPackages = with pkgs; [
-    docker-compose
-  ];
 }
