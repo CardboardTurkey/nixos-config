@@ -21,6 +21,7 @@ in
       ../../system-config/docker.nix
 
       ../../user-config/terminal/git.nix
+      ../../user-config/terminal/lsd.nix
       ../../user-config/terminal/starship.nix
       ../../user-config/terminal/zsh.nix
       ../../user-config/terminal/neovim.nix
