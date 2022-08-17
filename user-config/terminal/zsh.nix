@@ -80,6 +80,7 @@ _:
         export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
         export MANPAGER="sh -c 'col -bx | bat --theme Dracula -l man -p'"
         export BETTER_EXCEPTIONS=1
+        export PATH=~/.cargo/bin:$PATH
       '';
       shellAliases = {
         "nix-zshell" = "nix-shell --command zsh";
