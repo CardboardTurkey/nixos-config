@@ -11,6 +11,7 @@ _:
       enableCompletion = true;
       enableSyntaxHighlighting = true;
       enableVteIntegration = true;
+      historySubstringSearch.enable = true;
       autocd = true;
       history.save = 10000000;
       history.size = 1000000000;
