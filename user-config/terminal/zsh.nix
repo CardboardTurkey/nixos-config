@@ -84,7 +84,7 @@ _:
         export PATH=~/.cargo/bin:$PATH
       '';
       shellAliases = {
-        "nix-zshell" = "nix-shell --command zsh";
+        "nix-shell" = "nix-shell --command zsh";
         "less" = "bat --plain";
       };
     };
