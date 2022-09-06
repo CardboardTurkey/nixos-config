@@ -32,10 +32,11 @@ in
         "files.autoSave" = "afterDelay";
         "editor.fontSize" = 20;
         "editor.fontFamily" = "'Hasklug Nerd Font'";
-        "update.mode" = "none";
-        "editor.fontLigatures" = true;
-        "debug.allowBreakpointsEverywhere" = true;
+        "editor.formatOnSave" = true;
         "editor.inlayHints.fontSize" = 15;
+        "editor.fontLigatures" = true;
+        "update.mode" = "none";
+        "debug.allowBreakpointsEverywhere" = true;
         "nix.enableLanguageServer" = true;
         "[nix]" = {
           "editor.tabSize" = 2;
