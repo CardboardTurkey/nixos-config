@@ -1,7 +1,7 @@
 { lib, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/cardboardturkey/home-manager/archive/refs/heads/zsh-history-substring-search.zip";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 in
 
 {
