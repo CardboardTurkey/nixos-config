@@ -26,6 +26,7 @@ in
   home-manager.users.kiran = { pkgs, ... }: {
     xsession.windowManager.i3 = {
       enable = true;
+      package = pkgs.i3-gaps;
       config = {
         modifier = mod;
         bars = [ ];
@@ -58,6 +59,10 @@ in
           "${ws-mail}" = [{ class="thunderbird"; }];
           "${ws-irc}"  = [{ class="quassel"; } { class="Signal"; }];
           "${ws-stm}"  = [{ class="Steam"; }];
+        };
+        gaps = {
+          inner = 5;
+          outer = 5;
         };
       }; 
       extraConfig = ''

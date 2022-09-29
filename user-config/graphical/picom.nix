@@ -4,6 +4,7 @@ _:
   home-manager.users.kiran = { pkgs, ... }: {
     services.picom = {
       enable = true;
+      package = pkgs.picom-next;
       fade = true;
       vSync = true;
       inactiveOpacity = 0.8;
@@ -33,6 +34,7 @@ _:
         # shadowOffset complains for some reason
         shadow-offset-x = -10;
         shadow-offset-y = -10;
+        corner-radius = 20;
       };
     };
   };
