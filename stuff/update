@@ -22,4 +22,4 @@ then
     exit 1
 fi
 
-sudo nixos-rebuild switch -p "$profile_name"
+sudo nixos-rebuild switch -p "$profile_name" -I nixpkgs=/home/kiran/github/NixOS/nixpkgs
