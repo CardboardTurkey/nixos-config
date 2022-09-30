@@ -60,23 +60,22 @@ in
           "${ws-stm}" = [{ class = "Steam"; }];
         };
         gaps = {
-          inner = 10;
+          inner = 5;
           outer = 5;
         };
         window.border = 0;
         window.titlebar = false;
+        floating.titlebar = false;
+        floating.border = 0;
       };
       extraConfig = ''
         for_window [class="thunderbird"] focus
         for_window [class="vscodium"] focus
         for_window [class="firefox"] focus
         for_window [class="viewnior"] focus
-        for_window [class="Evince"] focus   
-        for_window [class="quassel"] focus   
-        for_window [class="Signal"] focus   
-
-        default_border pixel 0
-        default_floating_border pixel 0
+        for_window [class="Evince"] focus
+        for_window [class="quassel"] focus
+        for_window [class="Signal"] focus
         for_window [class="^.*"] border pixel 0
       '';
     };

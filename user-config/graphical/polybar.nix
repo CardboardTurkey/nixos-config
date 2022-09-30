@@ -10,7 +10,7 @@ let
   # Lets choose some colours!
   # Nord colours defined in `../core/nord.nix`
   foreground = "#${config.nord6}";
-  background = "#D0${config.nord0}"; # Change the transparency based on your wallpaper
+  background = "#${config.nord0}";
   # Workspace colours
   ws_focused = "#${config.nord2}";
   ws_underline = "#${config.nord13}";
@@ -33,7 +33,7 @@ let
   battery_colour = "#${config.nord7}";
   battery_warning = "#${config.nord11}";
 
-  dirtygit = pkgs.writeShellScriptBin  "dg" ''
+  dirtygit = pkgs.writeShellScriptBin "dg" ''
     git_dirs=(
       "$HOME/gitlab/cardboardturkey/nixos-config"
       "$HOME/gitlab/cardboardturkey/flashcard"
@@ -81,7 +81,7 @@ in
         ];
       };
     };
-    
+
     services.polybar = {
       enable = true;
       package = pkgs.polybar.override {
@@ -101,7 +101,7 @@ in
         "bar/the_bar" = {
           width = "100%";
           height = "37";
-          radius = "0.0";
+          radius = "15";
           fixed-center = "false";
 
           background = "${background}";
@@ -109,10 +109,11 @@ in
 
           line-size = "3";
 
-          border-size = "0";
+          border-size = "10";
+          border-bottom-size = "0";
 
-          padding-left = "0";
-          padding-right = "2";
+          padding-left = "3";
+          padding-right = "3";
 
           module-margin = "2";
 
@@ -169,7 +170,7 @@ in
           format-prefix = "";
           format-prefix-padding-right = "5pt";
           format-prefix-foreground = "${xkeyboard_colour}";
-          format-prefix-underline = "${xkeyboard_colour}";
+          format-underline = "${xkeyboard_colour}";
 
           label-layout = "%layout%";
           label-layout-underline = "${xkeyboard_colour}";

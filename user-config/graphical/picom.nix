@@ -1,6 +1,6 @@
 _:
 
-{   
+{
   home-manager.users.kiran = { pkgs, ... }: {
     services.picom = {
       enable = true;
@@ -11,8 +11,8 @@ _:
       opacityRules = [ "100:name *= 'i3lock'" ];
       shadow = true;
       shadowExclude = [
-          "class_g = 'Rofi'"
-          "class_g = 'Polybar'"
+        "class_g = 'Rofi'"
+        "class_g = 'Polybar'"
       ];
       shadowOpacity = .75;
       backend = "glx";
@@ -26,15 +26,18 @@ _:
           background-fixed = false;
         };
         focus-exclude = [
-            "class_g = 'rofi'"
-            "class_g = 'polybar'"
-            "I3_FLOATING_WINDOW@:c"
-            "fullscreen"
+          "class_g = 'rofi'"
+          "class_g = 'polybar'"
+          "I3_FLOATING_WINDOW@:c"
+          "fullscreen"
         ];
         # shadowOffset complains for some reason
         shadow-offset-x = -10;
         shadow-offset-y = -10;
         corner-radius = 15;
+        blur-background-exclude = [
+          "window_type = 'dock'"
+        ];
       };
     };
   };
