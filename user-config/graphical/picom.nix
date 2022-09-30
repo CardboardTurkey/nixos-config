@@ -14,7 +14,7 @@ _:
         "class_g = 'Rofi'"
         "class_g = 'Polybar'"
       ];
-      shadowOpacity = .75;
+      shadowOpacity = .85;
       backend = "glx";
       experimentalBackends = true;
       settings = {
@@ -32,8 +32,8 @@ _:
           "fullscreen"
         ];
         # shadowOffset complains for some reason
-        shadow-offset-x = -10;
-        shadow-offset-y = -10;
+        shadow-offset-x = -5;
+        shadow-offset-y = -5;
         corner-radius = 15;
         blur-background-exclude = [
           "window_type = 'dock'"
