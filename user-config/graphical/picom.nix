@@ -34,7 +34,7 @@ _:
         # shadowOffset complains for some reason
         shadow-offset-x = -10;
         shadow-offset-y = -10;
-        corner-radius = 20;
+        corner-radius = 15;
       };
     };
   };
