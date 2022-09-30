@@ -60,8 +60,8 @@ in
           "${ws-stm}" = [{ class = "Steam"; }];
         };
         gaps = {
-          inner = 5;
-          outer = 5;
+          inner = 11;
+          outer = 0;
         };
         window.border = 0;
         window.titlebar = false;

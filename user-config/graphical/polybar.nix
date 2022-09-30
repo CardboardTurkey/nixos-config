@@ -173,7 +173,7 @@ in
           format-underline = "${xkeyboard_colour}";
 
           label-layout = "%layout%";
-          label-layout-underline = "${xkeyboard_colour}";
+          # label-layout-underline = "${xkeyboard_colour}";
 
         };
         "module/wired-network" = {
