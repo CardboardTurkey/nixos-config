@@ -49,7 +49,7 @@
               foreground = "CellBackground";
               background = "#${config.nord8}";
             };
-            bar = {
+            footer_bar = {
               background = "#${config.nord2}";
               foreground = "#${config.nord4}";
             };
