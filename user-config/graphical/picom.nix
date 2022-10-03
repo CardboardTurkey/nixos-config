@@ -2,6 +2,9 @@ _:
 
 {
   home-manager.users.kiran = { pkgs, ... }: {
+    xsession.windowManager.i3.config.startup = [
+      { command = "picom -b"; always = true;}
+    ];
     services.picom = {
       enable = true;
       package = pkgs.picom-next;
