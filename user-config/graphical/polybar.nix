@@ -99,21 +99,23 @@ in
           screenchange-reload = "true";
         };
         "bar/the_bar" = {
-          width = "100%";
+          width = "1898";
           height = "37";
-          radius = "15";
-          fixed-center = "false";
+          offset-x = "11";
+          offset-y = "11";
+          fixed-center = false;
+          override-redirect = true;
+          wm-restack = "i3";
 
           background = "${background}";
           foreground = "${foreground}";
 
           line-size = "3";
+          # border-size = "10";
+          # border-bottom-size = "0";
 
-          border-size = "10";
-          border-bottom-size = "0";
-
-          padding-left = "3";
-          padding-right = "3";
+          padding-left = "2";
+          padding-right = "2";
 
           module-margin = "2";
 
