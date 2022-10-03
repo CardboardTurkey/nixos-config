@@ -16,7 +16,7 @@ _:
       shadowExclude = [
         "class_g = 'Rofi'"
       ];
-      shadowOpacity = .60;
+      shadowOpacity = .30;
       backend = "glx";
       experimentalBackends = true;
       settings = {
