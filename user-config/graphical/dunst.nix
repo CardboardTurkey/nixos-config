@@ -135,9 +135,9 @@
           frame_width = 0;
           separator_color = "#${config.nord5}";
           width = "(0, 500)";
+          offset = "22x69";
           min_icon_size = 30;
           max_icon_size = 70;
-          # corner_radius = 10;
           icon_path = "${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/places/48:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/actions:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/actions/16:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/actions/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/actions/48:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/actions/22-Dark:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/status:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/status/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/categories:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/categories/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/panel:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/panel/16-light:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/panel/16:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/panel/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/panel/22-light:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/emotes:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/mimetypes:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/mimetypes/48:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/emblems:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/emblems/16:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/previews:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/apps:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/apps/16:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/apps/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/apps/48:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/apps/scalable:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/devices:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/devices/22:${pkgs.zafiro-icons}/share/icons/Zafiro-icons-Dark/devices/48";
           progress_bar_height = 30;
           idle_threshold = 5;
@@ -145,17 +145,17 @@
           horizontal_padding = 25;
         };
         urgency_low = {
-          background = "#${config.nord0}D0";
+          background = "#${config.nord0}30";
           foreground = "#${config.nord5}";
           timeout = 5;
         };
         urgency_normal = {
-          background = "#${config.nord3}D0";
+          background = "#${config.nord3}30";
           foreground = "#${config.nord5}";
           timeout = 5;
         };
         urgency_critical = {
-          background = "#${config.nord11}D0";
+          background = "#${config.nord11}30";
           foreground = "#${config.nord6}";
           timeout = 0;
         };

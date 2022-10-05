@@ -22,7 +22,7 @@ _:
       settings = {
         blur = {
           method = "dual_kawase";
-          strength = 7;
+          strength = 8;
           background = false;
           background-frame = false;
           background-fixed = false;
