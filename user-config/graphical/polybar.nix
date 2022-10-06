@@ -33,33 +33,6 @@ let
   battery_colour = "#${config.nord7}";
   battery_warning = "#${config.nord11}";
 
-  dirtygit = pkgs.writeShellScriptBin "dg" ''
-    git_dirs=(
-      "$HOME/gitlab/cardboardturkey/nixos-config"
-      "$HOME/gitlab/cardboardturkey/flashcard"
-      "$HOME/gitlab/cardboardturkey/pdgid"
-      "$HOME/gitlab/kiran-rust-course/project"
-      "$HOME/gitlab/kiran-rust-course/session-materials"
-    )
-
-    search_string='use "git pull"|Your branch is ahead of|Changes not staged for commit:'
-
-    dirty_dirs=()
-
-    for dir in "''${git_dirs[@]}"
-    do
-      cd $dir
-      git status | rg "$search_string" 1> /dev/null && dirty_dirs+=$dir
-    done
-
-    if ! [ -z "$dirty_dirs" ]; then
-      echo ⚠️
-      echo "$dirty_dirs"
-    else
-      echo ""
-    fi
-  '';
-
 in
 {
 
@@ -70,7 +43,8 @@ in
     ttf_bitstream_vera
   ];
 
-  environment.systemPackages = [ dirtygit ];
+  environment.systemPackages = [ pkgs.local.dirtygit ];
+  services.dirtygit.enable = true;
 
   home-manager.users.kiran = { pkgs, ... }: {
 
@@ -110,7 +84,8 @@ in
           background = "${background}";
           foreground = "${foreground}";
 
-          line-size = "3";
+          overline-size = "5";
+          underline-size = "3";
           # border-size = "10";
           # border-bottom-size = "0";
 
@@ -127,6 +102,7 @@ in
           font-3 = "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:style=Solid:size=15;3";
           font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
           font-5 = "DejaVu Sans:style=Roman:pixelsize=15;3";
+          font-6 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=15;5";
 
           modules-left = "i3";
           # modules-center = "player-mpris-tail";
@@ -139,15 +115,15 @@ in
         };
         "module/dirty-git" = {
           type = "custom/script";
-          exec = "dg";
+          exec = "dg -n";
           tail = "true";
           interval = 2;
           format-prefix-foreground = "${dirtygit-colour}";
-          format-prefix = "";
+          format-prefix = "⚠️";
+          format-prefix-font = "5";
           format-prefix-padding-right = "5pt";
           format-underline = "${dirtygit-colour}";
 
-          label-font = 5;
           label-padding-right = "5pt";
         };
         "module/cpu" = {
@@ -209,6 +185,7 @@ in
           label-connected-foreground = "${wireless_colour}";
           label-connected = "";
           label-connected-padding-right = "5pt";
+          label-connected-padding-top = "3pt";
 
           format-disconnected = "";
 
@@ -259,7 +236,7 @@ in
 
           ws-icon-0 = "1;";
           ws-icon-1 = "2;";
-          ws-icon-3 = "3;";
+          ws-icon-3 = "3;";
           ws-icon-4 = "4;";
           ws-icon-2 = "5;";
           ws-icon-5 = "6;";
@@ -270,7 +247,9 @@ in
           label-focused = "%icon%";
           label-focused-background = "${ws_focused}";
           label-focused-underline = "${ws_underline}";
+          label-focused-overline = "${background}";
           label-focused-padding = "2";
+          label-focused-font = "7";
 
           label-unfocused = "%icon%";
           label-unfocused-padding = "\${self.label-focused-padding}";
