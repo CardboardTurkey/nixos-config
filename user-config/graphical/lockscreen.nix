@@ -2,7 +2,7 @@
 
 let
 
-  lock_cmd = pkgs.writeShellScriptBin  "quietlock" ''
+  lock_cmd = pkgs.writeShellScriptBin "quietlock" ''
     dunstctl set-paused true
     ${pkgs.betterlockscreen}/bin/betterlockscreen -l dim
     dunstctl set-paused false
@@ -43,7 +43,7 @@ in
         wallpaper_cmd="${pkgs.feh}/bin/feh --bg-fill --no-xinerama $HOME/.background-image"
         quiet=false
 
-        loginbox=${config.nord0}
+        loginbox=${config.nord0}00
         locktext="The way is shut"
         font="sans-serif"
         ringcolor=${config.nord4}ff
