@@ -4,7 +4,7 @@
   imports = 
     [
       ./x11_keyboard.nix
-      ./encryption.nix
+      ./boot_loader.nix
       ./xserver.nix
       ./battery.nix
       ./font.nix
