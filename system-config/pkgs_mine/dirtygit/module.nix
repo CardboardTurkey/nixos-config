@@ -14,7 +14,7 @@ in
       description = "Dirtygit daemon";
       enable = true;
       wantedBy = [ "default.target" ];
-      environment =  { RUST_LOG = "debug"; };
+      # environment =  { RUST_LOG = "debug"; };
       path = [ pkgs.git ];
       serviceConfig = {
         ExecStart = "${pkgs.local.dirtygit}/bin/dirtygitd";
