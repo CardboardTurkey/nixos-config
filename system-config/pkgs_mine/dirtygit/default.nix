@@ -1,18 +1,14 @@
-{ pkgs, lib, fetchFromGitLab, rustPlatform, ... }:
+{ pkgs, lib, rustPlatform, ... }:
 rustPlatform.buildRustPackage rec {
   pname = "dirtygit";
-  version = "0.1.0";
+  name = "dirtygit";
+  # version = "0.1.0";
 
-  src = fetchFromGitLab {
-    owner = "cardboardturkey";
-    repo = pname;
-    rev = version;
-    sha256 = "sha256-/Wk8Y5fvPkiNE5lHAZheyDQ1h+cwBp4jeNi7ZeHpzTM=";
-  };
+  src = fetchTarball "https://gitlab.com/CardboardTurkey/dirtygit/-/archive/master/dirtygit-master.tar.gz";
 
   buildInputs = [ pkgs.git ];
 
-  cargoSha256 = "sha256-r8UJ5kuiOBNfkD6R2n35ztVP+p5oJ9x+vI1iXbWj2zk=";
+  cargoSha256 = "sha256-hq7Jb0hsNTXjoc/s7QFlUPTog2gMmYpRjAo1c/RLBGY=";
 
   meta = with lib; {
     description = "Track which local git repos have changes that need pushing";
