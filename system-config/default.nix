@@ -24,4 +24,6 @@
       ./logind.nix
       ./printing.nix
     ];
+  # android mounting
+  services.gvfs.enable = true;
 }
