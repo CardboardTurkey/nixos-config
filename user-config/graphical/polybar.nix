@@ -56,6 +56,14 @@ in
       };
     };
 
+    xdg.configFile."dirtygit".text = ''
+      ~/gitlab/cardboardturkey/nixos-config
+      ~/gitlab/cardboardturkey/dirtygit
+      ~/gitlab/cardboardturkey/pdgid
+      ~/gitlab/cardboardturkey/website
+      ~/gitlab/kiran-rust-course/project
+    '';
+
     services.polybar = {
       enable = true;
       package = pkgs.polybar.override {
