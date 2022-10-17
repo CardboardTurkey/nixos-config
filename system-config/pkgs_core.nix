@@ -14,5 +14,6 @@
     htop
     tree
     killall
+    ncdu
   ];
 }
