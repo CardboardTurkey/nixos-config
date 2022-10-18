@@ -20,5 +20,6 @@
     python3
     gimp
     ffmpeg
+    local.rustup
   ];
 }

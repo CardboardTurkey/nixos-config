@@ -1,0 +1,127 @@
+stages:
+  - "Format"
+  - "Lint"
+  - "Build"
+  - "Unit"
+  - "Integration"
+  - "Documentation"
+  - "build-production"
+
+
+
+# 'Latest' and 'Nightly' definitions
+
+.latest_template: &latest_definition
+  image: rust:latest
+  artifacts:
+    paths:
+      - target
+    expire_in: 1s
+
+.nightly_template: &nightly_definition
+  image: rustlang/rust:nightly
+  allow_failure: true
+  artifacts:
+    paths:
+      - target
+    expire_in: 1s
+
+# Test definitions
+
+.build_template: &build_definition
+  stage: "Build"
+  script:
+    - cargo build --verbose
+
+.format_template: &format_definition
+  stage: "Format"
+  script:
+    - rustup component add rustfmt
+    - cargo fmt --check --all --verbose
+
+.lint_template: &lint_definition
+  stage: "Lint"
+  script:
+    - rustup component add clippy
+    - cargo clippy -- -D warnings
+
+.unit_template: &unit_definition
+  stage: "Unit"
+  script:
+    - cargo test --all
+
+# Tests on latest rust
+
+"format latest":
+  <<: *latest_definition
+  <<: *format_definition
+  needs: []
+
+"lint latest":
+  <<: *latest_definition
+  <<: *lint_definition
+  needs: []
+
+"build latest":
+  <<: *latest_definition
+  <<: *build_definition
+  needs:
+    - "format latest"
+    - "lint latest"
+
+"unit latest":
+  <<: *latest_definition
+  <<: *unit_definition
+  needs:
+    - "build latest"
+
+"build production":
+  <<: *latest_definition
+  stage: "build-production"
+  script:
+    - cargo build --verbose --release
+  needs:
+    - "unit latest"
+
+# Tests on nightly rust
+
+"format nightly":
+  <<: *nightly_definition
+  <<: *format_definition
+  needs: []
+
+"lint nightly":
+  <<: *nightly_definition
+  <<: *lint_definition
+  needs: []
+
+"build nightly":
+  <<: *nightly_definition
+  <<: *build_definition
+  needs:
+    - "lint nightly"
+    - "format nightly"
+
+"unit nightly":
+  <<: *nightly_definition
+  <<: *unit_definition
+  needs:
+    - "build nightly"
+
+# Setup documentation web page
+
+pages:
+  image: rust:latest
+  stage: Documentation
+  script:
+    - cargo doc --all
+    - mv target/doc public
+    - echo '<meta http-equiv="refresh" content="0; url=./@crate@/index.html">' > public/index.html
+  artifacts:
+    paths:
+      - public
+      - target
+  needs:
+    - "unit latest"
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "master"'

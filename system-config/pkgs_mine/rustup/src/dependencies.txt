@@ -1,0 +1,5 @@
+\[dependencies\]
+anyhow = "*"
+env_logger = "*"
+log = "*"
+clap = { version = "*", features = [ "derive", "cargo" ] }

@@ -1,0 +1,16 @@
+#! /usr/bin/env bash
+set -e
+
+[ -z "$@" ] && { echo "Pass the same args as you would to `cargo new`" && exit 1; }
+crate_name=$(@cargo@ new "$@" 2>&1 >/dev/null | rg 'Created binary \(application\) `(.*)`' -or '$1')
+
+cp "@out@/share/main.rs" "$crate_name/src/main.rs"
+cp "@out@/share/cli.rs" "$crate_name/src/cli.rs"
+dep_string=$(awk -v ORS='\\n' '1' @out@/share/dependencies.txt)
+sed -i "s/\[dependencies\]/$dep_string/" "$crate_name/Cargo.toml"
+
+sed "s/@crate@/$crate_name/" < "@out@/share/gitlab-ci.yml" > "$crate_name/.gitlab-ci.yml"
+
+cp "@out@/share/shell.nix" "$crate_name/shell.nix"
+echo "use nix" > "$crate_name/.envrc"
+direnv allow $crate_name
