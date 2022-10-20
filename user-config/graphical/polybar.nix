@@ -12,8 +12,8 @@ let
   foreground = "#${config.nord6}";
   background = "#D0${config.nord0}";
   # Workspace colours
-  ws_focused = "#${config.nord2}";
-  ws_underline = "#${config.nord13}";
+  ws_focused = "#${config.nord7}";
+  ws_unfocused = "#${config.nord3}";
   ws_urgent = "#${config.nord11}";
   # Pulseaudio colours
   muted_colour = "#${config.nord3}";
@@ -92,12 +92,12 @@ in
           background = "${background}";
           foreground = "${foreground}";
 
-          overline-size = "5";
+          overline-size = "3";
           underline-size = "3";
           # border-size = "10";
           # border-bottom-size = "0";
 
-          padding-left = "2";
+          padding-left = "3";
           padding-right = "2";
 
           module-margin = "2";
@@ -105,12 +105,13 @@ in
           # Prefer Bitstream as it has minimal unicode coverage and so Font awesome and Noto can display icons
           # Add DejaVu (Nerd font) as fallback
           font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=15;3";
-          font-1 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Regular:size=15;3";
-          font-2 = "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Solid:size=15;3";
-          font-3 = "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:style=Solid:size=15;3";
+          font-1 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=15;3";
+          font-2 = "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:size=15;3";
+          font-3 = "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:size=15;3";
           font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
           font-5 = "DejaVu Sans:style=Roman:pixelsize=15;3";
-          font-6 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=15;5";
+          font-6 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=19;4";
+          font-7 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=12;2";
 
           modules-left = "i3";
           # modules-center = "player-mpris-tail";
@@ -253,21 +254,24 @@ in
           ws-icon-default = "";
 
           label-focused = "%icon%";
-          label-focused-background = "${ws_focused}";
-          label-focused-underline = "${ws_underline}";
-          label-focused-overline = "${background}";
+          label-focused-foreground = "${ws_focused}";
           label-focused-padding = "2";
           label-focused-font = "7";
 
-          label-unfocused = "%icon%";
+          label-unfocused = "\${self.label-focused}";
+          label-unfocused-foreground = "${ws_unfocused}";
           label-unfocused-padding = "\${self.label-focused-padding}";
+          label-unfocused-font = "8";
 
-          label-visible = "%icon%";
+          label-visible = "\${self.label-focused}";
+          label-visible-foreground = "${ws_unfocused}";
           label-visible-padding = "\${self.label-focused-padding}";
+          label-visible-font = "\${self.label-unfocused-font}";
 
-          label-urgent = "%icon%";
-          label-urgent-background = "${ws_urgent}";
+          label-urgent = "\${self.label-focused}";
+          label-urgent-foreground = "${ws_urgent}";
           label-urgent-padding = "\${self.label-focused-padding}";
+          label-urgent-font = "\${self.label-focused-font}";
         };
         "module/pulseaudio" = {
           type = "internal/pulseaudio";
