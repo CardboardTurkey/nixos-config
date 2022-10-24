@@ -115,17 +115,16 @@ in
 
           modules-left = "i3";
           # modules-center = "player-mpris-tail";
-          modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirty-git date";
+          modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirtygit date";
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
 
           enable-ipc = true;
         };
-        "module/dirty-git" = {
+        "module/dirtygit" = {
           type = "custom/script";
           exec = "dg -n";
-          tail = "true";
           interval = 2;
           format-prefix-foreground = "${dirtygit-colour}";
           format-prefix = "⚠️";
