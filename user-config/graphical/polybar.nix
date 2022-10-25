@@ -33,6 +33,14 @@ let
   battery_colour = "#${config.nord7}";
   battery_warning = "#${config.nord11}";
 
+  # TODO: handle more than 2 monitors
+  barup = pkgs.writeShellScriptBin "barup" ''
+    polybar-msg cmd quit
+    polybar main &disown
+    readarray -t monitors < <(polybar --list-monitors | cut -d':' -f1)
+    [ ''${#monitors[@]} -gt 1 ] && MONITOR=''${monitors[1]} polybar aux &disown
+  '';
+
 in
 {
 
@@ -48,11 +56,18 @@ in
 
   home-manager.users.kiran = { pkgs, ... }: {
 
-    xsession.windowManager.i3 = {
-      config = {
-        startup = [
-          { command = "polybar-msg cmd quit; polybar the_bar&disown"; always = true; }
-        ];
+    # xsession.windowManager.i3 = {
+    #   config = {
+    #     startup = [
+    #       { command = "${barup}/bin/barup"; always = true; }
+    #     ];
+    #   };
+    # };
+
+    programs.autorandr = {
+      enable = true;
+      hooks.postswitch = {
+        "polybar" = "${barup}/bin/barup";
       };
     };
 
@@ -72,15 +87,12 @@ in
         pulseSupport = true;
       };
       # Doesnt seem to be doing anything:
-      script = ''
-        polybar-msg cmd quit
-        polybar the_bar &
-      '';
+      script = "${barup}/bin/barup";
       settings = {
         "settings" = {
           screenchange-reload = "true";
         };
-        "bar/the_bar" = {
+        "bar/base" = {
           width = "1898";
           height = "37";
           offset-x = "11";
@@ -94,8 +106,6 @@ in
 
           overline-size = "3";
           underline-size = "3";
-          # border-size = "10";
-          # border-bottom-size = "0";
 
           padding-left = "3";
           padding-right = "2";
@@ -113,14 +123,22 @@ in
           font-6 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=19;4";
           font-7 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=12;2";
 
-          modules-left = "i3";
-          # modules-center = "player-mpris-tail";
-          modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirtygit date";
-
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
 
           enable-ipc = true;
+        };
+        "bar/main" = {
+          "inherit" = "bar/base";
+          modules-left = "i3";
+          # modules-center = "player-mpris-tail";
+          modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirtygit date";
+        };
+        "bar/aux" = {
+          monitor = "\${env:MONITOR:}";
+          "inherit" = "bar/base";
+          modules-left = "battery";
+          # modules-left = "thing-of-the-day";
         };
         "module/dirtygit" = {
           type = "custom/script";
@@ -347,3 +365,16 @@ in
     };
   };
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
