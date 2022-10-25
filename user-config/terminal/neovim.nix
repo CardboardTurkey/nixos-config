@@ -1,6 +1,7 @@
-_:
+{pkgs, ...}:
 
 {
+  environment.systemPackages = [ pkgs.xclip ];
   home-manager.users.kiran = { pkgs, ... }: {
     programs.neovim = {
       enable = true;
@@ -30,6 +31,21 @@ _:
         vnoremap l k
         vnoremap ; l
         vnoremap h ;
+
+        " Make space to leader
+        noremap <Space> <Nop>
+        map <Space> <Leader>
+
+        " Copy to clipboard
+        vnoremap  <leader>y  "+y
+        nnoremap  <leader>Y  "+yg_
+        nnoremap  <leader>y  "+y
+
+        " Paste from clipboard
+        nnoremap <leader>p "+p
+        nnoremap <leader>P "+P
+        vnoremap <leader>p "+p
+        vnoremap <leader>P "+P
       '';
     };
   };
