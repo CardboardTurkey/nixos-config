@@ -21,5 +21,6 @@
     gimp
     ffmpeg
     local.rustup
+    local.pyup
   ];
 }

@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+set -e
+
+[ "$#" -ne 1 ] && { echo "Please provide (and only provide) a target directory" && exit 1; }
+mkdir -p $1
+cp "@out@/share/gitlab-ci.yml" "$1/gitlab-ci.yml"
+cp "@out@/share/shell.nix" "$1/shell.nix"
+echo "use nix" > "$1/.envrc"
+direnv allow $1

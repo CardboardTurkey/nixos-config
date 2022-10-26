@@ -1,0 +1,85 @@
+stages:
+  - static-analysis
+  - unit-tests
+  - functional-tests
+
+before_script:
+  - python --version  # For debugging
+  - pip install virtualenv
+  - virtualenv venv
+  - source venv/bin/activate
+  - pip install --upgrade pip
+  - pip install '.[test]'
+
+.lint_template: &lint_definition
+  stage: static-analysis
+  script:
+    - echo lint tests go here
+
+.unit_template: &unit_definition
+  stage: unit-tests
+  script:
+    - echo unit tests go here
+
+.functional_template: &functional_definition
+  stage: functional-tests
+  script:
+    - echo functional tests go here
+
+lint:latest:
+  image: python:latest  
+  <<: *lint_definition
+lint:3.6:
+  image: python:3.6
+  <<: *lint_definition
+lint:3.7:
+  image: python:3.7
+  <<: *lint_definition
+lint:3.8:
+  image: python:3.8
+  <<: *lint_definition
+lint:3.9:
+  image: python:3.9
+  <<: *lint_definition
+
+unit:latest:
+  image: python:latest
+  needs: [ "lint:latest" ]  
+  <<: *unit_definition
+unit:3.6:
+  image: python:3.6
+  needs: [ "lint:3.6" ]
+  <<: *unit_definition
+unit:3.7:
+  image: python:3.7
+  needs: [ "lint:3.7" ]
+  <<: *unit_definition
+unit:3.8:
+  image: python:3.8
+  needs: [ "lint:3.8" ]
+  <<: *unit_definition
+unit:3.9:
+  image: python:3.9
+  needs: [ "lint:3.9" ]
+  <<: *unit_definition
+
+functional:latest:
+  image: python:latest
+  needs: [ "unit:latest" ]
+  <<: *functional_definition
+functional:3.6:
+  image: python:3.6
+  needs: [ "unit:3.6" ]
+  <<: *functional_definition
+functional:3.7:
+  image: python:3.7
+  needs: [ "unit:3.7" ]
+  <<: *functional_definition
+functional:3.8:
+  image: python:3.8
+  needs: [ "unit:3.8" ]
+  <<: *functional_definition
+functional:3.9:
+  image: python:3.9
+  needs: [ "unit:3.9" ]
+  <<: *functional_definition
