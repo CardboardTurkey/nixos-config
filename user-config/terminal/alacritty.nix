@@ -21,8 +21,8 @@
         };
         window = {
           opacity = 0.9;
-          padding.x = 5;
-          padding.y = 5;
+          padding.x = 10;
+          padding.y = 10;
           dynamic_padding = true;
         };
         env.WINIT_X11_SCALE_FACTOR = "1";
