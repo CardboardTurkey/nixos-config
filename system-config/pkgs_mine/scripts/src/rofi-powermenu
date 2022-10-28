@@ -2,8 +2,8 @@
 
 
 if [ -z "$@" ]; then
-    echo -en "Shutdown\0icon\x1fxfsm-shutdown\n"
-    echo -en "Logout\0icon\x1fxfsm-logout\n"
+    echo -en "Shutdown\0icon\x1fsystem-shutdown\n"
+    echo -en "Logout\0icon\x1fsystem-logout\n"
     echo -en "Suspend\0icon\x1fxfsm-suspend\n"
     echo -en "Reboot\0icon\x1fxfsm-reboot\n"
 else
@@ -13,7 +13,7 @@ else
         i3-msg exit
     elif [ "$1" = "Reboot" ]; then
         reboot
-    elif [ "$1" = "Hibernate" ]; then
+    elif [ "$1" = "Suspend" ]; then
         systemctl suspend
     fi
 fi
