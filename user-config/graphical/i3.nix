@@ -13,6 +13,7 @@ let
   ws-mail = "6";
   ws-irc = "7";
   ws-stm = "8";
+  ws-gimp = "9";
 
 in
 
@@ -58,6 +59,7 @@ in
           "${ws-mail}" = [{ class = "thunderbird"; }];
           "${ws-irc}" = [{ class = "quassel"; } { class = "Signal"; }];
           "${ws-stm}" = [{ class = "Steam"; }];
+          "${ws-gimp}" = [{ class = "Gimp"; }];
         };
         gaps = {
           top = 48;

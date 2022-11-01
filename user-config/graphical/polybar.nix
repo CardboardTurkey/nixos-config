@@ -56,14 +56,6 @@ in
 
   home-manager.users.kiran = { pkgs, ... }: {
 
-    # xsession.windowManager.i3 = {
-    #   config = {
-    #     startup = [
-    #       { command = "${barup}/bin/barup"; always = true; }
-    #     ];
-    #   };
-    # };
-
     programs.autorandr = {
       enable = true;
       hooks.postswitch = {
@@ -267,7 +259,8 @@ in
           ws-icon-2 = "5;";
           ws-icon-5 = "6;";
           ws-icon-6 = "7;";
-          ws-icon-7 = "8;";
+          ws-icon-7 = "8;";
+          ws-icon-8 = "9;";
           ws-icon-default = "";
 
           label-focused = "%icon%";
