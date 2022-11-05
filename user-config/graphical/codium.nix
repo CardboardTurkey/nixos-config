@@ -42,6 +42,7 @@ in
           "editor.tabSize" = 2;
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
         };
+        "rust-analyzer.checkOnSave.command" = "clippy";
       };
     };
   };
