@@ -6,9 +6,10 @@ rustPlatform.buildRustPackage rec {
 
   src = fetchTarball "https://gitlab.com/CardboardTurkey/dirtygit/-/archive/master/dirtygit-master.tar.gz";
 
-  buildInputs = [ pkgs.git ];
+  nativeBuildInputs = [ pkgs.pkg-config ];
+  buildInputs = [ pkgs.openssl pkgs.git ];
 
-  cargoSha256 = "sha256-hq7Jb0hsNTXjoc/s7QFlUPTog2gMmYpRjAo1c/RLBGY=";
+  cargoSha256 = "sha256-jRVK+WE9kCOtU1w3TZK0OSDjIZGHWA3Bo5XFbXf+3iM=";
 
   meta = with lib; {
     description = "Track which local git repos have changes that need pushing";
@@ -16,4 +17,5 @@ rustPlatform.buildRustPackage rec {
     license = licenses.unlicense;
     maintainers = [ maintainers.tailhook ];
   };
+
 }
