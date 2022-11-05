@@ -21,7 +21,7 @@
     wantedBy = [ "default.target" ];
     path = [ pkgs.docker-compose pkgs.docker ];
     requires = [ "docker.service" ];
-    partOf = "renew-cert.service";
+    partOf = [ "renew-cert.service" ];
     # Would be nice if this worked but I guess the var is defined at user level
     # environment =  { DOCKER_HOST = "unix://${builtins.getEnv "XDG_RUNTIME_DIR"}/docker.sock"; };
     serviceConfig = {
