@@ -12,6 +12,7 @@ let
     streetsidesoftware.code-spell-checker
     vadimcn.vscode-lldb
     arrterian.nix-env-selector
+    llvm-vs-code-extensions.vscode-clangd
   ];
 
 in
