@@ -13,6 +13,7 @@ let
     vadimcn.vscode-lldb
     arrterian.nix-env-selector
     llvm-vs-code-extensions.vscode-clangd
+    editorconfig.editorconfig
   ];
 
 in
