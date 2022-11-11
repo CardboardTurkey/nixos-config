@@ -67,7 +67,7 @@
             eDP-1 = {
               enable = true;
               crtc = 0;
-              position = "3840x1080";
+              position = "1920x0";
               mode = "1920x1080";
               rate = "60.00";
             };
