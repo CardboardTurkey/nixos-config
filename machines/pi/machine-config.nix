@@ -19,6 +19,7 @@ in
       ../../system-config/location.nix
       ../../system-config/openssh.nix
       ../../system-config/docker.nix
+      ../../system-config/webserver.nix
 
       ../../user-config/terminal/git.nix
       ../../user-config/terminal/lsd.nix
@@ -29,8 +30,6 @@ in
       ../../user-config/terminal/keychain.nix
       ../../user-config/terminal/nix_index.nix
       ../../user-config/terminal/direnv.nix
-      
-      ../../projects/website/server.nix
     ];
 
   home-manager.users.kiran = _: {

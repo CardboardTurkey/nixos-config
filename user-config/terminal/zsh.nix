@@ -1,4 +1,4 @@
-_:
+{config, ...}:
 
 {
   # For zsh compeletion (apparently)
@@ -15,7 +15,13 @@ _:
       autocd = true;
       history.save = 10000000;
       history.size = 1000000000;
-      dirHashes.nix = "$HOME/gitlab/cardboardturkey/nixos-config";
+      dirHashes = {
+        bft = "$HOME/gitlab/kiran-rust-course/project";
+        flash = "$HOME/gitlab/cardboardturkey/flashcard";
+        nix = "$HOME/gitlab/cardboardturkey/nixos-config";
+        pdg = "$HOME/gitlab/cardboardturkey/pdgid";
+        web = "${config.web_dir}";
+      };
       completionInit = ''
         zstyle ':completion:*' menu select
         autoload -Uz compinit

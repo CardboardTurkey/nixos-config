@@ -2,16 +2,15 @@
 
 {
 
-  imports = 
+  imports =
     [
-      ./src.nix
       ../../system-config/docker.nix
     ];
 
   # https://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-on-linux
   # https://www.staldal.nu/tech/2007/10/31/why-can-only-root-listen-to-ports-below-1024/
   boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
-  
+
   networking.firewall.enable = false;
 
   virtualisation.docker.logDriver = "journald";
@@ -22,7 +21,7 @@
     wantedBy = [ "default.target" ];
     path = [ pkgs.docker-compose pkgs.docker ];
     requires = [ "docker.service" ];
-    partOf = "renew-cert.service"
+    partOf = "renew-cert.service";
     # Would be nice if this worked but I guess the var is defined at user level
     # environment =  { DOCKER_HOST = "unix://${builtins.getEnv "XDG_RUNTIME_DIR"}/docker.sock"; };
     serviceConfig = {
