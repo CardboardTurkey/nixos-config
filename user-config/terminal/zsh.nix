@@ -17,8 +17,10 @@
       history.size = 1000000000;
       dirHashes = {
         bft = "$HOME/gitlab/kiran-rust-course/project";
+        dg = "$HOME/gitlab/cardboardturkey/dirtygit";
         flash = "$HOME/gitlab/cardboardturkey/flashcard";
         nix = "$HOME/gitlab/cardboardturkey/nixos-config";
+        thing = "$HOME/gitlab/cardboardturkey/thing-of-the-day";
         pdg = "$HOME/gitlab/cardboardturkey/pdgid";
         web = "${config.web_dir}";
       };
