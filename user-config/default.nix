@@ -19,6 +19,7 @@ in
       ./graphical/rofi.nix
       ./graphical/dunst.nix
       ./graphical/wallpaper.nix
+      ./graphical/cursor.nix
 
       ./terminal/git.nix
       ./terminal/lsd.nix
