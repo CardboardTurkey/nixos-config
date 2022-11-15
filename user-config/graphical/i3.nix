@@ -39,6 +39,7 @@ in
           "${mod}+Control+space" = "focus mode_toggle";
           "Mod5+Left" = "workspace prev";
           "Mod5+Right" = "workspace next";
+          "${mod}+G" = "sticky toggle";
           "${mod}+${alt}+Down" = "move workspace to output down";
           "${mod}+${alt}+Up" = "move workspace to output up";
           "${mod}+${alt}+Left" = "move workspace to output left";
