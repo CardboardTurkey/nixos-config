@@ -18,7 +18,6 @@ _:
       ];
       shadowOpacity = .30;
       backend = "glx";
-      experimentalBackends = true;
       settings = {
         blur = {
           method = "dual_kawase";
