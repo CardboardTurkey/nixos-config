@@ -51,7 +51,7 @@ in
     ttf_bitstream_vera
   ];
 
-  environment.systemPackages = [ pkgs.local.dirtygit ];
+  environment.systemPackages = [ pkgs.local.dirtygit pkgs.local.thing-of-the-day ];
   services.dirtygit.enable = true;
 
   home-manager.users.kiran = { pkgs, ... }: {
