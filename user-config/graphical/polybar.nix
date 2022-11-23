@@ -144,6 +144,13 @@ in
 
           label-padding-right = "5pt";
         };
+        "module/totd" = {
+          type = "custom/script";
+          exec = "totd 2";
+          tail = "true";
+          label-padding-right = "5pt";
+        };
+
         "module/cpu" = {
           type = "internal/cpu";
           interval = "2";

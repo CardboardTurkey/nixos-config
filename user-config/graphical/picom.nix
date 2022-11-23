@@ -32,6 +32,9 @@ _:
         shadow-offset-x = -10;
         shadow-offset-y = -10;
         corner-radius = 15;
+        rounded-corners-exclude = [
+          "class_g = 'i3-frame'"
+        ];
         blur-background-exclude = [
           "window_type = 'dock'"
         ];
