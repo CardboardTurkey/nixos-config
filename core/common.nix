@@ -16,6 +16,21 @@ with lib;
       type = with types; uniq str;
       description = "Modifier name to go in i3 config";
     };
+    font_size_small = mkOption {
+      default = "12";
+      type = with types; uniq str;
+      description = "Small font size";
+    };
+    font_size_medium = mkOption {
+      default = "15";
+      type = with types; uniq str;
+      description = "Medium font size";
+    };
+    font_size_large = mkOption {
+      default = "17";
+      type = with types; uniq str;
+      description = "Large font size";
+    };
     nord0 = mkOption {
       default = "2e3440";
       type = with types; uniq str;

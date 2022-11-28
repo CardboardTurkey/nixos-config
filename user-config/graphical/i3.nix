@@ -33,7 +33,7 @@ in
         fonts = {
           names = [ "DejaVuSansMono Nerd Font" ];
           style = "Bold Semi-Condensed";
-          size = 11.0;
+          size = builtins.fromJSON "${config.font_size_small}.0";
         };
         keybindings = lib.mkOptionDefault {
           "${mod}+Control+space" = "focus mode_toggle";

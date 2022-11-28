@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 let
 
@@ -32,10 +32,10 @@ in
       userSettings = {
         "workbench.colorTheme" = "Nord";
         "files.autoSave" = "afterDelay";
-        "editor.fontSize" = 20;
+        "editor.fontSize" = "${config.font_size_medium}";
         "editor.fontFamily" = "'Hasklug Nerd Font'";
         "editor.formatOnSave" = true;
-        "editor.inlayHints.fontSize" = 15;
+        "editor.inlayHints.fontSize" = "${config.font_size_small}";
         "editor.fontLigatures" = true;
         "update.mode" = "none";
         "debug.allowBreakpointsEverywhere" = true;

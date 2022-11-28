@@ -1,4 +1,4 @@
-_:
+{config, ...}:
 
 {
   # Needed by gtk?
@@ -13,7 +13,7 @@ _:
         name = "Zafiro-icons-Dark";
       };
       font = {
-        name = "DejaVu Sans 12";
+        name = "DejaVu Sans ${config.font_size_small}";
       };
       theme = {
         name = "Nordic";

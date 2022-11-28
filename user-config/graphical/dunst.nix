@@ -130,7 +130,7 @@
       enable = true;
       settings = {
         global = {
-          font = "DejaVuSans Nerd Font 19px";
+          font = "DejaVuSans Nerd Font ${config.font_size_large}px";
           follow = "keyboard";
           frame_width = 0;
           separator_color = "#${config.nord5}";
