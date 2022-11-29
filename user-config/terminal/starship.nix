@@ -2,10 +2,13 @@ _:
 
 {
   home-manager.users.kiran = { pkgs, ... }: {
+    programs.nushell.enable = true;
+    programs.bash.enable = true;
     programs.starship = {
       enable = true;
       enableZshIntegration = true;
       enableBashIntegration = true;
+      enableNushellIntegration = true;
       settings = {
         character = {
           success_symbol = "[](bold green)";
