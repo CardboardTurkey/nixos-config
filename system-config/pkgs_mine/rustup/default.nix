@@ -17,7 +17,7 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/share $out/bin
 
-    mv main.rs cli.rs dependencies.txt shell.nix gitlab-ci.yml $out/share
+    mv main.rs lib.rs cli.rs bin_deps.txt lib_deps.txt shell.nix gitlab-ci.yml $out/share
 
     cargo=${pkgs.cargo}/bin/cargo substituteAllInPlace rustup
     chmod +x rustup
