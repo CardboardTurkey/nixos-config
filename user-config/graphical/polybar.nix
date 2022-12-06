@@ -26,7 +26,8 @@ let
   xkeyboard_colour = "#${config.nord12}";
   wired_colour = "#${config.nord13}";
   wireless_colour = "#${config.nord13}";
-  dirtygit-colour = "#${config.nord11}";
+  dirtygit_colour = "#${config.nord11}";
+  totd_colour = "#${config.nord4}";
   cpu_colour = "#${config.nord10}";
   memory_colour = "#${config.nord9}";
   filesystem_colour = "#${config.nord8}";
@@ -89,7 +90,6 @@ in
           height = "37";
           offset-x = "11";
           offset-y = "11";
-          fixed-center = false;
           override-redirect = true;
           wm-restack = "i3";
 
@@ -125,30 +125,32 @@ in
           modules-left = "i3";
           # modules-center = "player-mpris-tail";
           modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirtygit date";
+          fixed-center = false;
         };
         "bar/aux" = {
           monitor = "\${env:MONITOR:}";
           "inherit" = "bar/base";
-          modules-left = "battery";
-          # modules-left = "thing-of-the-day";
+          modules-left = "i3";
+          modules-center = "totd";
+          fixed-center = true;
         };
         "module/dirtygit" = {
           type = "custom/script";
           exec = "dg -n";
           interval = 2;
-          format-prefix-foreground = "${dirtygit-colour}";
+          format-prefix-foreground = "${dirtygit_colour}";
           format-prefix = "⚠️";
           format-prefix-font = "5";
           format-prefix-padding-right = "5pt";
-          format-underline = "${dirtygit-colour}";
+          format-underline = "${dirtygit_colour}";
 
           label-padding-right = "5pt";
         };
         "module/totd" = {
           type = "custom/script";
-          exec = "totd 2";
+          exec = "totd -d 2";
           tail = "true";
-          label-padding-right = "5pt";
+          format-foreground = "${totd_colour}";
         };
 
         "module/cpu" = {

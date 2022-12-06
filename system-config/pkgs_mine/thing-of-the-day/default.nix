@@ -1,15 +1,23 @@
-{ pkgs, lib, rustPlatform, ... }:
+{ pkgs, lib, rustPlatform, fetchFromGitLab, ... }:
 rustPlatform.buildRustPackage rec {
   pname = "thing-of-the-day";
   name = "thing-of-the-day";
-  # version = "0.1.0";
+  version = "0.1.0";
 
-  src = fetchTarball "https://gitlab.com/CardboardTurkey/thing-of-the-day/-/archive/master/thing-of-the-day-master.tar.gz";
+  src = fetchFromGitLab {
+    owner = "CardboardTurkey";
+    repo = "thing-of-the-day";
+    rev = version;
+    # sha256 = lib.fakeSha256;
+    sha256 = "sha256-iG+1NELUVkn0O8Uh2Z8mQ0DzwHF0EA8wJKk/kVQFzw4=";
+  };
+  # src = fetchTarball "https://gitlab.com/CardboardTurkey/thing-of-the-day/-/archive/master/thing-of-the-day-master.tar.gz";
 
   nativeBuildInputs = [ pkgs.pkg-config ];
-  buildInputs = [ pkgs.openssl pkgs.git ];
+  buildInputs = [ pkgs.openssl ];
 
-  cargoSha256 = "sha256-J5ogQOixHCHox4Jdhh7j1CWWmCG9ELh1Cll716jXz40=";
+  # cargoSha256 = lib.fakeSha256;
+  cargoSha256 = "sha256-32ww+SN23dxBHrjo/PKC4MhoyID9hLH9kZMjNU353Vs=";
 
   meta = with lib; {
     description = "Display word-of-the-day and news headline at regular intervals";
