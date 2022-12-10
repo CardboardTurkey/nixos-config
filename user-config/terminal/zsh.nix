@@ -16,6 +16,7 @@
       history.save = 10000000;
       history.size = 1000000000;
       dirHashes = {
+        aoc = "$HOME/gitlab/cardboardturkey/aoc22";
         bft = "$HOME/gitlab/kiran-rust-course/project";
         dg = "$HOME/gitlab/cardboardturkey/dirtygit";
         flash = "$HOME/gitlab/cardboardturkey/flashcard";
