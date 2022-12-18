@@ -4,7 +4,7 @@
 
   imports =
     [
-      ../../system-config/docker.nix
+      ./docker.nix
     ];
 
   # https://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-on-linux
