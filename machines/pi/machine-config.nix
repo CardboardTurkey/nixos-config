@@ -20,6 +20,7 @@ in
       ../../system-config/openssh.nix
       ../../system-config/docker.nix
       ../../system-config/webserver.nix
+      ../../system-config/gnupg.nix
 
       ../../user-config/terminal/git.nix
       ../../user-config/terminal/lsd.nix
@@ -31,6 +32,10 @@ in
       ../../user-config/terminal/nix_index.nix
       ../../user-config/terminal/direnv.nix
     ];
+
+  environment.systemPackages = with pkgs; [
+    gnupg
+  ];
 
   home-manager.users.kiran = _: {
     home.stateVersion = "22.11";
