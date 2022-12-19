@@ -5,7 +5,7 @@
   imports =
     [
       ./sops.nix
-      ./docker.nix
+      ../../system-config/docker.nix
     ];
 
   # https://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-on-linux
@@ -47,6 +47,47 @@
     enable = true;
     wantedBy = [ "timers.target" ];
     timerConfig.OnCalendar = [ "monthly" ];
+  };
+
+  sops.secrets."domains/ostrolenk/username" = {};
+  sops.secrets."domains/ostrolenk/password" = {};
+  sops.secrets."domains/kiran/username" = {};
+  sops.secrets."domains/kiran/password" = {};
+  sops.secrets."domains/www/username" = {};
+  sops.secrets."domains/www/password" = {};
+
+  systemd.services.dyndns = {
+    enable = true;
+    path = [ pkgs.curl ];
+    script = ''
+      function update_ip {
+        # Resolve current public IP
+        IP=$( curl -s -k https://domains.google.com/checkip )
+        # Update Google DNS Record
+        URL="https://$1:$2@domains.google.com/nic/update?hostname=$3&myip=''${IP}"
+        curl -s $URL
+      }
+  
+      USERNAME=$(cat ${ toString config.sops.secrets."domains/ostrolenk/username".path })
+      PASSWORD=$(cat ${ toString config.sops.secrets."domains/ostrolenk/password".path })
+      HOSTNAME="ostrolenk.co.uk"
+      update_ip $USERNAME $PASSWORD $HOSTNAME
+  
+      USERNAME=$(cat ${ toString config.sops.secrets."domains/kiran/username".path })
+      PASSWORD=$(cat ${ toString config.sops.secrets."domains/kiran/password".path })
+      HOSTNAME="kiran.ostrolenk.co.uk"
+      update_ip $USERNAME $PASSWORD $HOSTNAME
+
+      USERNAME=$(cat ${ toString config.sops.secrets."domains/www/username".path })
+      PASSWORD=$(cat ${ toString config.sops.secrets."domains/www/password".path })
+      HOSTNAME="www.ostrolenk.co.uk"
+      update_ip $USERNAME $PASSWORD $HOSTNAME
+    '';
+  };
+  systemd.timers.dyndns = {
+    enable = true;
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = [ "*-*-* *:*:00" ];
   };
 
 }

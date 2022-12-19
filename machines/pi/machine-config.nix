@@ -19,7 +19,6 @@ in
       ../../system-config/location.nix
       ../../system-config/openssh.nix
       ../../system-config/docker.nix
-      ../../system-config/webserver.nix
       ../../system-config/gnupg.nix
 
       ../../user-config/terminal/git.nix
@@ -31,6 +30,7 @@ in
       ../../user-config/terminal/keychain.nix
       ../../user-config/terminal/nix_index.nix
       ../../user-config/terminal/direnv.nix
+      ../../user-config/other/webserver.nix
     ];
 
   environment.systemPackages = with pkgs; [
