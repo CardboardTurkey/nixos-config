@@ -4,6 +4,7 @@
 
   imports =
     [
+      ./sops.nix
       ./docker.nix
     ];
 
@@ -47,4 +48,5 @@
     wantedBy = [ "timers.target" ];
     timerConfig.OnCalendar = [ "monthly" ];
   };
+
 }
