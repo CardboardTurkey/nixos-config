@@ -148,7 +148,7 @@ in
         };
         "module/totd" = {
           type = "custom/script";
-          exec = "totd -d 2";
+          exec = "totd -d 0.75";
           tail = "true";
           format-foreground = "${totd_colour}";
         };
