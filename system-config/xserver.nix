@@ -3,7 +3,6 @@
   services.xserver = {
     enable = true;
     windowManager.i3.enable = true;
-    windowManager.i3.package = pkgs.i3-gaps;
     displayManager = {
       defaultSession = "none+i3";
       lightdm = {
