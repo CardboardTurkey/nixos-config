@@ -24,5 +24,6 @@
       ./logind.nix
       ./printing.nix
       ./file_manager.nix
+      ./fwupd.nix
     ];
 }
