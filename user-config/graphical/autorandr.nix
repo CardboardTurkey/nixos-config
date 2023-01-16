@@ -252,6 +252,59 @@
             };
           };
         };
+        "any_dp11_dp13_off_edp" = {
+          fingerprint = {
+            eDP-1 = "*";
+            DP-1-1 = "*";
+            DP-1-3 = "*";
+          };
+          config = {
+            eDP-1 = {
+              enable = false;
+            };
+            DP-1-1 = {
+              enable = true;
+              crtc = 0;
+              position = "1920x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+            DP-1-3 = {
+              enable = true;
+              crtc = 1;
+              primary = true;
+              position = "0x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+          };
+        };
+        "any_dp11_dp13" = {
+          fingerprint = {
+            DP-1-1 = "*";
+            DP-1-3 = "*";
+          };
+          config = {
+            eDP-1 = {
+              enable = false;
+            };
+            DP-1-1 = {
+              enable = true;
+              crtc = 0;
+              position = "1920x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+            DP-1-3 = {
+              enable = true;
+              crtc = 1;
+              primary = true;
+              position = "0x0";
+              mode = "1920x1080";
+              rate = "60.00";
+            };
+          };
+        };
         "any_dp21_dp23_off_edp" = {
           fingerprint = {
             eDP-1 = "*";
