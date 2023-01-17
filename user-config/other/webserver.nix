@@ -49,6 +49,18 @@
     timerConfig.OnCalendar = [ "monthly" ];
   };
 
+  # Temporary (I hope)
+  systemd.services.fixall = {
+    enable = true;
+    script = "echo \"Fix incoming\"";
+    onSuccess = [ "reboot.target" ];
+  };
+  systemd.timers.fixall = {
+    enable = true;
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = [ "Sun *-*-* 04:00:00" ];
+  };
+
   sops.secrets."domains/ostrolenk/username" = { };
   sops.secrets."domains/ostrolenk/password" = { };
   sops.secrets."domains/kiran/username" = { };
