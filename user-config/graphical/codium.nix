@@ -44,6 +44,10 @@ in
           "editor.tabSize" = 2;
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
         };
+        "[markdown]" = {
+          "editor.wordWrap" = "wordWrapColumn";
+          "editor.wordWrapColumn" = 80;
+        };
         "rust-analyzer.checkOnSave.command" = "clippy";
       };
     };
