@@ -1,7 +1,5 @@
-_:
-
 {
-  home-manager.users.kiran = { pkgs, ... }: {
+  home-manager.users.kiran = {
     programs.nushell.enable = true;
     programs.bash.enable = true;
     programs.starship = {
