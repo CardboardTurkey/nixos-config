@@ -56,6 +56,9 @@ in
   };
   boot.loader.grub.enable = false;
 
+  hardware.enableRedistributableFirmware = false;
+  hardware.firmware = [ pkgs.firmwareLinuxNonfree ];
+
   # Preserve space by disabling documentation and enaudo ling
   # automatic garbage collection
   documentation.nixos.enable = false;
