@@ -5,7 +5,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -14,19 +15,23 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/f8561378-8bcf-471a-81ac-6033c76041b4";
+    {
+      device = "/dev/disk/by-uuid/f8561378-8bcf-471a-81ac-6033c76041b4";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/0649-0BD3";
+    {
+      device = "/dev/disk/by-uuid/0649-0BD3";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/12321983-9db8-45d4-a26f-eb8f3015c365"; }
-    ];
+    [{
+      device = "/dev/disk/by-uuid/12321983-9db8-45d4-a26f-eb8f3015c365";
+    }];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+
 }
