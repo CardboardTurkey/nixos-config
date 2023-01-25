@@ -7,7 +7,7 @@ let
     ${pkgs.betterlockscreen}/bin/betterlockscreen -l dim
     dunstctl set-paused false
   '';
-  lock_refresh = "pgrep betterlockscreen || ${pkgs.betterlockscreen}/bin/betterlockscreen -u ~/.background-image";
+  lock_refresh = "pgrep betterlockscreen || ${pkgs.betterlockscreen}/bin/betterlockscreen -u ~/.background-image &";
 
 in
 
