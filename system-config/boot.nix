@@ -9,4 +9,7 @@ _:
   # supports in initrd are not yet supported by the intrd generated
   # with this option.
   boot.initrd.systemd.enable = true;
+
+  # Enable binfmt emulation of riscv.
+  boot.binfmt.emulatedSystems = [ "riscv64-linux" ];
 }
