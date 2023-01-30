@@ -16,6 +16,7 @@ let
     xaver.clang-format
     eamodio.gitlens
     zhwu95.riscv
+    davidanson.vscode-markdownlint
   ];
 
 in
