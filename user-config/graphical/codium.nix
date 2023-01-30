@@ -15,6 +15,7 @@ let
     llvm-vs-code-extensions.vscode-clangd
     xaver.clang-format
     eamodio.gitlens
+    zhwu95.riscv
   ];
 
 in
