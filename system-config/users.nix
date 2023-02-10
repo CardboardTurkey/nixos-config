@@ -6,7 +6,7 @@
     isNormalUser = true;
     home = "/home/kiran";
     description = "Kiran Ostrolenk";
-    shell = pkgs.zsh;
+    shell = pkgs.nushell;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
 }

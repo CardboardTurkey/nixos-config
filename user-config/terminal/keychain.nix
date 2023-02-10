@@ -5,6 +5,7 @@ _:
     programs.keychain = {
       enable = true;
       enableZshIntegration = true;
+      enableNushellIntegration = true;
       keys = [ "id_ed25519" ];
     };
   };

@@ -1,10 +1,11 @@
 { lib, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/CardboardTurkey/home-manager/archive/refs/heads/nushell-keychain.tar.gz";
 in
 
 {
+  nix.extraOptions = "tarball-ttl = 0";
   imports = 
     [
       (import "${home-manager}/nixos")
@@ -27,6 +28,7 @@ in
       ./terminal/alacritty.nix
       ./terminal/tmux.nix
       ./terminal/zsh.nix
+      ./terminal/nushell.nix
       ./terminal/neovim.nix
       ./terminal/bat.nix
       ./terminal/direnv.nix

@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 # if no session is started, start a new session
 test -z ${TMUX} && tmux new -s  -d && tmux new -s 
 
