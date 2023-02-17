@@ -1,7 +1,7 @@
 { lib, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/CardboardTurkey/home-manager/archive/refs/heads/nushell-keychain.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/refs/heads/master.tar.gz";
 in
 
 {
