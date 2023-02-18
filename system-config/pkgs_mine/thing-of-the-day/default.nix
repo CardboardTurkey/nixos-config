@@ -8,16 +8,13 @@ rustPlatform.buildRustPackage rec {
     owner = "CardboardTurkey";
     repo = "thing-of-the-day";
     rev = version;
-    # sha256 = lib.fakeSha256;
-    sha256 = "sha256-iG+1NELUVkn0O8Uh2Z8mQ0DzwHF0EA8wJKk/kVQFzw4=";
+    sha256 ="sha256-41QnxFwhcvVFdO3I47RJBZnvK0Ag8OlRpBAZq8aZxTc=";
   };
-  # src = fetchTarball "https://gitlab.com/CardboardTurkey/thing-of-the-day/-/archive/master/thing-of-the-day-master.tar.gz";
 
   nativeBuildInputs = [ pkgs.pkg-config ];
   buildInputs = [ pkgs.openssl ];
 
-  # cargoSha256 = lib.fakeSha256;
-  cargoSha256 = "sha256-32ww+SN23dxBHrjo/PKC4MhoyID9hLH9kZMjNU353Vs=";
+  cargoSha256 ="sha256-12sUQ98PUOq0va3wikErcHsJno0D8p/2Sy2+wScywkE=";
 
   meta = with lib; {
     description = "Display word-of-the-day and news headline at regular intervals";
