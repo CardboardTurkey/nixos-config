@@ -7,4 +7,5 @@ with pkgs; {
   rustup = callPackage ./rustup { inherit pkgs; };
   pyup = callPackage ./pyup { inherit pkgs; };
   nordzy-cursor-theme = callPackage ./nordzy-cursor-theme { inherit pkgs; };
+  nu_scripts = callPackage ./nu_scripts { inherit pkgs; };
 }

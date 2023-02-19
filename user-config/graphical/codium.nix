@@ -17,6 +17,7 @@ let
     eamodio.gitlens
     zhwu95.riscv
     davidanson.vscode-markdownlint
+    thenuprojectcontributors.vscode-nushell-lang
   ];
 
 in
