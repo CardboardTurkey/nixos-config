@@ -12,17 +12,22 @@ let
     streetsidesoftware.code-spell-checker
     vadimcn.vscode-lldb
     arrterian.nix-env-selector
-    llvm-vs-code-extensions.vscode-clangd
     xaver.clang-format
     eamodio.gitlens
     zhwu95.riscv
     davidanson.vscode-markdownlint
     thenuprojectcontributors.vscode-nushell-lang
+    ms-vscode.cpptools
+    ms-vscode.cmake-tools
   ];
 
 in
 
 {
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+   "vscode-extension-ms-vscode-cpptools"
+  ];
 
   environment.systemPackages = with pkgs; [
     rnix-lsp
