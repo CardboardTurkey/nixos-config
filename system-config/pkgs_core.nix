@@ -15,5 +15,6 @@
     tree
     killall
     ncdu
+    update-nix-fetchgit
   ];
 }
