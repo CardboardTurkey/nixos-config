@@ -2,7 +2,7 @@
 
 {
   # For udev rule
-  services.autorandr.enable = true;
+  # services.autorandr.enable = true;
 
   home-manager.users.kiran = { pkgs, ... }: {
 
