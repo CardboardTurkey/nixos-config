@@ -16,6 +16,6 @@
             - *kestrel
             - *wren
             - *finch
-      '';
+    '';
   };
 }

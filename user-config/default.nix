@@ -6,7 +6,7 @@ in
 
 {
   nix.extraOptions = "tarball-ttl = 0";
-  imports = 
+  imports =
     [
       (import "${home-manager}/nixos")
 

@@ -1,4 +1,4 @@
-{ pkgs, stdenv, ... } :
+{ pkgs, stdenv, ... }:
 stdenv.mkDerivation {
   pname = "rustup";
   version = "0.0.1";

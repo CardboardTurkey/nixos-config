@@ -4,7 +4,7 @@ _:
   services.blueman.enable = true;
   hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
-  
+
   home-manager.users.kiran = { pkgs, lib, ... }: {
     systemd.user.services.mpris-proxy = {
       Unit.Description = "Mpris proxy";

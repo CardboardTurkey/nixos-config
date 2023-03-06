@@ -1,7 +1,7 @@
 { lib, ... }:
 
 {
-  imports = 
+  imports =
     [
       ./x11_keyboard.nix
       ./boot_loader.nix

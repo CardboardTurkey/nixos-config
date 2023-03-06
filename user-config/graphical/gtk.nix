@@ -1,9 +1,9 @@
-{config, ...}:
+{ config, ... }:
 
 {
   # Needed by gtk?
   programs.dconf.enable = true;
-  
+
   home-manager.users.kiran = { pkgs, ... }: {
     # home.packages = [ pkgs.atool pkgs.httpie ];
     gtk = {

@@ -9,7 +9,7 @@ in
 {
 
   imports =
-    [ 
+    [
       (import "${home-manager}/nixos")
 
       ../../system-config/pkgs_core.nix
@@ -66,6 +66,6 @@ in
   users.users.kiran.openssh.authorizedKeys.keys = [ "${T14_ssh_key}" "${XPS_ssh_key}" ];
 
   # rpi3 only has 1gb ram so we need a swap file (maybe I should make it bigger )
-  swapDevices = [ { device = "/swapfile"; size = 2048; } ];
+  swapDevices = [{ device = "/swapfile"; size = 2048; }];
 
 }

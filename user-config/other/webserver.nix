@@ -49,12 +49,12 @@
     timerConfig.OnCalendar = [ "monthly" ];
   };
 
-  sops.secrets."domains/ostrolenk/username" = {};
-  sops.secrets."domains/ostrolenk/password" = {};
-  sops.secrets."domains/kiran/username" = {};
-  sops.secrets."domains/kiran/password" = {};
-  sops.secrets."domains/www/username" = {};
-  sops.secrets."domains/www/password" = {};
+  sops.secrets."domains/ostrolenk/username" = { };
+  sops.secrets."domains/ostrolenk/password" = { };
+  sops.secrets."domains/kiran/username" = { };
+  sops.secrets."domains/kiran/password" = { };
+  sops.secrets."domains/www/username" = { };
+  sops.secrets."domains/www/password" = { };
 
   systemd.services.dyndns = {
     enable = true;

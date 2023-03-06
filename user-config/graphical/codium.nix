@@ -26,7 +26,7 @@ in
 {
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-   "vscode-extension-ms-vscode-cpptools"
+    "vscode-extension-ms-vscode-cpptools"
   ];
 
   environment.systemPackages = with pkgs; [

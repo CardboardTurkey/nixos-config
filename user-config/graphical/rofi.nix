@@ -3,8 +3,8 @@
   home-manager.users.kiran = { pkgs, ... }: {
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi.override { 
-        plugins = [ pkgs.rofi-emoji ]; 
+      package = pkgs.rofi.override {
+        plugins = [ pkgs.rofi-emoji ];
       };
       extraConfig = {
         modi = "drun,run,window,ssh,combi";
@@ -20,9 +20,9 @@
     xsession.windowManager.i3 = {
       config = {
         keybindings = lib.mkOptionDefault {
-          "${config.i3_mod}+space"  = "exec rofi -show drun -theme clean";
+          "${config.i3_mod}+space" = "exec rofi -show drun -theme clean";
           "${config.i3_mod}+period" = "exec rofi -show emoji -modi emoji";
-          "${config.i3_mod}+P"      = "exec rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu";
+          "${config.i3_mod}+P" = "exec rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu";
         };
       };
     };

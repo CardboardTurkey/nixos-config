@@ -1,19 +1,19 @@
 { config, ... }:
 
 {
-  home-manager.users.kiran = { pkgs, ... }: {   
+  home-manager.users.kiran = { pkgs, ... }: {
     programs.git = {
       enable = true;
-      userName  = "Kiran Ostrolenk";
+      userName = "Kiran Ostrolenk";
       userEmail = "${config.email}";
       lfs = {
         enable = true;
         skipSmudge = true;
       };
       ignores = [ "target" ".direnv" ".vscode" ];
-      extraConfig =  { 
-        core = { editor = "vim"; } ; 
-        pull = { rebase = "true"; } ; 
+      extraConfig = {
+        core = { editor = "vim"; };
+        pull = { rebase = "true"; };
         alias = {
           co = "checkout";
           ci = "commit";
@@ -29,18 +29,18 @@
       delta = {
         enable = true;
         options = {
-          features = "side-by-side line-numbers decorations"; 
+          features = "side-by-side line-numbers decorations";
           whitespace-error-style = "22 reverse";
           syntax-theme = "Nord";
           plus-style = "syntax '#165f1a'";
           plus-emph-style = "syntax '#028105'";
           minus-style = "syntax '#380101'";
-          decorations = { 
-            commit-decoration-style = "bold yellow box ul"; 
-            file-decoration-style = "none"; 
-            file-style = "bold yellow ul"; 
+          decorations = {
+            commit-decoration-style = "bold yellow box ul";
+            file-decoration-style = "none";
+            file-style = "bold yellow ul";
             hunk-header-decoration-style = "cyan box ul";
-          }; 
+          };
           line-numbers = {
             line-numbers-left-style = "cyan";
             line-numbers-right-style = "cyan";

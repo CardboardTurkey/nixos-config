@@ -3,10 +3,10 @@
 {
   # Needed by gtk?
   programs.dconf.enable = true;
-  
+
   home-manager.users.kiran = { pkgs, lib, ... }: {
     home.activation = {
-      wallpaper-setup = lib.hm.dag.entryAfter ["writeBoundary"] ''
+      wallpaper-setup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
         if ! [ -f "$HOME/.background-image" ] 
         then
           $DRY_RUN_CMD wget $VERBOSE_ARG https://w.wallhaven.cc/full/md/wallhaven-mdrv1y.jpg -O "$HOME/.background-image"

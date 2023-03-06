@@ -7,11 +7,11 @@
       config = {
         keybindings = lib.mkOptionDefault {
           "${config.i3_mod}+Control+Return" = "exec alacritty";
-          "${config.i3_mod}+Return"         = "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
+          "${config.i3_mod}+Return" = "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
         };
       };
     };
-    
+
     programs.alacritty = {
       enable = true;
       settings = {

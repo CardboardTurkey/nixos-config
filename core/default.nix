@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = 
+  imports =
     [
       ./common.nix
       ./hardware.nix
