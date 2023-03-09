@@ -13,12 +13,12 @@ let
     vadimcn.vscode-lldb
     arrterian.nix-env-selector
     xaver.clang-format
-    eamodio.gitlens
     zhwu95.riscv
     davidanson.vscode-markdownlint
     thenuprojectcontributors.vscode-nushell-lang
     ms-vscode.cpptools
     ms-vscode.cmake-tools
+    waderyan.gitblame
   ];
 
 in
