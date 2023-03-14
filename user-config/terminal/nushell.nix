@@ -23,7 +23,7 @@ in
       };
       envFile.source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config/default_env.nu";
-        sha256 = "0fzp2k0hsxjmphnivm3pcyqbq4lsdfmkxnqbnpn2j722v686is53";
+        sha256 = "1mk22h9q2x20xibkaxr7p33fcxcjbgxwpkrbjpf34sysi1dag018";
       };
       extraConfig = ''
         use ${nu_scripts}/share/nu_scripts/git/git.nu *
