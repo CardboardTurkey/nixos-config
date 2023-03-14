@@ -22,8 +22,10 @@ Can use sean's image because it already has a swap space applied. Remember to up
 
 # TODO
 
-* Make dirtygit a rust daemon
 * Add hints to alacritty
+* switch to wayland
+* move autorandr out of hm
+* steal sean's power management
 
 # Links
 
