@@ -22,8 +22,8 @@ in
     [
       ../laptop_common.nix
     ];
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+  
+  allowed_unfree = [
     "steam"
     "steam-original"
     "steam-runtime"

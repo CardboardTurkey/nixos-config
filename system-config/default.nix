@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ config, lib, ... }:
 
 {
   imports =
@@ -26,4 +26,6 @@
       ./file_manager.nix
       ./fwupd.nix
     ];
+
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.allowed_unfree;
 }

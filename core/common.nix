@@ -111,6 +111,11 @@ with lib;
       type = with types; uniq str;
       description = "Purple";
     };
+    allowed_unfree = mkOption {
+      default = [];
+      type = with types; listOf str;
+      description = "Allowed unfree packages";
+    };
   };
 }
 

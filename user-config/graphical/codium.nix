@@ -25,11 +25,6 @@ let
 in
 
 {
-
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "vscode-extension-ms-vscode-cpptools"
-  ];
-
   environment.systemPackages = with pkgs; [
     rnix-lsp
   ];
