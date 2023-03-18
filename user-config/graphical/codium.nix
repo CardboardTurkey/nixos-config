@@ -19,7 +19,7 @@ let
     ms-vscode.cpptools
     ms-vscode.cmake-tools
     waderyan.gitblame
-    rems-project.sail
+    # rems-project.sail
   ];
 
 in

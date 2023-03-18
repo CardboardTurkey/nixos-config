@@ -31,6 +31,7 @@ in
     "nvidia-x11"
     "nvidia-settings"
     "discord"
+    "vscode-extension-ms-vscode-cpptools"
   ];
 
   # ------
