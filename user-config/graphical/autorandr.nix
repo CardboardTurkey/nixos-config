@@ -359,6 +359,59 @@
           };
         };
       };
+      "any_dp1_hdmi2_off_edp" = {
+        fingerprint = {
+          eDP-1 = "*";
+          DP-1 = "*";
+          HDMI2 = "*";
+        };
+        config = {
+          eDP-1 = {
+            enable = false;
+          };
+          HDMI-2 = {
+            enable = true;
+            crtc = 0;
+            position = "1920x0";
+            mode = "1920x1080";
+            rate = "60.00";
+          };
+          DP-1 = {
+            enable = true;
+            crtc = 1;
+            primary = true;
+            position = "0x0";
+            mode = "1920x1080";
+            rate = "60.00";
+          };
+        };
+      };
+      "any_dp1_hdmi2" = {
+        fingerprint = {
+          DP-1 = "*";
+          HDMI2 = "*";
+        };
+        config = {
+          eDP-1 = {
+            enable = false;
+          };
+          HDMI-2 = {
+            enable = true;
+            crtc = 0;
+            position = "1920x0";
+            mode = "1920x1080";
+            rate = "60.00";
+          };
+          DP-1 = {
+            enable = true;
+            crtc = 1;
+            primary = true;
+            position = "0x0";
+            mode = "1920x1080";
+            rate = "60.00";
+          };
+        };
+      };
     };
   };
 }
