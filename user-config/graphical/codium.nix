@@ -29,6 +29,8 @@ in
     rnix-lsp
   ];
 
+  allowed_unfree = [ "vscode-extension-ms-vscode-cpptools" ];
+
   home-manager.users.kiran = { pkgs, ... }: {
     programs.vscode = {
       enable = true;
