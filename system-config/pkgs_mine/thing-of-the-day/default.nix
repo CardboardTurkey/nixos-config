@@ -8,13 +8,13 @@ rustPlatform.buildRustPackage rec {
     owner = "CardboardTurkey";
     repo = "thing-of-the-day";
     rev = version;
-    sha256 = "sha256-cHzTT4nSu5e8qzTxAvHLAJXXZyDk5bwJSpy0Dk/x2O0=";
+    hash = "sha256-XJ0BGxQ1B3YCMSNz6O1HThxRBim9Ahz6OTtuH4Drj58=";
   };
 
   nativeBuildInputs = [ pkgs.pkg-config ];
   buildInputs = [ pkgs.openssl ];
 
-  cargoSha256 = "sha256-12sUQ98PUOq0va3wikErcHsJno0D8p/2Sy2+wScywkE=";
+  cargoSha256 = "sha256-1qyTdIkUcSkae3F2sZTkkXsXr2QSVT93ic7C3q0yvQs=";
 
   meta = with lib; {
     description = "Display word-of-the-day and news headline at regular intervals";

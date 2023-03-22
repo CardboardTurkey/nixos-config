@@ -148,7 +148,8 @@ in
         };
         "module/totd" = {
           type = "custom/script";
-          exec = "totd -d 0.75";
+          exec = "totd -d 45m";
+          click-left = "firefox /home/kiran/.cache/thing-of-the-day";
           tail = "true";
           format-foreground = "${totd_colour}";
         };
