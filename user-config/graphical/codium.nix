@@ -12,12 +12,12 @@ let
     streetsidesoftware.code-spell-checker
     vadimcn.vscode-lldb
     arrterian.nix-env-selector
-    xaver.clang-format
+    # xaver.clang-format
     zhwu95.riscv
     davidanson.vscode-markdownlint
     thenuprojectcontributors.vscode-nushell-lang
-    ms-vscode.cpptools
-    ms-vscode.cmake-tools
+    # ms-vscode.cpptools
+    # ms-vscode.cmake-tools
     waderyan.gitblame
     # rems-project.sail
   ];
@@ -29,7 +29,7 @@ in
     rnix-lsp
   ];
 
-  allowed_unfree = [ "vscode-extension-ms-vscode-cpptools" ];
+  # allowed_unfree = [ "vscode-extension-ms-vscode-cpptools" ];
 
   home-manager.users.kiran = { pkgs, ... }: {
     programs.vscode = {
