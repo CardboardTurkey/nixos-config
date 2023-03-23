@@ -5,7 +5,6 @@
     [
       ./x11_keyboard.nix
       ./boot_loader.nix
-      ./xserver.nix
       ./battery.nix
       ./font.nix
       # ./fprintd.nix # doesn't work nicely :(
