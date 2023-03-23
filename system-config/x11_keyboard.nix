@@ -9,10 +9,10 @@ let
             key <BKSL> {	[ backslash, asciitilde ]	};
             key <TLDE> {    [       bar, grave      ]	};
 
-    	key <CAPS> {	[ Control_L, Control_L	]	};
-    	replace key <LCTL> {	[ Hyper_L ]	};
-    	modifier_map Control { <CAPS> };
-    	modifier_map Mod5    { <LCTL> };
+            key <CAPS> {	[ Control_L, Control_L	]	};
+            replace key <LCTL> {	[ Hyper_L ]	};
+            modifier_map Control { <CAPS> };
+            modifier_map Mod5    { <LCTL> };
           };
   '';
 in

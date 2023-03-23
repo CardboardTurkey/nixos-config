@@ -21,7 +21,7 @@
         };
         window = {
           opacity = 0.9;
-          padding.x = 10;
+          padding.x = 20;
           padding.y = 10;
           dynamic_padding = true;
         };

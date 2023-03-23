@@ -10,25 +10,12 @@ in
     [
       (import "${home-manager}/nixos")
 
-      ./graphical/autorandr.nix
       ./graphical/codium.nix
       ./graphical/gtk.nix
-      ./graphical/i3.nix
-      ./graphical/lockscreen.nix
-      ./graphical/picom.nix
-      ./graphical/polybar.nix
-      ./graphical/rofi.nix
+      ./graphical/hyprland.nix
       ./graphical/dunst.nix
-      ./graphical/wallpaper.nix
       ./graphical/cursor.nix
       ./graphical/obs-studio.nix
-      ./graphical/autorandr.nix
-      ./graphical/i3.nix
-      ./graphical/picom.nix
-      ./graphical/lockscreen.nix
-      ./graphical/polybar.nix
-      ./graphical/rofi.nix
-      ./graphical/wallpaper.nix
 
       ./terminal/git.nix
       ./terminal/lsd.nix
