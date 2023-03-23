@@ -8,7 +8,7 @@ rustPlatform.buildRustPackage rec {
     owner = "CardboardTurkey";
     repo = "thing-of-the-day";
     rev = version;
-    hash = "sha256-XJ0BGxQ1B3YCMSNz6O1HThxRBim9Ahz6OTtuH4Drj58=";
+    hash = "sha256-/u0QQO/IK/3JjkFRafnYjoyXlsc7QMcfXZFl8u3NSgE=";
   };
 
   nativeBuildInputs = [ pkgs.pkg-config ];
