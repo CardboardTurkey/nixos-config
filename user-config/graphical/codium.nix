@@ -39,10 +39,10 @@ in
       userSettings = {
         "workbench.colorTheme" = "Nord";
         "files.autoSave" = "afterDelay";
-        "editor.fontSize" = "${config.font_size_medium}";
+        "editor.fontSize" = config.font_size_medium;
         "editor.fontFamily" = "'Hasklug Nerd Font'";
         "editor.formatOnSave" = true;
-        "editor.inlayHints.fontSize" = "${config.font_size_small}";
+        "editor.inlayHints.fontSize" = config.font_size_small;
         "editor.fontLigatures" = true;
         "update.mode" = "none";
         "debug.allowBreakpointsEverywhere" = true;

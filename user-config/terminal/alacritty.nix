@@ -17,7 +17,7 @@
       settings = {
         font = {
           family = "monospace";
-          size = builtins.fromJSON "${config.font_size_small}.0";
+          size = config.font_size_small;
         };
         window = {
           opacity = 0.9;

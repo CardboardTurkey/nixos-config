@@ -13,7 +13,7 @@
         name = "Zafiro-icons-Dark";
       };
       font = {
-        name = "DejaVu Sans ${config.font_size_small}";
+        name = "DejaVu Sans ${builtins.toString config.font_size_small}";
       };
       theme = {
         name = "Nordic";
