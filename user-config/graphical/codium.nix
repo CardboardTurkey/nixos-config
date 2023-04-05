@@ -12,7 +12,7 @@ let
     streetsidesoftware.code-spell-checker
     vadimcn.vscode-lldb
     arrterian.nix-env-selector
-    # xaver.clang-format
+    xaver.clang-format
     zhwu95.riscv
     davidanson.vscode-markdownlint
     thenuprojectcontributors.vscode-nushell-lang
