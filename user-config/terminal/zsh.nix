@@ -3,10 +3,11 @@
 {
   # For zsh compeletion (apparently)
   environment.pathsToLink = [ "/share/zsh" ];
-
+  programs.zsh.enable = true;
   home-manager.users.kiran = {
     programs.zsh = {
       enable = true;
+      # dotDir = ".config/zsh";
       enableAutosuggestions = true;
       enableCompletion = true;
       enableSyntaxHighlighting = true;

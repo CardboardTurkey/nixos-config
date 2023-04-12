@@ -9,4 +9,5 @@
     shell = pkgs.zsh;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
+  environment.shells = with pkgs; [ bash zsh ];
 }
