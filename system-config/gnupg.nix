@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+  services.pcscd.enable = true;
   # Not sure what this is
   # Is it conflicting with keychain?
   programs.gnupg.agent = {
