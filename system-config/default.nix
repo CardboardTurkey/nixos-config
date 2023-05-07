@@ -14,7 +14,6 @@
       ./tailscale.nix
       ./openssh.nix
       ./location.nix
-      ./gnupg.nix
       ./network.nix
       ./sound.nix
       ./office_vpn.nix
