@@ -33,7 +33,6 @@ in
       ./terminal/bat.nix
       ./terminal/direnv.nix
       ./terminal/nix_index.nix
-      ./terminal/keychain.nix
       ./terminal/ssh.nix
 
       ./other/bluetooth.nix
