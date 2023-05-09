@@ -23,6 +23,7 @@
       ./printing.nix
       ./file_manager.nix
       ./fwupd.nix
+      ./thefuck.nix
     ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.allowed_unfree;
