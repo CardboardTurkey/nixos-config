@@ -1,6 +1,6 @@
 { pkgs, stdenv, ... }:
 stdenv.mkDerivation {
-  pname = "rustup";
+  pname = "newrust";
   version = "0.0.1";
 
   src = ./src;
@@ -19,8 +19,8 @@ stdenv.mkDerivation {
 
     mv main.rs lib.rs cli.rs bin_deps.txt lib_deps.txt shell.nix gitlab-ci.yml $out/share
 
-    cargo=${pkgs.cargo}/bin/cargo substituteAllInPlace rustup
-    chmod +x rustup
-    mv rustup $out/bin
+    cargo=${pkgs.cargo}/bin/cargo substituteAllInPlace newrust
+    chmod +x newrust
+    mv newrust $out/bin
   '';
 }

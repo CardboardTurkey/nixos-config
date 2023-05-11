@@ -6,14 +6,12 @@ crate_name=$(@cargo@ new "$@" 2>&1 >/dev/null | rg 'Created (binary \(applicatio
 
 if rg -q -- --lib <<< "$@"; then
     cp "@out@/share/lib.rs" "$crate_name/src/lib.rs"
-    dep_string=$(awk -v ORS='\\n' '1' @out@/share/lib_deps.txt)
+    @cargo@ add anyhow log  --manifest-path $crate_name/Cargo.toml
 else
     cp "@out@/share/main.rs" "$crate_name/src/main.rs"
     cp "@out@/share/cli.rs" "$crate_name/src/cli.rs"
-    dep_string=$(awk -v ORS='\\n' '1' @out@/share/bin_deps.txt)
+    @cargo@ add anyhow env_logger log clap --manifest-path $crate_name/Cargo.toml --features clap/cargo,clap/derive
 fi
-
-sed -i "s/\[dependencies\]/$dep_string/" "$crate_name/Cargo.toml"
 
 sed "s/@crate@/$crate_name/" < "@out@/share/gitlab-ci.yml" > "$crate_name/.gitlab-ci.yml"
 
