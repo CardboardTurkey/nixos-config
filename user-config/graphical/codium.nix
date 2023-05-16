@@ -11,7 +11,7 @@ let
     serayuzgur.crates
     streetsidesoftware.code-spell-checker
     vadimcn.vscode-lldb
-    arrterian.nix-env-selector
+    mkhl.direnv
     xaver.clang-format
     zhwu95.riscv
     davidanson.vscode-markdownlint
