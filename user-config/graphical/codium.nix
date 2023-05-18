@@ -16,6 +16,7 @@ let
     zhwu95.riscv
     davidanson.vscode-markdownlint
     thenuprojectcontributors.vscode-nushell-lang
+    redhat.vscode-xml
     # ms-vscode.cpptools
     # ms-vscode.cmake-tools
     waderyan.gitblame
