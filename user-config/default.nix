@@ -21,6 +21,14 @@ in
       ./graphical/dunst.nix
       ./graphical/wallpaper.nix
       ./graphical/cursor.nix
+      ./graphical/obs-studio.nix
+      ./graphical/autorandr.nix
+      ./graphical/i3.nix
+      ./graphical/picom.nix
+      ./graphical/lockscreen.nix
+      ./graphical/polybar.nix
+      ./graphical/rofi.nix
+      ./graphical/wallpaper.nix
 
       ./terminal/git.nix
       ./terminal/lsd.nix
