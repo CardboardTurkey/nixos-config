@@ -6,7 +6,6 @@ let
     jnoortheen.nix-ide
     tamasfe.even-better-toml
     arcticicestudio.nord-visual-studio-code
-    # ms-python.python
     matklad.rust-analyzer
     serayuzgur.crates
     streetsidesoftware.code-spell-checker
@@ -18,9 +17,11 @@ let
     thenuprojectcontributors.vscode-nushell-lang
     redhat.vscode-xml
     asciidoctor.asciidoctor-vscode
+    techtheawesome.rust-yew
+    waderyan.gitblame
+    # ms-python.python
     # ms-vscode.cpptools
     # ms-vscode.cmake-tools
-    waderyan.gitblame
     # rems-project.sail
   ];
 
@@ -38,6 +39,51 @@ in
       enable = true;
       package = pkgs.vscodium;
       extensions = codium-extensions;
+      languageSnippets = {
+        rust = {
+          "New Yew function component" = {
+            prefix = "yewfc";
+            body = [
+              "#[derive(PartialEq, Properties)]"
+              "pub struct \${1:ComponentName}Props {}"
+              ""
+              "#[function_component]"
+              "pub fn $1(props: &\${1}Props) -> Html {"
+              "    let \${1}Props {} = props;"
+              "    html! {"
+              "        <\${2:div}>$0</\${2}>"
+              "    }"
+              "}"
+            ];
+            "description" = "Create a minimal Yew function component";
+          };
+          "New Yew struct component" = {
+            "prefix" = "yewsc";
+            "body" = [
+              "pub struct \${1:ComponentName};"
+              ""
+              "pub enum \${1}Msg {"
+              "}"
+              ""
+              "impl Component for \${1} {"
+              "    type Message = \${1}Msg;"
+              "    type Properties = ();"
+              ""
+              "    fn create(ctx: &Context<Self>) -> Self {"
+              "        Self"
+              "    }"
+              ""
+              "    fn view(&self, ctx: &Context<Self>) -> Html {"
+              "        html! {"
+              "            $0"
+              "        }"
+              "    }"
+              "}"
+            ];
+            "description" = "Create a new Yew component with a message enum";
+          };
+        };
+      };
       userSettings = {
         "workbench.colorTheme" = "Nord";
         "files.autoSave" = "afterDelay";
