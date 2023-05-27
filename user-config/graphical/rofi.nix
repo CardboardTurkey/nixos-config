@@ -3,11 +3,11 @@
   home-manager.users.kiran = { pkgs, ... }: {
     programs.rofi = {
       enable = true;
-      package = pkgs.rofi.override {
+      package = pkgs.rofi-wayland.override {
         plugins = [ pkgs.rofi-emoji ];
       };
       extraConfig = {
-        modi = "drun,run,window,ssh,combi";
+        modi = "drun,run,ssh,combi";
         terminal = "alacritty";
         icon-theme = "Zafiro-icons-Dark";
       };
@@ -26,5 +26,12 @@
         };
       };
     };
-  };
-}
+    wayland.windowManager.hyprland = {
+      extraConfig = ''
+        bind = MOD3, SPACE, exec, rofi -show drun -theme clean
+        bind = MOD3, PERIOD, exec, rofi -show emoji -modi emoji
+        bind = MOD3, P, exec, rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu
+      '';
+      };
+    };
+  }

@@ -16,6 +16,7 @@ in
       ./graphical/dunst.nix
       ./graphical/cursor.nix
       ./graphical/obs-studio.nix
+      ./graphical/rofi.nix
 
       ./terminal/git.nix
       ./terminal/lsd.nix
