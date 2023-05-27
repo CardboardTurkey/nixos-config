@@ -69,6 +69,8 @@ in
     slurp
     qt6.qtwayland
     libsForQt5.qt5.qtwayland
+    libsForQt5.qt5ct
+    xwayland
   ];
 
   security.pam.services.swaylock = { };
@@ -105,7 +107,7 @@ in
       hidpi = true;
     };
 
-    nvidiaPatches = false;
+    nvidiaPatches = true;
   };
   home-manager.users.kiran = {
     imports = [ hyprland.homeManagerModules.default ];
@@ -135,7 +137,7 @@ in
         #
 
         # See https://wiki.hyprland.org/Configuring/Monitors/
-        monitor=,preferred,auto,auto
+        # monitor=,preferred,auto,auto
 
 
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -148,6 +150,11 @@ in
 
         # Some default env vars.
         env = XCURSOR_SIZE,24
+        env = LIBVA_DRIVER_NAME,nvidia
+        env = XDG_SESSION_TYPE,wayland
+        # env = GBM_BACKEND,nvidia-drm
+        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+        env = WLR_NO_HARDWARE_CURSORS,1
 
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {
@@ -339,6 +346,17 @@ in
 
         # wallpaper
         exec = ${pkgs.wpaperd}/bin/wpaperd
+
+        # highres xwayland
+        # change monitor to hires, the last argument is the scale factor
+        monitor=,highres,auto,1
+
+        # sets xwayland scale
+        exec-once=${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1
+
+        # toolkit-specific scale
+        env = GDK_SCALE,1
+        env = XCURSOR_SIZE,16
       '';
     };
     systemd.user.services.swayidle = {

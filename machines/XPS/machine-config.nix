@@ -43,6 +43,8 @@ in
     (patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
     nvidia-offload
     discord
+    libva
+    xorg.xrandr
   ];
 
   # ------
@@ -50,7 +52,16 @@ in
   # ------
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.enable = true;
+  hardware.opengl = { 
+    enable = true;
+    extraPackages = [
+      nvidia-vaapi-driver
+      # intel-media-driver
+      # vaapiIntel
+      # vaapiVdpau
+      # libvdpau-va-gl
+    ];
+  };
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
