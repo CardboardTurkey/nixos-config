@@ -22,7 +22,12 @@ in
     [
       ../laptop_common.nix
     ];
-  
+
+  wlan = "wlp59s0";
+  battery = "BAT0";
+  edp1 = "00ffffffffffff004d10ba1400000000161d0104a52213780ede50a3544c99260f505400000001010101010101010101010101010101ac3780a070383e403020350058c210000018000000000000000000000000000000000000000000fe004d57503154804c513135364d31000000000002410332001200000a010a202000d3";
+  root = "a9cd1bf6-feb8-41ad-be79-e85f9827fbb1";
+  hostname = "Kestrel";
   allowed_unfree = [
     "steam"
     "steam-original"
@@ -52,7 +57,7 @@ in
   # ------
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl = { 
+  hardware.opengl = {
     enable = true;
     extraPackages = [
       nvidia-vaapi-driver

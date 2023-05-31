@@ -1,7 +1,6 @@
 { config, pkgs, ... }:
 let
   # Hardware
-  # Defined in `../core/hardware.nix`
   eth_interface = "${config.eth}";
   wlan_interface = "${config.wlan}";
   battery = "${config.battery}";

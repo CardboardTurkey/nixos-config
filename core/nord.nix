@@ -1,36 +1,8 @@
-# This file contains definitions of the nord colours
-# See https://www.nordtheme.com/docs/colors-and-palettes
-
 { lib, ... }:
 
 with lib;
 {
   options = {
-    i3_mod = mkOption {
-      default = "Mod4";
-      type = with types; uniq str;
-      description = "Modifier name to go in i3 config";
-    };
-    web_dir = mkOption {
-      default = "/home/kiran/gitlab/cardboardturkey/website";
-      type = with types; uniq str;
-      description = "Modifier name to go in i3 config";
-    };
-    font_size_small = mkOption {
-      default = 12.0;
-      type = with types; float;
-      description = "Small font size";
-    };
-    font_size_medium = mkOption {
-      default = 15.0;
-      type = with types; float;
-      description = "Medium font size";
-    };
-    font_size_large = mkOption {
-      default = 17.0;
-      type = with types; float;
-      description = "Large font size";
-    };
     nord0 = mkOption {
       default = "2e3440";
       type = with types; uniq str;
@@ -111,12 +83,5 @@ with lib;
       type = with types; uniq str;
       description = "Purple";
     };
-    allowed_unfree = mkOption {
-      default = [];
-      type = with types; listOf str;
-      description = "Allowed unfree packages";
-    };
   };
 }
-
-

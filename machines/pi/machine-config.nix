@@ -37,6 +37,8 @@ in
     gnupg
   ];
 
+  hostname = "wren";
+
   home-manager.users.kiran = _: {
     home.stateVersion = "22.11";
     # Currently fails to build but hopefully fixed in future - 2023-03-21
