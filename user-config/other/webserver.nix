@@ -49,10 +49,9 @@
     timerConfig.OnCalendar = [ "monthly" ];
   };
 
-  # Temporary (I hope)
   systemd.services.fixall = {
     enable = true;
-    script = "echo \"Fix incoming\"";
+    script = "docker pull nginx:latest";
     onSuccess = [ "reboot.target" ];
   };
   systemd.timers.fixall = {
