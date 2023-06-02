@@ -3,7 +3,10 @@ let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
   hyprland = (import flake-compat {
-    src = builtins.fetchTarball "https://github.com/hyprwm/Hyprland/archive/master.tar.gz";
+    src = builtins.fetchGit {
+      url = "https://github.com/hyprwm/Hyprland.git";
+      ref = "refs/heads/main";
+    };
   }).defaultNix;
 
   lock_cmd = "${pkgs.swaylock}/bin/swaylock -f --image=HDMI-A-2:~/Pictures/Wallpapers/Polar_Bear/right.jpg --image=DP-1:~/Pictures/Wallpapers/Polar_Bear/left.jpg --image=/home/kiran/Pictures/Wallpapers/flying_marsh_harrier_dim.jpg";
