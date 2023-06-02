@@ -17,7 +17,7 @@ let
     thenuprojectcontributors.vscode-nushell-lang
     redhat.vscode-xml
     asciidoctor.asciidoctor-vscode
-    techtheawesome.rust-yew
+    # techtheawesome.rust-yew
     waderyan.gitblame
     # ms-python.python
     # ms-vscode.cpptools
