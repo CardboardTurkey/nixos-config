@@ -194,7 +194,7 @@ in
             blur_size = 3
             blur_passes = 3
             blur_new_optimizations = true
-            blur_xray = true
+            blur_xray = false
 
             drop_shadow = false
             shadow_range = 4
