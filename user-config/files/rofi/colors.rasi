@@ -3,7 +3,7 @@
     foreground:           #d8dee9;
     selected-foreground:  rgba(255, 255, 255, 100%);
     
-    background:           rgba(46,52,64,70%); 
+    background:           rgba(46,52,64,85%); 
     background-solid:     #3b4252; 
     selected-background:  rgba(76,86,106,100%);
     // selected-background:  rgba(0, 0, 0, 40%);
