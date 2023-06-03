@@ -360,6 +360,9 @@ in
         # toolkit-specific scale
         env = GDK_SCALE,1
         env = XCURSOR_SIZE,16
+
+        # Blurring layers
+        layerrule = blur,rofi
       '';
     };
     systemd.user.services.swayidle = {
