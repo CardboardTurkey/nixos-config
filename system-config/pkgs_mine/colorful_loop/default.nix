@@ -2,12 +2,12 @@
 
 stdenv.mkDerivation rec {
   name = "colorful_loop";
-  version = "unstable-2023-06-02";
+  version = "unstable-2023-06-03";
 
   src = fetchgit {
     url = "https://gitlab.com/CardboardTurkey/plymouth-theme.git";
-    rev = "7b8b845d4e870353042e0eee8374c8b0fbe84fe3";
-    sha256 = "0r6nm806n5arckhvvhn5r3c6ccnm7hfydkwz03ibznbjjmq54g2k";
+    rev = "d45906180a9f7ef9d37c990b9f45b3c325117872";
+    sha256 = "16jpnlfqxhm6mz8hpg3rsasgaq75jhc8vix6insqvq17n7wxh80y";
   };
 
   buildInputs = [ stdenv ];
