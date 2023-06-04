@@ -17,6 +17,7 @@ in
       ./graphical/cursor.nix
       ./graphical/obs-studio.nix
       ./graphical/rofi.nix
+      ./graphical/eww.nix
 
       ./terminal/git.nix
       ./terminal/lsd.nix
