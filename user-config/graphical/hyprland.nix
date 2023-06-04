@@ -347,7 +347,7 @@ in
 
         # switches
         bindl = ,switch:on:Lid Switch,exec,${monitor_off}
-        bindl = ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, auto"
+        bindl = ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"
 
         # wallpaper
         exec = ${pkgs.wpaperd}/bin/wpaperd
