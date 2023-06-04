@@ -22,7 +22,7 @@ let
     # ms-python.python
     # ms-vscode.cpptools
     # ms-vscode.cmake-tools
-    # rems-project.sail
+    mattn.lisp
   ];
 
 in
