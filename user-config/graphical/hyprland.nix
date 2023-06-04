@@ -365,6 +365,7 @@ in
 
         # Blurring layers
         layerrule = blur,rofi
+        layerrule = blur,notifications
       '';
     };
     systemd.user.services.swayidle = {
