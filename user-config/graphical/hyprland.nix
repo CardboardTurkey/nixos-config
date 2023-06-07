@@ -366,6 +366,9 @@ in
         # Blurring layers
         layerrule = blur,rofi
         layerrule = blur,notifications
+
+        # Bar reservation
+        monitor=,addreserved,0,0,55,0
       '';
     };
     systemd.user.services.swayidle = {
