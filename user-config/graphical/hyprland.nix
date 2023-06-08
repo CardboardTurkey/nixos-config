@@ -191,7 +191,7 @@ in
         decoration {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-            rounding = 15
+            rounding = 8
             blur = true
             blur_size = 3
             blur_passes = 3
@@ -368,7 +368,7 @@ in
         layerrule = blur,notifications
 
         # Bar reservation
-        monitor=,addreserved,0,0,55,0
+        # monitor=,addreserved,0,0,60,0
       '';
     };
     systemd.user.services.swayidle = {
