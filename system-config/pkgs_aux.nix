@@ -22,5 +22,6 @@
     ffmpeg
     local.newrust
     local.pyup
+    kooha
   ];
 }
