@@ -363,9 +363,10 @@ in
         env = GDK_SCALE,1
         env = XCURSOR_SIZE,16
 
-        # Blurring layers
+        # layers
         layerrule = blur,rofi
         layerrule = blur,notifications
+        layerrule = ignorezero,notifications
 
         # Bar reservation
         # monitor=,addreserved,0,0,60,0

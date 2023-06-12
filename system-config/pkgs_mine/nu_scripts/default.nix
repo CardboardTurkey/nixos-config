@@ -11,8 +11,8 @@ stdenv.mkDerivation rec {
   src = fetchFromGitHub {
     owner = "nushell";
     repo = "nu_scripts";
-    rev = "039930b4e45003c167cad3f0e2567e57510a6a47";
-    sha256 = "0sl3xi15b09lbn4sj2zd4ayyvhaq1703r2almrpwag5a68fkj3f0";
+    rev = "2e46f056c647803fb3fece3e1f00349e1f5cb1f0";
+    sha256 = "0s9vfr962rbdli6h1rgcvfdd1yv57njwmwd068vr9dah9r2g1y8y";
   };
 
   installPhase = ''
