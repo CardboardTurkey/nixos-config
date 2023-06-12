@@ -136,8 +136,8 @@
           separator_color = "#${config.nord5}";
           width = "(0, 500)";
           offset = "22x69";
-          min_icon_size = 48;
-          max_icon_size = 150;
+          min_icon_size = 16;
+          max_icon_size = 48;
           enable_recursive_icon_lookup = true;
           icon_theme = "Zafiro-icons-Dark";
           progress_bar_height = 30;

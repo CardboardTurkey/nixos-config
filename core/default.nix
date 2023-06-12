@@ -69,7 +69,7 @@ with lib;
       description = "Medium font size";
     };
     font_size_large = mkOption {
-      default = 21.0;
+      default = 19.0;
       type = with types; float;
       description = "Large font size";
     };
