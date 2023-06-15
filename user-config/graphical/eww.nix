@@ -1,12 +1,16 @@
 { config, pkgs, ... }:
 
 {
-  fonts.fonts = with pkgs; [
-    material-icons
-  ];
   environment.systemPackages = with pkgs; [
     eww-wayland
   ];
+
+  fonts.fonts = with pkgs; [
+    material-icons
+    # local.linearicons-free
+    linearicons-free
+  ];
+
   home-manager.users.kiran = { pkgs, ... }: {
     programs.eww = {
       # enable = true;

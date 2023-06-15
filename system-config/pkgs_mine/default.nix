@@ -9,4 +9,5 @@ with pkgs; {
   nordzy-cursor-theme = callPackage ./nordzy-cursor-theme { inherit pkgs; };
   nu_scripts = callPackage ./nu_scripts { inherit pkgs; };
   colorful_loop = callPackage ./colorful_loop { inherit pkgs; };
+  # linearicons-free = callPackage ./linearicons-free.nix { inherit pkgs; };
 }
