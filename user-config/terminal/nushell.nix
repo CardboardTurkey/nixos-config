@@ -1,7 +1,4 @@
 { pkgs, ... }:
-let
-  nu_scripts = pkgs.local.nu_scripts;
-in
 {
   home-manager.users.kiran = {
     programs.nushell = {
@@ -26,8 +23,8 @@ in
         sha256 = "17r6skzbdy2irmx1n77289prdsxky05bflfhv98z9f0hrcc4p9ka";
       };
       extraConfig = ''
-        use ${nu_scripts}/share/nu_scripts/git/git.nu *
-        use ${nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu *
+        use ${pkgs.nu_scripts}/share/nu_scripts/modules/git/git.nu *
+        use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu *
         '';
     };
   };
