@@ -154,7 +154,7 @@
         urgency_normal = {
           background = "#${config.nord3}70";
           foreground = "#${config.nord5}";
-          timeout = 5;
+          timeout = 0;
         };
         urgency_critical = {
           background = "#${config.nord11}70";
