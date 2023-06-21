@@ -179,8 +179,8 @@ in
         general {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-            gaps_in = 5
-            gaps_out = 10
+            gaps_in = 4
+            gaps_out = 9
             border_size = 0
             # col.active_border = rgba(${config.nord1}00) rgba(${config.nord1}00) 45deg
             # col.inactive_border = rgba(595959aa)
