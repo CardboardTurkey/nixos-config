@@ -16,7 +16,7 @@
         '';
       configFile.source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config/default_config.nu";
-        sha256 = "0iy28a1i866580xi4iwpfn0lzfr6lncr06ix44jqks0iws7fqp88";
+        sha256 = "16czrfdmks5p9idvr82llsr8ahyvpxz8yfj7p9xhw99i41z882c9";
       };
       envFile.source = pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config/default_env.nu";

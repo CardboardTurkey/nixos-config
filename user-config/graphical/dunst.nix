@@ -132,7 +132,8 @@
         global = {
           font = "DejaVuSans Nerd Font ${builtins.toString config.font_size_large}px";
           follow = "keyboard";
-          frame_width = 0;
+          frame_width = 1;
+          frame_color = "#${config.nord9}";
           separator_color = "#${config.nord5}";
           width = "(0, 500)";
           offset = "22x69";
