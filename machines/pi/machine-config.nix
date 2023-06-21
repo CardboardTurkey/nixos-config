@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
@@ -19,7 +19,6 @@ in
       ../../system-config/location.nix
       ../../system-config/openssh.nix
       ../../system-config/docker.nix
-      ../../system-config/gnupg.nix
 
       ../../user-config/terminal/git.nix
       ../../user-config/terminal/lsd.nix
@@ -27,15 +26,11 @@ in
       ../../user-config/terminal/zsh.nix
       ../../user-config/terminal/neovim.nix
       ../../user-config/terminal/bat.nix
-      ../../user-config/terminal/keychain.nix
       ../../user-config/terminal/nix_index.nix
       ../../user-config/terminal/direnv.nix
+
       ../../user-config/other/webserver.nix
     ];
-
-  environment.systemPackages = with pkgs; [
-    gnupg
-  ];
 
   hostname = "wren";
 
@@ -43,6 +38,12 @@ in
     home.stateVersion = "22.11";
     # Currently fails to build but hopefully fixed in future - 2023-03-21
     manual.manpages.enable = false;
+    programs.keychain = {
+      enable = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
+      keys = [ "id_ed25519" ];
+    };
   };
 
   fileSystems = {

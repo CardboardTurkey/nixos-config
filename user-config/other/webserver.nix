@@ -12,7 +12,10 @@
   # https://www.staldal.nu/tech/2007/10/31/why-can-only-root-listen-to-ports-below-1024/
   boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
 
-  networking.firewall.enable = false;
+  networking.firewall = { 
+    enable = true;
+    allowedTCPPorts = [ 80 443 ];
+  };
 
   virtualisation.docker.logDriver = "journald";
 
