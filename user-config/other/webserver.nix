@@ -13,8 +13,8 @@
   boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
 
   networking.firewall = { 
-    enable = true;
-    allowedTCPPorts = [ 80 443 ];
+    enable = false;
+    allowedTCPPorts = [ 7421 7422 ];
   };
 
   virtualisation.docker.logDriver = "journald";
