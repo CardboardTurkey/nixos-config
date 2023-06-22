@@ -6,6 +6,7 @@
 
   environment.systemPackages = with pkgs; [
     firefox
+    wdisplays
     thunderbird
     quasselClient
     local.scripts
