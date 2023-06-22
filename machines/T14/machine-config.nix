@@ -19,6 +19,8 @@
   root = "d0ad36ad-4630-4764-ae08-a8c3e788d521";
   hostname = "Harrier";
   home-manager.users.kiran.programs.git.extraConfig.credential = { helper = "store"; };
+    users.users.kiran.extraGroups = [ "dialout" ]; # Enable ‘sudo’ for the user.
+
   # Need fs.office.codethink.co.uk entry added to /root/.ssh/known_hosts
   # and a key without passphrase. This isn't a security issue as you need
   # to be on the office network to access fs anyway.
