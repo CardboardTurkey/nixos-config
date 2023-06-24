@@ -38,6 +38,15 @@ in
     "discord"
   ];
 
+  home-manager.users.kiran = {
+    programs.keychain = {
+      enable = true;
+      enableZshIntegration = true;
+      enableNushellIntegration = true;
+      keys = [ "id_ed25519" ];
+    };
+  };
+
   # ------
   # Steam
   # ------

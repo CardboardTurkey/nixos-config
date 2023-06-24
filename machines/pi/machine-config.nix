@@ -38,12 +38,6 @@ in
     home.stateVersion = "22.11";
     # Currently fails to build but hopefully fixed in future - 2023-03-21
     manual.manpages.enable = false;
-    programs.keychain = {
-      enable = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
-      keys = [ "id_ed25519" ];
-    };
   };
 
   fileSystems = {
