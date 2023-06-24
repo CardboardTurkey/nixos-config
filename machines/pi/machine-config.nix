@@ -63,7 +63,7 @@ in
   documentation.nixos.enable = false;
   nix.gc.automatic = true;
   nix.gc.options = "--delete-older-than 10d";
-  boot.cleanTmpDir = true;
+  boot.tmp.cleanOnBoot = true;
 
   users.users.kiran.openssh.authorizedKeys.keys = [ "${T14_ssh_key}" "${XPS_ssh_key}" ];
 
