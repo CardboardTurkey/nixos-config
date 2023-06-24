@@ -22,5 +22,5 @@ then
     exit 1
 fi
 
-update-nix-fetchgit system-config/pkgs_mine/nu_scripts/default.nix user-config/terminal/nushell.nix system-config/pkgs_mine/colorful_loop/default.nix&
+# update-nix-fetchgit system-config/pkgs_mine/nu_scripts/default.nix user-config/terminal/nushell.nix system-config/pkgs_mine/colorful_loop/default.nix&
 sudo nixos-rebuild switch -p "$profile_name" "$@"
