@@ -346,8 +346,8 @@ in
         bind = $mainMod, L, exec, ${lock_cmd}
 
         # switches
-        bindl = ,switch:on:Lid Switch,exec,${monitor_off}
-        bindl = ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"
+        # bindl = ,switch:on:Lid Switch,exec,${monitor_off}
+        # bindl = ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"
 
         # wallpaper
         exec = ${pkgs.wpaperd}/bin/wpaperd

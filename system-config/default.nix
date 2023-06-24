@@ -19,7 +19,7 @@
       ./office_vpn.nix
       ./docker.nix
       ./boot.nix
-      ./logind.nix
+      # ./logind.nix
       ./printing.nix
       ./file_manager.nix
       ./fwupd.nix
