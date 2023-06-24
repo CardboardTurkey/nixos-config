@@ -5,6 +5,7 @@ with lib;
   imports =
     [
       ./nord.nix
+      ./hardware.nix
     ];
 
   options = {
@@ -12,36 +13,6 @@ with lib;
       default = "kostrolenk@gmail.com";
       type = with types; uniq str;
       description = "Email address (for git)";
-    };
-    eth = mkOption {
-      default = "eth0";
-      type = with types; uniq str;
-      description = "Ethernet interface";
-    };
-    wlan = mkOption {
-      default = "wlan0";
-      type = with types; uniq str;
-      description = "Wireless interface";
-    };
-    battery = mkOption {
-      default = "BAT0";
-      type = with types; uniq str;
-      description = "As given in /sys/class/power_supply/";
-    };
-    adapter = mkOption {
-      default = "AC";
-      type = with types; uniq str;
-      description = "As given in /sys/class/power_supply/";
-    };
-    edp1 = mkOption {
-      default = "";
-      type = with types; uniq str;
-      description = "Fingerprint for laptop screen";
-    };
-    root = mkOption {
-      default = "";
-      type = with types; uniq str;
-      description = "Root partition id";
     };
     hostname = mkOption {
       default = "";

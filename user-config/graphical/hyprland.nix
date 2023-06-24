@@ -118,12 +118,12 @@ in
     imports = [ hyprland.homeManagerModules.default ];
     xdg.configFile."wpaperd/output.conf".text = ''
       [default]
-      path = "/home/kiran/Pictures/Wallpapers/flying_marsh_harrier.jpg"
+      path = "/home/kiran/Pictures/Wallpapers/iceberg.jpg"
 
-      [HDMI-A-2]
+      [${config.dual_monitor_right}]
       path = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg"
 
-      [DP-1]
+      [${config.dual_monitor_left}]
       path = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg"
     '';
     wayland.windowManager.hyprland = {
