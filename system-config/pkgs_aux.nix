@@ -11,6 +11,7 @@
     quasselClient
     local.scripts
     local.logiops
+    local.dirtygit
     feh
     arandr
     brightnessctl
