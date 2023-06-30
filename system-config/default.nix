@@ -24,6 +24,7 @@
       ./file_manager.nix
       ./fwupd.nix
       ./thefuck.nix
+      ./yubikey.nix
     ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.allowed_unfree;

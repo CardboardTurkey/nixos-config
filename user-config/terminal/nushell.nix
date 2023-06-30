@@ -13,7 +13,7 @@
         let-env PROMPT_INDICATOR_VI_INSERT = ": "
         let-env PROMPT_INDICATOR_VI_NORMAL = "〉"
         let-env PROMPT_MULTILINE_INDICATOR = "::: "
-        '';
+      '';
       # configFile.source = pkgs.fetchurl {
       #   url = "https://raw.githubusercontent.com/nushell/nushell/main/crates/nu-utils/src/sample_config/default_config.nu";
       #   sha256 = "17b5n1dpqwbfzqfmii7b8qnbd585aimhp0kkq2m89hx1yk0qhjsa";
@@ -25,7 +25,7 @@
       extraConfig = ''
         use ${pkgs.nu_scripts}/share/nu_scripts/modules/git/git.nu *
         use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu *
-        '';
+      '';
     };
   };
 }
