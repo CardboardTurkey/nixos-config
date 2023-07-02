@@ -133,7 +133,7 @@
           font = "DejaVuSans Nerd Font ${builtins.toString config.font_size_large}px";
           follow = "keyboard";
           frame_width = 1;
-          frame_color = "#${config.nord9}";
+          frame_color = "#${config.nord3}";
           separator_color = "#${config.nord5}";
           width = "(0, 500)";
           offset = "22x69";
@@ -153,7 +153,7 @@
           timeout = 5;
         };
         urgency_normal = {
-          background = "#${config.nord3}70";
+          background = "#${config.nord2}70";
           foreground = "#${config.nord5}";
           timeout = 0;
         };
