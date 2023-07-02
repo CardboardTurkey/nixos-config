@@ -332,7 +332,7 @@ in
         windowrule = workspace 3, firefox-default
         windowrule = workspace 4, thunderbird
         windowrule = workspace 5, quassel
-        windowrule = workspace 5, signal
+        windowrule = workspace 5, Signal
         windowrule = workspace 6, steam
         windowrule = workspace 7, Gimp
 
