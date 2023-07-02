@@ -14,7 +14,8 @@ $background: #2e3440;
 $foreground: #d8dee9;
 
 $black: #3b4252;
-$gray: #565F89;
+$gray: #d8dee9;
+$purple: #565F89;
 $red: #F7768E;
 $green: #73DACA;
 $yellow: #E0AF68;
@@ -30,13 +31,14 @@ $white: $foreground;
   margin: 10px;
   margin-right: 0px;
   border-radius: 8px;
+  border: 2px solid $black;
 }
 
 // Tool tips
 tooltip {
   border-radius: 4px;
   background-color: $background;
-  border: 1px solid $gray;
+  border: 1px solid $purple;
 }
 
 
