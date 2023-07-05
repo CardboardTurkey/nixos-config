@@ -44,7 +44,7 @@ let
               symbols[Group1] = [ Down, End ]
           };
 
-          key <CAPS> {	[ Control_L, Control_L	]	};
+          key <CAPS> {	[ Control_L ]	};
           key <AE02> { [ 2, at ] };
           key <AC11> { [ apostrophe, quotedbl ] };
           replace key <LCTL> {	[ Hyper_L ]	};
