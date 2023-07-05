@@ -111,8 +111,6 @@ in
       enable = true;
       hidpi = true;
     };
-
-    nvidiaPatches = true;
   };
   home-manager.users.kiran = {
     imports = [ hyprland.homeManagerModules.default ];
@@ -152,14 +150,6 @@ in
 
         # Source a file (multi-file configs)
         # source = ~/.config/hypr/myColors.conf
-
-        # Some default env vars.
-        env = XCURSOR_SIZE,24
-        env = LIBVA_DRIVER_NAME,nvidia
-        env = XDG_SESSION_TYPE,wayland
-        # env = GBM_BACKEND,nvidia-drm
-        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-        env = WLR_NO_HARDWARE_CURSORS,1
 
         # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
         input {
