@@ -23,7 +23,16 @@ let
         xkb_keycodes  { include "evdev+aliases(qwerty)" };
         xkb_types     {
           include "complete"
-          type "MY_HYPER_LEVEL2" {
+          type "SHIFT_HYPER_LEVEL3" {
+            modifiers = Shift+Mod3;
+            map[None] = Level1;
+            map[Shift] = Level2;
+            map[Mod3] = Level3;
+            level_name[Level1] = "Base";
+            level_name[Level2] = "Shift";
+            level_name[Level3] = "Hyper";
+          };
+          type "HYPER_LEVEL2" {
             modifiers = Mod3;
             map[None] = Level1;
             map[Mod3] = Level2;
@@ -35,12 +44,29 @@ let
         xkb_symbols   { 
           include "pc+gb+inet(evdev)+terminate(ctrl_alt_bksp)"
 
+          key <AC07> {
+              type[Group1]="SHIFT_HYPER_LEVEL3",
+              symbols[Group1] = [ j, J, Left ]
+          };
+          key <AC08> {
+              type[Group1]="SHIFT_HYPER_LEVEL3",
+              symbols[Group1] = [ k, K, Down ]
+          };
+          key <AC09> {
+              type[Group1]="SHIFT_HYPER_LEVEL3",
+              symbols[Group1] = [ l, L, Up ]
+          };
+          key <AC10> {
+              type[Group1]="SHIFT_HYPER_LEVEL3",
+              symbols[Group1] = [ semicolon, colon, Right ]
+          };
+
           key <UP> {
-              type[Group1]="MY_HYPER_LEVEL2",
+              type[Group1]="HYPER_LEVEL2",
               symbols[Group1] = [ Up, Home ]
           };
           key <DOWN> {
-              type[Group1]="MY_HYPER_LEVEL2",
+              type[Group1]="HYPER_LEVEL2",
               symbols[Group1] = [ Down, End ]
           };
 
