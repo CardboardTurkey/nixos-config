@@ -37,6 +37,13 @@ in
     "nvidia-settings"
     "discord"
   ];
+  wallpapers = {
+    single = "/home/kiran/Pictures/Wallpapers/iceberg.jpg";
+    dual = {
+      left = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg";
+      right = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg";
+    };
+  };
 
   home-manager.users.kiran = {
     programs.keychain = {
@@ -49,58 +56,58 @@ in
 
   programs.hyprland.nvidiaPatches = true;
   home-manager.users.kiran.wayland.windowManager.hyprland.extraConfig = ''
-        # Some default env vars.
-        env = XCURSOR_SIZE,24
-        env = LIBVA_DRIVER_NAME,nvidia
-        env = XDG_SESSION_TYPE,wayland
-        # env = GBM_BACKEND,nvidia-drm
-        env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-        env = WLR_NO_HARDWARE_CURSORS,1
-        '';
-    };
-  };
+    # Some default env vars.
+    env = XCURSOR_SIZE,24
+    env = LIBVA_DRIVER_NAME,nvidia
+    env = XDG_SESSION_TYPE,wayland
+    # env = GBM_BACKEND,nvidia-drm
+    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+    env = WLR_NO_HARDWARE_CURSORS,1
+  '';
+};
+};
 
-  # ------
-  # Steam
-  # ------
+# ------
+# Steam
+# ------
 
-  programs.steam.enable = true;
-  environment.systemPackages = [
-    steam
-    (patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
-    nvidia-offload
-    discord
-    libva
-    xorg.xrandr
-  ];
+programs.steam.enable = true;
+environment.systemPackages = [
+steam
+(patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
+nvidia-offload
+discord
+libva
+xorg.xrandr
+];
 
-  # ------
-  # NVIDIA
-  # ------
+# ------
+# NVIDIA
+# ------
 
-  services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl = {
-    enable = true;
-    extraPackages = [
-      nvidia-vaapi-driver
-      # intel-media-driver
-      # vaapiIntel
-      # vaapiVdpau
-      # libvdpau-va-gl
-    ];
-  };
+services.xserver.videoDrivers = [ "nvidia" ];
+hardware.opengl = {
+enable = true;
+extraPackages = [
+nvidia-vaapi-driver
+# intel-media-driver
+# vaapiIntel
+# vaapiVdpau
+# libvdpau-va-gl
+];
+};
 
-  # Optionally, you may need to select the appropriate driver version for your specific GPU.
-  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+# Optionally, you may need to select the appropriate driver version for your specific GPU.
+# hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  hardware.nvidia.prime = {
-    offload.enable = true;
+hardware.nvidia.prime = {
+offload.enable = true;
 
-    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-    intelBusId = "PCI:0:2:0";
+# Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+intelBusId = "PCI:0:2:0";
 
-    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-    nvidiaBusId = "PCI:1:0:0";
-  };
+# Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+nvidiaBusId = "PCI:1:0:0";
+};
 
 }

@@ -8,8 +8,8 @@ let
       ref = "refs/heads/main";
     };
   }).defaultNix;
-
-  lock_cmd = "${pkgs.swaylock}/bin/swaylock -f --image=HDMI-A-2:~/Pictures/Wallpapers/Polar_Bear/right.jpg --image=DP-1:~/Pictures/Wallpapers/Polar_Bear/left.jpg --image=/home/kiran/Pictures/Wallpapers/flying_marsh_harrier_dim.jpg";
+  lock_cmd_flags = monitors: wallpaper: lib.strings.concatMapStrings (monitor: "--image=${monitor}:${wallpaper} ") monitors;
+  lock_cmd = "${pkgs.swaylock}/bin/swaylock -f ${lock_cmd_flags config.dual_monitor_right config.wallpapers.dual.right} ${lock_cmd_flags config.dual_monitor_left config.wallpapers.dual.left} --image=${config.wallpapers.single}";
 
   monitor_off = pkgs.writeScript "monitor_off" ''
     if [[ `hyprctl monitors -j | ${pkgs.jq}/bin/jq length` -gt 1 ]] # || [[ `cat /sys/class/power_supply/AC/online` -ne 0 ]]
@@ -142,13 +142,10 @@ in
     imports = [ hyprland.homeManagerModules.default ];
     xdg.configFile."wpaperd/output.conf".text = ''
       [default]
-      path = "/home/kiran/Pictures/Wallpapers/iceberg.jpg"
+      path = "${config.wallpapers.single}"
 
-      [${config.dual_monitor_right}]
-      path = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg"
-
-      [${config.dual_monitor_left}]
-      path = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg"
+      ${lib.strings.concatMapStrings (monitor: "[${monitor}]\npath = \"${config.wallpapers.dual.left}\"\n") config.dual_monitor_left}
+      ${lib.strings.concatMapStrings (monitor: "[${monitor}]\npath = \"${config.wallpapers.dual.right}\"\n") config.dual_monitor_right}
     '';
     wayland.windowManager.hyprland = {
       enable = true;

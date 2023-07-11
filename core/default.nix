@@ -49,5 +49,10 @@ with lib;
       type = with types; listOf str;
       description = "Allowed unfree packages";
     };
+    wallpapers = mkOption {
+      default = {};
+      type = with types; attrs;
+      description = "Paths to wallpapers";
+    };
   };
 }

@@ -34,14 +34,14 @@ with lib;
       description = "Root partition id";
     };
     dual_monitor_left = mkOption {
-      default = "dual_monitor_left";
-      type = with types; uniq str;
-      description = "Left monitor in dual monitor setup";
+      default = [ "dual_monitor_left" ];
+      type = with types; listOf str;
+      description = "The left monitors in dual monitor setup";
     };
     dual_monitor_right = mkOption {
-      default = "dual_monitor_right";
-      type = with types; uniq str;
-      description = "Right monitor in dual monitor setup";
+      default = [ "dual_monitor_right" ];
+      type = with types; listOf str;
+      description = "The right monitors in dual monitor setup";
     };
   };
 }
