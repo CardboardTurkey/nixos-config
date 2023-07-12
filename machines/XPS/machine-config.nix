@@ -36,6 +36,7 @@ in
     "nvidia-x11"
     "nvidia-settings"
     "discord"
+    "prismlauncher"
   ];
   wallpapers = {
     single = "/home/kiran/Pictures/Wallpapers/iceberg.jpg";
@@ -69,15 +70,16 @@ in
 # Steam
 # ------
 
-programs.steam.enable = true;
-environment.systemPackages = [
-steam
-(patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
-nvidia-offload
-discord
-libva
-xorg.xrandr
-];
+  programs.steam.enable = true;
+  environment.systemPackages = [
+    prismlauncher
+    steam
+    (patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
+    nvidia-offload
+    discord
+    libva
+    xorg.xrandr
+  ];
 
 # ------
 # NVIDIA
