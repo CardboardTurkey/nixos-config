@@ -3,7 +3,6 @@
 {
   imports =
     [
-      ./x11_keyboard.nix
       ./boot_loader.nix
       ./battery.nix
       ./font.nix
