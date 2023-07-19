@@ -6,4 +6,8 @@
     enable = true;
     path = with pkgs; [ gnupg ];
   };
+  systemd.user.sockets.yubikey-touch-detector = {
+    enable = true;
+  };
+
 }
