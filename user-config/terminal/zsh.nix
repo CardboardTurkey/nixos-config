@@ -10,7 +10,7 @@
       # dotDir = ".config/zsh";
       enableAutosuggestions = true;
       enableCompletion = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
       enableVteIntegration = true;
       historySubstringSearch.enable = true;
       autocd = true;
@@ -92,6 +92,7 @@
         export MANPAGER="sh -c 'col -bx | bat --theme Dracula -l man -p'"
         export BETTER_EXCEPTIONS=1
         export PATH=~/.cargo/bin:$PATH
+        ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets)
       '';
       shellAliases = {
         "nix-shell" = "nix-shell --command zsh";
