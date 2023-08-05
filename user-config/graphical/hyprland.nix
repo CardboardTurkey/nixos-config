@@ -205,11 +205,13 @@ in
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
             rounding = 8
-            blur = true
-            blur_size = 3
-            blur_passes = 3
-            blur_new_optimizations = true
-            blur_xray = false
+            blur {
+              enabled = true
+              size = 3
+              passes = 3
+              new_optimizations = true
+              xray = false
+            }
 
             drop_shadow = false
             shadow_range = 4
