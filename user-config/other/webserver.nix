@@ -52,9 +52,19 @@
     timerConfig.OnCalendar = [ "monthly" ];
   };
 
+  systemd.user.services.update_nginx = {
+    enable = true;
+    path = [ pkgs.docker ];
+    script = "DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock docker pull nginx:latest";
+  };
+  systemd.user.timers.update_nginx = {
+    enable = true;
+    wantedBy = [ "timers.target" ];
+    timerConfig.OnCalendar = [ "Sat *-*-* 04:00:00" ];
+  };
+
   systemd.services.fixall = {
     enable = true;
-    script = "docker pull nginx:latest";
     onSuccess = [ "reboot.target" ];
   };
   systemd.timers.fixall = {
