@@ -41,3 +41,7 @@ Can use sean's image because it already has a swap space applied. Remember to up
 1. https://nordthemewallpapers.com/Backgrounds/All/img/minimal-22-nordified.jpg
 1. https://nordthemewallpapers.com/Backgrounds/All/img/spacemars.jpg
 1. https://wallhaven.cc/w/mdrv1y
+
+# Setting up proton mail:
+
+* https://proton.me/support/custom-domain
