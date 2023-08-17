@@ -4,7 +4,6 @@
   sops.defaultSopsFile = ../files/secrets.yaml;
   home-manager.users.kiran = {
     home.file.".sops.yaml".text = ''
-      # TODO: add personal keys
       keys:
         - &kestrel age1rjal6afqld20xmwndrnqj96svm7fv2gz0chq660m6dm0tsjjrdsqz7m7p9
         - &wren age1rr707w76smu6gwph09f3khk7ef35xakm9n9mllhpgkuedpwh7qzsnvqtsm
@@ -16,6 +15,8 @@
             - *kestrel
             - *wren
             - *finch
+            pgp:
+            - 5B2FC8FC2BCF1A58885D6C92B67BBEB336616007
     '';
   };
 }
