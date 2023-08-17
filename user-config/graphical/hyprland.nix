@@ -133,10 +133,7 @@ in
     # default options, you don't need to set them
     package = hyprland.packages.${pkgs.system}.default;
 
-    xwayland = {
-      enable = true;
-      hidpi = true;
-    };
+    xwayland.enable = true;
   };
   home-manager.users.kiran = {
     imports = [ hyprland.homeManagerModules.default ];
