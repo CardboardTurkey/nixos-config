@@ -1,10 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
 
   imports =
     [
       ../laptop_common.nix
+      ../../user-config/other/sops.nix
     ];
 
   # For touch-to-click
@@ -20,7 +21,19 @@
   dual_monitor_left = [ "DP-3" "DP-4" ];
   dual_monitor_right = [ "DP-5" "DP-7" ];
   hostname = "Harrier";
-  home-manager.users.kiran.programs.git.extraConfig.credential = { helper = "store"; };
+  sops.secrets."gitconfig/url1" = {
+    mode = "0440";
+    owner = config.users.users.kiran.name;
+    group = config.users.users.kiran.group;
+  };
+  home-manager.users.kiran = {
+    programs.git = {
+      extraConfig.credential.helper = "store";
+      includes = [{
+        path = config.sops.secrets."gitconfig/url1".path;
+      }];
+    };
+  };
   users.users.kiran.extraGroups = [ "dialout" ];
   wallpapers = {
     single = "/home/kiran/Pictures/Wallpapers/flying_marsh_harrier.jpg";
