@@ -45,3 +45,10 @@ Can use sean's image because it already has a swap space applied. Remember to up
 # Setting up proton mail:
 
 * https://proton.me/support/custom-domain
+
+# Components
+
+* digikey
+* farnell
+* mouser
+
