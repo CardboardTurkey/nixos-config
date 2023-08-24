@@ -339,7 +339,7 @@ in
 
         # Assign program to workspace
         # windowrule=workspace 1 silent,kitty
-        windowrule = workspace 2, codium-url-handler
+        windowrule = workspace 2, VSCodium
         windowrule = workspace 3, firefox
         windowrule = workspace 3, firefox-default
         windowrule = workspace 4, thunderbird
