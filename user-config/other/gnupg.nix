@@ -10,10 +10,9 @@
     enableSSHSupport = true;
     pinentryFlavor = "gtk2";
   };
-  systemd.user.services.gpgclear = {
-    enable = true;
-    after = [ "suspend.target" ];
-    path = [ pkgs.systemd ];
-    script = "systemctl --user restart gpg-agent.service";
+  home-manager.users.kiran = { pkgs, ... }: {
+    programs.gpg.scdaemonSettings = {
+      disable-ccid = true;
+    };
   };
 }
