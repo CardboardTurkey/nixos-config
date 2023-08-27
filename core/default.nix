@@ -10,7 +10,7 @@ with lib;
 
   options = {
     email = mkOption {
-      default = "kostrolenk@gmail.com";
+      default = "kiran@ostrolenk.co.uk";
       type = with types; uniq str;
       description = "Email address (for git)";
     };
