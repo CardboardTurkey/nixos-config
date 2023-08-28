@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
@@ -65,7 +65,7 @@ in
   nix.gc.options = "--delete-older-than 10d";
   boot.tmp.cleanOnBoot = true;
 
-  users.users.kiran.openssh.authorizedKeys.keys = [ "${T14_ssh_key}" "${XPS_ssh_key}" ];
+  users.users.kiran.openssh.authorizedKeys.keys = [ "${config.pgp_auth_ssh}" ];
 
   # rpi3 only has 1gb ram so we need a swap file (maybe I should make it bigger )
   swapDevices = [{ device = "/swapfile"; size = 2048; }];

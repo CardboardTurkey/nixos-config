@@ -6,6 +6,7 @@ with lib;
     [
       ./nord.nix
       ./hardware.nix
+      ./keys.nix
     ];
 
   options = {
