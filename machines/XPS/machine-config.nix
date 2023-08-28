@@ -46,8 +46,10 @@ in
     };
   };
 
-  programs.hyprland.nvidiaPatches = true;
-  home-manager.users.kiran.wayland.windowManager.hyprland.extraConfig = ''
+  programs.hyprland.enableNvidiaPatches = true;
+  home-manager.users.kiran.wayland.windowManager.hyprland = {
+    enableNvidiaPatches = true;
+    extraConfig = ''
     # Some default env vars.
     env = XCURSOR_SIZE,24
     env = LIBVA_DRIVER_NAME,nvidia
@@ -56,6 +58,7 @@ in
     env = __GLX_VENDOR_LIBRARY_NAME,nvidia
     env = WLR_NO_HARDWARE_CURSORS,1
     '';
+  };
 
 # ------
 # Steam

@@ -2,12 +2,6 @@
 let
   flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
 
-  hyprland = (import flake-compat {
-    src = builtins.fetchGit {
-      url = "https://github.com/hyprwm/Hyprland.git";
-      ref = "refs/heads/main";
-    };
-  }).defaultNix;
   lock_cmd_flags = monitors: wallpaper: lib.strings.concatMapStrings (monitor: "--image=${monitor}:${wallpaper} ") monitors;
   lock_cmd = "${pkgs.swaylock}/bin/swaylock -f ${lock_cmd_flags config.dual_monitor_right config.wallpapers.dual.right} ${lock_cmd_flags config.dual_monitor_left config.wallpapers.dual.left} --image=${config.wallpapers.single}";
 
@@ -87,13 +81,6 @@ let
 in
 {
 
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
-
-  imports = [ hyprland.nixosModules.default ];
-
   environment.systemPackages = with pkgs; [
     pipewire
     wireplumber
@@ -103,6 +90,10 @@ in
     libsForQt5.qt5ct
     xwayland
   ];
+
+  # from wiki.hyprland
+  # Optional, hint electron apps to use wayland
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   security.pam.services.swaylock = { };
 
@@ -129,14 +120,9 @@ in
 
   programs.hyprland = {
     enable = true;
-
-    # default options, you don't need to set them
-    package = hyprland.packages.${pkgs.system}.default;
-
     xwayland.enable = true;
   };
   home-manager.users.kiran = {
-    imports = [ hyprland.homeManagerModules.default ];
     xdg.configFile."wpaperd/output.conf".text = ''
       [default]
       path = "${config.wallpapers.single}"
@@ -146,7 +132,8 @@ in
     '';
     wayland.windowManager.hyprland = {
       enable = true;
-
+      systemdIntegration = true;
+      xwayland.enable= true;
       extraConfig = ''
         bind = SUPER, Return, exec, ${launchTerminal}
         bind = MOD3, Return, exec, alacritty&
