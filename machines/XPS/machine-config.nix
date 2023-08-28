@@ -46,15 +46,6 @@ in
     };
   };
 
-  home-manager.users.kiran = {
-    programs.keychain = {
-      enable = true;
-      enableZshIntegration = true;
-      enableNushellIntegration = true;
-      keys = [ "id_ed25519" ];
-    };
-  };
-
   programs.hyprland.nvidiaPatches = true;
   home-manager.users.kiran.wayland.windowManager.hyprland.extraConfig = ''
     # Some default env vars.
