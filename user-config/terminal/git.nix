@@ -11,6 +11,7 @@
         skipSmudge = true;
       };
       ignores = [ "target" ".direnv" ".vscode" ];
+      signing.key = "${config.pgp_sign}";
       extraConfig = {
         core = { editor = "vim"; };
         pull = { rebase = "true"; };
