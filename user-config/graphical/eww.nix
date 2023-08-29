@@ -5,7 +5,7 @@
   #   eww-wayland
   # ];
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     material-icons
     linearicons-free
   ];

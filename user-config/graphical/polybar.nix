@@ -44,7 +44,7 @@ let
 in
 {
 
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
     noto-fonts-emoji
     font-awesome
