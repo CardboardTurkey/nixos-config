@@ -23,6 +23,7 @@ let
     # ms-vscode.cpptools
     # ms-vscode.cmake-tools
     mattn.lisp
+    gitlab.gitlab-workflow
   ];
 
 in
