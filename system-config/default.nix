@@ -13,7 +13,7 @@
       ./tailscale.nix
       ./openssh.nix
       ./location.nix
-      ./podman.nix
+      # ./podman.nix
       ./network.nix
       ./sound.nix
       ./office_vpn.nix
