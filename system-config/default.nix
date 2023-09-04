@@ -25,6 +25,7 @@
       ./fwupd.nix
       ./thefuck.nix
       ./yubikey.nix
+      ./ayden_vpn.nix
     ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.allowed_unfree;
