@@ -6,7 +6,7 @@
       ./boot_loader.nix
       ./battery.nix
       ./font.nix
-      # ./fprintd.nix # doesn't work nicely :(
+      ./pam.nix
       ./pkgs_core.nix
       ./pkgs_aux.nix
       ./users.nix
