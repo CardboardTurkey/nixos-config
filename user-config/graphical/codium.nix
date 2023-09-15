@@ -24,6 +24,7 @@ let
     # ms-vscode.cmake-tools
     mattn.lisp
     gitlab.gitlab-workflow
+    redhat.vscode-yaml
   ];
 
 in
