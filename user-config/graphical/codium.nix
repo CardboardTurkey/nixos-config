@@ -106,6 +106,7 @@ in
           "editor.wordWrapColumn" = 80;
         };
         "rust-analyzer.checkOnSave.command" = "clippy";
+        "redhat.telemetry.enabled" = false;
       };
     };
   };
