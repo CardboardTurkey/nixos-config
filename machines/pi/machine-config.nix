@@ -2,8 +2,6 @@
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-  T14_ssh_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMR2vu2GJG43rrS6wRD4sx6IYZ7CGaKi/5Dx1VmTU4Sv finch-20-06-2022";
-  XPS_ssh_key = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE1t57Tm6KqoGTn7GnrMC9g+5EcmSIX6zLDYdRfXHOl9 kestrel-13-07-2022";
 in
 
 {
