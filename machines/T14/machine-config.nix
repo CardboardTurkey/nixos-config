@@ -26,12 +26,26 @@
     owner = config.users.users.kiran.name;
     group = config.users.users.kiran.group;
   };
+  sops.secrets."work_ssh" = {
+    mode = "0440";
+    owner = config.users.users.kiran.name;
+    group = config.users.users.kiran.group;
+  };
   home-manager.users.kiran = {
     programs.git = {
       extraConfig.credential.helper = "store";
       includes = [{
         path = config.sops.secrets."gitconfig/url1".path;
       }];
+    };
+    programs.ssh = {
+      includes = [ "${toString config.sops.secrets."work_ssh".path}" ];
+      matchBlocks = {
+        "fs" = {
+          hostname = "fs.office.codethink.co.uk";
+          user = "kiran";
+        };
+      };
     };
   };
   users.users.kiran.extraGroups = [ "dialout" ];
