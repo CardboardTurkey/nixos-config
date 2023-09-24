@@ -9,8 +9,10 @@ Don't forget `sudo nix-channel --add https://nixos.org/channels/nixos-unstable n
 ### First boot
 
 * Edit link.sh to append `/mnt`
-* Remove projects or get key in
 * Set root uuid in core using `ls -l /dev/disk/by-uuid`
+* Enable yubikey with `pamu2cfg > ~/.config/Yubico/u2f_keys`
+* Add second with `pamu2cfg -n >> ~/.config/Yubico/u2f_keys`
+* Then scrap your password: `sudo passwd -d kiran`
 
 ### Pi
 
@@ -23,7 +25,6 @@ Can use sean's image because it already has a swap space applied. Remember to up
 # TODO
 
 * Add hints to alacritty
-* switch to wayland
 * move autorandr out of hm
 * steal sean's power management
 
