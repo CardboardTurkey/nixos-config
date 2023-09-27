@@ -4,6 +4,7 @@
   imports =
     [
       ./boot_loader.nix
+      ./greetd.nix
       ./battery.nix
       ./font.nix
       ./pam.nix

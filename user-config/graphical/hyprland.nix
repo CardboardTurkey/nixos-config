@@ -106,16 +106,6 @@ in
     # pulse.enable = true;
   };
 
-  services.greetd = {
-    enable = true;
-    settings = {
-      default_session = {
-        # Remember doesn't work and I don't understand why :(
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --remember --cmd Hyprland";
-      };
-    };
-  };
-
   # services.udev.extraRules = "KERNEL==\"uinput\", GROUP=\"users\", MODE=\"0660\", OPTIONS+=\"static_node=uinput\"\n";
 
   programs.hyprland = {

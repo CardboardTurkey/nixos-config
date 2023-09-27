@@ -7,7 +7,8 @@
     home = "/home/kiran";
     description = "Kiran Ostrolenk";
     shell = pkgs.zsh;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "kiran" "wheel" ]; # Enable ‘sudo’ for the user.
   };
+  users.groups.kiran = {};
   environment.shells = with pkgs; [ bash zsh ];
 }
