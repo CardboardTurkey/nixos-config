@@ -107,6 +107,7 @@ in
         };
         "rust-analyzer.checkOnSave.command" = "clippy";
         "redhat.telemetry.enabled" = false;
+        "window.titleBarStyle" = "custom";
       };
     };
   };
