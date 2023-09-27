@@ -11,8 +11,11 @@
     pinentryFlavor = "gtk2";
   };
   home-manager.users.kiran = { pkgs, ... }: {
-    programs.gpg.scdaemonSettings = {
-      disable-ccid = true;
+    programs.gpg = {
+      enable = true;
+      scdaemonSettings = {
+        disable-ccid = true;
+      };
     };
   };
 }
