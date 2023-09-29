@@ -3,7 +3,7 @@
     programs.ssh = {
       enable = true;
       controlMaster = "auto";
-      controlPersist = "30m";
+      controlPersist = "2h";
       matchBlocks = {
         "rpi" = {
           hostname = "100.64.201.123";
