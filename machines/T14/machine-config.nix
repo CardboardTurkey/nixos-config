@@ -32,12 +32,14 @@
     group = config.users.users.kiran.group;
   };
   home-manager.users.kiran = {
+    # Project change
     programs.git = {
       extraConfig.credential.helper = "store";
       includes = [{
         path = config.sops.secrets."gitconfig/url1".path;
       }];
     };
+    # Project change
     programs.ssh = {
       includes = [ "${toString config.sops.secrets."work_ssh".path}" ];
       matchBlocks = {
@@ -48,6 +50,7 @@
       };
     };
   };
+  # Project change
   users.users.kiran.extraGroups = [ "dialout" ];
   wallpapers = {
     single = "/home/kiran/Pictures/Wallpapers/flying_marsh_harrier.jpg";
@@ -56,6 +59,9 @@
       right = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg";
     };
   };
+
+  # Project change
+  boot.kernel.sysctl = { "kernel.perf_event_paranoid" = 0; };
 
   powerManagement.cpuFreqGovernor = "performance";
 
