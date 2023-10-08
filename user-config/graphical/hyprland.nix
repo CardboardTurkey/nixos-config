@@ -113,13 +113,6 @@ in
     xwayland.enable = true;
   };
   home-manager.users.kiran = {
-    xdg.configFile."wpaperd/output.conf".text = ''
-      [default]
-      path = "${config.wallpapers.single}"
-
-      ${lib.strings.concatMapStrings (monitor: "[${monitor}]\npath = \"${config.wallpapers.dual.left}\"\n") config.dual_monitor_left}
-      ${lib.strings.concatMapStrings (monitor: "[${monitor}]\npath = \"${config.wallpapers.dual.right}\"\n") config.dual_monitor_right}
-    '';
     wayland.windowManager.hyprland = {
       enable = true;
       systemdIntegration = true;
@@ -335,7 +328,7 @@ in
         bindl = ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"
 
         # wallpaper
-        exec = ${pkgs.wpaperd}/bin/wpaperd
+        exec = ${pkgs.wbg}/bin/wbg ${config.wallpapers.single}&
 
         # highres xwayland
         # change monitor to hires, the last argument is the scale factor
