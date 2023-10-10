@@ -12,7 +12,11 @@
       enableCompletion = true;
       syntaxHighlighting.enable = true;
       enableVteIntegration = true;
-      historySubstringSearch.enable = true;
+      historySubstringSearch = {
+        enable = true;
+        searchUpKey = [ "$terminfo[kcuu1]" ];
+        searchDownKey = [ "$terminfo[kcud1]" ];
+      };
       autocd = true;
       history.save = 10000000;
       history.size = 1000000000;
