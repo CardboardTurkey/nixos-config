@@ -53,7 +53,7 @@
   # Project change
   users.users.kiran.extraGroups = [ "dialout" ];
   wallpapers = {
-    single = "/home/kiran/Pictures/Wallpapers/flying_marsh_harrier.jpg";
+    single = "/home/kiran/Pictures/Wallpapers/ice_breaker.jpg";
     dual = {
       left = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg";
       right = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg";
