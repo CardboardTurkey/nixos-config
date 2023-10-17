@@ -8,6 +8,8 @@
       ./core
     ];
 
+  networking.hosts = { "5.78.76.134" = [ "ostrolenk.co.uk" "www.ostrolenk.co.uk" ]; };
+
   nix.extraOptions = "experimental-features = nix-command flakes";
 
   # This value determines the NixOS release from which the default
