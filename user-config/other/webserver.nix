@@ -65,6 +65,7 @@
 
   systemd.services.fixall = {
     enable = true;
+    script = "echo incoming";
     onSuccess = [ "reboot.target" ];
   };
   systemd.timers.fixall = {
