@@ -115,7 +115,7 @@ in
   home-manager.users.kiran = {
     wayland.windowManager.hyprland = {
       enable = true;
-      systemdIntegration = true;
+      systemd.enable = true;
       xwayland.enable= true;
       extraConfig = ''
         bind = SUPER, Return, exec, ${launchTerminal}
