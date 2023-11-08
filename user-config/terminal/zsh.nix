@@ -29,6 +29,8 @@
         thing = "$HOME/gitlab/cardboardturkey/thing-of-the-day";
         pdg = "$HOME/gitlab/cardboardturkey/pdgid";
         web = "${config.web_dir}";
+        infra = "$HOME/gitlab/smoothbraineduk/infrastructure";
+        smooth = "$HOME/gitlab/smoothbraineduk";
       };
       completionInit = ''
         zstyle ':completion:*' menu select
