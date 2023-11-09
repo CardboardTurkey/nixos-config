@@ -31,6 +31,7 @@
         web = "${config.web_dir}";
         infra = "$HOME/gitlab/smoothbraineduk/infrastructure";
         smooth = "$HOME/gitlab/smoothbraineduk";
+        wallop = "$HOME/gitlab/cardboardturkey/wallop";
       };
       completionInit = ''
         zstyle ':completion:*' menu select
