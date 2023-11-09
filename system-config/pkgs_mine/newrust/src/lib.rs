@@ -1,4 +1,4 @@
-use anyhow::Result;
+use eyre::Result;
 
 pub fn add(left: usize, right: usize) -> Result<usize> {
     log::info!("adding");

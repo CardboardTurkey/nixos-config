@@ -1,3 +1,5 @@
 include:
-  - remote: 'https://gitlab.com/rust-ci/rust-ci/-/raw/master/.gitlab-ci.yml'
+  - project: "rust-ci/rust-ci"
+    ref: "master"
+    file: ".gitlab-ci.yml"
 

@@ -1,6 +1,6 @@
 use std::process::ExitCode;
 
-use anyhow::Result;
+use eyre::Result;
 use clap::Parser;
 use log::LevelFilter;
 
