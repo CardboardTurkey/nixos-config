@@ -25,6 +25,7 @@ let
     mattn.lisp
     gitlab.gitlab-workflow
     redhat.vscode-yaml
+    stkb.rewrap
   ];
 
 in
