@@ -49,6 +49,9 @@
         };
       };
     };
+    programs.zsh.dirHashes = {
+      lorry = "$HOME/gitlab/CodethinkLabs/lorry/lorry2/";
+    };
   };
   # Project change
   users.users.kiran.extraGroups = [ "dialout" ];
