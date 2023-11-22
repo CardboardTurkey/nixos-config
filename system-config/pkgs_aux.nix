@@ -26,5 +26,6 @@
     local.pyup
     kooha
     rust-script
+    dasel
   ];
 }
