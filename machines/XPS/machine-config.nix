@@ -21,6 +21,7 @@ in
   imports =
     [
       ../pc_common.nix
+      ../../system-config/ayden_vpn.nix
     ];
 
   wlan = "wlp59s0";

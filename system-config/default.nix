@@ -26,7 +26,6 @@
       ./fwupd.nix
       ./thefuck.nix
       ./yubikey.nix
-      ./ayden_vpn.nix
       ./qmk.nix
       ./flatpack.nix
     ];

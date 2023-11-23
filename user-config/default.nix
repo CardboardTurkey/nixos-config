@@ -35,7 +35,6 @@ in
 
       ./other/bluetooth.nix
       ./other/fontconfig.nix
-      ./other/sops.nix
       ./other/gnupg.nix
     ];
   home-manager.users.kiran = _: {

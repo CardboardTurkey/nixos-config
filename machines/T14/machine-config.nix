@@ -6,6 +6,7 @@
     [
       ../pc_common.nix
       ../../user-config/other/sops.nix
+      ../../system-config/ayden_vpn.nix
     ];
 
   # For touch-to-click
