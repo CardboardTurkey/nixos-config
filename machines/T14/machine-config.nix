@@ -4,7 +4,7 @@
 
   imports =
     [
-      ../laptop_common.nix
+      ../pc_common.nix
       ../../user-config/other/sops.nix
     ];
 
