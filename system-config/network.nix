@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, config, lib, ... }:
 {
   networking = {
     hostName = "${config.hostname}"; # Define your hostname.
@@ -8,6 +8,8 @@
       dns = "systemd-resolved";
     };
   };
+  # https://github.com/NixOS/nixpkgs/issues/180175
+  systemd.services.NetworkManager-wait-online.enable = lib.mkForce false;
   services.resolved.enable = true;
   programs.nm-applet.enable = true;
 }
