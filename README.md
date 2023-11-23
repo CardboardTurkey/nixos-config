@@ -14,6 +14,19 @@ Don't forget `sudo nix-channel --add https://nixos.org/channels/nixos-unstable n
 * Add second with `pamu2cfg -n >> ~/.config/Yubico/u2f_keys`
 * Then scrap your password: `sudo passwd -d kiran`
 
+### Partitioning
+
+Follow nixos [guide] for setting up boot and swap partition. Use [lvm] for the
+root partition though (`parted /dev/sda -- mkpart lvm 512MB -8GB` seems to
+work).
+
+In principle you could also use lvm (with the `-C` flag for contiguous) for the
+swap parition but apparently it doesn't make much difference:
+<https://unix.stackexchange.com/a/144597>
+
+[guide]: https://nixos.org/manual/nixos/stable/#sec-installation-manual
+[lvm]: https://linuxhandbook.com/lvm-guide/
+
 ### Pi
 
 Can use sean's image because it already has a swap space applied. Remember to update channel first.
@@ -22,13 +35,13 @@ Can use sean's image because it already has a swap space applied. Remember to up
 
 `ls -l /dev/disk/by-uuid`
 
-# TODO
+## TODO
 
 * Add hints to alacritty
 * move autorandr out of hm
 * steal sean's power management
 
-# Links
+## Links
 
 * [vim spell check](https://www.adamalbrecht.com/blog/2019/10/21/spell-check-in-vim-for-markdown-and-git-commit-messages/)
 * [fprintd off when lid closed](https://unix.stackexchange.com/questions/678609/how-to-disable-fingerprint-authentication-when-laptop-lid-is-closed)
@@ -36,20 +49,19 @@ Can use sean's image because it already has a swap space applied. Remember to up
 * [So _THAT'S_ how you add derivations to your config](https://discourse.nixos.org/t/howto-merge-a-derivation-nix-to-etc-nixos-configuration-nix/12797/3)
 * [Encryption guide](https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134)
 
-# Wallpapers
+## Wallpapers
 
-1. https://w.wallhaven.cc/full/lm/wallhaven-lmjzjr.jpg
-1. https://nordthemewallpapers.com/Backgrounds/All/img/minimal-22-nordified.jpg
-1. https://nordthemewallpapers.com/Backgrounds/All/img/spacemars.jpg
-1. https://wallhaven.cc/w/mdrv1y
+1. <https://w.wallhaven.cc/full/lm/wallhaven-lmjzjr.jpg>
+1. <https://nordthemewallpapers.com/Backgrounds/All/img/minimal-22-nordified.jpg>
+1. <https://nordthemewallpapers.com/Backgrounds/All/img/spacemars.jpg>
+1. <https://wallhaven.cc/w/mdrv1y>
 
-# Setting up proton mail:
+## Setting up proton mail
 
-* https://proton.me/support/custom-domain
+* <https://proton.me/support/custom-domain>
 
-# Components
+## Components
 
 * digikey
 * farnell
 * mouser
-
