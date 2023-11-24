@@ -55,7 +55,7 @@
     };
   };
   # Project change
-  users.users.kiran.extraGroups = [ "dialout" ];
+  users.users.kiran.extraGroups = [ "dialout" "docker" ];
   wallpapers = {
     single = "/home/kiran/Pictures/Wallpapers/ice_breaker.jpg";
     dual = {

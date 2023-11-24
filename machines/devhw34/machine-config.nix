@@ -26,6 +26,8 @@
     };
   };
 
+  users.users.kiran.extraGroups = [ "docker" ];
+
   # Project change
   boot.kernel.sysctl = { "kernel.perf_event_paranoid" = 0; };
 

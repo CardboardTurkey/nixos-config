@@ -6,9 +6,9 @@
   ];
 
   home-manager.users.kiran = {
-    programs.zsh = {
-      envExtra = "export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock";
-    };
+    # programs.zsh = {
+    #   envExtra = "export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock";
+    # };
     programs.nushell = {
       extraEnv = "$env.DOCKER_HOST = $'unix://($env.XDG_RUNTIME_DIR)/docker.sock'";
     };
@@ -21,8 +21,8 @@
       enable = true;
       dates = "weekly";
     };
-    rootless = {
-      enable = true;
-    };
+    # rootless = {
+    #   enable = true;
+    # };
   };
 }
