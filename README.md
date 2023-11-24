@@ -27,6 +27,14 @@ swap parition but apparently it doesn't make much difference:
 [guide]: https://nixos.org/manual/nixos/stable/#sec-installation-manual
 [lvm]: https://linuxhandbook.com/lvm-guide/
 
+### Annoyances
+
+Wallpapers need to be copied across. Git repos need to be reinstantiated.
+
+Need to enable touch detector `systemctl --user enable yubikey-touch-detector.service`
+
+Enabling notifications on firefox websites.
+
 ### Pi
 
 Can use sean's image because it already has a swap space applied. Remember to update channel first.

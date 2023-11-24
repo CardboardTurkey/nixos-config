@@ -10,8 +10,8 @@
   email = "kiran.ostrolenk@codethink.co.uk";
   eth = "eno1";
   root = "5f3d43dc-1955-4eae-955a-1d151d08fcfc";
-  dual_monitor_left = [ "DP-3" "DP-4" ];
-  dual_monitor_right = [ "DP-5" "DP-7" ];
+  dual_monitor_left = [ "DP-1" ];
+  dual_monitor_right = [ "DP-2" ];
   hostname = "devhw34";
   home-manager.users.kiran = {
     programs.zsh.dirHashes = {
