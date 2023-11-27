@@ -4,6 +4,7 @@
     programs.nushell = {
       enable = true;
       extraEnv = ''
+        $env.MANROFFOPT = "-c" # Needed for bat-manpager integration
         $env.MANPAGER = "sh -c 'col -bx | bat --theme Dracula -l man -p'"
         $env.PATH = ($env.PATH | append ~/.cargo/bin)
 
