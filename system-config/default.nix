@@ -28,6 +28,7 @@
       ./yubikey.nix
       ./qmk.nix
       ./flatpack.nix
+      ./upower.nix
     ];
 
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) config.allowed_unfree;
