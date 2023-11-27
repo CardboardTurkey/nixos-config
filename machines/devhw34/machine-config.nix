@@ -33,4 +33,7 @@
 
   powerManagement.cpuFreqGovernor = "performance";
 
+  # https://stackoverflow.com/questions/413807/is-there-a-way-for-non-root-processes-to-bind-to-privileged-ports-on-linux
+  # https://www.staldal.nu/tech/2007/10/31/why-can-only-root-listen-to-ports-below-1024/
+  boot.kernel.sysctl."net.ipv4.ip_unprivileged_port_start" = 80;
 }
