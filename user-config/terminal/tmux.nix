@@ -14,6 +14,10 @@ _:
         bind - split-window -v
         unbind '"'
         unbind %
+
+        # Make sure home and end work
+        bind-key -n Home send Escape "OH"
+        bind-key -n End send Escape "OF"
       '';
     };
   };
