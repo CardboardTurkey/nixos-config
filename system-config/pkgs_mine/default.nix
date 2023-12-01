@@ -7,4 +7,5 @@ with pkgs; {
   newrust = callPackage ./newrust { inherit pkgs; };
   pyup = callPackage ./pyup { inherit pkgs; };
   colorful_loop = callPackage ./colorful_loop { inherit pkgs; };
+  cargo-aoc = callPackage ./cargo-aoc.nix { inherit pkgs; };
 }

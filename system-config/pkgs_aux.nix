@@ -24,6 +24,7 @@
     ffmpeg
     local.newrust
     local.pyup
+    local.cargo-aoc
     kooha
     rust-script
     dasel
