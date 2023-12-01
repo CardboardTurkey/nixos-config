@@ -15,7 +15,7 @@ fi
 
 sed "s/@crate@/$crate_name/" < "@out@/share/gitlab-ci.yml" > "$crate_name/.gitlab-ci.yml"
 
-cp "@out@/share/shell.nix" "$crate_name/shell.nix"
-echo "use nix" > "$crate_name/.envrc"
+cp "@out@/share/flake.nix" "$crate_name/flake.nix"
+echo "use flake" > "$crate_name/.envrc"
 chmod +w -R $crate_name
 direnv allow $crate_name

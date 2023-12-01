@@ -17,7 +17,7 @@ stdenv.mkDerivation {
   installPhase = ''
     mkdir -p $out/share $out/bin
 
-    mv main.rs lib.rs cli.rs shell.nix gitlab-ci.yml $out/share
+    mv main.rs lib.rs cli.rs flake.nix gitlab-ci.yml $out/share
 
     cargo=${pkgs.cargo}/bin/cargo substituteAllInPlace newrust
     chmod +x newrust
