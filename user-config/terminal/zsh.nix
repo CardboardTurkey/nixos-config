@@ -32,6 +32,7 @@
         infra = "$HOME/gitlab/smoothbraineduk/infrastructure";
         smooth = "$HOME/gitlab/smoothbraineduk";
         wallop = "$HOME/gitlab/cardboardturkey/wallop";
+        ci = "$HOME/gitlab/rust-ci/rust-ci";
       };
       completionInit = ''
         zstyle ':completion:*' menu select
