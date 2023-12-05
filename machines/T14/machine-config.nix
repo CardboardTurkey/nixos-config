@@ -67,7 +67,7 @@
   # Project change
   boot.kernel.sysctl = { "kernel.perf_event_paranoid" = 0; };
 
-  powerManagement.cpuFreqGovernor = "performance";
+  # powerManagement.cpuFreqGovernor = "performance";
 
   # Need fs.office.codethink.co.uk entry added to /root/.ssh/known_hosts
   # and a key without passphrase. This isn't a security issue as you need
