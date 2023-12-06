@@ -94,6 +94,9 @@
           (cd ~/ct-gitlab/codethings/cardboardturkey/notes/
           bat notes.md)
         fi
+
+        ## Disable flow control
+        [[ $- == *i* ]] && stty -ixon
       '';
       envExtra = ''
         export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
