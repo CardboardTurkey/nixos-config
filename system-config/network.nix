@@ -4,7 +4,7 @@
     hostName = "${config.hostname}"; # Define your hostname.
     networkmanager = {
       enable = true;
-      plugins = [ pkgs.networkmanager-openconnect ];
+      plugins = [ pkgs.networkmanager-openconnect pkgs.networkmanager-openvpn ];
       dns = "systemd-resolved";
     };
   };
