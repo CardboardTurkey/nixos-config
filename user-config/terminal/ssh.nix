@@ -4,6 +4,7 @@
       enable = true;
       controlMaster = "auto";
       controlPersist = "2h";
+      forwardAgent = true;
       matchBlocks = {
         "www1" = {
           hostname = "5.78.76.134";
