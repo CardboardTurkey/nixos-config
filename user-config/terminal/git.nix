@@ -8,7 +8,7 @@
       userEmail = "${config.email}";
       lfs = {
         enable = true;
-        skipSmudge = true;
+        # skipSmudge = true;
       };
       ignores = [ "target" ".direnv" ".vscode" ];
       signing.key = "${config.pgp_sign}";
