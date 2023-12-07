@@ -84,4 +84,13 @@
       recommendedProxySettings = true;
     };
   };
+
+  users.users.kinnison = {
+    isNormalUser = true;
+    home = "/home/kinnison";
+    description = "Daniel Silverstone";
+    shell = pkgs.bash;
+    extraGroups = [ "kinnison" "wheel" ]; # Enable ‘sudo’ for the user.
+  };
+  users.groups.kinnison = { };
 }
