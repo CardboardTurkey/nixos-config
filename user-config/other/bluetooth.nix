@@ -1,7 +1,6 @@
 _:
 
 {
-  hardware.pulseaudio.enable = true;
   hardware.bluetooth.enable = true;
 
   # home-manager.users.kiran = { pkgs, lib, ... }: {

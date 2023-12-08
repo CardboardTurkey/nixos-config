@@ -82,8 +82,8 @@ in
 {
 
   environment.systemPackages = with pkgs; [
-    pipewire
-    wireplumber
+    pipewire # needed for screen sharing
+    wireplumber # needed for screen sharing
     slurp
     qt6.qtwayland
     libsForQt5.qt5.qtwayland
@@ -96,15 +96,6 @@ in
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   security.pam.services.swaylock = { };
-
-  # rtkit is optional but recommended
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    # alsa.enable = true;
-    # alsa.support32Bit = true;
-    # pulse.enable = true;
-  };
 
   # services.udev.extraRules = "KERNEL==\"uinput\", GROUP=\"users\", MODE=\"0660\", OPTIONS+=\"static_node=uinput\"\n";
 
