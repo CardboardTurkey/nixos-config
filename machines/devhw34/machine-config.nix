@@ -26,8 +26,6 @@
     };
   };
 
-  users.users.kiran.extraGroups = [ "docker" ];
-
   # Project change
   boot.kernel.sysctl = { "kernel.perf_event_paranoid" = 0; };
 
@@ -84,13 +82,14 @@
       recommendedProxySettings = true;
     };
   };
-
-  users.users.kinnison = {
+  users.users.codething = {
     isNormalUser = true;
-    home = "/home/kinnison";
-    description = "Daniel Silverstone";
+    home = "/home/codething";
+    description = "Code Thing";
     shell = pkgs.bash;
-    extraGroups = [ "kinnison" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "codething" "docker" "wheel" ]; # Enable ‘sudo’ for the user.
   };
-  users.groups.kinnison = { };
+  users.groups.codething = { };
+  users.users.kiran.extraGroups = [ "docker" ];
+  environment.systemPackages = with pkgs; [ tmux ];
 }
