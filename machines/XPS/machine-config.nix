@@ -47,19 +47,15 @@ in
     };
   };
 
-  programs.hyprland.enableNvidiaPatches = true;
-  home-manager.users.kiran.wayland.windowManager.hyprland = {
-    enableNvidiaPatches = true;
-    extraConfig = ''
-      # Some default env vars.
-      env = XCURSOR_SIZE,24
-      env = LIBVA_DRIVER_NAME,nvidia
-      env = XDG_SESSION_TYPE,wayland
-      # env = GBM_BACKEND,nvidia-drm
-      env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-      env = WLR_NO_HARDWARE_CURSORS,1
-    '';
-  };
+  home-manager.users.kiran.wayland.windowManager.hyprland.extraConfig = ''
+    # Some default env vars.
+    env = XCURSOR_SIZE,24
+    env = LIBVA_DRIVER_NAME,nvidia
+    env = XDG_SESSION_TYPE,wayland
+    # env = GBM_BACKEND,nvidia-drm
+    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+    env = WLR_NO_HARDWARE_CURSORS,1
+  '';
 
   # ------
   # Steam
