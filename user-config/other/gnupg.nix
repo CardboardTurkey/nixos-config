@@ -8,7 +8,7 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryFlavor = "gtk2";
+    pinentryFlavor = "gnome3";
   };
   home-manager.users.kiran = { pkgs, ... }: {
     programs.gpg = {
