@@ -12,6 +12,16 @@
       };
       ignores = [ "target" ".direnv" ".vscode" ];
       signing.key = "${config.pgp_sign}";
+      includes = [
+        {
+          contents.user.email = "kiran@ostrolenk.co.uk";
+          condition = "gitdir:~/gitlab/**";
+        }
+        {
+          contents.user.email = "kiran@ostrolenk.co.uk";
+          condition = "gitdir:~/github/**";
+        }
+      ];
       extraConfig = {
         core = { editor = "vim"; };
         pull = { rebase = "true"; };
