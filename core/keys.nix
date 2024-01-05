@@ -19,7 +19,7 @@ with lib;
       description = "Auth key converted to ssh";
     };
     kestrel_host_age = mkOption {
-      default = "age1rjal6afqld20xmwndrnqj96svm7fv2gz0chq660m6dm0tsjjrdsqz7m7p9";
+      default = "age15pdkyxtv9558tf23sm2pth2qrr0qt2cdwvhwa3shftgcwvvzgazsgenmp2";
       type = with types; uniq str;
       description = "Kestrel ssh host key converted to age";
     };
