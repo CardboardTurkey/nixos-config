@@ -11,6 +11,11 @@
 
   # For touch-to-click
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
+  boot.plymouth = {
+    enable = true;
+    theme = "colorful_loop";
+    themePackages = [ pkgs.local.colorful_loop ];
+  };
 
   email = "kiran.ostrolenk@codethink.co.uk";
   eth = "enp0s31f6";

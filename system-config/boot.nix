@@ -1,10 +1,5 @@
 {pkgs, ...}:
 {
-  boot.plymouth = {
-    enable = true;
-    theme = "colorful_loop";
-    themePackages = [ pkgs.local.colorful_loop ];
-  };
   # 22-06-29: Whether to enable systemd in initrd. Note: This is in very early
   # development and is highly experimental. Most of the features NixOS
   # supports in initrd are not yet supported by the intrd generated
