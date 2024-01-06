@@ -35,13 +35,12 @@ Need to enable touch detector `systemctl --user enable yubikey-touch-detector.se
 
 Enabling notifications on firefox websites.
 
+Update root partition uuid `ls -l /dev/disk/by-uuid`.
+
 ### Pi
 
 Can use sean's image because it already has a swap space applied. Remember to update channel first.
 
-### Get partition UUID
-
-`ls -l /dev/disk/by-uuid`
 
 ## TODO
 
