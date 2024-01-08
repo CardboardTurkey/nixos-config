@@ -16,7 +16,6 @@
       enable = true;
       settings = {
         font = {
-          family = "monospace";
           size = config.font_size_small;
         };
         window = {
@@ -44,15 +43,13 @@
             text = "CellForeground";
             background = "#${config.nord3}";
           };
-          search = {
-            matches = {
-              foreground = "CellBackground";
-              background = "#${config.nord8}";
-            };
-            footer_bar = {
-              background = "#${config.nord2}";
-              foreground = "#${config.nord4}";
-            };
+          search.matches = {
+            foreground = "CellBackground";
+            background = "#${config.nord8}";
+          };
+          footer_bar = {
+            background = "#${config.nord2}";
+            foreground = "#${config.nord4}";
           };
           normal = {
             black = "#${config.nord1}";
