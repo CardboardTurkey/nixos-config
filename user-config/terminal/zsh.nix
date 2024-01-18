@@ -32,6 +32,7 @@
         infra = "$HOME/gitlab/smoothbraineduk/infrastructure";
         smooth = "$HOME/gitlab/smoothbraineduk";
         wallop = "$HOME/gitlab/cardboardturkey/wallop";
+        hep = "$HOME/github/cardboardturkey/hepmc2";
         ci = "$HOME/gitlab/rust-ci/rust-ci";
       };
       completionInit = ''
