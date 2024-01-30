@@ -18,6 +18,10 @@
           condition = "gitdir:~/gitlab/**";
         }
         {
+          contents.user.email = "kiran.ostrolenk@codethink.co.uk";
+          condition = "gitdir:~/gitlab/CodethinkLabs/**";
+        }
+        {
           contents.user.email = "kiran@ostrolenk.co.uk";
           condition = "gitdir:~/github/**";
         }
