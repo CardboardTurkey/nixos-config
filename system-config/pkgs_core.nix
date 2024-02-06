@@ -16,5 +16,6 @@
     killall
     ncdu
     update-nix-fetchgit
+    fd
   ];
 }
