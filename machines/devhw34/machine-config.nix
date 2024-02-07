@@ -90,6 +90,8 @@
     extraGroups = [ "codething" "docker" "wheel" ]; # Enable ‘sudo’ for the user.
   };
   users.groups.codething = { };
-  users.users.kiran.extraGroups = [ "docker" ];
+  users.users.kiran.extraGroups = [ "docker" "libvirtd" ];
   environment.systemPackages = with pkgs; [ tmux ];
+
+  virtualisation.libvirtd.enable = true;
 }
