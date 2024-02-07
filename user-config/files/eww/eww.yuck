@@ -202,6 +202,15 @@
 	:stacking "fg"
 (bar))
 
+(defwindow bar1
+	:geometry (geometry :height "100%" 
+						:width "47"
+						:anchor "left center")
+	:monitor 1
+	:exclusive "true"
+	:stacking "fg"
+(bar))
+
 ;; Calendar Windows ;;
 (defwindow calendar
 	:geometry (geometry :x "70px" 
