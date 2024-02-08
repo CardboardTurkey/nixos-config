@@ -17,6 +17,9 @@
     programs.zsh.dirHashes = {
       lorry = "$HOME/gitlab/CodethinkLabs/lorry/lorry2/";
     };
+    programs.ssh = {
+      includes = [ "/home/kiran/gitlab/cardboardturkey/nixos-config/user-config/files/vagrant_ssh" ];
+    };
   };
   wallpapers = {
     single = "/home/kiran/Pictures/Wallpapers/ice_breaker.jpg";
@@ -94,4 +97,8 @@
   environment.systemPackages = with pkgs; [ tmux ];
 
   virtualisation.libvirtd.enable = true;
+  networking.hosts = {
+    "192.168.121.4" = [ "whoami.dev.codethink.co.uk" ];
+  };
+
 }

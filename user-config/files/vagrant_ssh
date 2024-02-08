@@ -1,0 +1,12 @@
+Host vagrant whoami.dev.codethink.co.uk
+  HostName 192.168.121.4
+  User vagrant
+  Port 22
+  UserKnownHostsFile /dev/null
+  StrictHostKeyChecking no
+  PasswordAuthentication no
+  IdentityFile /home/kiran/ct-gitlab/infrastructure/infrastructure-ansible/.vagrant/machines/vagrant/libvirt/private_key
+  IdentitiesOnly yes
+  LogLevel FATAL
+  PubkeyAcceptedKeyTypes +ssh-rsa
+  HostKeyAlgorithms +ssh-rsa
