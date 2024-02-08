@@ -1,5 +1,5 @@
 Host vagrant whoami.dev.codethink.co.uk
-  HostName 192.168.121.4
+  HostName 192.168.121.209
   User vagrant
   Port 22
   UserKnownHostsFile /dev/null
@@ -10,3 +10,4 @@ Host vagrant whoami.dev.codethink.co.uk
   LogLevel FATAL
   PubkeyAcceptedKeyTypes +ssh-rsa
   HostKeyAlgorithms +ssh-rsa
+
