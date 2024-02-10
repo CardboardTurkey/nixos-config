@@ -26,6 +26,8 @@ let
     gitlab.gitlab-workflow
     redhat.vscode-yaml
     stkb.rewrap
+    nvarner.typst-lsp
+    tomoki1207.pdf
   ];
 
 in
