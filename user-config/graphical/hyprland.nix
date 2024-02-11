@@ -26,6 +26,17 @@ let
             level_name[Level2] = "Shift";
             level_name[Level3] = "Hyper";
           };
+          type "SHIFT_HYPER_LEVEL4" {
+            modifiers = Shift+Mod3;
+            map[None] = Level1;
+            map[Shift] = Level2;
+            map[Mod3] = Level3;
+            map[Shift+Mod3] = Level4;
+            level_name[Level1] = "Base";
+            level_name[Level2] = "Shift";
+            level_name[Level3] = "Hyper";
+            level_name[Level3] = "Hyper Shift";
+          };
           type "HYPER_LEVEL2" {
             modifiers = Mod3;
             map[None] = Level1;
@@ -53,6 +64,11 @@ let
           key <AC10> {
               type[Group1]="SHIFT_HYPER_LEVEL3",
               symbols[Group1] = [ semicolon, colon, Right ]
+          };
+          
+          key <AB01> {
+              type[Group1]="SHIFT_HYPER_LEVEL4",
+              symbols[Group1] = [ z, Z, bar, backslash ]
           };
 
           key <UP> {
