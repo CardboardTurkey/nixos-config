@@ -147,10 +147,11 @@ in
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
             gaps_in = 4
-            gaps_out = 9
-            border_size = 0
-            # col.active_border = rgba(${config.nord1}00) rgba(${config.nord1}00) 45deg
-            # col.inactive_border = rgba(595959aa)
+            gaps_out = 10
+            border_size = 2
+            # col.active_border = rgba(${config.nord2}FF) rgba(${config.nord7}FF) 45deg
+            col.active_border = rgba(${config.nord2}FF)
+            col.inactive_border = rgba(${config.nord2}FF)
 
             layout = dwindle
         }
