@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   # Enable the OpenSSH daemon.
@@ -8,4 +8,7 @@
       StreamLocalBindUnlink = true;
     };
   };
+  environment.systemPackages = with pkgs; [
+    waypipe
+  ];
 }
