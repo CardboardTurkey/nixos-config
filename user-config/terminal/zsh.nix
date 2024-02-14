@@ -18,8 +18,11 @@
         searchDownKey = [ "$terminfo[kcud1]" ];
       };
       autocd = true;
-      history.save = 10000000;
-      history.size = 1000000000;
+      history = {
+        save = 10000000;
+        size = 1000000000;
+        ignoreAllDups = true;
+      };
       dirHashes = {
         aoc = "$HOME/gitlab/cardboardturkey/aoc22";
         bft = "$HOME/gitlab/kiran-rust-course/project";
