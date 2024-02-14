@@ -1,11 +1,18 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   # For zsh compeletion (apparently)
   environment.pathsToLink = [ "/share/zsh" ];
   programs.zsh.enable = true;
   home-manager.users.kiran = {
+    home.shellAliases = {
+        "less" = "bat --plain";
+        "pj" = "${pkgs.bat-extras.prettybat}/bin/prettybat -l json";
+    };
     programs.zsh = {
+      shellAliases = {
+        "nix-shell" = "nix-shell --command zsh";
+      };
       enable = true;
       # dotDir = ".config/zsh";
       enableAutosuggestions = true;
@@ -110,10 +117,6 @@
         export PATH=~/.cargo/bin:$PATH
         ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets)
       '';
-      shellAliases = {
-        "nix-shell" = "nix-shell --command zsh";
-        "less" = "bat --plain";
-      };
     };
   };
 }
