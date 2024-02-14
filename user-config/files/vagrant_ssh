@@ -1,5 +1,5 @@
-Host vagrant whoami.dev.codethink.co.uk
-  HostName 192.168.121.209
+Host vagrant kiran.dev.codethink.co.uk
+  HostName 192.168.121.44
   User vagrant
   Port 22
   UserKnownHostsFile /dev/null

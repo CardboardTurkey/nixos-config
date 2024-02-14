@@ -98,7 +98,7 @@
 
   virtualisation.libvirtd.enable = true;
   networking.hosts = {
-    "192.168.121.209" = [ "whoami.dev.codethink.co.uk" ];
+    "192.168.121.44" = [ "kiran.dev.codethink.co.uk" ];
   };
 
 }
