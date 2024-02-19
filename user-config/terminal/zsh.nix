@@ -65,6 +65,11 @@
         bindkey '^H' my-backward-delete-word
         bindkey '^[[3;5~' kill-word
 
+        ## Unix time converter
+        ut() {
+            date -d @"$1"
+        }
+
         ## COMPRESSION FUNCTION ##
         compress() {
             FILE=$1
