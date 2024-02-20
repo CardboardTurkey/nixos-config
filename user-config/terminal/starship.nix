@@ -15,6 +15,9 @@
         nix_shell = {
           symbol = "❄ ";
         };
+        aws = {
+          symbol = "☁️ ";
+        };
       };
     };
   };
