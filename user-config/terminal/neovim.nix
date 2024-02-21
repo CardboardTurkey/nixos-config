@@ -5,7 +5,7 @@
   home-manager.users.kiran = { pkgs, ... }: {
     programs.neovim = {
       enable = true;
-      plugins = with pkgs.vimPlugins; [ nord-vim vim-nix ];
+      plugins = with pkgs.vimPlugins; [ nord-vim vim-nix robotframework-vim ];
       vimAlias = true;
       extraConfig = ''
         colorscheme nord
