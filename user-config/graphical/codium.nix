@@ -28,6 +28,13 @@ let
     stkb.rewrap
     nvarner.typst-lsp
     tomoki1207.pdf
+  ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    {
+      name = "robotframework-lsp";
+      publisher = "robocorp";
+      version = "1.11.0";
+      sha256 = "sha256-DQ4cSD9ZCRlAWMaWOCjAPYHwS9T/0UAVpmLRwQxU3hE=";
+    }
   ];
 
 in
