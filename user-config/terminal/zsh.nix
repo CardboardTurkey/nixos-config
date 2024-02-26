@@ -64,6 +64,8 @@
         zle -N my-backward-delete-word
         bindkey '^H' my-backward-delete-word
         bindkey '^[[3;5~' kill-word
+        # New line without accepting command
+        bindkey '^[^M' self-insert-unmeta
 
         ## Unix time converter
         ut() {
