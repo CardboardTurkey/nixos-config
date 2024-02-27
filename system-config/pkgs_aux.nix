@@ -28,5 +28,6 @@
     kooha
     rust-script
     dasel
+    sound-juicer
   ];
 }
