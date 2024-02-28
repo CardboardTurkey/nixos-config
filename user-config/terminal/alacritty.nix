@@ -17,6 +17,10 @@
       settings = {
         font = {
           size = config.font_size_small;
+          normal = {
+            family = "Bitstream Vera Sans Mono";
+            style = "Roman";
+          };
         };
         window = {
           opacity = 0.9;
