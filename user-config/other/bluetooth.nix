@@ -2,6 +2,7 @@ _:
 
 {
   hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
 
   # home-manager.users.kiran = { pkgs, lib, ... }: {
   #   systemd.user.services.mpris-proxy = {
