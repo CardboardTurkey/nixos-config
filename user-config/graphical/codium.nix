@@ -40,10 +40,6 @@ let
 in
 
 {
-  environment.systemPackages = with pkgs; [
-    rnix-lsp
-  ];
-
   # allowed_unfree = [ "vscode-extension-ms-vscode-cpptools" ];
 
   home-manager.users.kiran = { pkgs, ... }: {
@@ -106,7 +102,10 @@ in
         "editor.fontLigatures" = true;
         "update.mode" = "none";
         "debug.allowBreakpointsEverywhere" = true;
-        "nix.enableLanguageServer" = true;
+        nix = {
+          enableLanguageServer = true;
+          serverPath = "${pkgs.nil}/bin/nil";
+        };
         "[nix]" = {
           "editor.tabSize" = 2;
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
