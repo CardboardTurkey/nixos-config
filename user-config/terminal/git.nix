@@ -31,6 +31,7 @@
         pull = { rebase = "true"; };
         alias = {
           co = "checkout";
+          sw = "switch";
           ci = "commit";
           st = "status";
           br = "branch";
