@@ -44,9 +44,8 @@ Can use sean's image because it already has a swap space applied. Remember to up
 
 ## TODO
 
-* Add hints to alacritty
-* move autorandr out of hm
 * steal sean's power management
+* Switch to flakes and use hyprlock
 
 ## Links
 
