@@ -7,7 +7,7 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
-    pinentryPackage = pkgs.pinentry-rofi;
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
   home-manager.users.kiran = { pkgs, ... }: {
     programs.gpg = {
