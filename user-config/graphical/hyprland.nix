@@ -127,6 +127,7 @@ in
       extraConfig = ''
         bind = SUPER, Return, exec, ${launchTerminal}
         bind = MOD3, Return, exec, alacritty&
+        bind = MOD3, PERIOD, exec, ${pkgs.bemoji}/bin/bemoji -n
         # This is an example Hyprland config file.
         #
         # Refer to the wiki for more information.
