@@ -59,6 +59,7 @@
     };
     programs.zsh.dirHashes = {
       lorry = "$HOME/gitlab/CodethinkLabs/lorry/lorry2/";
+      sm = "$HOME/ct-gitlab/sif/process/safety-monitor/";
     };
   };
   # Project change
