@@ -41,6 +41,7 @@
           last = "log -1";
         };
         global = { basedir = "/home/kiran/gitlab/"; };
+        format.signOff = true;
       };
       delta = {
         enable = true;
