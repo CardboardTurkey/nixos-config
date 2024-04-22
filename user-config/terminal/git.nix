@@ -15,7 +15,7 @@
       includes = [
         {
           contents.user.email = "kiran@ostrolenk.co.uk";
-          condition = "gitdir:~/gitlab/**";
+          condition = "gitdir:~/git/**";
         }
         {
           contents.user.email = "kiran.ostrolenk@codethink.co.uk";
