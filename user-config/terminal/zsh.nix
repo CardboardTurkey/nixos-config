@@ -31,19 +31,19 @@
         ignoreAllDups = true;
       };
       dirHashes = {
-        aoc = "$HOME/gitlab/cardboardturkey/aoc22";
-        bft = "$HOME/gitlab/kiran-rust-course/project";
-        dg = "$HOME/gitlab/cardboardturkey/dirtygit";
-        flash = "$HOME/gitlab/cardboardturkey/flashcard";
-        nix = "$HOME/gitlab/cardboardturkey/nixos-config";
-        thing = "$HOME/gitlab/cardboardturkey/thing-of-the-day";
-        pdg = "$HOME/gitlab/cardboardturkey/pdgid";
+        aoc = "$HOME/git/cardboardturkey/aoc22";
+        bft = "$HOME/git/kiran-rust-course/project";
+        dg = "$HOME/git/cardboardturkey/dirtygit";
+        flash = "$HOME/git/cardboardturkey/flashcard";
+        nix = "$HOME/git/cardboardturkey/nixos-config";
+        thing = "$HOME/git/cardboardturkey/thing-of-the-day";
+        pdg = "$HOME/git/cardboardturkey/pdgid";
         web = "${config.web_dir}";
-        infra = "$HOME/gitlab/smoothbraineduk/infrastructure";
-        smooth = "$HOME/gitlab/smoothbraineduk";
-        wallop = "$HOME/gitlab/cardboardturkey/wallop";
+        infra = "$HOME/git/smoothbraineduk/infrastructure";
+        smooth = "$HOME/git/smoothbraineduk";
+        wallop = "$HOME/git/cardboardturkey/wallop";
         hep = "$HOME/github/cardboardturkey/hepmc2";
-        ci = "$HOME/gitlab/rust-ci/rust-ci";
+        ci = "$HOME/git/rust-ci/rust-ci";
       };
       completionInit = ''
         zstyle ':completion:*' menu select

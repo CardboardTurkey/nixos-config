@@ -26,7 +26,7 @@ with lib;
       description = "Modifier name to go in i3 config";
     };
     web_dir = mkOption {
-      default = "/home/kiran/gitlab/cardboardturkey/website";
+      default = "/home/kiran/git/cardboardturkey/website";
       type = with types; uniq str;
       description = "Modifier name to go in i3 config";
     };

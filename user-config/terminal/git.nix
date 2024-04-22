@@ -19,7 +19,7 @@
         }
         {
           contents.user.email = "kiran.ostrolenk@codethink.co.uk";
-          condition = "gitdir:~/gitlab/CodethinkLabs/**";
+          condition = "gitdir:~/git/CodethinkLabs/**";
         }
         {
           contents.user.email = "kiran@ostrolenk.co.uk";
@@ -40,7 +40,7 @@
           dump = "cat-file -p";
           last = "log -1";
         };
-        global = { basedir = "/home/kiran/gitlab/"; };
+        global = { basedir = "/home/kiran/git/"; };
         format.signOff = true;
       };
       delta = {

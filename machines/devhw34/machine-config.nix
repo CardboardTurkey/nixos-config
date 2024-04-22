@@ -15,11 +15,11 @@
   hostname = "devhw34";
   home-manager.users.kiran = {
     programs.zsh.dirHashes = {
-      lorry = "$HOME/gitlab/CodethinkLabs/lorry/lorry2/";
+      lorry = "$HOME/git/CodethinkLabs/lorry/lorry2/";
       sm = "$HOME/ct-gitlab/sif/process/safety-monitor/";
     };
     programs.ssh = {
-      includes = [ "/home/kiran/gitlab/cardboardturkey/nixos-config/user-config/files/vagrant_ssh" ];
+      includes = [ "/home/kiran/git/cardboardturkey/nixos-config/user-config/files/vagrant_ssh" ];
     };
   };
   wallpapers = {
