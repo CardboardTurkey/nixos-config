@@ -114,7 +114,10 @@ in
         "redhat.telemetry.enabled" = false;
         "window.titleBarStyle" = "custom";
         "explorer.confirmDelete" = false;
-        "cSpell.userWords" = [ "Kiran" "Ostrolenk" ];
+        cSpell = {
+          language = "en,en-GB";
+          userWords = [ "Kiran" "Ostrolenk" ];
+        };
       };
     };
   };
