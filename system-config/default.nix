@@ -3,6 +3,7 @@
 {
   imports =
     [
+      ./at.nix
       ./boot_loader.nix
       ./greetd.nix
       ./battery.nix
