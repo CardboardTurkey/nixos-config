@@ -29,5 +29,6 @@
     rust-script
     dasel
     sound-juicer
+    gitui
   ];
 }
