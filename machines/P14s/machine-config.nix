@@ -25,9 +25,9 @@
   battery = "BAT0";
   adapter = "AC";
   edp1 = "00ffffffffffff0009e5c90700000000011c0104a51e117802fb90955d59942923505400000001010101010101010101010101010101393780de703814403020360035ad1000001a2d2c80de703814403020360035ad1000001a000000fe00424f452043510a202020202020000000fe004e5631343046484d2d4e34380a0078";
-  root = "d0ad36ad-4630-4764-ae08-a8c3e788d521";
-  dual_monitor_left = [ "DP-3" "DP-4" ];
-  dual_monitor_right = [ "DP-5" "DP-7" ];
+  root = "1193f3f4-4289-42f4-ac35-67343dafc1e0";
+  dual_monitor_left = [ "DP-6" ];
+  dual_monitor_right = [ "DP-7" ];
   hostname = "Harrier";
   sops.secrets."gitconfig/url1" = {
     mode = "0440";
