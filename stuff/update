@@ -16,7 +16,7 @@ profile_name="${datey}_${message}"
 echo "profile name: $profile_name"
 echo    # (optional) move to a new line
 
-if echo "$profile_name" | rg "[/':]"
+if echo "$profile_name" | rg "[/':,]"
 then
     echo 'No / you fool'
     exit 1
