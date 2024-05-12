@@ -10,6 +10,8 @@
       ../../system-config/flatpack.nix
     ];
 
+  swapDevices = [ { device = "/dev/dm-1"; } ];
+
   # For touch-to-click
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
 
