@@ -1,5 +1,4 @@
 { pkgs, config, ... }:
-
 {
 
   imports =
@@ -13,6 +12,7 @@
 
   # For touch-to-click
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
+
   boot.plymouth = {
     enable = true;
     theme = "colorful_loop";
@@ -24,7 +24,6 @@
   wlan = "wlp0s20f3";
   battery = "BAT0";
   adapter = "AC";
-  edp1 = "00ffffffffffff0009e5c90700000000011c0104a51e117802fb90955d59942923505400000001010101010101010101010101010101393780de703814403020360035ad1000001a2d2c80de703814403020360035ad1000001a000000fe00424f452043510a202020202020000000fe004e5631343046484d2d4e34380a0078";
   root = "1193f3f4-4289-42f4-ac35-67343dafc1e0";
   dual_monitor_left = [ "DP-6" ];
   dual_monitor_right = [ "DP-7" ];
@@ -99,5 +98,49 @@
         "debug"
       ];
     };
+
+  # ------
+  # NVIDIA
+  # ------
+
+  allowed_unfree = [
+    "nvidia-x11"
+    "nvidia-settings"
+  ];
+
+  home-manager.users.kiran.wayland.windowManager.hyprland.extraConfig = ''
+    # Some default env vars.
+    env = XCURSOR_SIZE,24
+    env = LIBVA_DRIVER_NAME,nvidia
+    env = XDG_SESSION_TYPE,wayland
+    # env = GBM_BACKEND,nvidia-drm
+    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
+    env = WLR_NO_HARDWARE_CURSORS,1
+  '';
+
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.opengl = {
+    enable = true;
+    extraPackages = [
+      pkgs.nvidia-vaapi-driver
+      # intel-media-driver
+      # vaapiIntel
+      # vaapiVdpau
+      # libvdpau-va-gl
+    ];
+  };
+
+  # Optionally, you may need to select the appropriate driver version for your specific GPU.
+  # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+  hardware.nvidia.prime = {
+    offload.enable = true;
+
+    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
+    intelBusId = "PCI:0:2:0";
+
+    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
+    nvidiaBusId = "PCI:1:0:0";
+  };
 
 }
