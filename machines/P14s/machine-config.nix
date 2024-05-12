@@ -11,6 +11,8 @@
     ];
 
   swapDevices = [ { device = "/dev/dm-1"; } ];
+  services.logind.lidSwitch = "suspend-then-hibernate";
+  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 
   # For touch-to-click
   boot.kernelParams = [ "psmouse.synaptics_intertouch=0" ];
