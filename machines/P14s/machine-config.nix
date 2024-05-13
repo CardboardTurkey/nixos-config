@@ -10,7 +10,6 @@
       ../../system-config/flatpack.nix
     ];
 
-  swapDevices = [ { device = "/dev/dm-1"; } ];
   services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 
