@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   # Needed by gtk?
   programs.dconf.enable = true;

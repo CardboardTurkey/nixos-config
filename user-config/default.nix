@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/refs/heads/master.tar.gz";
 in

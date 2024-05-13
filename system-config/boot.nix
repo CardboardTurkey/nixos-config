@@ -1,4 +1,3 @@
-{pkgs, ...}:
 {
   # 22-06-29: Whether to enable systemd in initrd. Note: This is in very early
   # development and is highly experimental. Most of the features NixOS

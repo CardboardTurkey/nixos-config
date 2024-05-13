@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, config, ... }:
 
 let
   home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";

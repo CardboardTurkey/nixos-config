@@ -1,5 +1,3 @@
-_:
-
 {
   # Battery threshold
   services.tlp = {

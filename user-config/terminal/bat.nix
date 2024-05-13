@@ -1,5 +1,3 @@
-_:
-
 {
   home-manager.users.kiran = { pkgs, ... }: {
     programs.bat = {

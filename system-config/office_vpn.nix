@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 {
   services.openvpn.servers = {
     officeVPN = {

@@ -1,7 +1,5 @@
 { pkgs, config, lib, ... }:
 let
-  flake-compat = builtins.fetchTarball "https://github.com/edolstra/flake-compat/archive/master.tar.gz";
-
   lock_cmd_flags = monitors: wallpaper: lib.strings.concatMapStrings (monitor: "--image=${monitor}:${wallpaper} ") monitors;
   lock_cmd = "${pkgs.swaylock}/bin/swaylock -f ${lock_cmd_flags config.dual_monitor_right config.wallpapers.dual.right} ${lock_cmd_flags config.dual_monitor_left config.wallpapers.dual.left} --image=${config.wallpapers.single}";
 

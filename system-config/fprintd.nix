@@ -1,5 +1,3 @@
-_:
-
 {
   # Fingerprint scanning
   services.fprintd.enable = true;

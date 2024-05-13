@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 {
   # Enable sound.
   sound.enable = true;
