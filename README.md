@@ -8,7 +8,7 @@ Don't forget `sudo nix-channel --add https://nixos.org/channels/nixos-unstable n
 
 ### First boot
 
-* Edit link.sh to append `/mnt`
+* Edit link.sh to append `/mnt` and edit `pc-common.nix` to include from `/mnt`.
 * Set root uuid in core using `ls -l /dev/disk/by-uuid`
 * update sops config and then `sops updatekeys user-config/files/secrets.yaml`
 * download public key from keyserver
@@ -35,8 +35,7 @@ cryptsetup luksFormat /dev/nvme0n1p5
 cryptsetup open /dev/nvme0n1p5 cryptlvm
 pvcreate /dev/mapper/cryptlvm
 vgcreate vg /dev/mapper/cryptlvm
-lvcreate -C -L 40G vg -n swap # RAM size +2GB is recommended for swapsize
-lvcreate -C y -L 40G vg -n swap
+lvcreate -C y -L 40G vg -n swap # RAM size +2GB is recommended for swapsize
 lvcreate -l 100%FREE vg -n root
 lvreduce -L -256M vg/root # See the tip here https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes
 mkfs.ext4 /dev/vg/root
@@ -72,10 +71,8 @@ Update root partition uuid `ls -l /dev/disk/by-uuid`.
 
 Can use sean's image because it already has a swap space applied. Remember to update channel first.
 
-
 ## TODO
 
-* steal sean's power management
 * Switch to flakes and use hyprlock
 
 ## Links
