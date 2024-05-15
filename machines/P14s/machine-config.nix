@@ -41,6 +41,16 @@
     owner = config.users.users.kiran.name;
     group = config.users.users.kiran.group;
   };
+
+  # luks
+  boot.initrd.luks.devices = {
+    crypted = {
+      device = "/dev/disk/by-uuid/${config.root}";
+      preLVM = true;
+      allowDiscards = true;
+    };
+  };
+
   home-manager.users.kiran = {
     # Project change
     programs.git = {
