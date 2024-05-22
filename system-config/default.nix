@@ -30,6 +30,7 @@
       ./qmk.nix
       ./flatpack.nix
       ./upower.nix
+      ./jellyfin.nix
       # ./hedgedoc.nix
     ];
 
