@@ -103,4 +103,12 @@ with pkgs;
     nvidiaBusId = "PCI:1:0:0";
   };
 
+  boot.initrd.luks.devices = {
+    crypted = { 
+      device = "/dev/disk/by-partuuid/2de02d4e-f542-495d-9123-6180ab1acb21"; 
+      preLVM = true; 
+      allowDiscards = true; 
+    }; 
+  };
+
 }
