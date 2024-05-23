@@ -1,5 +1,11 @@
 {
   services.auto-cpufreq.enable = true;
+  services.logind = { 
+    lidSwitchExternalPower = "ignore";
+    lidSwitchDocked = "ignore";
+    lidSwitch = "suspend-then-hibernate";
+  };
+  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
   # Battery threshold
   # services.tlp = {
   #   enable = true;

@@ -21,7 +21,6 @@
       ./office_vpn.nix
       ./docker.nix
       ./boot.nix
-      ./logind.nix
       ./printing.nix
       ./file_manager.nix
       ./fwupd.nix
@@ -30,7 +29,7 @@
       ./qmk.nix
       ./flatpack.nix
       ./upower.nix
-      ./jellyfin.nix
+      # ./jellyfin.nix - do this properly! Exposes specific ports and add jellyfin user
       # ./hedgedoc.nix
     ];
 
