@@ -39,6 +39,10 @@ let
 in {
   # allowed_unfree = [ "vscode-extension-ms-vscode-cpptools" ];
 
+  environment.systemPackages = with pkgs; [
+    clang-tools
+  ];
+
   home-manager.users.kiran = { pkgs, ... }: {
     programs.vscode = {
       enable = true;
