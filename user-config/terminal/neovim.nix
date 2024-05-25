@@ -9,6 +9,10 @@
       vimAlias = true;
       extraConfig = ''
         colorscheme nord
+        " Dont colour the background
+        hi Normal ctermbg=NONE guibg=NONE
+
+        " Line numbering
         set nu rnu
 
         autocmd FileType markdown setlocal spell
