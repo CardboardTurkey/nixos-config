@@ -17,5 +17,6 @@
     ncdu
     update-nix-fetchgit
     fd
+    tlrc
   ];
 }
