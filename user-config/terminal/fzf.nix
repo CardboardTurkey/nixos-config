@@ -1,5 +1,18 @@
 { config, pkgs, ... }:
+let
+  fzf-tab-source = pkgs.fetchFromGitHub {
+    owner = "Freed-Wu";
+    repo = "fzf-tab-source";
+    rev = "0cae36455483455a9a7b8a918962c60b16d0d353";
+    hash = "sha256-J+CxlfJXsdFvNZIR2Y0kHhoonE2tC0IXpVnsGBCPyB8=";
+  };
+in
 {
+  environment.systemPackages = with pkgs; [
+    mdcat
+    pandoc
+    grc
+  ];
   home-manager.users.kiran = {
     programs.fzf = {
       enable = true;
@@ -55,6 +68,8 @@
 
         # Because of the border
         zstyle ':fzf-tab:*' fzf-pad 4
+
+        source ${fzf-tab-source}/*.plugin.zsh
       '';
     };
   };
