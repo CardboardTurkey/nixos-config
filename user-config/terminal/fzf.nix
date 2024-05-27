@@ -28,6 +28,9 @@
     };
     programs.zsh = {
       initExtra = ''
+        export FAST_WORK_DIR=XDG
+        source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
+
         source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
         # disable sort when completing `git`

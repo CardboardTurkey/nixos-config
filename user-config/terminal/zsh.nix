@@ -17,7 +17,6 @@
       # dotDir = ".config/zsh";
       autosuggestion.enable = true;
       enableCompletion = true;
-      syntaxHighlighting.enable = true;
       enableVteIntegration = true;
       historySubstringSearch = {
         enable = true;
@@ -115,6 +114,8 @@
 
         ## Disable flow control
         [[ $- == *i* ]] && stty -ixon
+
+        source ${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
       '';
       envExtra = ''
         export ZSH_AUTOSUGGEST_STRATEGY=(history completion)
@@ -122,7 +123,6 @@
         export MANPAGER="sh -c 'col -bx | bat --theme Dracula -l man -p'"
         export BETTER_EXCEPTIONS=1
         export PATH=~/.cargo/bin:$PATH
-        ZSH_HIGHLIGHT_HIGHLIGHTERS+=(main brackets)
       '';
     };
   };
