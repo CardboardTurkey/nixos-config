@@ -18,5 +18,6 @@
     update-nix-fetchgit
     fd
     tlrc
+    fastfetch
   ];
 }
