@@ -1,7 +1,7 @@
 {pkgs, ...}:
 {
   services.jellyfin = {
-    enable = true;
+    enable = false;
     openFirewall = true;
   };
   networking.firewall.enable = false;
