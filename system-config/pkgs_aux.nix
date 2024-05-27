@@ -30,6 +30,6 @@
     dasel
     sound-juicer
     gitui
-    pcsclite # tmp fix because cmds are complaining it doesn't exist
+    nixfmt-rfc-style
   ];
 }
