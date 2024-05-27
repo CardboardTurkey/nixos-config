@@ -31,6 +31,7 @@ in
       ./terminal/nix_index.nix
       ./terminal/ssh.nix
       ./terminal/zoxide.nix
+      ./terminal/fzf.nix
 
       ./other/bluetooth.nix
       ./other/fontconfig.nix
