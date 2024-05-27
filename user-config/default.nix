@@ -19,7 +19,7 @@ in
       # ./graphical/kanshi.nix
 
       ./terminal/git.nix
-      ./terminal/lsd.nix
+      ./terminal/eza.nix
       ./terminal/starship.nix
       ./terminal/alacritty.nix
       ./terminal/tmux.nix
