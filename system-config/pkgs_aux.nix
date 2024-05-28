@@ -30,6 +30,6 @@
     dasel
     sound-juicer
     gitui
-    nixfmt-rfc-style
+    nixfmt-classic
   ];
 }
