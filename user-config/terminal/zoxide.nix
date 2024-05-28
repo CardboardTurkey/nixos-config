@@ -1,8 +1,5 @@
-{ pkgs, ... }:
-{
-  environment.systemPackages = with pkgs; [
-    fzf
-  ];
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [ fzf ];
   home-manager.users.kiran = {
     programs.zoxide = {
       enable = true;

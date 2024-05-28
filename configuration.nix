@@ -1,9 +1,6 @@
 {
 
-  imports =
-    [
-      ./core
-    ];
+  imports = [ ./core ];
 
   nix.extraOptions = "experimental-features = nix-command flakes";
 

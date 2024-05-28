@@ -7,11 +7,10 @@ let
     ${pkgs.betterlockscreen}/bin/betterlockscreen -l dim
     dunstctl set-paused false
   '';
-  lock_refresh = "pgrep betterlockscreen || ${pkgs.betterlockscreen}/bin/betterlockscreen -u ~/.background-image &";
+  lock_refresh =
+    "pgrep betterlockscreen || ${pkgs.betterlockscreen}/bin/betterlockscreen -u ~/.background-image &";
 
-in
-
-{
+in {
 
   home-manager.users.kiran = { pkgs, ... }: {
     xsession.windowManager.i3 = {
@@ -26,9 +25,7 @@ in
       lockCmd = "${lock_cmd}/bin/quietlock";
     };
     programs.autorandr = {
-      hooks.postswitch = {
-        "lockscreen" = "${lock_refresh}";
-      };
+      hooks.postswitch = { "lockscreen" = "${lock_refresh}"; };
     };
     xdg = {
       configFile."betterlockscreenrc".text = ''

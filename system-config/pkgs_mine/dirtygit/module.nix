@@ -1,14 +1,8 @@
 { config, pkgs, lib, ... }:
 with lib;
-let
-  cfg = config.services.dirtygit;
-in
-{
-  options = {
-    services.dirtygit = {
-      enable = mkEnableOption "dirtygit";
-    };
-  };
+let cfg = config.services.dirtygit;
+in {
+  options = { services.dirtygit = { enable = mkEnableOption "dirtygit"; }; };
   config = mkIf cfg.enable {
     systemd.user.services.dirtygit = {
       description = "Dirtygit daemon";

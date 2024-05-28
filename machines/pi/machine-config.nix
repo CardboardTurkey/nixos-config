@@ -1,34 +1,33 @@
 { pkgs, config, ... }:
 
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
-in
+  home-manager = builtins.fetchTarball
+    "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 
-{
+in {
 
-  imports =
-    [
-      (import "${home-manager}/nixos")
+  imports = [
+    (import "${home-manager}/nixos")
 
-      ../../system-config/pkgs_core.nix
-      ../../system-config/tailscale.nix
-      ../../system-config/users.nix
-      ../../system-config/network.nix
-      ../../system-config/location.nix
-      ../../system-config/openssh.nix
-      ../../system-config/docker.nix
+    ../../system-config/pkgs_core.nix
+    ../../system-config/tailscale.nix
+    ../../system-config/users.nix
+    ../../system-config/network.nix
+    ../../system-config/location.nix
+    ../../system-config/openssh.nix
+    ../../system-config/docker.nix
 
-      ../../user-config/terminal/git.nix
-      ../../user-config/terminal/lsd.nix
-      ../../user-config/terminal/starship.nix
-      ../../user-config/terminal/zsh.nix
-      ../../user-config/terminal/neovim.nix
-      ../../user-config/terminal/bat.nix
-      ../../user-config/terminal/nix_index.nix
-      ../../user-config/terminal/direnv.nix
+    ../../user-config/terminal/git.nix
+    ../../user-config/terminal/lsd.nix
+    ../../user-config/terminal/starship.nix
+    ../../user-config/terminal/zsh.nix
+    ../../user-config/terminal/neovim.nix
+    ../../user-config/terminal/bat.nix
+    ../../user-config/terminal/nix_index.nix
+    ../../user-config/terminal/direnv.nix
 
-      ../../user-config/other/webserver.nix
-    ];
+    ../../user-config/other/webserver.nix
+  ];
 
   hostname = "wren";
 
@@ -64,6 +63,9 @@ in
   users.users.kiran.openssh.authorizedKeys.keys = [ "${config.pgp_auth_ssh}" ];
 
   # rpi3 only has 1gb ram so we need a swap file (maybe I should make it bigger )
-  swapDevices = [{ device = "/swapfile"; size = 2048; }];
+  swapDevices = [{
+    device = "/swapfile";
+    size = 2048;
+  }];
 
 }

@@ -1,7 +1,6 @@
 { lib, ... }:
 
-with lib;
-{
+with lib; {
   options = {
     nord0 = mkOption {
       default = "2e3440";

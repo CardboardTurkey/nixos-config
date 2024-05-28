@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home-manager.users.kiran = {
     programs.nushell = {
       enable = true;

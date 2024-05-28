@@ -1,5 +1,4 @@
-{ pkgs, config, lib, ... }:
-{
+{ pkgs, config, lib, ... }: {
   networking = {
     hostName = "${config.hostname}"; # Define your hostname.
     networkmanager = {

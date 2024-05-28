@@ -1,9 +1,7 @@
 with import <nixpkgs> { };
 
-let
-  pythonPackages = python3Packages;
-in
-pkgs.mkShell rec {
+let pythonPackages = python3Packages;
+in pkgs.mkShell rec {
   name = "pyShell";
   venvDir = "./.venv";
   buildInputs = [

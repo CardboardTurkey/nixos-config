@@ -4,7 +4,8 @@ rustPlatform.buildRustPackage rec {
   name = "dirtygit";
   # version = "0.1.0";
 
-  src = fetchTarball "https://gitlab.com/CardboardTurkey/dirtygit/-/archive/master/dirtygit-master.tar.gz";
+  src = fetchTarball
+    "https://gitlab.com/CardboardTurkey/dirtygit/-/archive/master/dirtygit-master.tar.gz";
 
   nativeBuildInputs = [ pkgs.pkg-config ];
   buildInputs = [ pkgs.openssl pkgs.git ];

@@ -6,13 +6,11 @@
   programs.zsh.enable = true;
   home-manager.users.kiran = {
     home.shellAliases = {
-        "less" = "bat --plain";
-        "pj" = "${pkgs.bat-extras.prettybat}/bin/prettybat -l json";
+      "less" = "bat --plain";
+      "pj" = "${pkgs.bat-extras.prettybat}/bin/prettybat -l json";
     };
     programs.zsh = {
-      shellAliases = {
-        "nix-shell" = "nix-shell --command zsh";
-      };
+      shellAliases = { "nix-shell" = "nix-shell --command zsh"; };
       enable = true;
       # dotDir = ".config/zsh";
       autosuggestion.enable = true;

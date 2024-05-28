@@ -130,7 +130,8 @@
       enable = true;
       settings = {
         global = {
-          font = "Bitstream Vera Sans ${builtins.toString config.font_size_large}px";
+          font =
+            "Bitstream Vera Sans ${builtins.toString config.font_size_large}px";
           follow = "keyboard";
           frame_width = 1;
           frame_color = "#${config.nord3}";

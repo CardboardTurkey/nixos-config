@@ -3,8 +3,7 @@ let
     "https://github.com/oxalica/rust-overlay/archive/master.tar.gz");
   nixpkgs = import <nixpkgs> { overlays = [ oxalica_overlay ]; };
 
-in
-with nixpkgs;
+in with nixpkgs;
 
 stdenv.mkDerivation {
   name = "rust-env";

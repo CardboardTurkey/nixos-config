@@ -5,14 +5,11 @@ stdenv.mkDerivation {
 
   src = ./src;
 
-  buildInputs = [
-  ];
+  buildInputs = [ ];
 
-  configurePhase = ''
-  '';
+  configurePhase = "";
 
-  buildPhase = ''
-  '';
+  buildPhase = "";
 
   installPhase = ''
     mkdir -p $out/share $out/bin

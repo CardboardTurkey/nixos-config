@@ -1,14 +1,12 @@
-{ pkgs, config, ... }:
-{
+{ pkgs, config, ... }: {
 
-  imports =
-    [
-      ../pc_common.nix
-      ../../user-config/other/sops.nix
-      ../../system-config/ayden_vpn.nix
-      ../../system-config/sbuk.nix
-      ../../system-config/flatpack.nix
-    ];
+  imports = [
+    ../pc_common.nix
+    ../../user-config/other/sops.nix
+    ../../system-config/ayden_vpn.nix
+    ../../system-config/sbuk.nix
+    ../../system-config/flatpack.nix
+  ];
 
   services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = "HibernateDelaySec=30m";
@@ -55,9 +53,7 @@
     # Project change
     programs.git = {
       extraConfig.credential.helper = "store";
-      includes = [{
-        path = config.sops.secrets."gitconfig/url1".path;
-      }];
+      includes = [{ path = config.sops.secrets."gitconfig/url1".path; }];
     };
     # Project change
     programs.ssh = {
@@ -94,32 +90,29 @@
   # to be on the office network to access fs anyway.
   environment.systemPackages = [ pkgs.sshfs ];
   # user@host:/remote/path /local/path  fuse.sshfs noauto,x-systemd.automount,_netdev,users,idmap=user,IdentityFile=/home/user/.ssh/id_rsa,allow_other,reconnect 0 0
-  fileSystems."/fs" =
-    {
-      device = "kiranostrolenk@fs.office.codethink.co.uk:/home/users/kiranostrolenk/public_html";
-      fsType = "fuse.sshfs";
-      noCheck = true;
-      options = [
-        "noauto"
-        "x-systemd.automount"
-        "_netdev"
-        "users"
-        "idmap=user"
-        "IdentityFile=/home/kiran/.ssh/id_ed25519_fs"
-        "allow_other"
-        "reconnect"
-        "debug"
-      ];
-    };
+  fileSystems."/fs" = {
+    device =
+      "kiranostrolenk@fs.office.codethink.co.uk:/home/users/kiranostrolenk/public_html";
+    fsType = "fuse.sshfs";
+    noCheck = true;
+    options = [
+      "noauto"
+      "x-systemd.automount"
+      "_netdev"
+      "users"
+      "idmap=user"
+      "IdentityFile=/home/kiran/.ssh/id_ed25519_fs"
+      "allow_other"
+      "reconnect"
+      "debug"
+    ];
+  };
 
   # ------
   # NVIDIA
   # ------
 
-  allowed_unfree = [
-    "nvidia-x11"
-    "nvidia-settings"
-  ];
+  allowed_unfree = [ "nvidia-x11" "nvidia-settings" ];
 
   home-manager.users.kiran.wayland.windowManager.hyprland.extraConfig = ''
     # Some default env vars.

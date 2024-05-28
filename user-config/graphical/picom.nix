@@ -7,10 +7,8 @@
       inactiveOpacity = 0.8;
       opacityRules = [ "100:name *= 'i3lock'" ];
       shadow = true;
-      shadowExclude = [
-        "class_g = 'Rofi'"
-      ];
-      shadowOpacity = .30;
+      shadowExclude = [ "class_g = 'Rofi'" ];
+      shadowOpacity = 0.3;
       backend = "glx";
       settings = {
         blur = {
@@ -30,12 +28,8 @@
         shadow-offset-x = -10;
         shadow-offset-y = -10;
         corner-radius = 15;
-        rounded-corners-exclude = [
-          "class_g = 'i3-frame'"
-        ];
-        blur-background-exclude = [
-          "window_type = 'dock'"
-        ];
+        rounded-corners-exclude = [ "class_g = 'i3-frame'" ];
+        blur-background-exclude = [ "window_type = 'dock'" ];
       };
     };
   };

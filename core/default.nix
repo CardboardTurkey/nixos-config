@@ -1,13 +1,7 @@
 { lib, ... }:
 
-with lib;
-{
-  imports =
-    [
-      ./nord.nix
-      ./hardware.nix
-      ./keys.nix
-    ];
+with lib; {
+  imports = [ ./nord.nix ./hardware.nix ./keys.nix ];
 
   options = {
     email = mkOption {
@@ -51,7 +45,7 @@ with lib;
       description = "Allowed unfree packages";
     };
     wallpapers = mkOption {
-      default = {};
+      default = { };
       type = with types; attrs;
       description = "Paths to wallpapers";
     };

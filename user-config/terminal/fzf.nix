@@ -6,13 +6,8 @@ let
     rev = "0cae36455483455a9a7b8a918962c60b16d0d353";
     hash = "sha256-J+CxlfJXsdFvNZIR2Y0kHhoonE2tC0IXpVnsGBCPyB8=";
   };
-in
-{
-  environment.systemPackages = with pkgs; [
-    mdcat
-    pandoc
-    grc
-  ];
+in {
+  environment.systemPackages = with pkgs; [ mdcat pandoc grc ];
   home-manager.users.kiran = {
     programs.fzf = {
       enable = true;
@@ -34,10 +29,7 @@ in
         gutter = "-1";
         border = "#${config.nord3}";
       };
-      defaultOptions = [
-        "--border rounded"
-        "--preview-window border-rounded"
-      ];
+      defaultOptions = [ "--border rounded" "--preview-window border-rounded" ];
     };
     programs.zsh = {
       initExtra = ''
@@ -55,7 +47,7 @@ in
 
         # set list-colors to enable filename colorizing
         zstyle ':completion:*' list-colors ''${(s.:.)LS_COLORS}
-        
+
         # force zsh not to show completion menu, which allows fzf-tab to capture the unambiguous prefix
         zstyle ':completion:*' menu no
 

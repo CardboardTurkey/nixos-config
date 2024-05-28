@@ -1,6 +1,6 @@
 {
   services.auto-cpufreq.enable = true;
-  services.logind = { 
+  services.logind = {
     lidSwitchExternalPower = "ignore";
     lidSwitchDocked = "ignore";
     lidSwitch = "suspend-then-hibernate";

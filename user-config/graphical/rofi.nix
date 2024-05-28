@@ -1,5 +1,4 @@
-{ config, lib, ... }:
-{
+{ config, lib, ... }: {
   home-manager.users.kiran = { pkgs, ... }: {
     programs.rofi = {
       enable = true;
@@ -20,7 +19,8 @@
         keybindings = lib.mkOptionDefault {
           "${config.i3_mod}+space" = "exec rofi -show drun -theme clean";
           # "${config.i3_mod}+period" = "exec rofi -show emoji -modi emoji";
-          "${config.i3_mod}+P" = "exec rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu";
+          "${config.i3_mod}+P" =
+            "exec rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu";
         };
       };
     };
@@ -29,6 +29,6 @@
         bind = MOD3, SPACE, exec, rofi -show drun -theme clean
         bind = MOD3, P, exec, rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu
       '';
-      };
     };
-  }
+  };
+}

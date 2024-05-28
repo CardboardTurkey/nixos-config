@@ -15,14 +15,13 @@ let
   ws-stm = "8";
   ws-gimp = "9";
 
-in
+in {
 
-{
-
-  environment.systemPackages = with pkgs; [
-    # For swapping keys
-    xdotool
-  ];
+  environment.systemPackages = with pkgs;
+    [
+      # For swapping keys
+      xdotool
+    ];
 
   services.xserver = {
     enable = true;
@@ -34,11 +33,7 @@ in
         greeter.enable = true;
       };
     };
-    desktopManager = {
-      wallpaper = {
-        mode = "fill";
-      };
-    };
+    desktopManager = { wallpaper = { mode = "fill"; }; };
     # Enable touchpad support (enabled default in most desktopManager).
     libinput.enable = true;
   };
@@ -73,11 +68,12 @@ in
         };
         assigns = {
           "${ws-code}" = [{ class = "VSCodium"; }];
-          "${ws-fire}" = [{ class = "firefox"; } { class = "firefox-default"; }];
+          "${ws-fire}" =
+            [ { class = "firefox"; } { class = "firefox-default"; } ];
           "${ws-spot}" = [{ class = "spotify"; }];
-          "${ws-pdf}" = [{ class = "Evince"; } { class = "viewnior"; }];
+          "${ws-pdf}" = [ { class = "Evince"; } { class = "viewnior"; } ];
           "${ws-mail}" = [{ class = "thunderbird"; }];
-          "${ws-irc}" = [{ class = "quassel"; } { class = "Signal"; }];
+          "${ws-irc}" = [ { class = "quassel"; } { class = "Signal"; } ];
           "${ws-stm}" = [{ class = "Steam"; }];
           "${ws-gimp}" = [{ class = "Gimp"; }];
         };

@@ -1,7 +1,6 @@
 { lib, ... }:
 
-with lib;
-{
+with lib; {
   options = {
     eth = mkOption {
       default = "eth0";

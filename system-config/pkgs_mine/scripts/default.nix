@@ -5,15 +5,11 @@ stdenv.mkDerivation {
 
   src = ./src;
 
+  buildInputs = [ ];
 
-  buildInputs = [
-  ];
+  configurePhase = "";
 
-  configurePhase = ''
-  '';
-
-  buildPhase = ''
-  '';
+  buildPhase = "";
 
   installPhase = ''
     ls

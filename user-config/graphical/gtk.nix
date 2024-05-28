@@ -13,7 +13,8 @@
         name = "Zafiro-icons-Dark";
       };
       font = {
-        name = "Bitstream Vera Sans ${builtins.toString config.font_size_small}";
+        name =
+          "Bitstream Vera Sans ${builtins.toString config.font_size_small}";
       };
       theme = {
         name = "Nordic";

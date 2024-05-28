@@ -21,7 +21,5 @@
       };
     };
   };
-  networking.hosts = {
-    "127.0.0.1" = [ "pad.smoothbrained.co.uk" ];
-  };
+  networking.hosts = { "127.0.0.1" = [ "pad.smoothbrained.co.uk" ]; };
 }

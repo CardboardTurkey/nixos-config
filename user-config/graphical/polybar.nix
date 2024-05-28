@@ -41,8 +41,7 @@ let
     [ ''${#monitors[@]} -gt 1 ] && MONITOR=''${monitors[1]} polybar aux &disown
   '';
 
-in
-{
+in {
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
@@ -51,16 +50,15 @@ in
     ttf_bitstream_vera
   ];
 
-  environment.systemPackages = [ pkgs.local.dirtygit pkgs.local.thing-of-the-day barup ];
+  environment.systemPackages =
+    [ pkgs.local.dirtygit pkgs.local.thing-of-the-day barup ];
   services.dirtygit.enable = true;
 
   home-manager.users.kiran = { pkgs, ... }: {
 
     programs.autorandr = {
       enable = true;
-      hooks.postswitch = {
-        "polybar" = "${barup}/bin/barup";
-      };
+      hooks.postswitch = { "polybar" = "${barup}/bin/barup"; };
     };
 
     xdg.configFile."dirtygit".text = ''
@@ -81,9 +79,7 @@ in
       # Doesnt seem to be doing anything:
       script = "${barup}/bin/barup";
       settings = {
-        "settings" = {
-          screenchange-reload = "true";
-        };
+        "settings" = { screenchange-reload = "true"; };
         "bar/base" = {
           width = "1898";
           height = "37";
@@ -105,14 +101,29 @@ in
 
           # Prefer Bitstream as it has minimal unicode coverage and so Font awesome and Noto can display icons
           # Add DejaVu (Nerd font) as fallback
-          font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=${builtins.toString config.font_size_medium};3";
-          font-1 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=${builtins.toString config.font_size_medium};3";
-          font-2 = "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:size=${builtins.toString config.font_size_medium};3";
-          font-3 = "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:size=${builtins.toString config.font_size_medium};3";
+          font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=${
+              builtins.toString config.font_size_medium
+            };3";
+          font-1 =
+            "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=${
+              builtins.toString config.font_size_medium
+            };3";
+          font-2 =
+            "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:size=${
+              builtins.toString config.font_size_medium
+            };3";
+          font-3 =
+            "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:size=${
+              builtins.toString config.font_size_medium
+            };3";
           font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
-          font-5 = "DejaVu Sans:style=Roman:pixelsize=${builtins.toString config.font_size_medium};3";
-          font-6 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=19;4";
-          font-7 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=12;2";
+          font-5 = "DejaVu Sans:style=Roman:pixelsize=${
+              builtins.toString config.font_size_medium
+            };3";
+          font-6 =
+            "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=19;4";
+          font-7 =
+            "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=12;2";
 
           cursor-click = "pointer";
           cursor-scroll = "ns-resize";
@@ -123,7 +134,8 @@ in
           "inherit" = "bar/base";
           modules-left = "i3";
           # modules-center = "player-mpris-tail";
-          modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirtygit date";
+          modules-right =
+            "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirtygit date";
           fixed-center = false;
         };
         "bar/aux" = {
@@ -250,7 +262,6 @@ in
           format-unmounted = "<label-unmounted>";
           format-unmounted-underline = "${filesystem_colour}";
 
-
           label-mounted = "%percentage_used%%";
           label-unmounted = "%mountpoint% not mounted";
           label-unmounted-foreground = "${filesystem_colour}";
@@ -367,16 +378,4 @@ in
     };
   };
 }
-
-
-
-
-
-
-
-
-
-
-
-
 

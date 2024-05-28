@@ -1,7 +1,13 @@
 { pkgs, config, lib, ... }:
 let
-  lock_cmd_flags = monitors: wallpaper: lib.strings.concatMapStrings (monitor: "--image=${monitor}:${wallpaper} ") monitors;
-  lock_cmd = "${pkgs.swaylock}/bin/swaylock -f ${lock_cmd_flags config.dual_monitor_right config.wallpapers.dual.right} ${lock_cmd_flags config.dual_monitor_left config.wallpapers.dual.left} --image=${config.wallpapers.single}";
+  lock_cmd_flags = monitors: wallpaper:
+    lib.strings.concatMapStrings (monitor: "--image=${monitor}:${wallpaper} ")
+    monitors;
+  lock_cmd = "${pkgs.swaylock}/bin/swaylock -f ${
+      lock_cmd_flags config.dual_monitor_right config.wallpapers.dual.right
+    } ${
+      lock_cmd_flags config.dual_monitor_left config.wallpapers.dual.left
+    } --image=${config.wallpapers.single}";
 
   monitor_off = pkgs.writeScript "monitor_off" ''
     if [[ `hyprctl monitors -j | ${pkgs.jq}/bin/jq length` -gt 1 ]] # || [[ `cat /sys/class/power_supply/AC/online` -ne 0 ]]
@@ -89,11 +95,10 @@ let
     };
   '';
 
-  launchTerminal = pkgs.writeScript "launchterminal" ''
-    hyprctl dispatch workspace 1 && hyprctl activewindow | ${pkgs.ripgrep}/bin/rg Alacritty || alacritty&disown'';
+  launchTerminal = pkgs.writeScript "launchterminal"
+    "hyprctl dispatch workspace 1 && hyprctl activewindow | ${pkgs.ripgrep}/bin/rg Alacritty || alacritty&disown";
 
-in
-{
+in {
 
   environment.systemPackages = with pkgs; [
     pipewire # needed for screen sharing
@@ -121,7 +126,7 @@ in
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = true;
-      xwayland.enable= true;
+      xwayland.enable = true;
       extraConfig = ''
         bind = SUPER, Return, exec, ${launchTerminal}
         bind = MOD3, Return, exec, alacritty&
@@ -369,7 +374,7 @@ in
         # swayidle executes commands using "sh -c", so the PATH needs to contain a shell.
         Environment = [ "PATH=${lib.makeBinPath [ pkgs.bash pkgs.hyprland ]}" ];
         ExecStart =
-          "${pkgs.swayidle}/bin/swayidle -d -w timeout 300 \'${lock_cmd}\' timeout 330 \'${pkgs.hyprland}/bin/hyprctl dispatch dpms off\' resume \'${pkgs.hyprland}/bin/hyprctl dispatch dpms on\' after-resume \'${pkgs.hyprland}/bin/hyprctl dispatch dpms on\' before-sleep \'${lock_cmd}\'";
+          "${pkgs.swayidle}/bin/swayidle -d -w timeout 300 '${lock_cmd}' timeout 330 '${pkgs.hyprland}/bin/hyprctl dispatch dpms off' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' after-resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep '${lock_cmd}'";
       };
       Install = { WantedBy = [ "hyprland-session.target" ]; };
     };

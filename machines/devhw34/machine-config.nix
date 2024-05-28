@@ -2,10 +2,7 @@
 
 {
 
-  imports =
-    [
-      ../pc_common.nix
-    ];
+  imports = [ ../pc_common.nix ];
 
   email = "kiran.ostrolenk@codethink.co.uk";
   eth = "eno1";
@@ -19,7 +16,9 @@
       sm = "$HOME/ct-gitlab/sif/process/safety-monitor/";
     };
     programs.ssh = {
-      includes = [ "/home/kiran/git/cardboardturkey/nixos-config/user-config/files/vagrant_ssh" ];
+      includes = [
+        "/home/kiran/git/cardboardturkey/nixos-config/user-config/files/vagrant_ssh"
+      ];
     };
   };
   wallpapers = {
@@ -91,15 +90,14 @@
     home = "/home/codething";
     description = "Code Thing";
     shell = pkgs.bash;
-    extraGroups = [ "codething" "docker" "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups =
+      [ "codething" "docker" "wheel" ]; # Enable ‘sudo’ for the user.
   };
   users.groups.codething = { };
   users.users.kiran.extraGroups = [ "docker" "libvirtd" ];
   environment.systemPackages = with pkgs; [ tmux ];
 
   virtualisation.libvirtd.enable = true;
-  networking.hosts = {
-    "192.168.121.44" = [ "kiran.dev.codethink.co.uk" ];
-  };
+  networking.hosts = { "192.168.121.44" = [ "kiran.dev.codethink.co.uk" ]; };
 
 }

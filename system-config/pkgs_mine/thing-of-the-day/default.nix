@@ -17,7 +17,8 @@ rustPlatform.buildRustPackage rec {
   cargoSha256 = "sha256-1qyTdIkUcSkae3F2sZTkkXsXr2QSVT93ic7C3q0yvQs=";
 
   meta = with lib; {
-    description = "Display word-of-the-day and news headline at regular intervals";
+    description =
+      "Display word-of-the-day and news headline at regular intervals";
     homepage = "https://gitlab.com/CardboardTurkey/thing-of-the-day";
     license = licenses.unlicense;
     maintainers = [ maintainers.tailhook ];
