@@ -29,6 +29,7 @@ let
       stkb.rewrap
       nvarner.typst-lsp
       tomoki1207.pdf
+      timonwong.shellcheck
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
       name = "robotframework-lsp";
       publisher = "robocorp";
@@ -39,9 +40,7 @@ let
 in {
   # allowed_unfree = [ "vscode-extension-ms-vscode-cpptools" ];
 
-  environment.systemPackages = with pkgs; [
-    clang-tools
-  ];
+  environment.systemPackages = with pkgs; [ clang-tools ];
 
   home-manager.users.kiran = { pkgs, ... }: {
     programs.vscode = {
@@ -122,6 +121,7 @@ in {
           language = "en,en-GB";
           userWords = [ "Kiran" "Ostrolenk" ];
         };
+        shellcheck.customArgs = [ "-x" ];
       };
     };
   };
