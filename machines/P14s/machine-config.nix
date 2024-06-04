@@ -69,6 +69,10 @@
       lorry = "$HOME/git/CodethinkLabs/lorry/lorry2/";
       sm = "$HOME/ct-gitlab/sif/process/safety-monitor/";
     };
+    home.file.".config/quassel-irc.org/nord.qss" = {
+      enable = true;
+      source = builtins.fetchurl "https://gitlab.com/-/snippets/2387795/raw/main/nord.css";
+    };
   };
   # Project change
   users.users.kiran.extraGroups = [ "dialout" "docker" ];
