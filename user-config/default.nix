@@ -15,6 +15,7 @@ in {
     ./graphical/obs-studio.nix
     ./graphical/rofi.nix
     ./graphical/eww.nix
+    ./graphical/hyprlock.nix
     # ./graphical/kanshi.nix
 
     ./terminal/git.nix
