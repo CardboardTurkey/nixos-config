@@ -22,6 +22,7 @@ in {
     ../pc_common.nix
     ../../system-config/ayden_vpn.nix
     ../../user-config/other/sops.nix
+    ../../system-config/sbuk.nix
   ];
 
   wlan = "wlp59s0";
