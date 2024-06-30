@@ -7,7 +7,7 @@ let
       jnoortheen.nix-ide
       tamasfe.even-better-toml
       arcticicestudio.nord-visual-studio-code
-      matklad.rust-analyzer
+      rust-lang.rust-analyzer
       serayuzgur.crates
       streetsidesoftware.code-spell-checker
       vadimcn.vscode-lldb
