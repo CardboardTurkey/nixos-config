@@ -44,6 +44,7 @@ in {
     "prismlauncher"
   ];
   wallpapers = {
+    png = "/home/kiran/Downloads/png-2702691.png";
     single = "/home/kiran/Pictures/Wallpapers/iceberg.jpg";
     dual = {
       left = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg";
