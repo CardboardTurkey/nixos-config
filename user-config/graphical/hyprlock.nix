@@ -12,8 +12,8 @@
         background = {
           monitor = "";
           path = config.wallpapers.single;
-          blur_passes = 1; # 0 disables blurring
-          # blur_size = 7;
+          blur_passes = 3; # 0 disables blurring
+          blur_size = 3;
         };
 
         input-field = {
@@ -25,18 +25,18 @@
           dots_center = true;
           dots_rounding =
             -1; # -1 default circle, -2 follow input-field rounding
-          outer_color = "rgb(151515)";
-          inner_color = "rgb(FFFFFF)";
-          font_color = "rgb(10, 10, 10)";
+          outer_color = "rgb(${config.nord3})";
+          inner_color = "rgb(${config.nord4})";
+          font_color = "rgb(${config.nord0})";
           fade_on_empty = true;
           fade_timeout = 1000; # Milliseconds before fade_on_empty is triggered.
           placeholder_text =
-            "<i>Input Password...</i>"; # Text rendered in the input box when it's empty.
+            "<i>the way is shut</i>"; # Text rendered in the input box when it's empty.
           hide_input = false;
           rounding = -1; # -1 means complete rounding (circle/oval)
-          check_color = "rgb(204, 136, 34)";
+          check_color = "rgb(${config.nord12})";
           fail_color =
-            "rgb(204, 34, 34)"; # if authentication failed, changes outer_color and fail message color
+            "rgb(${config.nord11})"; # if authentication failed, changes outer_color and fail message color
           fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>"; # can be set to empty
           fail_transition =
             300; # transition time in ms between normal outer_color and fail_color
@@ -56,9 +56,9 @@
             monitor = "";
             #clock
             text = ''cmd[update:1000] echo "$TIME"'';
-            color = "rgba(200, 200, 200, 1.0)";
+            color = "rgb(${config.nord5})";
             font_size = 55;
-            font_family = "Fira Semibold";
+            font_family = "DejaVuSansM Nerd Font";
             position = "-100, -40";
             halign = "right";
             valign = "bottom";
@@ -68,9 +68,9 @@
           {
             monitor = "";
             text = "$USER";
-            color = "rgba(200, 200, 200, 1.0)";
+            color = "rgb(${config.nord5})";
             font_size = 20;
-            font_family = "Fira Semibold";
+            font_family = "DejaVuSansM Nerd Font";
             position = "-100, 160";
             halign = "right";
             valign = "bottom";
@@ -85,7 +85,7 @@
           size = 280; # lesser side if not 1:1 ratio
           rounding = -1; # negative values mean circle
           border_size = 4;
-          border_color = "rgb(221, 221, 221)";
+          border_color = "rgb(${config.nord6})";
           rotate = 0; # degrees, counter-clockwise
           reload_time =
             -1; # seconds between reloading, 0 to reload with SIGUSR2

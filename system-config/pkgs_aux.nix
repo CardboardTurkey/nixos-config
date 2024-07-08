@@ -32,8 +32,6 @@
     sound-juicer
     gitui
     nixfmt-classic
-    sweethome3d.application
-    sweethome3d.textures-editor
-    sweethome3d.furniture-editor
+    gcolor3
   ];
 }
