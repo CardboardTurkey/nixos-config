@@ -23,7 +23,6 @@
     ./printing.nix
     ./file_manager.nix
     ./fwupd.nix
-    ./thefuck.nix
     ./yubikey.nix
     ./qmk.nix
     ./flatpack.nix
