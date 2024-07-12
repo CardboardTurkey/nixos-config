@@ -219,7 +219,7 @@ in {
 
         master {
             # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-            new_status = slave
+            # new_status = slave
         }
 
         gestures {
