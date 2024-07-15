@@ -1,7 +1,4 @@
 {
-  # Enable sound.
-  sound.enable = true;
-
   # rtkit is optional but recommended
   security.rtkit.enable = true;
   security.polkit.enable = true;
