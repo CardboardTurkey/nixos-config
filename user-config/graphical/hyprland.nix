@@ -107,7 +107,6 @@ in {
     qt6.qtwayland
     libsForQt5.qt5.qtwayland
     libsForQt5.qt5ct
-    xwayland
   ];
 
   # from wiki.hyprland
@@ -120,13 +119,11 @@ in {
 
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
   };
   home-manager.users.kiran = {
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = true;
-      xwayland.enable = true;
       extraConfig = ''
         bind = SUPER, Return, exec, ${launchTerminal}
         bind = MOD3, Return, exec, alacritty&
@@ -345,9 +342,6 @@ in {
         # highres xwayland
         # change monitor to hires, the last argument is the scale factor
         monitor=,highres,auto,1
-
-        # sets xwayland scale
-        exec-once=${pkgs.xorg.xprop}/bin/xprop -root -f _XWAYLAND_GLOBAL_OUTPUT_SCALE 24c -set _XWAYLAND_GLOBAL_OUTPUT_SCALE 1
 
         # toolkit-specific scale
         env = GDK_SCALE,1
