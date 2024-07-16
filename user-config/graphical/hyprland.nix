@@ -50,7 +50,7 @@ let
           };
         };
         xkb_compat    { include "complete"  };
-        xkb_symbols   { 
+        xkb_symbols   {
           include "pc+gb+inet(evdev)+terminate(ctrl_alt_bksp)"
 
           key <AC07> {
@@ -69,7 +69,7 @@ let
               type[Group1]="SHIFT_HYPER_LEVEL3",
               symbols[Group1] = [ semicolon, colon, Right ]
           };
-          
+
           key <AB01> {
               type[Group1]="SHIFT_HYPER_LEVEL4",
               symbols[Group1] = [ z, Z, bar, backslash ]
@@ -117,244 +117,227 @@ in {
 
   # services.udev.extraRules = "KERNEL==\"uinput\", GROUP=\"users\", MODE=\"0660\", OPTIONS+=\"static_node=uinput\"\n";
 
-  programs.hyprland = {
-    enable = true;
-  };
+  programs.hyprland = { enable = true; };
   home-manager.users.kiran = {
     wayland.windowManager.hyprland = {
       enable = true;
       systemd.enable = true;
-      extraConfig = ''
-        bind = SUPER, Return, exec, ${launchTerminal}
-        bind = MOD3, Return, exec, alacritty&
-        bind = MOD3, PERIOD, exec, ${pkgs.bemoji}/bin/bemoji -n
-        # This is an example Hyprland config file.
-        #
-        # Refer to the wiki for more information.
+      settings = {
+        bind = [
+          "SUPER, Return, exec, ${launchTerminal}"
+          "MOD3, Return, exec, alacritty&"
+          "MOD3, PERIOD, exec, ${pkgs.bemoji}/bin/bemoji -n"
 
-        #
-        # Please note not all available settings / options are set here.
-        # For a full list, see the wiki
-        #
+          # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+          "$mainMod, Q, exec, alacritty"
+          "$mainMod, C, killactive,"
+          "$mainMod, M, exit,"
+          "$mainMod, E, exec, dolphin"
+          "$mainMod, V, togglefloating,"
+          "$mainMod, R, exec, wofi --show drun"
+          "$mainMod, P, pseudo, # dwindle"
+          "$mainMod, J, togglesplit, # dwindle"
 
-        # See https://wiki.hyprland.org/Configuring/Keywords/ for more
+          # Move focus with mainMod + arrow keys
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
 
-        # Execute your favorite apps at launch
-        # exec-once = waybar & hyprpaper & firefox
+          # Switch workspaces with mainMod + [0-9]
+          "$mainMod, 1, workspace, 1"
+          "$mainMod, 2, workspace, 2"
+          "$mainMod, 3, workspace, 3"
+          "$mainMod, 4, workspace, 4"
+          "$mainMod, 5, workspace, 5"
+          "$mainMod, 6, workspace, 6"
+          "$mainMod, 7, workspace, 7"
+          "$mainMod, 8, workspace, 8"
+          "$mainMod, 9, workspace, 9"
+          "$mainMod, 0, workspace, 10"
 
-        # Source a file (multi-file configs)
-        # source = ~/.config/hypr/myColors.conf
+          # Move active window to a workspace with mainMod + SHIFT + [0-9]
+          "$mainMod SHIFT, 1, movetoworkspace, 1"
+          "$mainMod SHIFT, 2, movetoworkspace, 2"
+          "$mainMod SHIFT, 3, movetoworkspace, 3"
+          "$mainMod SHIFT, 4, movetoworkspace, 4"
+          "$mainMod SHIFT, 5, movetoworkspace, 5"
+          "$mainMod SHIFT, 6, movetoworkspace, 6"
+          "$mainMod SHIFT, 7, movetoworkspace, 7"
+          "$mainMod SHIFT, 8, movetoworkspace, 8"
+          "$mainMod SHIFT, 9, movetoworkspace, 9"
+          "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        # For all categories, see https://wiki.hyprland.org/Configuring/Variables/
-        input {
-            kb_layout = 
-            # kb_options = ctrl:swapcaps_hyper
-            kb_file = ${myCustomLayout}
+          # Move workspace to monitor
+          "$mainMod ALT, left, movecurrentworkspacetomonitor, l"
+          "$mainMod ALT, right, movecurrentworkspacetomonitor, r"
+          "$mainMod ALT, up, movecurrentworkspacetomonitor, u"
+          "$mainMod ALT, down, movecurrentworkspacetomonitor, d"
 
-            follow_mouse = 1
+          # Scroll throurightgh existing workspaces with mainMod + scroll
+          "MOD3, right, workspace, e+1"
+          "MOD3, left, workspace, e-1"
 
-            touchpad {
-                natural_scroll = false
-            }
+          # full screen
+          "SUPER, F, fullscreen"
 
-            sensitivity = 0 # -1.0 - 1.0, 0 means no modification.
-        }
+          # random bindings
+          ", XF86AudioMute, exec, amixer set Master toggle"
+          ", XF86AudioLowerVolume, exec, amixer set Master 5%-"
+          ", XF86AudioRaiseVolume, exec, amixer set Master 5%+"
+          ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
+          ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
+          ''
+            $mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
+          "$mainMod, L, exec, ${lock_cmd}"
+        ];
 
-        general {
-            # See https://wiki.hyprland.org/Configuring/Variables/ for more
+        bindm = [
+          # Move/resize windows with mainMod + LMB/RMB and dragging
+          "$mainMod, mouse:272, movewindow"
+          "$mainMod, mouse:273, resizewindow"
+        ];
 
-            gaps_in = 4
-            gaps_out = 10
-            border_size = 2
-            # col.active_border = rgba(${config.nord2}FF) rgba(${config.nord7}FF) 45deg
-            col.active_border = rgba(${config.nord2}FF)
-            col.inactive_border = rgba(${config.nord2}FF)
+        bindl = [
+          # switches
+          ",switch:on:Lid Switch,exec,${monitor_off}"
+          ''
+            ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"''
+        ];
 
-            layout = dwindle
-        }
+        input = {
+          kb_layout = "";
+          # kb_options = ctrl:swapcaps_hyper
+          kb_file = "${myCustomLayout}";
 
-        decoration {
-            # See https://wiki.hyprland.org/Configuring/Variables/ for more
+          follow_mouse = 1;
 
-            rounding = 8
-            blur {
-              enabled = true
-              size = 3
-              passes = 3
-              new_optimizations = true
-              xray = false
-            }
+          touchpad = { natural_scroll = false; };
 
-            drop_shadow = false
-            shadow_range = 4
-            shadow_render_power = 3
-            col.shadow = rgba(1a1a1aee)
-        }
+          sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+        };
 
-        animations {
-            enabled = true
+        general = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-            # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
-            bezier = overshot, 0.05, 0.9, 0.1, 1.05
-            bezier = smoothOut, 0.36, 0, 0.66, -0.56
-            bezier = smoothIn, 0.25, 1, 0.5, 1
+          gaps_in = 4;
+          gaps_out = 10;
+          border_size = 2;
+          # col.active_border = rgba(${config.nord2}FF) rgba(${config.nord7}FF) 45deg
+          "col.active_border" = "rgba(${config.nord2}FF)";
+          "col.inactive_border" = "rgba(${config.nord2}FF)";
 
-            animation = windows, 1, 5, overshot, slide
-            animation = windowsOut, 1, 4, smoothOut, slide
-            animation = windowsMove, 1, 4, default
-            animation = border, 1, 10, default
-            animation = fade, 1, 10, smoothIn
-            animation = fadeDim, 1, 10, smoothIn
-            animation = workspaces, 1, 6, default
-        }
+          layout = "dwindle";
+        };
 
-        dwindle {
-            # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-            pseudotile = true # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-            preserve_split = true # you probably want this
-        }
+        decoration = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        master {
-            # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-            # new_status = slave
-        }
+          rounding = 8;
+          blur = {
+            enabled = true;
+            size = 3;
+            passes = 3;
+            new_optimizations = true;
+            xray = false;
+          };
 
-        gestures {
-            # See https://wiki.hyprland.org/Configuring/Variables/ for more
-            workspace_swipe = true
-            workspace_swipe_min_speed_to_force = 0
-            workspace_swipe_cancel_ratio = 0.1
-        }
+          drop_shadow = false;
+          shadow_range = 4;
+          shadow_render_power = 3;
+          "col.shadow" = "rgba(1a1a1aee)";
+        };
+        animations = {
+          enabled = true;
 
-        # Example per-device config
-        # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-        # device:epic-mouse-v1 {
-        #     sensitivity = -0.5
-        # }
+          # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+          bezier = [
+            "overshot, 0.05, 0.9, 0.1, 1.05"
+            "smoothOut, 0.36, 0, 0.66, -0.56"
+            "smoothIn, 0.25, 1, 0.5, 1"
+          ];
 
-        misc {
-          mouse_move_enables_dpms = true
+          animation = [
+            "windows, 1, 5, overshot, slide"
+            "windowsOut, 1, 4, smoothOut, slide"
+            "windowsMove, 1, 4, default"
+            "border, 1, 10, default"
+            "fade, 1, 10, smoothIn"
+            "fadeDim, 1, 10, smoothIn"
+            "workspaces, 1, 6, default"
+          ];
+        };
+        dwindle = {
+          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+          pseudotile =
+            true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+          preserve_split = true; # you probably want this
+        };
+
+        master = {
+          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          # new_status = slave
+        };
+
+        gestures = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+          workspace_swipe = true;
+          workspace_swipe_min_speed_to_force = 0;
+          workspace_swipe_cancel_ratio = 0.1;
+        };
+        misc = {
+          mouse_move_enables_dpms = true;
           # key_press_enables_dpms = true
-          animate_manual_resizes = true
-          animate_mouse_windowdragging = true
-          focus_on_activate = true
-        }
+          animate_manual_resizes = true;
+          animate_mouse_windowdragging = true;
+          focus_on_activate = true;
+        };
 
         # Example windowrule v1
         # windowrule = float, ^(alacritty)$
         # Example windowrule v2
         # windowrulev2 = float,class:^(alacritty)$,title:^(alacritty)$
         # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-        windowrule = opacity 1.0 0.7, title:^(.*)$
-        windowrule = float,title:^(Firefox — Sharing Indicator)$
-        windowrule = float,title:^(Password Required - Mozilla Firefox)$
+        windowrule = [
+          "opacity 1.0 0.7, title:^(.*)$"
+          "float,title:^(Firefox — Sharing Indicator)$"
+          "float,title:^(Password Required - Mozilla Firefox)$"
+
+          # Assign program to workspace
+          # windowrule=workspace 1 silent,kitty
+          "workspace 2, codium-url-handler"
+          "workspace 3, firefox"
+          "workspace 3, firefox-default"
+          "workspace 4, thunderbird"
+          "workspace 5, quassel"
+          "workspace 5, Signal"
+          "workspace 6, steam"
+          "workspace 7, Gimp"
+        ];
 
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-        $mainMod = SUPER
-
-        # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        bind = $mainMod, Q, exec, alacritty
-        bind = $mainMod, C, killactive,
-        bind = $mainMod, M, exit,
-        bind = $mainMod, E, exec, dolphin
-        bind = $mainMod, V, togglefloating,
-        bind = $mainMod, R, exec, wofi --show drun
-        bind = $mainMod, P, pseudo, # dwindle
-        bind = $mainMod, J, togglesplit, # dwindle
-
-        # Move focus with mainMod + arrow keys
-        bind = $mainMod, left, movefocus, l
-        bind = $mainMod, right, movefocus, r
-        bind = $mainMod, up, movefocus, u
-        bind = $mainMod, down, movefocus, d
-
-        # Switch workspaces with mainMod + [0-9]
-        bind = $mainMod, 1, workspace, 1
-        bind = $mainMod, 2, workspace, 2
-        bind = $mainMod, 3, workspace, 3
-        bind = $mainMod, 4, workspace, 4
-        bind = $mainMod, 5, workspace, 5
-        bind = $mainMod, 6, workspace, 6
-        bind = $mainMod, 7, workspace, 7
-        bind = $mainMod, 8, workspace, 8
-        bind = $mainMod, 9, workspace, 9
-        bind = $mainMod, 0, workspace, 10
-
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        bind = $mainMod SHIFT, 1, movetoworkspace, 1
-        bind = $mainMod SHIFT, 2, movetoworkspace, 2
-        bind = $mainMod SHIFT, 3, movetoworkspace, 3
-        bind = $mainMod SHIFT, 4, movetoworkspace, 4
-        bind = $mainMod SHIFT, 5, movetoworkspace, 5
-        bind = $mainMod SHIFT, 6, movetoworkspace, 6
-        bind = $mainMod SHIFT, 7, movetoworkspace, 7
-        bind = $mainMod SHIFT, 8, movetoworkspace, 8
-        bind = $mainMod SHIFT, 9, movetoworkspace, 9
-        bind = $mainMod SHIFT, 0, movetoworkspace, 10
-
-        # Move workspace to monitor
-        bind=$mainMod ALT, left, movecurrentworkspacetomonitor, l
-        bind=$mainMod ALT, right, movecurrentworkspacetomonitor, r
-        bind=$mainMod ALT, up, movecurrentworkspacetomonitor, u
-        bind=$mainMod ALT, down, movecurrentworkspacetomonitor, d
-
-        # Scroll throurightgh existing workspaces with mainMod + scroll
-        bind = MOD3, right, workspace, e+1
-        bind = MOD3, left, workspace, e-1
-
-        # Move/resize windows with mainMod + LMB/RMB and dragging
-        bindm = $mainMod, mouse:272, movewindow
-        bindm = $mainMod, mouse:273, resizewindow
-
-        # full screen
-        bind = SUPER, F, fullscreen
+        "$mainMod" = "SUPER";
 
         # disable primary buffer
-        exec-once = wl-paste -p --watch wl-copy -pc
+        exec-once = "wl-paste -p --watch wl-copy -pc";
 
-        # Assign program to workspace
-        # windowrule=workspace 1 silent,kitty
-        windowrule = workspace 2, codium-url-handler
-        windowrule = workspace 3, firefox
-        windowrule = workspace 3, firefox-default
-        windowrule = workspace 4, thunderbird
-        windowrule = workspace 5, quassel
-        windowrule = workspace 5, Signal
-        windowrule = workspace 6, steam
-        windowrule = workspace 7, Gimp
-
-        # random bindings
-        bind = , XF86AudioMute, exec, amixer set Master toggle
-        bind = , XF86AudioLowerVolume, exec, amixer set Master 5%-
-        bind = , XF86AudioRaiseVolume, exec, amixer set Master 5%+
-        bind = , XF86MonBrightnessDown, exec, brightnessctl set 5%-
-        bind = , XF86MonBrightnessUp, exec, brightnessctl set 5%+
-        bind = $mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -
-        bind = $mainMod, L, exec, ${lock_cmd}
-
-        # switches
-        bindl = ,switch:on:Lid Switch,exec,${monitor_off}
-        bindl = ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"
-
-        # wallpaper
-        exec = ${pkgs.wbg}/bin/wbg ${config.wallpapers.single}&
+        exec = [
+          # wallpaper
+          "${pkgs.wbg}/bin/wbg ${config.wallpapers.single}&"
+        ];
 
         # highres xwayland
         # change monitor to hires, the last argument is the scale factor
-        monitor=,highres,auto,1
+        monitor = ",highres,auto,1";
 
         # toolkit-specific scale
-        env = GDK_SCALE,1
-        env = XCURSOR_SIZE,16
+        env = [ "GDK_SCALE,1" "XCURSOR_SIZE,16" ];
 
         # layers
-        layerrule = blur,rofi
-        layerrule = blur,notifications
-        layerrule = ignorezero,notifications
+        layerrule =
+          [ "blur,rofi" "blur,notifications" "ignorezero,notifications" ];
 
-        # Bar reservation
-        # monitor=,addreserved,0,0,60,0
-      '';
+      };
     };
     systemd.user.services.swayidle = {
       Unit = {
