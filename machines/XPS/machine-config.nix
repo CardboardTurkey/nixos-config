@@ -82,7 +82,7 @@ in {
   # ------
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.graphics = {
+  hardware.opengl = {
     enable = true;
     extraPackages = [
       nvidia-vaapi-driver
