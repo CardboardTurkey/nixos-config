@@ -99,3 +99,32 @@ Can use sean's image because it already has a swap space applied. Remember to up
 * digikey
 * farnell
 * mouser
+
+## Nix examples
+
+### Overriding attributes
+
+```diff
+diff --git a/user-config/graphical/hyprland.nix b/user-config/graphical/hyprland.nix
+index e9b6001..90ceec3 100644
+--- a/user-config/graphical/hyprland.nix
++++ b/user-config/graphical/hyprland.nix
+@@ -122,6 +122,16 @@ in {
+     wayland.windowManager.hyprland = {
+       enable = true;
+       systemd.enable = true;
++      package = pkgs.hyprland.overrideAttrs (finalAttrs: previousAttrs: rec {
++        version = "v0.40.0";
++        src = pkgs.fetchFromGitHub {
++          owner = "hyprwm";
++          repo = "hyprland";
++          rev = "${version}";
++          fetchSubmodules = true;
++          hash = "sha256-UxpPPS5uiyE4FDO3trfJObOm6sE7jnkVguHH6IdkQqs=";
++        };
++      });
+       settings = {
+         bind = [
+           "SUPER, Return, exec, ${launchTerminal}"
+```
+
