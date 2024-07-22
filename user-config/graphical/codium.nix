@@ -30,13 +30,21 @@ let
       nvarner.typst-lsp
       tomoki1207.pdf
       timonwong.shellcheck
-      eww-yuck.yuck
-    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-      name = "robotframework-lsp";
-      publisher = "robocorp";
-      version = "1.11.0";
-      sha256 = "sha256-DQ4cSD9ZCRlAWMaWOCjAPYHwS9T/0UAVpmLRwQxU3hE=";
-    }];
+
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "robotframework-lsp";
+        publisher = "robocorp";
+        version = "1.11.0";
+        sha256 = "sha256-DQ4cSD9ZCRlAWMaWOCjAPYHwS9T/0UAVpmLRwQxU3hE=";
+      }
+      {
+        name = "yuck";
+        publisher = "eww-yuck";
+        version = "0.0.3";
+        sha256 = "sha256-DITgLedaO0Ifrttu+ZXkiaVA7Ua5RXc4jXQHPYLqrcM=";
+      }
+    ];
 
 in {
   # allowed_unfree = [ "vscode-extension-ms-vscode-cpptools" ];
