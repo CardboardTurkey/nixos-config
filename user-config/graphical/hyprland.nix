@@ -190,6 +190,7 @@ in {
           ''
             $mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
           "$mainMod, L, exec, ${lock_cmd}"
+          "SUPER, X, exec, alacritty --class clipse -e ${pkgs.clipse}/bin/clipse"
         ];
 
         bindm = [
@@ -315,8 +316,12 @@ in {
           "workspace 7, Gimp"
         ];
 
+        windowrulev2 = [ "float,class:(clipse)" "size 622 652,class:(clipse)" ];
+
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         "$mainMod" = "SUPER";
+
+        exec-once = [ "${pkgs.clipse}/bin/clipse -listen" ];
 
         exec = [
           # wallpaper
