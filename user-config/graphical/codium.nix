@@ -30,6 +30,7 @@ let
       nvarner.typst-lsp
       tomoki1207.pdf
       timonwong.shellcheck
+      eww-yuck.yuck
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
       name = "robotframework-lsp";
       publisher = "robocorp";
