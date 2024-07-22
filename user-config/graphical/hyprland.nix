@@ -182,9 +182,9 @@ in {
           "SUPER, F, fullscreen"
 
           # random bindings
-          ", XF86AudioMute, exec, amixer set Master toggle"
-          ", XF86AudioLowerVolume, exec, amixer set Master 5%-"
-          ", XF86AudioRaiseVolume, exec, amixer set Master 5%+"
+          ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+          ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+          ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
           ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
           ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
           ''
