@@ -26,7 +26,7 @@
     };
     wayland.windowManager.hyprland = {
       extraConfig = ''
-        bind = MOD3, SPACE, exec, rofi -show drun -theme clean
+        bindr = SUPER, SUPER_L, exec, rofi -show drun -theme clean
         bind = MOD3, P, exec, rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu
       '';
     };
