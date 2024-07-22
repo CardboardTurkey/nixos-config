@@ -82,7 +82,7 @@
 			  :max 101 
 			  :min 0 
 			  :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%" ))
-	(button   :onclick "scripts/popup audio"   :class "volume-icon" ""))))
+	(button   :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"   :class "volume-icon" ""))))
 (defpoll current-volume :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@  | grep 'Volume:' | awk '{ percent = $2 * 100; print percent }'")
 (defvar volum false)
 
