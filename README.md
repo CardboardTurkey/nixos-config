@@ -99,6 +99,7 @@ Can use sean's image because it already has a swap space applied. Remember to up
 * digikey
 * farnell
 * mouser
+* [Ratcheting key ring](https://neverletgo.com/products/mini-ratchet-retractable-tool-lanyard)
 
 ## Nix examples
 
