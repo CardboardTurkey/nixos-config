@@ -321,7 +321,10 @@ in {
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         "$mainMod" = "SUPER";
 
-        exec-once = [ "${pkgs.clipse}/bin/clipse -listen" ];
+        exec-once = [
+          "${pkgs.clipse}/bin/clipse -listen"
+          "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular"
+        ];
 
         exec = [
           # wallpaper
