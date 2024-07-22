@@ -318,9 +318,6 @@ in {
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         "$mainMod" = "SUPER";
 
-        # disable primary buffer
-        exec-once = "wl-paste -p --watch wl-copy -pc";
-
         exec = [
           # wallpaper
           "${pkgs.wbg}/bin/wbg ${config.wallpapers.single}&"
