@@ -83,7 +83,8 @@
 			  :min 0 
 			  :onchange "wpctl set-volume @DEFAULT_AUDIO_SINK@ {}%" ))
 	(button   :onclick "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"   :class "volume-icon" ""))))
-(defpoll current-volume :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@  | grep 'Volume:' | awk '{ percent = $2 * 100; print percent }'")
+; Get volume as a percentage. Show 0 if sink is muted.
+(defpoll current-volume :interval "1s" "wpctl get-volume @DEFAULT_AUDIO_SINK@  | grep 'Volume:' | awk '{ if ($3 != \"[MUTED]\") {percent = $2 * 100; print percent } else { print \"0\"}}'")
 (defvar volum false)
 
 ;; Control Panel Widgets ;;	
