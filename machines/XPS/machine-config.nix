@@ -52,15 +52,18 @@ in {
     };
   };
 
-  home-manager.users.kiran.wayland.windowManager.hyprland.extraConfig = ''
-    # Some default env vars.
-    env = XCURSOR_SIZE,24
-    env = LIBVA_DRIVER_NAME,nvidia
-    env = XDG_SESSION_TYPE,wayland
-    # env = GBM_BACKEND,nvidia-drm
-    env = __GLX_VENDOR_LIBRARY_NAME,nvidia
-    env = WLR_NO_HARDWARE_CURSORS,1
-  '';
+  home-manager.users.kiran.wayland.windowManager.hyprland.settings = {
+    env = [
+      # nvidia stuff
+      "LIBVA_DRIVER_NAME,nvidia"
+      "XDG_SESSION_TYPE,wayland"
+      "GBM_BACKEND,nvidia-drm"
+      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+
+    ];
+
+    cursor = { no_hardware_cursors = true; };
+  };
 
   # ------
   # Steam
@@ -70,8 +73,8 @@ in {
   environment.systemPackages = [
     prismlauncher
     steam
-    (patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
-    nvidia-offload
+    # (patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
+    # nvidia-offload
     discord
     libva
     xorg.xrandr
@@ -95,16 +98,6 @@ in {
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
-
-  hardware.nvidia.prime = {
-    offload.enable = true;
-
-    # Bus ID of the Intel GPU. You can find it using lspci, either under 3D or VGA
-    intelBusId = "PCI:0:2:0";
-
-    # Bus ID of the NVIDIA GPU. You can find it using lspci, either under 3D or VGA
-    nvidiaBusId = "PCI:1:0:0";
-  };
 
   boot.initrd.luks.devices = {
     crypted = {
