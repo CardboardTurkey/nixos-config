@@ -1,5 +1,4 @@
 {
-  services.auto-cpufreq.enable = true;
   services.logind = {
     lidSwitchExternalPower = "ignore";
     lidSwitchDocked = "ignore";
@@ -7,11 +6,11 @@
   };
   systemd.sleep.extraConfig = "HibernateDelaySec=30m";
   # Battery threshold
-  # services.tlp = {
-  #   enable = true;
-  #   settings = {
-  #     START_CHARGE_THRESH_BAT0 = 70;
-  #     STOP_CHARGE_THRESH_BAT0 = 90;
-  #   };
-  # };
+  services.tlp = {
+    enable = true;
+    settings = {
+      START_CHARGE_THRESH_BAT0 = 70;
+      STOP_CHARGE_THRESH_BAT0 = 90;
+    };
+  };
 }
