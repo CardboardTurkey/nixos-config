@@ -57,7 +57,8 @@ in {
       # nvidia stuff
       "LIBVA_DRIVER_NAME,nvidia"
       "XDG_SESSION_TYPE,wayland"
-      "GBM_BACKEND,nvidia-drm"
+      # Firefox seems to hate this
+      # "GBM_BACKEND,nvidia-drm"
       "__GLX_VENDOR_LIBRARY_NAME,nvidia"
 
     ];
