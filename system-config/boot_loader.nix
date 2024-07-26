@@ -1,11 +1,11 @@
-{ config, ... }:
+{ lib, ... }:
 # let
 #   grubby = (builtins.getFlake "github.com:CardboardTurkey/grub2-themes").outputs.nixosModule;
 # in
 {
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.canTouchEfiVariables = lib.mkDefault true;
   # inherit grubby;
   # boot.loader.grub2-theme = {
   #   enable = true;

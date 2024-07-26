@@ -7,6 +7,14 @@
   };
   outputs = { self, nixpkgs, nixos-hardware }: {
     nixosConfigurations = {
+      mini = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        modules = [
+          ./configuration.nix
+          ./machines/mini/machine-config.nix
+          ./machines/mini/hardware-configuration.nix
+        ];
+      };
       P14s = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
