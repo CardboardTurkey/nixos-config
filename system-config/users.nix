@@ -17,7 +17,7 @@ in {
         description = "Kiran Ostrolenk";
         shell = pkgs.zsh;
         extraGroups = [ "kiran" "wheel" ]; # Enable ‘sudo’ for the user.
-        # nix shell nixpkgs\#mkpasswd -c mkpasswd -m sha-512
+        # nix shell nixpkgs\#mkpasswd -c mkpasswd
         hashedPasswordFile = config.sops.secrets."${password}".path;
       };
     };
