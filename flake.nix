@@ -8,14 +8,16 @@
   };
   outputs = { self, nixpkgs, nixos-hardware, nixpkgs-unstable }: {
     nixosConfigurations = {
-      mini = nixpkgs.lib.nixosSystem {
+      mini = nixpkgs.lib.nixosSystem rec {
         system = "aarch64-linux";
         modules = [
           ./configuration.nix
           ./machines/mini/machine-config.nix
           ./machines/mini/hardware-configuration.nix
         ];
-        specialArgs = { pkgs-unstable = nixpkgs-unstable; };
+        specialArgs = {
+          pkgs-unstable = import nixpkgs-unstable { system = "${system}"; };
+        };
       };
       P14s = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

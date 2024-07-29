@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, pkgs-unstable, ... }:
 
 {
   imports = [ ./pkgs_mine/dirtygit/module.nix ];
@@ -17,7 +17,7 @@
     arandr
     brightnessctl
     flameshot
-    signal-desktop
+    pkgs-unstable.signal-desktop
     xorg.xev
     pavucontrol
     python3
