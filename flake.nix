@@ -3,9 +3,10 @@
 
   inputs = {
     nixpkgs = { url = "github:NixOS/nixpkgs/nixos-24.05"; };
+    nixpkgs-unstable = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
     nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
   };
-  outputs = { self, nixpkgs, nixos-hardware }: {
+  outputs = { self, nixpkgs, nixos-hardware, nixpkgs-unstable }: {
     nixosConfigurations = {
       mini = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
@@ -14,6 +15,7 @@
           ./machines/mini/machine-config.nix
           ./machines/mini/hardware-configuration.nix
         ];
+        specialArgs = { pkgs-unstable = nixpkgs-unstable; };
       };
       P14s = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
