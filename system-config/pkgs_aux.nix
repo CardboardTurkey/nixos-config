@@ -33,5 +33,6 @@
     gitui
     nixfmt-classic
     gcolor3
+    borgbackup
   ];
 }
