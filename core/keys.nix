@@ -38,7 +38,7 @@ with lib; {
     };
     osprey_host_age = mkOption {
       default =
-        "age15eh7rjhwj5rutcymkdk0xz0adl0skfsy25trwyg4gctc87p9y90sdf35pn";
+        "age134juky3eceuevfds5cjs6x5udltddpakqzuyszn8etjv3qvfg9xs4pts7w";
       type = with types; uniq str;
       description = "Wren ssh host key converted to age";
     };
