@@ -7,6 +7,8 @@
     ../../system-config/flatpack.nix
   ];
 
+  boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];
+
   services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = "HibernateDelaySec=30m";
 

@@ -25,6 +25,8 @@ in {
     ../../system-config/sbuk.nix
   ];
 
+  boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];
+
   wlan = "wlp59s0";
   battery = "BAT0";
   edp1 =
