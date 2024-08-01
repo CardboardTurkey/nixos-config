@@ -13,6 +13,11 @@
     rootless = {
       enable = true;
       setSocketVariable = true;
+      # resolved has two different dns configs: https://unix.stackexchange.com/a/612434
+      # For some reason rootless docker picks up the wrong one,
+      # so lets just use cloudflare for now.
+      daemon.settings = { dns = [ "1.1.1.1" ]; };
     };
+    daemon.settings = { userland-proxy = false; };
   };
 }
