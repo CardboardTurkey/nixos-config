@@ -316,7 +316,12 @@ in {
           "workspace 7, Gimp"
         ];
 
-        windowrulev2 = [ "float,class:(clipse)" "size 622 652,class:(clipse)" ];
+        windowrulev2 = [
+          "float,class:(clipse)"
+          "size 622 652,class:(clipse)"
+          "float,class:(com.saivert.pwvucontrol)"
+          "size 1200 600,class:(com.saivert.pwvucontrol)"
+        ];
 
         # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         "$mainMod" = "SUPER";

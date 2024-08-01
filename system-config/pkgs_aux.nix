@@ -20,6 +20,7 @@
     pkgs-unstable.signal-desktop
     xorg.xev
     pavucontrol
+    pwvucontrol
     python3
     gimp
     ffmpeg
