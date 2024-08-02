@@ -27,7 +27,7 @@
           ./machines/P14s/hardware-configuration.nix
         ];
       };
-      XPS = nixpkgs.lib.nixosSystem {
+      XPS = nixpkgs.lib.nixosSystem rec {
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
@@ -35,6 +35,9 @@
           ./machines/XPS/hardware-configuration.nix
           nixos-hardware.nixosModules.dell-xps-15-7590
         ];
+        specialArgs = {
+          pkgs-unstable = import nixpkgs-unstable { inherit system; };
+        };
       };
       pi = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
