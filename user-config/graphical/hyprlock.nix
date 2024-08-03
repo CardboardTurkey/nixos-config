@@ -5,7 +5,7 @@
 
       settings = {
         general = {
-          pam_module = "login";
+          # pam_module = "login";
           disable_loading_bar = false;
         };
 
@@ -82,7 +82,7 @@
         image = {
           monitor = "";
           path = config.wallpapers.single;
-          size = 280; # lesser side if not 1:1 ratio
+          size = config.monitor_scale * 280; # lesser side if not 1:1 ratio
           rounding = -1; # negative values mean circle
           border_size = 4;
           border_color = "rgb(${config.nord6})";
