@@ -113,9 +113,9 @@ in {
         "debug.allowBreakpointsEverywhere" = true;
         nix = {
           enableLanguageServer = true;
-          serverPath = "${pkgs.nil}/bin/nil";
+          serverPath = "${pkgs.nixd}/bin/nixd";
           serverSettings = {
-            nil = {
+            nixd = {
               formatting = {
                 command = [ "${pkgs.nixfmt-classic}/bin/nixfmt" ];
               };
