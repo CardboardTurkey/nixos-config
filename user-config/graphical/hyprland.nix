@@ -1,14 +1,5 @@
 { pkgs, config, lib, ... }:
 let
-  lock_cmd_flags = monitors: wallpaper:
-    lib.strings.concatMapStrings (monitor: "--image=${monitor}:${wallpaper} ")
-    monitors;
-  lock_cmd = "${pkgs.swaylock}/bin/swaylock -f ${
-      lock_cmd_flags config.dual_monitor_right config.wallpapers.dual.right
-    } ${
-      lock_cmd_flags config.dual_monitor_left config.wallpapers.dual.left
-    } --image=${config.wallpapers.single}";
-
   monitor_off = pkgs.writeScript "monitor_off" ''
     if [[ `hyprctl monitors -j | ${pkgs.jq}/bin/jq length` -gt 1 ]] # || [[ `cat /sys/class/power_supply/AC/online` -ne 0 ]]
     then
@@ -189,7 +180,7 @@ in {
           ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
           ''
             $mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
-          "$mainMod, L, exec, ${lock_cmd}"
+          "$mainMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
           "SUPER, X, exec, alacritty --class clipse -e ${pkgs.clipse}/bin/clipse"
         ];
 
@@ -349,43 +340,5 @@ in {
 
       };
     };
-    systemd.user.services.swayidle = {
-      Unit = {
-        Description = "Idle manager for Wayland";
-        Documentation = "man:swayidle(1)";
-        PartOf = [ "graphical-session.target" ];
-      };
-
-      Service = {
-        Type = "simple";
-        # swayidle executes commands using "sh -c", so the PATH needs to contain a shell.
-        Environment = [ "PATH=${lib.makeBinPath [ pkgs.bash pkgs.hyprland ]}" ];
-        ExecStart =
-          "${pkgs.swayidle}/bin/swayidle -d -w timeout 300 '${lock_cmd}' timeout 330 '${pkgs.hyprland}/bin/hyprctl dispatch dpms off' resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' after-resume '${pkgs.hyprland}/bin/hyprctl dispatch dpms on' before-sleep '${lock_cmd}'";
-      };
-      Install = { WantedBy = [ "hyprland-session.target" ]; };
-    };
-    # services.swayidle = {
-    #   enable = true;
-    #   systemdTarget = "hyprland-session.target";
-    #   timeouts = [
-    #     { timeout = 2; command = "'${lock_cmd}'"; }
-    #     {
-    #       timeout = 4;
-    #       command = "'hyprctl dispatch dpms off'";
-    #       resumeCommand = "'hyprctl dispatch dpms on'";
-    #     }
-    #   ];
-    #   events = [
-    #     {
-    #       event = "after-resume";
-    #       command = "'hyprctl dispatch dpms on'";
-    #     }
-    #     {
-    #       event = "before-sleep";
-    #       command = "${lock_cmd}";
-    #     }
-    #   ];
-    # };
   };
 }

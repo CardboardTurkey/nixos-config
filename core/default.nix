@@ -51,8 +51,8 @@ with types; {
       description = "Paths to wallpapers";
     };
     monitor_scale = mkOption {
-      default = 1.0;
-      type = float;
+      default = 1;
+      type = int;
       description = "For when you need to rescale for monitor size";
     };
   };
