@@ -122,7 +122,14 @@ in {
             };
           };
         };
-        "rust-analyzer.checkOnSave.command" = "clippy";
+        rust-analyzer = {
+          checkOnSave.command = "clippy";
+          server.extraEnv = {
+            CARGO_TARGET_DIR = "target/rust-analyzer";
+            RUSTUP_TOOLCHAIN = "stable";
+          };
+          check.extraArgs = [ "--target-dir=target/rust-analyzer" ];
+        };
         "redhat.telemetry.enabled" = false;
         "window.titleBarStyle" = "custom";
         "explorer.confirmDelete" = false;
