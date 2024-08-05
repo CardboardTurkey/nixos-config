@@ -15,7 +15,6 @@
     local.dirtygit
     feh
     arandr
-    brightnessctl
     flameshot
     pkgs-unstable.signal-desktop
     xorg.xev

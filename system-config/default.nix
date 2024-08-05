@@ -27,8 +27,9 @@
     ./qmk.nix
     ./flatpack.nix
     ./upower.nix
-    ./jellyfin.nix # do this properly! Exposes specific ports and add jellyfin user
+    ./jellyfin.nix
     # ./hedgedoc.nix
+    ./ddcci.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:
