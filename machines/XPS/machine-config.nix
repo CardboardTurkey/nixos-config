@@ -54,18 +54,32 @@ in {
     };
   };
 
-  home-manager.users.kiran.wayland.windowManager.hyprland.settings = {
-    env = [
-      # nvidia stuff
-      "LIBVA_DRIVER_NAME,nvidia"
-      "XDG_SESSION_TYPE,wayland"
-      # Firefox seems to hate this
-      # "GBM_BACKEND,nvidia-drm"
-      "__GLX_VENDOR_LIBRARY_NAME,nvidia"
+  home-manager.users.kiran = {
+    wayland.windowManager.hyprland.settings = {
+      env = [
+        # nvidia stuff
+        "LIBVA_DRIVER_NAME,nvidia"
+        "XDG_SESSION_TYPE,wayland"
+        # Firefox seems to hate this
+        # "GBM_BACKEND,nvidia-drm"
+        "__GLX_VENDOR_LIBRARY_NAME,nvidia"
 
+      ];
+
+      cursor = { no_hardware_cursors = true; };
+    };
+    services.hypridle.settings.listener = [
+      {
+        timeout = 150; # 2.5min.
+        on-timeout =
+          "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
+        on-resume = "brightnessctl -r"; # monitor backlight restore.
+      }
+      {
+        timeout = 1800; # 30min
+        on-timeout = "systemctl suspend"; # suspend pc
+      }
     ];
-
-    cursor = { no_hardware_cursors = true; };
   };
 
   # ------
