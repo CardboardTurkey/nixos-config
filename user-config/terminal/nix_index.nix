@@ -1,6 +1,7 @@
+{pkgs, ...}:
 {
+  environment.systemPackages = with pkgs; [ comma ];
   home-manager.users.kiran = { pkgs, ... }: {
-    # nix-index
     programs.command-not-found.enable = true;
   };
 }
