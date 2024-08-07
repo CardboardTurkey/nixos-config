@@ -28,10 +28,10 @@ in {
     ./terminal/neovim.nix
     ./terminal/bat.nix
     ./terminal/direnv.nix
-    ./terminal/nix_index.nix
     ./terminal/ssh.nix
     ./terminal/zoxide.nix
     ./terminal/fzf.nix
+    ./terminal/nix-index.nix
 
     ./other/bluetooth.nix
     ./other/fontconfig.nix

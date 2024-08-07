@@ -13,11 +13,8 @@
   outputs =
     { self, nixpkgs, nixos-hardware, nixpkgs-unstable, nix-index-database }:
     let
-      shared_modules = [
-        ./configuration.nix
-        nix-index-database.nixosModules.nix-index
-        { programs.nix-index-database.comma.enable = true; }
-      ];
+      shared_modules =
+        [ ./configuration.nix nix-index-database.nixosModules.nix-index ];
     in {
       nixosConfigurations = {
         mini = nixpkgs.lib.nixosSystem rec {
