@@ -122,12 +122,17 @@
 #
 # vim: ft=cfg
 
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
   home-manager.users.kiran = { pkgs, ... }: {
     services.dunst = {
       enable = true;
+      iconTheme = {
+        name = "Zafiro-icons-Dark";
+        package = pkgs.zafiro-icons;
+        size = "32x32";
+      };
       settings = {
         global = {
           font = "Bitstream Vera Sans ${
@@ -141,8 +146,7 @@
           offset = "22x69";
           min_icon_size = 16;
           max_icon_size = 48;
-          enable_recursive_icon_lookup = true;
-          icon_theme = "Zafiro-icons-Dark";
+          # enable_recursive_icon_lookup = true;
           progress_bar_height = 30;
           idle_threshold = 5;
           padding = 25;
