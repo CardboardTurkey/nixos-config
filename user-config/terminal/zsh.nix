@@ -104,6 +104,11 @@
                 echo "'$1' is not a valid file"
             fi
         }
+
+        rg () {
+          ${pkgs.ripgrep}/bin/rg --json "$@" | ${pkgs.delta}/bin/delta
+        }
+
         if [[ -f ~/ct-gitlab/codethings/cardboardturkey/notes/notes.md ]]
         then
           (cd ~/ct-gitlab/codethings/cardboardturkey/notes/
