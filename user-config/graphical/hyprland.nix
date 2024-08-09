@@ -165,6 +165,12 @@ in {
           "$mainMod ALT, up, movecurrentworkspacetomonitor, u"
           "$mainMod ALT, down, movecurrentworkspacetomonitor, d"
 
+          "$mainMod, S, togglespecialworkspace, magic"
+          "$mainMod, S, movetoworkspace, +0"
+          "$mainMod, S, togglespecialworkspace, magic"
+          "$mainMod, S, movetoworkspace, special:magic"
+          "$mainMod, S, togglespecialworkspace, magic"
+
           # Scroll throurightgh existing workspaces with mainMod + scroll
           "MOD3, right, workspace, e+1"
           "MOD3, left, workspace, e-1"
