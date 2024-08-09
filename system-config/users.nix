@@ -8,7 +8,7 @@ in {
 
   # Define a user account.
   users = {
-    mutableUsers = false;
+    mutableUsers = true;
     users = {
       root.hashedPassword = "!";
       kiran = {
