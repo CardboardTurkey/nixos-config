@@ -4,11 +4,10 @@ let password = "passwords/${config.hostname}";
 
 in {
   imports = [ ./../user-config/other/sops.nix ];
-  sops.secrets."${password}" = { };
-
+  sops.secrets."${password}".neededForUsers = true;
   # Define a user account.
   users = {
-    mutableUsers = true;
+    mutableUsers = false;
     users = {
       root.hashedPassword = "!";
       kiran = {
