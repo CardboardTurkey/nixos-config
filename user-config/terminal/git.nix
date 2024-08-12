@@ -1,17 +1,15 @@
-{ config, ... }:
-
 {
-  home-manager.users.kiran = { pkgs, ... }: {
+  home-manager.users.kiran = { osConfig, ... }: {
     programs.git = {
       enable = true;
       userName = "Kiran Ostrolenk";
-      userEmail = "${config.email}";
+      userEmail = "${osConfig.email}";
       lfs = {
         enable = true;
         # skipSmudge = true;
       };
       ignores = [ "target" ".direnv" ".vscode" ];
-      signing.key = "${config.pgp_sign}";
+      signing.key = "${osConfig.pgp_sign}";
       includes = [
         {
           contents.user.email = "kiran@ostrolenk.co.uk";

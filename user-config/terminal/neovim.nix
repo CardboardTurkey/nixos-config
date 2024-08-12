@@ -1,7 +1,4 @@
-{ pkgs, ... }:
-
 {
-  environment.systemPackages = [ pkgs.xclip ];
   home-manager.users.kiran = { pkgs, ... }: {
     programs.neovim = {
       enable = true;

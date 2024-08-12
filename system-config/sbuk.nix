@@ -3,7 +3,7 @@
 let sbuk_if = "sbuk";
 
 in {
-  imports = [ ../user-config/other/sops.nix ];
+  imports = [ ../system-config/sops.nix ];
   sops.secrets."sbuk/private_key" = { };
   networking.wg-quick.interfaces.${sbuk_if} = {
     address = [ "172.16.1.2/32" ];

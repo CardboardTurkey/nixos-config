@@ -1,6 +1,6 @@
-{ pkgs, ... }: {
-  environment.systemPackages = with pkgs; [ fzf ];
-  home-manager.users.kiran = {
+{
+  home-manager.users.kiran = { pkgs, ... }: {
+    home.packages = with pkgs; [ fzf ];
     programs.zoxide = {
       enable = true;
       enableZshIntegration = true;

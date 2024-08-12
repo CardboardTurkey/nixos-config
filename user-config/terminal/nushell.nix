@@ -1,5 +1,5 @@
-{ pkgs, ... }: {
-  home-manager.users.kiran = {
+{
+  home-manager.users.kiran = { pkgs, ... }: {
     programs.nushell = {
       enable = true;
       extraEnv = ''

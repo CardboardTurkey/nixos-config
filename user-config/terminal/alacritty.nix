@@ -1,13 +1,11 @@
-{ lib, config, ... }:
-
 {
-  home-manager.users.kiran = { pkgs, ... }: {
+  home-manager.users.kiran = { lib, osConfig, ... }: {
 
     xsession.windowManager.i3 = {
       config = {
         keybindings = lib.mkOptionDefault {
-          "${config.i3_mod}+Control+Return" = "exec alacritty";
-          "${config.i3_mod}+Return" =
+          "${osConfig.i3_mod}+Control+Return" = "exec alacritty";
+          "${osConfig.i3_mod}+Return" =
             "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
         };
       };
@@ -17,7 +15,7 @@
       enable = true;
       settings = {
         font = {
-          size = config.font_size_small;
+          size = osConfig.font_size_small;
           normal = {
             family = "Bitstream Vera Sans Mono";
             style = "Roman";
@@ -32,49 +30,49 @@
         env.WINIT_X11_SCALE_FACTOR = "1";
         colors = {
           primary = {
-            background = "#${config.nord0}";
-            foreground = "#${config.nord4}";
+            background = "#${osConfig.nord0}";
+            foreground = "#${osConfig.nord4}";
             dim_foreground = "#a5abb6";
           };
           cursor = {
-            text = "#${config.nord0}";
-            cursor = "#${config.nord4}";
+            text = "#${osConfig.nord0}";
+            cursor = "#${osConfig.nord4}";
           };
           vi_mode_cursor = {
-            text = "#${config.nord0}";
-            cursor = "#${config.nord4}";
+            text = "#${osConfig.nord0}";
+            cursor = "#${osConfig.nord4}";
           };
           selection = {
             text = "CellForeground";
-            background = "#${config.nord3}";
+            background = "#${osConfig.nord3}";
           };
           search.matches = {
             foreground = "CellBackground";
-            background = "#${config.nord8}";
+            background = "#${osConfig.nord8}";
           };
           footer_bar = {
-            background = "#${config.nord2}";
-            foreground = "#${config.nord4}";
+            background = "#${osConfig.nord2}";
+            foreground = "#${osConfig.nord4}";
           };
           normal = {
-            black = "#${config.nord1}";
-            red = "#${config.nord11}";
-            green = "#${config.nord14}";
-            yellow = "#${config.nord13}";
-            blue = "#${config.nord9}";
-            magenta = "#${config.nord15}";
-            cyan = "#${config.nord8}";
-            white = "#${config.nord5}";
+            black = "#${osConfig.nord1}";
+            red = "#${osConfig.nord11}";
+            green = "#${osConfig.nord14}";
+            yellow = "#${osConfig.nord13}";
+            blue = "#${osConfig.nord9}";
+            magenta = "#${osConfig.nord15}";
+            cyan = "#${osConfig.nord8}";
+            white = "#${osConfig.nord5}";
           };
           bright = {
-            black = "#${config.nord3}";
-            red = "#${config.nord11}";
-            green = "#${config.nord14}";
-            yellow = "#${config.nord13}";
-            blue = "#${config.nord9}";
-            magenta = "#${config.nord15}";
-            cyan = "#${config.nord7}";
-            white = "#${config.nord6}";
+            black = "#${osConfig.nord3}";
+            red = "#${osConfig.nord11}";
+            green = "#${osConfig.nord14}";
+            yellow = "#${osConfig.nord13}";
+            blue = "#${osConfig.nord9}";
+            magenta = "#${osConfig.nord15}";
+            cyan = "#${osConfig.nord7}";
+            white = "#${osConfig.nord6}";
           };
           dim = {
             black = "#373e4d";

@@ -1,5 +1,5 @@
 {
-  home-manager.users.kiran = { pkgs, ... }: {
+  home-manager.users.kiran = {
     programs.ssh = {
       enable = true;
       controlMaster = "auto";

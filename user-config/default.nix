@@ -1,11 +1,13 @@
-let
-  home-manager = builtins.fetchTarball
-    "https://github.com/nix-community/home-manager/archive/refs/heads/master.tar.gz";
+{
+  services.lorri.enable = true;
 
-in {
+  # For zsh compeletion (apparently)
+  environment.pathsToLink = [ "/share/zsh" ];
+  programs.zsh.enable = true;
+
+  # Also need hyprland from system-config
+
   imports = [
-    (import "${home-manager}/nixos")
-
     ./graphical/codium.nix
     ./graphical/gtk.nix
     ./graphical/hyprland.nix
@@ -30,13 +32,13 @@ in {
     ./terminal/ssh.nix
     ./terminal/zoxide.nix
     ./terminal/fzf.nix
-    ./terminal/nix-index.nix
 
-    ./other/bluetooth.nix
     ./other/fontconfig.nix
-    ./other/gnupg.nix
     ./other/sops_config.nix
     ./other/batsignal.nix
   ];
-  home-manager.users.kiran = _: { home.stateVersion = "22.11"; };
+  home-manager = {
+    users.kiran.home.stateVersion = "22.11";
+    useGlobalPkgs = true;
+  };
 }

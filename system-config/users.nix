@@ -3,7 +3,7 @@
 let password = "passwords/${config.hostname}";
 
 in {
-  imports = [ ./../user-config/other/sops.nix ];
+  imports = [ ./../system-config/sops.nix ];
   sops.secrets."${password}".neededForUsers = true;
   # Define a user account.
   users = {

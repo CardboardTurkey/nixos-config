@@ -2,7 +2,7 @@
 
   imports = [
     ../pc_common.nix
-    ../../user-config/other/sops.nix
+    ../../system-config/sops.nix
     ../../system-config/ayden_vpn.nix
     ../../system-config/flatpack.nix
   ];

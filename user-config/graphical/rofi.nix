@@ -1,5 +1,5 @@
-{ config, lib, ... }: {
-  home-manager.users.kiran = { pkgs, ... }: {
+{
+  home-manager.users.kiran = { osConfig, lib, pkgs, ... }: {
     programs.rofi = {
       enable = true;
       package = pkgs.rofi-wayland;
@@ -17,9 +17,9 @@
     xsession.windowManager.i3 = {
       config = {
         keybindings = lib.mkOptionDefault {
-          "${config.i3_mod}+space" = "exec rofi -show drun -theme clean";
-          # "${config.i3_mod}+period" = "exec rofi -show emoji -modi emoji";
-          "${config.i3_mod}+P" =
+          "${osConfig.i3_mod}+space" = "exec rofi -show drun -theme clean";
+          # "${osConfig.i3_mod}+period" = "exec rofi -show emoji -modi emoji";
+          "${osConfig.i3_mod}+P" =
             "exec rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu";
         };
       };

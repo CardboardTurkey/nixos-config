@@ -1,10 +1,5 @@
-{ config, pkgs, ... }:
-
 {
-  # For zsh compeletion (apparently)
-  environment.pathsToLink = [ "/share/zsh" ];
-  programs.zsh.enable = true;
-  home-manager.users.kiran = {
+  home-manager.users.kiran = { osConfig, pkgs, ... }: {
     home.shellAliases = {
       "less" = "bat --plain";
       "pj" = "${pkgs.bat-extras.prettybat}/bin/prettybat -l json";
@@ -35,7 +30,7 @@
         nix = "$HOME/git/cardboardturkey/nixos-config";
         thing = "$HOME/git/cardboardturkey/thing-of-the-day";
         pdg = "$HOME/git/cardboardturkey/pdgid";
-        web = "${config.web_dir}";
+        web = "${osConfig.web_dir}";
         infra = "$HOME/git/smoothbraineduk/infrastructure";
         smooth = "$HOME/git/smoothbraineduk";
         wallop = "$HOME/git/cardboardturkey/wallop";

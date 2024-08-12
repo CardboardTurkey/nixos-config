@@ -30,6 +30,11 @@
     ./jellyfin.nix
     # ./hedgedoc.nix
     ./ddcci.nix
+    ./nix-index-database.nix
+    ./sops.nix
+    ./hyprland.nix
+    ./bluetooth.nix
+    ./gnupg.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

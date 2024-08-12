@@ -1,5 +1,4 @@
 {
-  services.lorri.enable = true;
   home-manager.users.kiran = {
     programs.direnv = {
       enable = true;

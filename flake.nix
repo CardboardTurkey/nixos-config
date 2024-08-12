@@ -9,12 +9,19 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    home-manager = {
+      url = "github:nix-community/home-manager/release-24.05";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
-  outputs =
-    { self, nixpkgs, nixos-hardware, nixpkgs-unstable, nix-index-database }:
+  outputs = { self, nixpkgs, nixos-hardware, nixpkgs-unstable
+    , nix-index-database, home-manager }:
     let
-      shared_modules =
-        [ ./configuration.nix nix-index-database.nixosModules.nix-index ];
+      shared_modules = [
+        ./configuration.nix
+        home-manager.nixosModules.home-manager
+        nix-index-database.nixosModules.nix-index
+      ];
     in {
       nixosConfigurations = {
         mini = nixpkgs.lib.nixosSystem rec {

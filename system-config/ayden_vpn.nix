@@ -3,7 +3,7 @@
 let eyegog_if = "eyegog";
 
 in {
-  imports = [ ../user-config/other/sops.nix ];
+  imports = [ ../system-config/sops.nix ];
 
   sops.secrets."ayden_vpn/private_key" = { };
   networking.wg-quick.interfaces.${eyegog_if} = {
