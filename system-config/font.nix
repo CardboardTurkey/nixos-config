@@ -1,10 +1,12 @@
 { pkgs, ... }: {
+  allowed_unfree = [ "joypixels" ];
+  nixpkgs.config.joypixels.acceptLicense = true;
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
     hasklig
     # dejavu_fonts
     ttf_bitstream_vera
-    noto-fonts-emoji
+    joypixels
     font-awesome
   ];
 }
