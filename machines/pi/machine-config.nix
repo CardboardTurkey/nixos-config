@@ -26,7 +26,6 @@ in {
     ../../user-config/terminal/nix_index.nix
     ../../user-config/terminal/direnv.nix
 
-    ../../user-config/other/webserver.nix
   ];
 
   hostname = "wren";
