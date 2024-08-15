@@ -87,7 +87,7 @@ let
   '';
 
   launchTerminal = pkgs.writeScript "launchterminal"
-    "hyprctl dispatch workspace 1 && hyprctl activewindow | ${pkgs.ripgrep}/bin/rg Alacritty || alacritty&disown";
+    "hyprctl clients -j | ${pkgs.dasel}/bin/dasel -r json 'all().filter(equal(workspace.id,1)).filter(equal(class,Alacritty))' | xargs test -n && { ${pkgs.alacritty}/bin/alacritty&disown && sleep .1 && hyprctl dispatch movetoworkspace 1; } || hyprctl dispatch workspace 1";
 
 in {
 
