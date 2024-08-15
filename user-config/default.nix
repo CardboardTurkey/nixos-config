@@ -36,6 +36,8 @@ in {
     ./other/bluetooth.nix
     ./other/fontconfig.nix
     ./other/gnupg.nix
+    ./other/sops_config.nix
+    ./other/batsignal.nix
   ];
   home-manager.users.kiran = _: { home.stateVersion = "22.11"; };
 }
