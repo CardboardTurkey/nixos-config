@@ -1,11 +1,5 @@
-{ pkgs, config, lib, ... }:
+{ pkgs, config, ... }:
 let
-  monitor_off = pkgs.writeScript "monitor_off" ''
-    if [[ `hyprctl monitors -j | ${pkgs.jq}/bin/jq length` -gt 1 ]] # || [[ `cat /sys/class/power_supply/AC/online` -ne 0 ]]
-    then
-      hyprctl keyword monitor "eDP-1, disable"
-    fi'';
-
   # check ${pkgs.setxkbmap}/share/X11/xkb for default configs.
   myCustomLayout = pkgs.writeText "layout.xkb" ''
     xkb_keymap {
@@ -198,7 +192,8 @@ in {
 
         bindl = [
           # switches
-          ",switch:on:Lid Switch,exec,${monitor_off}"
+          ''
+            ,switch:on:Lid Switch,exec, hyprctl keyword monitor "eDP-1, disable"''
           ''
             ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"''
         ];
