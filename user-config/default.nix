@@ -3,7 +3,6 @@ let
     "https://github.com/nix-community/home-manager/archive/refs/heads/master.tar.gz";
 
 in {
-  nix.extraOptions = "tarball-ttl = 0";
   imports = [
     (import "${home-manager}/nixos")
 
