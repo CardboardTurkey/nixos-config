@@ -16,17 +16,12 @@
     (button :class "launcher_icon"
     :onclick "scripts/popup launcher"  "")))
 
-;; Workspaces Widgets ;;
-(defwidget workspaces []
-  (literal :content workspace))
-(deflisten workspace "scripts/workspace")
-
 ;; Battery Widgets ;;
 (defwidget bat []
   (box :orientation "v"
     :space-evenly "false"
     (label	:class "bat"
-      :halign "end"
+      :halign "baseline"
       :text battery
     :tooltip "Battery: ${battery-cappacity}%")))
 (defpoll battery			:interval "1s"	"scripts/battery icon")
@@ -158,13 +153,29 @@
       :onclick "shutdown now"	""))))
 (defvar power false)
 
+;; Hyprland Widgets ;;
+(deflisten workspaces :initial "[]" "bash scripts/get-workspaces")
+(deflisten current_workspace :initial "1" "bash scripts/get-active-workspace")
+(defwidget workspaces []
+  (eventbox :onscroll "bash scripts/change-active-workspace {} ${current_workspace}" :class "workspaces-widget"
+    (box :space-evenly true :orientation "v"
+      (label :text "${workspaces}${current_workspace}" :visible false)
+      (for workspace in workspaces
+        (eventbox :onclick "hyprctl dispatch workspace ${workspace.id}"
+          (box :class "workspace-entry ${workspace.id == current_workspace ? "current" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+            (label :text "${workspace.id}")
+          )
+        )
+      )
+    )
+  )
+)
+
 ;; Top Widgets ;;
 (defwidget top []
   (box	:orientation "v"
     :space-evenly "false"
     :valign "start"
-    (launcher)
-    ;; (workspaces)
   ))
 
 ;; Bottom Widgets ;;
