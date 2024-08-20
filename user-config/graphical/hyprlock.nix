@@ -1,16 +1,19 @@
 {
-  home-manager.users.kiran = { osConfig, lib, ... }:
+  home-manager.users.kiran = { osConfig, lib, pkgs, ... }:
     let
       scaleArray = array:
         lib.concatStringsSep ", "
         (map (x: toString (x * osConfig.monitor_scale)) array);
+      lock_cmd =
+        "pidof ${pkgs.hyprlock}/bin/hyprlock || { ${pkgs.hyprlock}/bin/hyprlock && ${pkgs.eww}/bin/eww open bar; }"; # avoid starting multiple hyprlock instances.
     in {
+      wayland.windowManager.hyprland.settings.bind =
+        [ "$mainMod, L, exec, ${lock_cmd}" ];
       services.hypridle = {
         enable = true;
         settings = {
           general = {
-            lock_cmd =
-              "pidof hyprlock || { hyprlock && eww open bar; }"; # avoid starting multiple hyprlock instances.
+            lock_cmd = lock_cmd;
             before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
             after_sleep_cmd =
               "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.

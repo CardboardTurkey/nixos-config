@@ -161,7 +161,6 @@
             ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
             ''
               $mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
-            "$mainMod, L, exec, ${pkgs.hyprlock}/bin/hyprlock"
             "SUPER, X, exec, alacritty --class clipse -e ${pkgs.clipse}/bin/clipse"
           ];
 
