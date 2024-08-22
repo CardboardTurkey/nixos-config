@@ -41,8 +41,12 @@ in {
   # Also need hyprland from system-config
 
   home-manager = {
-    users.kiran.home.stateVersion = "22.11";
-    users.kiran.imports = full-env;
+    users = {
+      kiran = {
+        home.stateVersion = "22.11";
+        imports = full-env;
+      };
+    };
     useGlobalPkgs = true;
   };
 }

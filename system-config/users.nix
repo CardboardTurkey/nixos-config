@@ -19,8 +19,18 @@ in {
         # nix shell nixpkgs\#mkpasswd -c mkpasswd
         hashedPasswordFile = config.sops.secrets."${password}".path;
       };
+      choochoo = {
+        isNormalUser = true;
+        home = "/home/choochoo";
+        description = "Anon";
+        shell = pkgs.zsh;
+        extraGroups = [ "choochoo" "wheel" ]; # Enable ‘sudo’ for the user.
+        # nix shell nixpkgs\#mkpasswd -c mkpasswd
+        hashedPasswordFile = config.sops.secrets."${password}".path;
+      };
     };
   };
   users.groups.kiran = { };
+  users.groups.choochoo = { };
   environment.shells = with pkgs; [ bash zsh ];
 }
