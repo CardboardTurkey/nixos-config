@@ -1,16 +1,14 @@
-{ config, ... }: {
-  home-manager.users.kiran = {
-    home.file.".sops.yaml".text = ''
-      creation_rules:
-        - path_regex: .*\.yaml$
-          key_groups:
-          - age:
-            - ${config.kestrel_host_age}
-            - ${config.harrier_host_age}
-            - ${config.wren_host_age}
-            - ${config.osprey_host_age}
-            pgp:
-            - ${config.pgp_enc}
-    '';
-  };
+{ osConfig, ... }: {
+  home.file.".sops.yaml".text = ''
+    creation_rules:
+      - path_regex: .*\.yaml$
+        key_groups:
+        - age:
+          - ${osConfig.kestrel_host_age}
+          - ${osConfig.harrier_host_age}
+          - ${osConfig.wren_host_age}
+          - ${osConfig.osprey_host_age}
+          pgp:
+          - ${osConfig.pgp_enc}
+  '';
 }

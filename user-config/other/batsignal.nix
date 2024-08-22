@@ -1,5 +1,5 @@
 {
-  home-manager.users.kiran.services.batsignal = {
+  services.batsignal = {
     enable = true;
     extraArgs = [ "-I battery-caution" ];
   };

@@ -1,13 +1,5 @@
-{
-  services.lorri.enable = true;
-
-  # For zsh compeletion (apparently)
-  environment.pathsToLink = [ "/share/zsh" ];
-  programs.zsh.enable = true;
-
-  # Also need hyprland from system-config
-
-  imports = [
+let
+  full-env = [
     ./graphical/codium.nix
     ./graphical/gtk.nix
     ./graphical/hyprland.nix
@@ -17,7 +9,6 @@
     ./graphical/rofi.nix
     ./graphical/eww.nix
     ./graphical/hyprlock.nix
-    # ./graphical/kanshi.nix
 
     ./terminal/git.nix
     ./terminal/eza.nix
@@ -37,8 +28,21 @@
     ./other/sops_config.nix
     ./other/batsignal.nix
   ];
+in {
+  services.lorri.enable = true;
+
+  # For zsh compeletion (apparently)
+  environment.pathsToLink = [ "/share/zsh" ];
+  programs.zsh.enable = true;
+
+  # Needed by gtk?
+  programs.dconf.enable = true;
+
+  # Also need hyprland from system-config
+
   home-manager = {
     users.kiran.home.stateVersion = "22.11";
+    users.kiran.imports = full-env;
     useGlobalPkgs = true;
   };
 }
