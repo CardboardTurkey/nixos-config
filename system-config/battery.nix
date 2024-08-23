@@ -4,7 +4,7 @@
     lidSwitchDocked = "ignore";
     lidSwitch = "suspend-then-hibernate";
   };
-  systemd.sleep.extraConfig = "HibernateDelaySec=30m";
+  systemd.sleep.extraConfig = "HibernateDelaySec=48h";
   # Battery threshold
   services.tlp = {
     enable = true;

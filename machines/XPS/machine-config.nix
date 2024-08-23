@@ -74,7 +74,7 @@ in {
         on-resume = "brightnessctl -r"; # monitor backlight restore.
       }
       {
-        timeout = 1800; # 30min
+        timeout = 300; # 5min
         on-timeout = "systemctl suspend"; # suspend pc
       }
     ];
