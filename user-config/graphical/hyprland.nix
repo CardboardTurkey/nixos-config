@@ -161,6 +161,7 @@ in {
         ''
           $mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
         "SUPER, X, exec, alacritty --class clipse -e ${pkgs.clipse}/bin/clipse"
+        "SUPER, T, exec, alacritty --class my-todo -e vim ~/.cache/todo.md"
       ];
 
       bindm = [
