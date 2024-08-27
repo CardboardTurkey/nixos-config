@@ -4,7 +4,6 @@
     ../pc_common.nix
     ../../system-config/sops.nix
     ../../system-config/ayden_vpn.nix
-    ../../system-config/flatpack.nix
   ];
 
   boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];

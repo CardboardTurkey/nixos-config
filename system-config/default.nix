@@ -25,7 +25,7 @@
     ./fwupd.nix
     ./yubikey.nix
     ./qmk.nix
-    ./flatpack.nix
+    ./flatpak.nix
     ./upower.nix
     ./jellyfin.nix
     # ./hedgedoc.nix
