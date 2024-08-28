@@ -20,10 +20,10 @@
 (defwidget bat []
   (box :orientation "v"
     :space-evenly "false"
+    :tooltip "Battery: ${battery-cappacity}%"
     (label	:class "bat"
-      :halign "baseline"
       :text battery
-    :tooltip "Battery: ${battery-cappacity}%")))
+    )))
 (defpoll battery			:interval "1s"	"scripts/battery icon")
 (defpoll battery-cappacity	:interval "1s"	"scripts/battery percent")
 
