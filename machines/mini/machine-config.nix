@@ -29,8 +29,7 @@
   hostname = "Osprey";
   wallpapers = {
     png = "/home/kiran/Downloads/png-2702691.png";
-    single = builtins.fetchurl
-      "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/master/wallpapers/ign_vaporWave.png";
+    single = "/home/kiran/Pictures/Wallpapers/iceland_arch.jpg";
     dual = {
       left = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg";
       right = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg";
