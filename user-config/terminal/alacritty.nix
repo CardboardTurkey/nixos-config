@@ -21,7 +21,7 @@
         };
       };
       window = {
-        opacity = 0.5;
+        opacity = 0.92;
         padding.x = 20;
         padding.y = 10;
         dynamic_padding = true;
