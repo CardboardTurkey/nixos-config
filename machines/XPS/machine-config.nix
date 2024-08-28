@@ -1,14 +1,13 @@
 { lib, pkgs, ... }:
-with pkgs;
 
 let
   patchDesktop = pkg: appName: from: to:
-    lib.hiPrio (runCommand "$patched-desktop-entry-for-${appName}" { } ''
-      ${coreutils}/bin/mkdir -p $out/share/applications
-      ${gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
+    lib.hiPrio (pkgs.runCommand "$patched-desktop-entry-for-${appName}" { } ''
+      ${pkgs.coreutils}/bin/mkdir -p $out/share/applications
+      ${pkgs.gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
     '');
 
-  nvidia-offload = writeShellScriptBin "nvidia-offload" ''
+  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
     export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
     export __GLX_VENDOR_LIBRARY_NAME=nvidia
@@ -82,7 +81,7 @@ in {
   # ------
 
   programs.steam.enable = true;
-  environment.systemPackages = [
+  environment.systemPackages = with pkgs; [
     prismlauncher
     steam
     # (patchDesktop steam "steam" "^Exec=" "&nvidia-offload ")
@@ -99,13 +98,14 @@ in {
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.graphics = {
     enable = true;
-    extraPackages = [
-      nvidia-vaapi-driver
-      # intel-media-driver
-      # vaapiIntel
-      # vaapiVdpau
-      # libvdpau-va-gl
-    ];
+    extraPackages = with pkgs;
+      [
+        nvidia-vaapi-driver
+        # intel-media-driver
+        # vaapiIntel
+        # vaapiVdpau
+        # libvdpau-va-gl
+      ];
   };
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
