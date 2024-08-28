@@ -98,7 +98,7 @@ in {
       "workbench.colorTheme" = "Nord";
       "files.autoSave" = "afterDelay";
       "editor.fontSize" = osConfig.font_size_medium;
-      "editor.fontFamily" = "'Hasklug Nerd Font'";
+      "editor.fontFamily" = "'JetBrainsMono Nerd Font'";
       "editor.formatOnSave" = true;
       "editor.inlayHints.fontSize" = osConfig.font_size_small;
       "editor.fontLigatures" = true;
