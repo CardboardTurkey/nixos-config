@@ -30,7 +30,7 @@
       nix = "$HOME/git/cardboardturkey/nixos-config";
       thing = "$HOME/git/cardboardturkey/thing-of-the-day";
       pdg = "$HOME/git/cardboardturkey/pdgid";
-      web = "${osConfig.web_dir}";
+      web = "$HOME/git/cardboardturkey/website";
       infra = "$HOME/git/smoothbraineduk/infrastructure";
       smooth = "$HOME/git/smoothbraineduk";
       wallop = "$HOME/git/cardboardturkey/wallop";

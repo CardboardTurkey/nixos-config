@@ -2,7 +2,7 @@
   programs.git = {
     enable = true;
     userName = "Kiran Ostrolenk";
-    userEmail = "${osConfig.email}";
+    userEmail = "kiran@ostrolenk.co.uk";
     lfs = {
       enable = true;
       # skipSmudge = true;

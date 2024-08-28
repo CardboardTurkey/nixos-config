@@ -23,7 +23,6 @@
 
   monitor_scale = 2;
   root = "f7b8da31-abcd-4352-87a0-e354ecc3b8e8";
-  wlan = "wlan0";
   kestrel_host_age =
     "age15pdkyxtv9558tf23sm2pth2qrr0qt2cdwvhwa3shftgcwvvzgazsgenmp2";
   hostname = "Osprey";

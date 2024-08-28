@@ -2,28 +2,13 @@
 
 with lib;
 with types; {
-  imports = [ ./nord.nix ./hardware.nix ./keys.nix ];
+  imports = [ ./nord.nix ./keys.nix ];
 
   options = {
-    email = mkOption {
-      default = "kiran@ostrolenk.co.uk";
-      type = uniq str;
-      description = "Email address (for git)";
-    };
     hostname = mkOption {
       default = "";
       type = uniq str;
       description = "Network hostname";
-    };
-    i3_mod = mkOption {
-      default = "Mod4";
-      type = uniq str;
-      description = "Modifier name to go in i3 config";
-    };
-    web_dir = mkOption {
-      default = "/home/kiran/git/cardboardturkey/website";
-      type = uniq str;
-      description = "Modifier name to go in i3 config";
     };
     font_size_small = mkOption {
       default = 12.0;
@@ -54,6 +39,11 @@ with types; {
       default = 1;
       type = int;
       description = "For when you need to rescale for monitor size";
+    };
+    root = mkOption {
+      default = "";
+      type = with types; uniq str;
+      description = "Root partition id";
     };
   };
 }

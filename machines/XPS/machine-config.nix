@@ -27,10 +27,6 @@ in {
 
   boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];
 
-  wlan = "wlp59s0";
-  battery = "BAT0";
-  edp1 =
-    "00ffffffffffff004d10ba1400000000161d0104a52213780ede50a3544c99260f505400000001010101010101010101010101010101ac3780a070383e403020350058c210000018000000000000000000000000000000000000000000fe004d57503154804c513135364d31000000000002410332001200000a010a202000d3";
   root = "172c2b88-8909-441b-b441-6ea20cd54450";
   hostname = "Kestrel";
   allowed_unfree = [
@@ -45,7 +41,8 @@ in {
   ];
   wallpapers = {
     png = "/home/kiran/Downloads/png-2702691.png";
-    single = builtins.fetchurl "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/master/wallpapers/gnu-linux.png";
+    single = builtins.fetchurl
+      "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/master/wallpapers/gnu-linux.png";
     dual = {
       left = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg";
       right = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg";
