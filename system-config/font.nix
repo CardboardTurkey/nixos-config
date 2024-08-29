@@ -8,5 +8,6 @@
     ttf_bitstream_vera
     joypixels
     font-awesome
+    cantarell-fonts
   ];
 }
