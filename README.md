@@ -73,7 +73,12 @@ Can use sean's image because it already has a swap space applied. Remember to up
 
 ## TODO
 
-* Switch to flakes and use hyprlock
+* Sort out router
+* Upgrade rust-ci
+* Try switching to kitty terminal
+* Nix config
+    * Machines
+    * Decide if I wanna use https://github.com/EliverLara/Nordic/
 
 ## Links
 
