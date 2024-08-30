@@ -1,7 +1,7 @@
-use eyre::Result;
+use color_eyre::Result;
 
 pub fn add(left: usize, right: usize) -> Result<usize> {
-    log::info!("adding");
+    tracing::info!("adding");
     Ok(left + right)
 }
 

@@ -1,16 +1,16 @@
 #! /usr/bin/env bash
 set -e
 
-[[ -z "$@" ]] && { echo "Pass the same args as you would to \`cargo new\`" && exit 1; }
+[ -z "$*" ] && { echo "Pass the same args as you would to \`cargo new\`" && exit 1; }
 crate_name=$(@cargo@ new "$@" 2>&1 >/dev/null | rg 'Created (binary \(application\)|library) `(.*)`' -or '$2')
 
 if rg -q -- --lib <<< "$@"; then
     cp "@out@/share/lib.rs" "$crate_name/src/lib.rs"
-    @cargo@ add eyre log  --manifest-path $crate_name/Cargo.toml
+    @cargo@ add color-eyre tracing  --manifest-path $crate_name/Cargo.toml
 else
     cp "@out@/share/main.rs" "$crate_name/src/main.rs"
     cp "@out@/share/cli.rs" "$crate_name/src/cli.rs"
-    @cargo@ add eyre env_logger log clap --manifest-path $crate_name/Cargo.toml --features clap/cargo,clap/derive
+    @cargo@ add color-eyre tracing-subscriber tracing clap --manifest-path $crate_name/Cargo.toml --features clap/cargo,clap/derive
 fi
 
 sed "s/@crate@/$crate_name/" < "@out@/share/gitlab-ci.yml" > "$crate_name/.gitlab-ci.yml"
