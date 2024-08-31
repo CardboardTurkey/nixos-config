@@ -69,10 +69,10 @@ in {
           "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
         on-resume = "brightnessctl -r"; # monitor backlight restore.
       }
-      {
-        timeout = 300; # 5min
-        on-timeout = "systemctl suspend"; # suspend pc
-      }
+      # {
+      #   timeout = 300; # 5min
+      #   on-timeout = "systemctl suspend"; # suspend pc
+      # }
     ];
   };
 
