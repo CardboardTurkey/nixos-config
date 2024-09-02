@@ -102,7 +102,7 @@ in {
           ${pkgs.chafa}/bin/chafa -f symbols "$1"
         # https://github.com/wofr06/lesspipe/pull/117
         elif [ "$category" = text ]; then
-          ${pkgs.bat}/bin/bat --color=always "$1"
+          ${pkgs.bat}/bin/bat --color=always --style plain "$1"
         else
           exit 1
         fi
