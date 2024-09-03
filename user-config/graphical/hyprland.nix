@@ -290,6 +290,13 @@ in {
       windowrulev2 = [
         "float,class:(clipse)"
         "size 622 652,class:(clipse)"
+
+        "float,title:(Picture-in-Picture)"
+        "pin,title:(Picture-in-Picture)"
+        "opacity 1.0,title:(Picture-in-Picture)"
+        "size 533 300,title:(Picture-in-Picture)"
+        "move 100%-w-20 20,title:(Picture-in-Picture)"
+
         "float,class:(com.saivert.pwvucontrol)"
         "size 1200 600,class:(com.saivert.pwvucontrol)"
       ];
