@@ -1,4 +1,4 @@
-{ pkgs, pkgs-unstable, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ./pkgs_mine/dirtygit/module.nix ];
@@ -16,7 +16,7 @@
     feh
     arandr
     flameshot
-    pkgs-unstable.signal-desktop
+    signal-desktop
     xorg.xev
     pavucontrol
     pwvucontrol

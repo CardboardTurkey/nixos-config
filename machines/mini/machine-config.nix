@@ -1,7 +1,5 @@
 { lib, config, ... }: {
   imports = [
-    # Include the necessary packages and configuration for Apple Silicon support.
-    ./apple-silicon-support
     ../pc_common.nix
   ];
 
