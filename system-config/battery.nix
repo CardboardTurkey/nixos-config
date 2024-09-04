@@ -1,6 +1,6 @@
 {
   services.logind = {
-    lidSwitchExternalPower = "ignore";
+    # lidSwitchExternalPower = "ignore";
     lidSwitchDocked = "ignore";
     lidSwitch = "suspend-then-hibernate";
   };
