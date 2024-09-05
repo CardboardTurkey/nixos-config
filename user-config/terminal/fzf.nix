@@ -139,7 +139,9 @@ in {
       source ${pkgs.zsh-fzf-tab}/share/fzf-tab/fzf-tab.plugin.zsh
 
       # disable sort when completing `git`
-      zstyle ':completion:*:git:*' sort false
+      zstyle ':completion:*:git-checkout:*' sort false
+      zstyle ':completion:*:git-commit:*' sort false
+      zstyle ':completion:*:git-rebase:*' sort false
 
       # set descriptions format to enable group support
       # NOTE: don't use escape sequences here, fzf-tab will ignore them
