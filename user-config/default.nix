@@ -23,6 +23,7 @@ let
     ./terminal/ssh.nix
     ./terminal/zoxide.nix
     ./terminal/fzf.nix
+    ./terminal/hyperfine.nix
 
     ./other/fontconfig.nix
     ./other/sops_config.nix
