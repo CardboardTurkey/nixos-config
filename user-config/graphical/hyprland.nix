@@ -87,6 +87,7 @@ in {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
+    xwayland.enable = true;
     settings = {
       bind = [
         "SUPER, Return, exec, ${launchTerminal}"
@@ -314,13 +315,15 @@ in {
         "${pkgs.wbg}/bin/wbg ${osConfig.wallpapers.single}&"
       ];
 
-      # highres xwayland
       # change monitor to hires, the last argument is the scale factor
       monitor = [
         ",highres,auto,1"
         "HDMI-A-1,preferred,0x0,2"
         "FALLBACK,1920x1080@60,auto,1"
       ];
+
+      # unscale XWayland
+      xwayland = { force_zero_scaling = true; };
 
       # toolkit-specific scale
       env = [ "GDK_SCALE,1" "XCURSOR_SIZE,16" ];
