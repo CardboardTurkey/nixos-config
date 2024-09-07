@@ -34,6 +34,7 @@
     ./hyprland.nix
     ./bluetooth.nix
     ./gnupg.nix
+    ./devenv.nix
   ];
 
   nixpkgs.config.allowUnfreePredicate = pkg:

@@ -36,6 +36,5 @@
     borgbackup
     gnome.nautilus
     evince # for nautilus pdf preview
-    devenv
   ];
 }
