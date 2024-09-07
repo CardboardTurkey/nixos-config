@@ -5,8 +5,4 @@
     enableZshIntegration = true;
     # enableNushellIntegration = true;
   };
-  services.lorri = {
-    enable = true;
-    enableNotifications = true;
-  };
 }

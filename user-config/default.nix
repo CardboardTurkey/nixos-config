@@ -29,8 +29,6 @@ let
     ./other/batsignal.nix
   ];
 in {
-  services.lorri.enable = true;
-
   # For zsh compeletion (apparently)
   environment.pathsToLink = [ "/share/zsh" ];
   programs.zsh.enable = true;
