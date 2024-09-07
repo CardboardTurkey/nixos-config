@@ -34,7 +34,7 @@
     nixfmt-classic
     gcolor3
     borgbackup
-    gnome.nautilus
+    nautilus
     evince # for nautilus pdf preview
   ];
 }

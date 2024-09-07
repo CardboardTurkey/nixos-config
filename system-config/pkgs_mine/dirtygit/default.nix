@@ -10,7 +10,7 @@ rustPlatform.buildRustPackage rec {
   nativeBuildInputs = [ pkgs.pkg-config ];
   buildInputs = [ pkgs.openssl pkgs.git ];
 
-  cargoSha256 = "sha256-jRVK+WE9kCOtU1w3TZK0OSDjIZGHWA3Bo5XFbXf+3iM=";
+  cargoHash = "sha256-jRVK+WE9kCOtU1w3TZK0OSDjIZGHWA3Bo5XFbXf+3iM=";
 
   meta = with lib; {
     description = "Track which local git repos have changes that need pushing";
