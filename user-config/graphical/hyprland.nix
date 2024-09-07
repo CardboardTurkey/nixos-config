@@ -316,7 +316,11 @@ in {
 
       # highres xwayland
       # change monitor to hires, the last argument is the scale factor
-      monitor = [ ",highres,auto,1" "HDMI-A-1,preferred,0x0,2" ];
+      monitor = [
+        ",highres,auto,1"
+        "HDMI-A-1,preferred,0x0,2"
+        "FALLBACK,1920x1080@60,auto,1"
+      ];
 
       # toolkit-specific scale
       env = [ "GDK_SCALE,1" "XCURSOR_SIZE,16" ];
