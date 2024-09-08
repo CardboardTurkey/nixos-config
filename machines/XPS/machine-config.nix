@@ -62,18 +62,17 @@ in {
 
       cursor = { no_hardware_cursors = true; };
     };
-    services.hypridle.settings.listener = [
-      {
-        timeout = 150; # 2.5min.
-        on-timeout =
-          "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
-        on-resume = "brightnessctl -r"; # monitor backlight restore.
-      }
-      # {
-      #   timeout = 300; # 5min
-      #   on-timeout = "systemctl suspend"; # suspend pc
-      # }
-    ];
+    services.hypridle.settings.listener = [{
+      timeout = 150; # 2.5min.
+      on-timeout =
+        "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
+      on-resume = "brightnessctl -r"; # monitor backlight restore.
+    }
+    # {
+    #   timeout = 300; # 5min
+    #   on-timeout = "systemctl suspend"; # suspend pc
+    # }
+      ];
   };
 
   # ------
@@ -96,16 +95,19 @@ in {
   # ------
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs;
-      [
-        nvidia-vaapi-driver
-        # intel-media-driver
-        # vaapiIntel
-        # vaapiVdpau
-        # libvdpau-va-gl
-      ];
+  hardware = {
+    nvidia.open = true;
+    graphics = {
+      enable = true;
+      extraPackages = with pkgs;
+        [
+          nvidia-vaapi-driver
+          # intel-media-driver
+          # vaapiIntel
+          # vaapiVdpau
+          # libvdpau-va-gl
+        ];
+    };
   };
 
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
