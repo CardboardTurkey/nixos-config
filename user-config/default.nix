@@ -1,6 +1,5 @@
 let
   full-env = [
-    ./graphical/codium.nix
     ./graphical/gtk.nix
     ./graphical/hyprland.nix
     ./graphical/dunst.nix
@@ -8,6 +7,7 @@ let
     ./graphical/rofi.nix
     ./graphical/eww.nix
     ./graphical/hyprlock.nix
+    ./graphical/codium.nix
 
     ./terminal/git.nix
     ./terminal/eza.nix
@@ -27,6 +27,7 @@ let
     ./other/fontconfig.nix
     ./other/sops_config.nix
     ./other/batsignal.nix
+    ./other/catppuccin.nix
   ];
 in {
   # For zsh compeletion (apparently)
@@ -37,6 +38,12 @@ in {
   programs.dconf.enable = true;
 
   # Also need hyprland from system-config
+
+  # Maybe move this into system config?
+  catppuccin = {
+    enable = true;
+    flavor = "frappe";
+  };
 
   home-manager = {
     users = {

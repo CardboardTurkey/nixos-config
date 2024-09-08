@@ -3,7 +3,7 @@ let
   codium-extensions = (with pkgs.vscode-extensions; [
     jnoortheen.nix-ide
     tamasfe.even-better-toml
-    arcticicestudio.nord-visual-studio-code
+    catppuccin.catppuccin-vsc
     rust-lang.rust-analyzer
     serayuzgur.crates
     streetsidesoftware.code-spell-checker
@@ -95,7 +95,7 @@ in {
       };
     };
     userSettings = {
-      "workbench.colorTheme" = "Nord";
+      "workbench.colorTheme" = "Catppuccin Frappé";
       "files.autoSave" = "afterDelay";
       "editor.fontSize" = osConfig.font_size_medium;
       "editor.fontFamily" = "'JetBrainsMono Nerd Font'";

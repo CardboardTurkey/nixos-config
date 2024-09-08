@@ -3,10 +3,11 @@
     enable = true;
     plugins = with pkgs.vimPlugins; [ vim-nix robotframework-vim ];
     vimAlias = true;
-    # " Dont colour the background
-    # hi Normal ctermbg=NONE guibg=NONE
-    extraConfig = ''
 
+    extraConfig = ''
+      " Dont colour the background
+      hi Normal ctermbg=NONE guibg=NONE
+      
       " Line numbering
       set nu rnu
 

@@ -1,7 +1,5 @@
 { lib, config, ... }: {
-  imports = [
-    ../pc_common.nix
-  ];
+  imports = [ ../pc_common.nix ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = lib.mkForce true;
@@ -26,7 +24,8 @@
   hostname = "Osprey";
   wallpapers = {
     png = "/home/kiran/Downloads/png-2702691.png";
-    single = "/home/kiran/Pictures/Wallpapers/iceland_arch.jpg";
+    single = builtins.fetchurl
+      "https://images.pexels.com/photos/27168244/pexels-photo-27168244.jpeg";
     dual = {
       left = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg";
       right = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg";
@@ -65,6 +64,7 @@
           ../../user-config/other/fontconfig.nix
           ../../user-config/other/sops_config.nix
           ../../user-config/other/batsignal.nix
+          ../../user-config/other/catppuccin.nix
         ];
       };
     };

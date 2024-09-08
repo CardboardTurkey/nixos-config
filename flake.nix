@@ -2,9 +2,9 @@
   description = "You're nixed son";
 
   inputs = {
-    nixpkgs = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
-    # nixpkgs-unstable = { url = "github:NixOS/nixpkgs/nixos-unstable"; };
-    nixos-hardware = { url = "github:NixOS/nixos-hardware/master"; };
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,14 +17,16 @@
       url = "github:tpwrules/nixos-apple-silicon";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin.url = "github:catppuccin/nix";
   };
   outputs = { self, nixpkgs, nixos-hardware, nix-index-database, home-manager
-    , apple-silicon }:
+    , apple-silicon, catppuccin }:
     let
       shared_modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
         nix-index-database.nixosModules.nix-index
+        catppuccin.nixosModules.catppuccin
       ];
     in {
       nixosConfigurations = {
@@ -34,10 +36,13 @@
             apple-silicon.nixosModules.default
             ./machines/mini/machine-config.nix
             ./machines/mini/hardware-configuration.nix
+            {
+              home-manager.extraSpecialArgs = {
+                catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
+              };
+
+            }
           ];
-          # specialArgs = {
-          #   pkgs-unstable = import nixpkgs-unstable { system = "${system}"; };
-          # };
         };
         P14s = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -52,10 +57,12 @@
             ./machines/XPS/machine-config.nix
             ./machines/XPS/hardware-configuration.nix
             nixos-hardware.nixosModules.dell-xps-15-7590
+            {
+              home-manager.extraSpecialArgs = {
+                catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
+              };
+            }
           ];
-          # specialArgs = {
-          #   pkgs-unstable = import nixpkgs-unstable { inherit system; };
-          # };
         };
         pi = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";

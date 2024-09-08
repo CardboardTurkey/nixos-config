@@ -43,7 +43,7 @@
     delta = {
       enable = true;
       options = {
-        features = "side-by-side line-numbers decorations zebra-dark";
+        # features = "side-by-side line-numbers decorations zebra-dark";
         whitespace-error-style = "22 reverse";
         navigate = true;
         conflictstyle = "diff3";
