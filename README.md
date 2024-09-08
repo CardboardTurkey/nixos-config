@@ -20,15 +20,15 @@ Don't forget `sudo nix-channel --add https://nixos.org/channels/nixos-unstable n
 
 #### Windows dual boot
 
-Use the same EFI parition as Windows. You can expand it (and move the neighbours) using gparted.
+Use the same EFI partition as Windows. You can expand it (and move the neighbours) using gparted.
 
 #### Encryption
 
-Create a single parition. Encrypt it. Then LVM it to create root and swap.
+Create a single partition. Encrypt it. Then LVM it to create root and swap.
 
-Create the single parition using gparted. I used lvm name and label but I dont think it matters.
+Create the single partition using gparted. I used lvm name and label but I dont think it matters.
 
-This parition ended up being called /dev/nvme0n1p5. This is what I did after:
+This partition ended up being called /dev/nvme0n1p5. This is what I did after:
 
 ```shell
 cryptsetup luksFormat /dev/nvme0n1p5
