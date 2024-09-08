@@ -45,26 +45,10 @@
       options = {
         features = "side-by-side line-numbers decorations zebra-dark";
         whitespace-error-style = "22 reverse";
-        syntax-theme = "Nord";
-        plus-style = "syntax '#165f1a'";
-        plus-emph-style = "syntax '#028105'";
-        minus-style = "syntax '#380101'";
         navigate = true;
         conflictstyle = "diff3";
         colorMoved = "default";
         hyperlinks = true;
-        decorations = {
-          commit-decoration-style = "bold yellow box ul";
-          file-decoration-style = "none";
-          file-style = "bold yellow ul";
-          hunk-header-decoration-style = "cyan box ul";
-        };
-        line-numbers = {
-          line-numbers-left-style = "cyan";
-          line-numbers-right-style = "cyan";
-          line-numbers-minus-style = "124";
-          line-numbers-plus-style = "28";
-        };
       };
     };
   };

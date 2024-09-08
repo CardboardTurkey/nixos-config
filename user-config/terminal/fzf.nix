@@ -112,23 +112,6 @@ in {
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-    colors = {
-      fg = "#${osConfig.nord5}";
-      bg = "-1";
-      hl = "#${osConfig.nord9}";
-      # fg+ doesnt seem to work for fzf-tab
-      "fg+" = "#${osConfig.nord5}";
-      "bg+" = "#${osConfig.nord0}";
-      "hl+" = "#${osConfig.nord9}";
-      info = "#${osConfig.nord13}";
-      prompt = "#${osConfig.nord11}";
-      pointer = "#${osConfig.nord15}";
-      marker = "#${osConfig.nord14}";
-      spinner = "#${osConfig.nord15}";
-      header = "#${osConfig.nord14}";
-      gutter = "-1";
-      border = "#${osConfig.nord3}";
-    };
     defaultOptions = [ "--border rounded" "--preview-window border-rounded" ];
   };
   programs.zsh = {

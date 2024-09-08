@@ -10,9 +10,5 @@
       name =
         "Bitstream Vera Sans ${builtins.toString osConfig.font_size_small}";
     };
-    theme = {
-      name = "Nordic";
-      package = pkgs.nordic;
-    };
   };
 }

@@ -43,7 +43,6 @@
           ../../user-config/graphical/gtk.nix
           ../../user-config/graphical/hyprland.nix
           ../../user-config/graphical/dunst.nix
-          ../../user-config/graphical/cursor.nix
           ../../user-config/graphical/obs-studio.nix
           ../../user-config/graphical/rofi.nix
           ../../user-config/graphical/eww.nix

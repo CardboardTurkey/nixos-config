@@ -4,7 +4,6 @@ let
     ./graphical/gtk.nix
     ./graphical/hyprland.nix
     ./graphical/dunst.nix
-    ./graphical/cursor.nix
     ./graphical/obs-studio.nix
     ./graphical/rofi.nix
     ./graphical/eww.nix

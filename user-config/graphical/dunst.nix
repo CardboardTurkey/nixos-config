@@ -9,8 +9,6 @@
           }px";
         follow = "keyboard";
         frame_width = 1;
-        frame_color = "#${osConfig.nord13}";
-        separator_color = "#${osConfig.nord5}";
         width = "(0, 500)";
         offset = "22x69";
         min_icon_size = 16;
@@ -25,21 +23,9 @@
         horizontal_padding = 25;
         corner_radius = 15;
       };
-      urgency_low = {
-        background = "#${osConfig.nord0}70";
-        foreground = "#${osConfig.nord5}";
-        timeout = 10;
-      };
-      urgency_normal = {
-        background = "#${osConfig.nord2}70";
-        foreground = "#${osConfig.nord5}";
-        timeout = 10;
-      };
-      urgency_critical = {
-        background = "#${osConfig.nord11}70";
-        foreground = "#${osConfig.nord6}";
-        timeout = 0;
-      };
+      urgency_low.timeout = 10;
+      urgency_normal.timeout = 10;
+      urgency_critical.timeout = 0;
     };
   };
 }

@@ -1,12 +1,11 @@
 { pkgs, ... }: {
   programs.neovim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ nord-vim vim-nix robotframework-vim ];
+    plugins = with pkgs.vimPlugins; [ vim-nix robotframework-vim ];
     vimAlias = true;
+    # " Dont colour the background
+    # hi Normal ctermbg=NONE guibg=NONE
     extraConfig = ''
-      colorscheme nord
-      " Dont colour the background
-      hi Normal ctermbg=NONE guibg=NONE
 
       " Line numbering
       set nu rnu

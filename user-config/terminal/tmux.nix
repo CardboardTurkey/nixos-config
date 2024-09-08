@@ -1,7 +1,6 @@
-{ pkgs, ... }: {
+{
   programs.tmux = {
     enable = true;
-    plugins = with pkgs.tmuxPlugins; [ nord ];
     prefix = "C-a";
     terminal = "alacritty";
     historyLimit = 500000;
