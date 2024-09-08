@@ -142,7 +142,7 @@
           
           (button		:class "button-quit"
             :tooltip "Logout"
-          :onclick "killall bspwm" "")
+          :onclick "hyprctl dispatch exit" "")
           
           (button		:class "button-lock"
             :tooltip "Lock Screen"
