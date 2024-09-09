@@ -126,7 +126,7 @@ in {
       "explorer.confirmDelete" = false;
       cSpell = {
         language = "en,en-GB";
-        userWords = [ "Kiran" "Ostrolenk" ];
+        userWords = [ "Kiran" "Ostrolenk" "scrutinee" ];
       };
       shellcheck.customArgs = [ "-x" ];
     };
