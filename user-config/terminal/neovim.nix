@@ -7,7 +7,7 @@
     extraConfig = ''
       " Dont colour the background
       hi Normal ctermbg=NONE guibg=NONE
-      
+
       " Line numbering
       set nu rnu
 
@@ -15,6 +15,20 @@
       autocmd FileType gitcommit setlocal spell
       autocmd FileType markdown setlocal complete+=kspell
       autocmd FileType gitcommit setlocal complete+=kspell        
+      autocmd FileType gitcommit call Commit()
+
+      function Commit()
+        set spellcapcheck= " Ideally this would only apply to first line
+
+        inoreabbrev <buffer> BB BREAKING CHANGE:
+        nnoremap    <buffer> i  i<C-r>=<sid>commit_type()<CR>
+
+        fun! s:commit_type()
+          call complete(1, ['fix: ', 'feat: ', 'refactor: ', 'docs: ', 'test: '])
+          nunmap <buffer> i
+          return '''
+        endfun
+      endfunction
 
       " Remap the incr/decrement keys
       nnoremap <A-a> <C-a>
