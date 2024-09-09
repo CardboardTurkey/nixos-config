@@ -99,7 +99,7 @@ in {
           ${pkgs.bat}/bin/bat --color=always -ljs "$1"
         # https://github.com/wofr06/lesspipe/pull/106
         elif [ "$category" = image ]; then
-          ${pkgs.chafa}/bin/chafa -f symbols "$1"
+          ${pkgs.chafa}/bin/chafa "$1"
         # https://github.com/wofr06/lesspipe/pull/117
         elif [ "$category" = text ]; then
           ${pkgs.bat}/bin/bat --color=always --style plain "$1"
