@@ -50,7 +50,7 @@
           ../../user-config/terminal/git.nix
           ../../user-config/terminal/eza.nix
           ../../user-config/terminal/starship.nix
-          ../../user-config/terminal/alacritty.nix
+          ../../user-config/terminal/emulator.nix
           ../../user-config/terminal/tmux.nix
           ../../user-config/terminal/zsh.nix
           ../../user-config/terminal/nushell.nix

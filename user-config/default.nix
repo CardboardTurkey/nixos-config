@@ -12,7 +12,7 @@ let
     ./terminal/git.nix
     ./terminal/eza.nix
     ./terminal/starship.nix
-    ./terminal/alacritty.nix
+    ./terminal/emulator.nix
     ./terminal/tmux.nix
     ./terminal/zsh.nix
     ./terminal/nushell.nix
