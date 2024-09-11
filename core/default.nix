@@ -1,8 +1,11 @@
 { lib, ... }:
 
 with lib;
-with types; {
-  imports = [ ./nord.nix ./keys.nix ];
+with types;
+
+let my_theme = theme.catppuccin.macchiato;
+in {
+  imports = [ ./nord.nix ./keys.nix ./catppuccin.nix ];
 
   options = {
     hostname = mkOption {
@@ -47,6 +50,10 @@ with types; {
       default = "";
       type = with types; uniq str;
       description = "Root partition id";
+    };
+    theme = mkOption {
+      default = { inherit my_theme; };
+      type = attrs;
     };
   };
 }
