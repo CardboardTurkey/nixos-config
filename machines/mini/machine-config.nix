@@ -22,15 +22,6 @@
   kestrel_host_age =
     "age15pdkyxtv9558tf23sm2pth2qrr0qt2cdwvhwa3shftgcwvvzgazsgenmp2";
   hostname = "Osprey";
-  wallpapers = {
-    png = "/home/kiran/Downloads/png-2702691.png";
-    single = builtins.fetchurl
-      "https://images.pexels.com/photos/27168244/pexels-photo-27168244.jpeg";
-    dual = {
-      left = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg";
-      right = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg";
-    };
-  };
 
   # Extra user
   home-manager = {

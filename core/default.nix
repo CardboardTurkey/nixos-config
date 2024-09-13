@@ -31,7 +31,10 @@ with types; {
       description = "Allowed unfree packages";
     };
     wallpapers = mkOption {
-      default = { };
+      default = {
+        single = builtins.fetchurl
+          "https://images.pexels.com/photos/27168244/pexels-photo-27168244.jpeg";
+      };
       type = attrs;
       description = "Paths to wallpapers";
     };

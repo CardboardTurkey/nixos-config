@@ -38,15 +38,6 @@ in {
     "discord"
     "prismlauncher"
   ];
-  wallpapers = {
-    png = "/home/kiran/Downloads/png-2702691.png";
-    single = builtins.fetchurl
-      "https://raw.githubusercontent.com/linuxdotexe/nordic-wallpapers/master/wallpapers/gnu-linux.png";
-    dual = {
-      left = "/home/kiran/Pictures/Wallpapers/Polar_Bear/left.jpg";
-      right = "/home/kiran/Pictures/Wallpapers/Polar_Bear/right.jpg";
-    };
-  };
 
   home-manager.users.kiran = {
     wayland.windowManager.hyprland.settings = {
