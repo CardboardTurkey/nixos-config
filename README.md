@@ -1,12 +1,14 @@
 # NixOS config
 
-## Setup
+## Install
 
-`sudo ./link.sh MACHINE_NAME`
+e.g. to install for XPS machine:
 
-Don't forget `sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos`.
+```sh
+./stuff/update XPS
+```
 
-### First boot
+## First boot
 
 * Edit link.sh to append `/mnt` and edit `pc-common.nix` to include from `/mnt`.
 * Set root uuid in core using `ls -l /dev/disk/by-uuid`
@@ -16,13 +18,13 @@ Don't forget `sudo nix-channel --add https://nixos.org/channels/nixos-unstable n
 * Add second with `pamu2cfg -n >> ~/.config/Yubico/u2f_keys`
 * Then scrap your password: `sudo passwd -d kiran`
 
-### Partitioning
+## Partitioning
 
-#### Windows dual boot
+### Windows dual boot
 
 Use the same EFI partition as Windows. You can expand it (and move the neighbours) using gparted.
 
-#### Encryption
+### Encryption
 
 Create a single partition. Encrypt it. Then LVM it to create root and swap.
 
@@ -57,7 +59,7 @@ swap parition but apparently it doesn't make much difference:
 [guide]: https://nixos.org/manual/nixos/stable/#sec-installation-manual
 [lvm]: https://linuxhandbook.com/lvm-guide/
 
-### Annoyances
+## Annoyances
 
 Wallpapers need to be copied across. Git repos need to be reinstantiated.
 
@@ -67,7 +69,7 @@ Enabling notifications on firefox websites.
 
 Update root partition uuid `ls -l /dev/disk/by-uuid`.
 
-### Pi
+## Pi
 
 Can use sean's image because it already has a swap space applied. Remember to update channel first.
 
@@ -77,9 +79,9 @@ Can use sean's image because it already has a swap space applied. Remember to up
 * Upgrade rust-ci
 * Try switching to kitty terminal
 * Nix config
-    * Machines
-    * Decide if I wanna use https://github.com/EliverLara/Nordic/
-* Switch from nord to https://github.com/catppuccin
+  * Machines
+  * Decide if I wanna use <https://github.com/EliverLara/Nordic/>
+* Switch from nord to <https://github.com/catppuccin>
 
 ## Links
 
@@ -135,4 +137,3 @@ index e9b6001..90ceec3 100644
          bind = [
            "SUPER, Return, exec, ${launchTerminal}"
 ```
-
