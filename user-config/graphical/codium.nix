@@ -27,6 +27,7 @@ let
     nvarner.typst-lsp
     tomoki1207.pdf
     timonwong.shellcheck
+    usernamehw.errorlens
 
   ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
     {
