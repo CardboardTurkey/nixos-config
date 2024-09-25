@@ -50,6 +50,7 @@ in {
     enable = true;
     package = pkgs.vscodium;
     extensions = codium-extensions;
+    mutableExtensionsDir = false;
     languageSnippets = {
       rust = {
         "New Yew function component" = {
