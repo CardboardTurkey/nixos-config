@@ -7,9 +7,11 @@
       name = "Zafiro-icons-Dark";
     };
     theme = {
-      name = "Dracula";
-      package =
-        pkgs.dracula-theme; # catppuccin gtk port is deprecated, so this will do for now
+      name = "Colloid-Teal-Dark-Catppuccin";
+      package = pkgs.colloid-gtk-theme.override {
+        tweaks = [ "catppuccin" ];
+        themeVariants = [ "teal" ];
+      };
     };
     font = {
       name =
