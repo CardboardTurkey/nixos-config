@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    # nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -18,15 +17,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     catppuccin.url = "github:catppuccin/nix";
+    catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*.tar.gz";
   };
   outputs = { self, nixpkgs, nixos-hardware, nix-index-database, home-manager
-    , apple-silicon, catppuccin }:
+    , apple-silicon, catppuccin, catppuccin-vsc }:
     let
       shared_modules = [
         ./configuration.nix
         home-manager.nixosModules.home-manager
         nix-index-database.nixosModules.nix-index
         catppuccin.nixosModules.catppuccin
+        { nixpkgs.overlays = [ catppuccin-vsc.overlays.default ]; }
       ];
     in {
       nixosConfigurations = {

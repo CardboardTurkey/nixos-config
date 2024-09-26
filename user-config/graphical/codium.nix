@@ -3,7 +3,15 @@ let
   codium-extensions = (with pkgs.vscode-extensions; [
     jnoortheen.nix-ide
     tamasfe.even-better-toml
-    catppuccin.catppuccin-vsc
+    (catppuccin.catppuccin-vsc.override {
+      accent = "teal";
+      customUIColors = {
+        all = {
+          "statusBar.foreground" = "accent";
+          "statusBar.noFolderForeground" = "accent";
+        };
+      };
+    })
     catppuccin.catppuccin-vsc-icons
     rust-lang.rust-analyzer
     serayuzgur.crates
@@ -99,6 +107,18 @@ in {
     };
     userSettings = {
       "workbench.colorTheme" = "Catppuccin Frappé";
+      "workbench.iconTheme" = "catppuccin-frappe";
+
+      # Catppuccin reccomendations
+      # we try to make semantic highlighting look good
+      editor.semanticHighlighting.enabled = true;
+      # prevent VSCode from modifying the terminal colors
+      terminal.integrated.minimumContrastRatio = 1;
+      # make the window's titlebar use the workbench colors
+      window.titleBarStyle = "custom";
+      # applicable if you use Go, this is an opt-in flag!
+      gopls = { ui.semanticTokens = true; };
+
       "files.autoSave" = "afterDelay";
       "editor.fontSize" = osConfig.font_size_medium;
       "editor.fontFamily" = "'JetBrainsMono Nerd Font'";
