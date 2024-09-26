@@ -4,6 +4,7 @@ let
     jnoortheen.nix-ide
     tamasfe.even-better-toml
     catppuccin.catppuccin-vsc
+    catppuccin.catppuccin-vsc-icons
     rust-lang.rust-analyzer
     serayuzgur.crates
     streetsidesoftware.code-spell-checker
