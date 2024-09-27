@@ -70,5 +70,10 @@ with types; {
       type = attrs;
       description = "The chosen colour theme for this build";
     };
+    emulator = mkOption {
+      default = "kitty";
+      type = str;
+      description = "Which console emulator to use";
+    };
   };
 }

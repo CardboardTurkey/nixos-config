@@ -1,4 +1,4 @@
-{ osConfig, pkgs, ... }: {
+{ pkgs, ... }: {
   home.shellAliases = {
     "pj" = "${pkgs.bat-extras.prettybat}/bin/prettybat -l json";
     "todo" = "vim ~/.cache/todo.md";

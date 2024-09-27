@@ -1,11 +1,15 @@
-{ lib, osConfig, ... }: {
+{ pkgs, lib, osConfig, ... }: {
 
   xsession.windowManager.i3 = {
     config = {
       keybindings = lib.mkOptionDefault {
-        "${osConfig.i3_mod}+Control+Return" = "exec alacritty";
-        "${osConfig.i3_mod}+Return" =
-          "workspace 1; exec pgrep alacritty || alacritty -e tmuxup";
+        "${osConfig.i3_mod}+Control+Return" =
+          "exec ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}";
+        "${osConfig.i3_mod}+Return" = "workspace 1; exec pgrep ${
+            pkgs.${osConfig.emulator}
+          }/bin/${osConfig.emulator} || ${
+            pkgs.${osConfig.emulator}
+          }/bin/${osConfig.emulator} -e tmuxup";
       };
     };
   };
@@ -30,5 +34,12 @@
     };
   };
 
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    settings = {
+      font_family = "JetBrainsMono Nerd Font";
+      font_size = builtins.toString osConfig.font_size_small;
+      window_padding_width = 10;
+    };
+  };
 }

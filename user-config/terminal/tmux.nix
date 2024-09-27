@@ -1,8 +1,8 @@
-{
+{ osConfig, ... }: {
   programs.tmux = {
     enable = true;
     prefix = "C-a";
-    terminal = "alacritty";
+    terminal = osConfig.emulator;
     historyLimit = 500000;
     extraConfig = ''
       # split panes using | and -

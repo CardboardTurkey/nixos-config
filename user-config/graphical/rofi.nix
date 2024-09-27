@@ -4,7 +4,7 @@
     package = pkgs.rofi-wayland;
     extraConfig = {
       modi = "drun,run,ssh,combi";
-      terminal = "alacritty";
+      terminal = osConfig.emulator;
       icon-theme = "Zafiro-icons-Dark";
     };
   };

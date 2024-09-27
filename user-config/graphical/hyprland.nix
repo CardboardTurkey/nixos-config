@@ -81,7 +81,9 @@ let
   '';
 
   launchTerminal = pkgs.writeScript "launchterminal"
-    "hyprctl clients -j | ${pkgs.dasel}/bin/dasel -r json 'all().filter(equal(workspace.id,1)).filter(equal(class,Alacritty))' | xargs test -n && { ${pkgs.alacritty}/bin/alacritty&disown && sleep .1 && hyprctl dispatch movetoworkspace 1; } || hyprctl dispatch workspace 1";
+    "hyprctl clients -j | ${pkgs.dasel}/bin/dasel -r json 'all().filter(equal(workspace.id,1)).filter(equal(class,Kitty))' | xargs test -n && { ${
+      pkgs.${osConfig.emulator}
+    }/bin/${osConfig.emulator}&disown && sleep .1 && hyprctl dispatch movetoworkspace 1; } || hyprctl dispatch workspace 1";
 
 in {
   wayland.windowManager.hyprland = {
@@ -91,11 +93,15 @@ in {
     settings = {
       bind = [
         "SUPER, Return, exec, ${launchTerminal}"
-        "MOD3, Return, exec, alacritty&"
+        "MOD3, Return, exec, ${
+          pkgs.${osConfig.emulator}
+        }/bin/${osConfig.emulator}&"
         "MOD3, PERIOD, exec, ${pkgs.bemoji}/bin/bemoji -n"
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        "$mainMod, Q, exec, alacritty"
+        "$mainMod, Q, exec, ${
+          pkgs.${osConfig.emulator}
+        }/bin/${osConfig.emulator}"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, dolphin"
@@ -161,8 +167,12 @@ in {
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ''
           $mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
-        "SUPER, X, exec, alacritty --class clipse -e ${pkgs.clipse}/bin/clipse"
-        "SUPER, T, exec, alacritty --class my-todo -e vim ~/.cache/todo.md"
+        "SUPER, X, exec, ${
+          pkgs.${osConfig.emulator}
+        }/bin/${osConfig.emulator} --class clipse -e ${pkgs.clipse}/bin/clipse"
+        "SUPER, T, exec, ${
+          pkgs.${osConfig.emulator}
+        }/bin/${osConfig.emulator} --class my-todo -e vim ~/.cache/todo.md"
       ];
 
       bindm = [
