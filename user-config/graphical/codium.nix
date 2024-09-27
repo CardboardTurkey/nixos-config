@@ -119,6 +119,7 @@ in {
       # applicable if you use Go, this is an opt-in flag!
       gopls = { ui.semanticTokens = true; };
 
+      "explorer.confirmDragAndDrop" = false;
       "files.autoSave" = "afterDelay";
       "editor.fontSize" = osConfig.font_size_medium;
       "editor.fontFamily" = "'JetBrainsMono Nerd Font'";
