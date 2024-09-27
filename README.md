@@ -112,6 +112,12 @@ Can use sean's image because it already has a swap space applied. Remember to up
 
 ## Nix examples
 
+### Repl for NixOS config
+
+```sh
+nix --extra-experimental-features repl-flake repl ".#nixosConfigurations.\"$NAME\""
+```
+
 ### Overriding attributes
 
 ```diff
