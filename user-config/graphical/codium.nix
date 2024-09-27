@@ -4,7 +4,7 @@ let
     jnoortheen.nix-ide
     tamasfe.even-better-toml
     (catppuccin.catppuccin-vsc.override {
-      accent = "teal";
+      accent = osConfig.accent;
       customUIColors = {
         all = {
           "statusBar.foreground" = "accent";

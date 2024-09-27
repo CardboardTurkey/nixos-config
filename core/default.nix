@@ -1,10 +1,7 @@
-{ lib, ... }:
+{ lib, config, ... }:
 
 with lib;
-with types;
-
-let my_theme = theme.catppuccin.macchiato;
-in {
+with types; {
   imports = [ ./nord.nix ./keys.nix ./catppuccin.nix ];
 
   options = {
@@ -51,9 +48,27 @@ in {
       type = with types; uniq str;
       description = "Root partition id";
     };
-    theme = mkOption {
-      default = { inherit my_theme; };
+    themes = mkOption {
+      default = { };
       type = attrs;
+      description = "My collection of possible colour themes";
+    };
+    flavour = mkOption {
+      default = "frappe";
+      type = str;
+      description = "Within a given theme you might choose a flavour";
+    };
+    accent = mkOption {
+      default = "teal";
+      type = str;
+      description = "Within a given theme you might choose a flavour";
+    };
+    theme = mkOption {
+      default = {
+        inherit (config.themes.catppuccin."${config.flavour}") rgb hsl hex;
+      };
+      type = attrs;
+      description = "The chosen colour theme for this build";
     };
   };
 }

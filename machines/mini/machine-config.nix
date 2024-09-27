@@ -35,7 +35,7 @@
           ../../user-config/graphical/dunst.nix
           ../../user-config/graphical/obs-studio.nix
           ../../user-config/graphical/rofi.nix
-          ../../user-config/graphical/eww.nix
+          ../../user-config/graphical/eww
           ../../user-config/graphical/hyprlock.nix
 
           ../../user-config/terminal/git.nix

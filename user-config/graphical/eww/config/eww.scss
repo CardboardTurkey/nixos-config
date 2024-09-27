@@ -10,18 +10,19 @@
 
 // Variable Color's
 // $background: rgba(0, 0, 0, 0);
-$background: #2e3440;
-$foreground: #d8dee9;
+$background: #@base@;
+$foreground: #@text@;
 
-$black: #3b4252;
-$gray: #d8dee9;
-$purple: #565F89;
-$red: #F7768E;
-$green: #73DACA;
-$yellow: #E0AF68;
-$blue: #7AA2F7;
-$magenta: #BB9AF7;
-$cyan: #7DCFFF;
+$black: #@surface0@;
+$gray: #@overlay0@;
+$lighter-gray: #@overlay1@;
+$purple: #@mauve@;
+$red: #@red@;
+$green: #@green@;
+$yellow: #@yellow@;
+$blue: #@blue@;
+$magenta: #@pink@;
+$teal: #@teal@;
 $white: $foreground;
 
 // EWW BAR
@@ -31,20 +32,20 @@ $white: $foreground;
   margin: 10px;
   margin-right: 0px;
   border-radius: 8px;
-  border: 2px solid $black;
+  border: 2px solid $lighter-gray;
 }
 
 // Tool tips
 tooltip {
   border-radius: 4px;
   background-color: $background;
-  border: 1px solid $purple;
+  border: 1px solid $teal;
 }
 
 
 // Launcher
 .launcher_icon {
-  color: $cyan;
+  color: $teal;
   font-family: "Font Awesome 6 Free";
   font-size: 1.7em;
   padding: 1rem 0 1rem 0;

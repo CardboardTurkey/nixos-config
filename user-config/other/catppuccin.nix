@@ -1,7 +1,8 @@
-{ catppuccin-hm, ... }: {
+{ catppuccin-hm, osConfig, ... }: {
   imports = [ catppuccin-hm ];
   catppuccin = {
     enable = true;
-    flavor = "frappe";
+    flavor = osConfig.flavour;
+    accent = osConfig.accent;
   };
 }

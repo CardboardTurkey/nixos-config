@@ -196,9 +196,8 @@ in {
         gaps_in = 4;
         gaps_out = 10;
         border_size = 2;
-        # col.active_border = rgba(${osConfig.nord2}FF) rgba(${osConfig.nord7}FF) 45deg
-        "col.active_border" = "rgba(${osConfig.nord2}FF)";
-        "col.inactive_border" = "rgba(${osConfig.nord2}FF)";
+        "col.active_border" = "$surface0 $accent 45deg";
+        "col.inactive_border" = "$surface0";
 
         layout = "dwindle";
       };

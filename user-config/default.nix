@@ -5,7 +5,7 @@ let
     ./graphical/dunst.nix
     ./graphical/obs-studio.nix
     ./graphical/rofi.nix
-    ./graphical/eww.nix
+    ./graphical/eww
     ./graphical/hyprlock.nix
     ./graphical/codium.nix
 
