@@ -317,6 +317,7 @@ in {
       exec-once = [
         "${pkgs.clipse}/bin/clipse -listen"
         "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular"
+        "${pkgs.eww}/bin/eww daemon && ${pkgs.eww}/bin/eww open bar"
       ];
 
       exec = [
