@@ -80,10 +80,14 @@ let
     };
   '';
 
-  launchTerminal = pkgs.writeScript "launchterminal"
-    "hyprctl clients -j | ${pkgs.dasel}/bin/dasel -r json 'all().filter(equal(workspace.id,1)).filter(equal(class,Kitty))' | xargs test -n && { ${
+  launchTerminal = pkgs.writeScript "launchterminal" ''
+    hyprctl dispatch workspace 1 &&\
+    test -n "$(\
+      hyprctl clients -j\
+      | ${pkgs.dasel}/bin/dasel -r json -w - 'all().filter(equal(workspace.id,1)).filter(equal(class,kitty))'\
+    )" || hyprctl keyword exec '[workspace 1] ${
       pkgs.${osConfig.emulator}
-    }/bin/${osConfig.emulator}&disown && sleep .1 && hyprctl dispatch movetoworkspace 1; } || hyprctl dispatch workspace 1";
+    }/bin/${osConfig.emulator}' '';
 
 in {
   wayland.windowManager.hyprland = {
