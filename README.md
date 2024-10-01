@@ -77,11 +77,9 @@ Can use sean's image because it already has a swap space applied. Remember to up
 
 * Sort out router
 * Upgrade rust-ci
-* Try switching to kitty terminal
 * Nix config
   * Machines
-  * Decide if I wanna use <https://github.com/EliverLara/Nordic/>
-* Switch from nord to <https://github.com/catppuccin>
+* Drop custom rofi themes
 
 ## Links
 
