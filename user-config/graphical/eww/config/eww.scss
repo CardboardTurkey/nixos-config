@@ -10,19 +10,19 @@
 
 // Variable Color's
 // $background: rgba(0, 0, 0, 0);
-$background: #@base@;
-$foreground: #@text@;
+$background: @base@;
+$foreground: @text@;
 
-$black: #@surface0@;
-$gray: #@overlay0@;
-$lighter-gray: #@overlay1@;
-$purple: #@mauve@;
-$red: #@red@;
-$green: #@green@;
-$yellow: #@yellow@;
-$blue: #@blue@;
-$magenta: #@pink@;
-$teal: #@teal@;
+$black: @surface0@;
+$gray: @overlay0@;
+$lighter-gray: @overlay1@;
+$purple: @mauve@;
+$red: @red@;
+$green: @green@;
+$yellow: @yellow@;
+$blue: @blue@;
+$magenta: @pink@;
+$teal: @teal@;
 $white: $foreground;
 
 // EWW BAR

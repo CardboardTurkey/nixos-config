@@ -2,7 +2,7 @@
 
 with lib;
 with types; {
-  imports = [ ./nord.nix ./keys.nix ./catppuccin.nix ];
+  imports = [ ./nord.nix ./keys.nix ];
 
   options = {
     hostname = mkOption {
@@ -48,11 +48,6 @@ with types; {
       type = with types; uniq str;
       description = "Root partition id";
     };
-    themes = mkOption {
-      default = { };
-      type = attrs;
-      description = "My collection of possible colour themes";
-    };
     flavour = mkOption {
       default = "frappe";
       type = str;
@@ -61,12 +56,11 @@ with types; {
     accent = mkOption {
       default = "teal";
       type = str;
-      description = "Within a given theme you might choose a flavour";
+      description = "Within a given theme you might choose an accent colour";
     };
     theme = mkOption {
-      default = {
-        inherit (config.themes.catppuccin."${config.flavour}") rgb hsl hex;
-      };
+      default = (lib.importJSON
+        "${config.catppuccin.sources.palette}/palette.json").${config.flavor}.colors;
       type = attrs;
       description = "The chosen colour theme for this build";
     };
