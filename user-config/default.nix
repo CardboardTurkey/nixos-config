@@ -8,6 +8,7 @@ let
     ./graphical/eww
     ./graphical/hyprlock.nix
     ./graphical/codium.nix
+    ./graphical/btop.nix
 
     ./terminal/git.nix
     ./terminal/eza.nix
