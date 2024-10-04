@@ -60,7 +60,7 @@ with types; {
     };
     theme = mkOption {
       default = (lib.importJSON
-        "${config.catppuccin.sources.palette}/palette.json").${config.flavor}.colors;
+        "${config.catppuccin.sources.palette}/palette.json").${config.flavour}.colors;
       type = attrs;
       description = "The chosen colour theme for this build";
     };

@@ -344,7 +344,7 @@ in {
 
       # layers
       layerrule =
-        [ "blur,rofi" "blur,notifications" "ignorezero,notifications" ];
+        [ "blur,notifications" "ignorezero,notifications" ];
 
     };
   };
