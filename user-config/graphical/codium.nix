@@ -24,14 +24,12 @@ let
     thenuprojectcontributors.vscode-nushell-lang
     redhat.vscode-xml
     asciidoctor.asciidoctor-vscode
-    # techtheawesome.rust-yew
     waderyan.gitblame
-    # ms-python.python
-    # ms-vscode.cpptools
-    # ms-vscode.cmake-tools
     mattn.lisp
     gitlab.gitlab-workflow
     redhat.vscode-yaml
+    redhat.ansible
+    ms-python.python
     stkb.rewrap
     nvarner.typst-lsp
     tomoki1207.pdf
