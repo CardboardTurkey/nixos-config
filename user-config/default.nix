@@ -24,6 +24,7 @@ let
     ./terminal/zoxide.nix
     ./terminal/fzf.nix
     ./terminal/hyperfine.nix
+    ./terminal/cargo.nix
 
     ./other/fontconfig.nix
     ./other/sops_config.nix

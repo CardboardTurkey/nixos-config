@@ -1,4 +1,4 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, ... }:
 let
   fzf-tab-source = pkgs.fetchFromGitHub {
     owner = "Freed-Wu";

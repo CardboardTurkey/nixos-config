@@ -1,4 +1,4 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, osConfig, config, ... }:
 let
   codium-extensions = (with pkgs.vscode-extensions; [
     jnoortheen.nix-ide
@@ -135,10 +135,11 @@ in {
       rust-analyzer = {
         checkOnSave.command = "clippy";
         server.extraEnv = {
-          CARGO_TARGET_DIR = "target/rust-analyzer";
+          CARGO_TARGET_DIR = "${config.cargo_target_dir}/rust-analyzer";
           RUSTUP_TOOLCHAIN = "stable";
         };
-        check.extraArgs = [ "--target-dir=target/rust-analyzer" ];
+        check.extraArgs =
+          [ "--target-dir=${config.cargo_target_dir}/rust-analyzer" ];
       };
       "redhat.telemetry.enabled" = false;
       "window.titleBarStyle" = "custom";

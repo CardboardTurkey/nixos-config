@@ -51,6 +51,7 @@
           ../../user-config/terminal/ssh.nix
           ../../user-config/terminal/zoxide.nix
           ../../user-config/terminal/fzf.nix
+          ../../user-config/terminal/cargo.nix
 
           ../../user-config/other/fontconfig.nix
           ../../user-config/other/sops_config.nix
