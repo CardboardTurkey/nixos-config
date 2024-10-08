@@ -22,14 +22,11 @@ let
     zhwu95.riscv
     davidanson.vscode-markdownlint
     thenuprojectcontributors.vscode-nushell-lang
-    redhat.vscode-xml
     asciidoctor.asciidoctor-vscode
     waderyan.gitblame
     mattn.lisp
     gitlab.gitlab-workflow
     redhat.vscode-yaml
-    redhat.ansible
-    ms-python.python
     stkb.rewrap
     nvarner.typst-lsp
     tomoki1207.pdf
