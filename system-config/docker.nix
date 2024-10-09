@@ -18,6 +18,6 @@
       # so lets just use cloudflare for now.
       daemon.settings = { dns = [ "1.1.1.1" ]; };
     };
-    daemon.settings = { userland-proxy = false; };
+    daemon.settings = { userland-proxy = false; bip = "172.26.0.1/16"; };
   };
 }
