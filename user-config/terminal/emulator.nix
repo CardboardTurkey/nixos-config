@@ -40,6 +40,7 @@
       font_family = "JetBrainsMono Nerd Font";
       font_size = builtins.toString osConfig.font_size_small;
       window_padding_width = 10;
+      enable_audio_bell = false;
     };
   };
 }
