@@ -1,8 +1,11 @@
-{
+{ config, lib, ... }: {
 
   imports = [ ./core ];
 
   nix.extraOptions = "experimental-features = nix-command flakes";
+
+  nixpkgs.config.allowUnfreePredicate = pkg:
+    builtins.elem (lib.getName pkg) config.allowed_unfree;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

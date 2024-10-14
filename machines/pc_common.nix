@@ -1,5 +1,1 @@
-{
-  imports = [ ../system-config ../user-config ];
-
-
-}
+{ imports = [ ../user-config ]; }

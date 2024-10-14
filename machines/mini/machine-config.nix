@@ -1,4 +1,4 @@
-{ lib, config, ... }: {
+{ lib, config, userModPaths, ... }: {
   imports = [ ../pc_common.nix ];
 
   # Use the systemd-boot EFI boot loader.
@@ -28,36 +28,7 @@
     users = {
       choochoo = {
         home.stateVersion = "22.11";
-        imports = [
-          ../../user-config/graphical/codium.nix
-          ../../user-config/graphical/gtk.nix
-          ../../user-config/graphical/hyprland.nix
-          ../../user-config/graphical/dunst.nix
-          ../../user-config/graphical/obs-studio.nix
-          ../../user-config/graphical/rofi.nix
-          ../../user-config/graphical/eww
-          ../../user-config/graphical/hyprlock.nix
-
-          ../../user-config/terminal/git.nix
-          ../../user-config/terminal/eza.nix
-          ../../user-config/terminal/starship.nix
-          ../../user-config/terminal/emulator.nix
-          ../../user-config/terminal/tmux.nix
-          ../../user-config/terminal/zsh.nix
-          ../../user-config/terminal/nushell.nix
-          ../../user-config/terminal/neovim.nix
-          ../../user-config/terminal/bat.nix
-          ../../user-config/terminal/direnv.nix
-          ../../user-config/terminal/ssh.nix
-          ../../user-config/terminal/zoxide.nix
-          ../../user-config/terminal/fzf.nix
-          ../../user-config/terminal/cargo.nix
-
-          ../../user-config/other/fontconfig.nix
-          ../../user-config/other/sops_config.nix
-          ../../user-config/other/batsignal.nix
-          ../../user-config/other/catppuccin.nix
-        ];
+        imports = userModPaths config.userModules;
       };
     };
   };

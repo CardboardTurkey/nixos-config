@@ -19,9 +19,7 @@ in {
 
   imports = [
     ../pc_common.nix
-    ../../system-config/ayden_vpn.nix
     ../../system-config/sops.nix
-    ../../system-config/sbuk.nix
   ];
 
   boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];
