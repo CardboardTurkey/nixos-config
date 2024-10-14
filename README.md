@@ -89,6 +89,7 @@ Can use sean's image because it already has a swap space applied. Remember to up
 * [So _THAT'S_ how you add derivations to your config](https://discourse.nixos.org/t/howto-merge-a-derivation-nix-to-etc-nixos-configuration-nix/12797/3)
 * [Encryption guide](https://gist.github.com/martijnvermaat/76f2e24d0239470dd71050358b4d5134)
 * [No flake utils](https://ayats.org/blog/no-flake-utils)
+* [specialArgs](https://discourse.nixos.org/t/how-do-specialargs-work/50615)
 
 ## Wallpapers
 
