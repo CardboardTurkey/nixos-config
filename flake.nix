@@ -41,15 +41,7 @@
               home-manager.extraSpecialArgs = {
                 catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
               };
-
             }
-          ];
-        };
-        P14s = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = shared_modules ++ [
-            ./machines/P14s/machine-config.nix
-            ./machines/P14s/hardware-configuration.nix
           ];
         };
         XPS = nixpkgs.lib.nixosSystem {
