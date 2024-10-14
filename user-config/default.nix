@@ -41,12 +41,6 @@ in {
 
   # Also need hyprland from system-config
 
-  # Maybe move this into system config?
-  catppuccin = {
-    enable = true;
-    flavor = "frappe";
-  };
-
   home-manager = {
     users = {
       kiran = {
