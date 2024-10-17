@@ -36,5 +36,6 @@
     borgbackup
     nautilus
     evince # for nautilus pdf preview
+    brightnessctl
   ];
 }
