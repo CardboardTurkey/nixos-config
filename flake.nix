@@ -101,6 +101,40 @@
             ];
           specialArgs = shared_args;
         };
+        Goshawk = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = shared_modules ++ systemModPaths [
+            "at.nix"
+            "greetd.nix"
+            "font.nix"
+            "pam.nix"
+            "pkgs_core.nix"
+            "users.nix"
+            "tailscale.nix"
+            "openssh.nix"
+            "location.nix"
+            "network.nix"
+            "sound.nix"
+            "docker.nix"
+            "boot.nix"
+            "printing.nix"
+            "file_manager.nix"
+            "nix-index-database.nix"
+            "sops.nix"
+            "hyprland.nix"
+            "bluetooth.nix"
+            "devenv.nix"
+          ] ++ [
+            ./machines/Goshawk/machine-config.nix
+            ./machines/Goshawk/hardware-configuration.nix
+            {
+              home-manager.extraSpecialArgs = {
+                catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
+              };
+            }
+          ];
+          specialArgs = shared_args;
+        };
         pi = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = shared_modules ++ [
