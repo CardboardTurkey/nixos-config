@@ -92,7 +92,7 @@ in {
         font_size = osConfig.monitor_scale * 55;
         font_family = "DejaVuSansM Nerd Font";
         position =
-          scaleArray [ (builtins.fromJSON "-100") (builtins.fromJSON "-40") ];
+          scaleArray [ (builtins.fromJSON "-100") (builtins.fromJSON "60") ];
         halign = "right";
         valign = "bottom";
         shadow_passes = 5;
