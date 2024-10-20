@@ -3,13 +3,11 @@
 git update-index --refresh
 if ! git diff-index --quiet HEAD --
 then
-	[ -z "$@" ] && exit 1
 	git diff
-	read com_message
-	git commit "$@" -m "$com_message"
+	exit 1
 fi
 datey=$(date +%y-%m-%d_%H-%M)
-message=$(git log -1 --pretty=%B | head -1 | sed 's/ /_/g')
+message=$(git log -1 --pretty=%B | head -1 | sed 's/ /_/g' | sed 's/://')
 
 profile_name="${datey}_${message}"
 
