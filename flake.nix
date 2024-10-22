@@ -35,7 +35,6 @@
         "at.nix"
         "boot_loader.nix"
         "greetd.nix"
-        "battery.nix"
         "font.nix"
         "pam.nix"
         "pkgs_core.nix"
@@ -88,7 +87,7 @@
         XPS = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = shared_modules
-            ++ systemModPaths (system_modules ++ [ "ayden_vpn.nix" "sbuk.nix" ])
+            ++ systemModPaths (system_modules ++ [ "ayden_vpn.nix" "sbuk.nix" "battery.nix"])
             ++ [
               ./machines/XPS/machine-config.nix
               ./machines/XPS/hardware-configuration.nix
