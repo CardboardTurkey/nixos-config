@@ -8,7 +8,7 @@
     enableSSHSupport = true;
     pinentryPackage = pkgs.pinentry-gnome3;
   };
-  # services.pcscd.enable = true;
+  services.pcscd.enable = true;
   # home-manager.users.kiran = { pkgs, ... }: {
   #   programs.gpg = {
   #     enable = true;
