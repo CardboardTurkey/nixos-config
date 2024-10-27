@@ -313,6 +313,10 @@ in {
 
         "float,class:(com.saivert.pwvucontrol)"
         "size 1200 600,class:(com.saivert.pwvucontrol)"
+
+        "idleinhibit fullscreen, class:^(*)$"
+        "idleinhibit fullscreen, title:^(*)$"
+        "idleinhibit fullscreen, fullscreen:1"
       ];
 
       # See https://wiki.hyprland.org/Configuring/Keywords/ for more
@@ -343,8 +347,7 @@ in {
       env = [ "GDK_SCALE,1" "XCURSOR_SIZE,16" ];
 
       # layers
-      layerrule =
-        [ "blur,notifications" "ignorezero,notifications" ];
+      layerrule = [ "blur,notifications" "ignorezero,notifications" ];
 
     };
   };
