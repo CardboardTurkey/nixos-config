@@ -89,6 +89,7 @@ with types; {
         "terminal/zsh.nix"
         "terminal/nushell.nix"
         "terminal/neovim.nix"
+        "terminal/helix.nix"
         "terminal/bat.nix"
         "terminal/direnv.nix"
         "terminal/ssh.nix"
