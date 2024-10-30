@@ -88,7 +88,7 @@
         XPS = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = shared_modules
-            ++ systemModPaths (system_modules ++ [ "ayden_vpn.nix" "sbuk.nix" "fprint.nix" ])
+            ++ systemModPaths (system_modules ++ [ "ayden_vpn.nix" "sbuk.nix" ])
             ++ [
               ./machines/XPS/machine-config.nix
               ./machines/XPS/hardware-configuration.nix
