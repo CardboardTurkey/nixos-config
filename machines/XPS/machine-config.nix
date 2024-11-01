@@ -28,6 +28,7 @@ in {
     "steam-original"
     "steam-runtime"
     "steam-run"
+    "steam-unwrapped"
     "nvidia-x11"
     "nvidia-settings"
     "discord"
