@@ -1,9 +1,7 @@
-{ pkgs, osConfig, lib, ... }:
+{ pkgs, osConfig, ... }:
 let
-  palette = (lib.importJSON
-    "${osConfig.catppuccin.sources.palette}/palette.json").${osConfig.catppuccin.flavor}.colors;
   eww = pkgs.runCommandLocal "brudda-ewwwww"
-    (builtins.mapAttrs (_: colour: colour.hex) palette) ''
+    (builtins.mapAttrs (_: colour: colour.hex) osConfig.theme) ''
       mkdir $out
       cp -r ${./config}/* $out
       substituteAllInPlace $out/eww.scss
