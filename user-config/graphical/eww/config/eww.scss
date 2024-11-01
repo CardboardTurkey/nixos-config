@@ -10,11 +10,11 @@
 
 // Variable Color's
 // $background: rgba(0, 0, 0, 0);
-$background: @mantle@;
+$background: @base@;
 $foreground: @text@;
 
-$black: @surface0@;
-$gray: @base@;
+$black: @mantle@;
+$gray: @surface0@;
 $lighter-gray: @overlay1@;
 $purple: @mauve@;
 $red: @red@;
