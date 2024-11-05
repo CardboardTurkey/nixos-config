@@ -72,7 +72,7 @@
         mini = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules = shared_modules
-            ++ systemModPaths (system_modules ++ [ "jellyfin.nix" ]) ++ [
+            ++ systemModPaths (system_modules ++ [ "ayden_vpn.nix" "sbuk.nix" "jellyfin.nix" ]) ++ [
               apple-silicon.nixosModules.default
               ./machines/mini/machine-config.nix
               ./machines/mini/hardware-configuration.nix
@@ -87,7 +87,7 @@
         XPS = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = shared_modules
-            ++ systemModPaths (system_modules ++ [ "ayden_vpn.nix" "sbuk.nix" "battery.nix"])
+            ++ systemModPaths (system_modules ++ [ "battery.nix"])
             ++ [
               ./machines/XPS/machine-config.nix
               ./machines/XPS/hardware-configuration.nix
