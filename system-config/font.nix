@@ -9,5 +9,7 @@
     joypixels
     font-awesome
     cantarell-fonts
+    texlivePackages.alfaslabone # for rust manchester
+    fira-sans # for rust manchester
   ];
 }
