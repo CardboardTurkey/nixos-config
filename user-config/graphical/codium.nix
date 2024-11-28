@@ -150,5 +150,22 @@ in {
       };
       shellcheck.customArgs = [ "-x" ];
     };
+    keybindings = [
+      {
+        key = "ctrl+r";
+        command = "commandId";
+        when = "editorTextFocus";
+      }
+      {
+        key = "ctrl+r";
+        command = "editor.action.rename";
+        when = "editorHasRenameProvider && editorTextFocus && !editorReadonly";
+      }
+      {
+        key = "f2";
+        command = "-editor.action.rename";
+        when = "editorHasRenameProvider && editorTextFocus && !editorReadonly";
+      }
+    ];
   };
 }
