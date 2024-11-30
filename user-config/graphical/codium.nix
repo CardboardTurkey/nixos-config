@@ -128,7 +128,7 @@ in {
         serverPath = "${pkgs.nixd}/bin/nixd";
         serverSettings = {
           nixd = {
-            formatting = { command = [ "${pkgs.nixfmt-classic}/bin/nixfmt" ]; };
+            formatting = { command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ]; };
           };
         };
       };
