@@ -85,11 +85,10 @@ let
     test -n "$(\
       hyprctl clients -j\
       | ${pkgs.dasel}/bin/dasel -r json -w - 'all().filter(equal(workspace.id,1)).filter(equal(class,kitty))'\
-    )" || hyprctl keyword exec '[workspace 1] ${
-      pkgs.${osConfig.emulator}
-    }/bin/${osConfig.emulator}' '';
+    )" || hyprctl keyword exec '[workspace 1] ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}' '';
 
-in {
+in
+{
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -97,15 +96,11 @@ in {
     settings = {
       bind = [
         "SUPER, Return, exec, ${launchTerminal}"
-        "MOD3, Return, exec, ${
-          pkgs.${osConfig.emulator}
-        }/bin/${osConfig.emulator}&"
+        "MOD3, Return, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}&"
         "MOD3, PERIOD, exec, ${pkgs.bemoji}/bin/bemoji -n"
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        "$mainMod, Q, exec, ${
-          pkgs.${osConfig.emulator}
-        }/bin/${osConfig.emulator}"
+        "$mainMod, Q, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
         "$mainMod, E, exec, dolphin"
@@ -169,14 +164,9 @@ in {
         ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
         ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
-        ''
-          $mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
-        "SUPER, X, exec, ${
-          pkgs.${osConfig.emulator}
-        }/bin/${osConfig.emulator} --class clipse -e ${pkgs.clipse}/bin/clipse"
-        "SUPER, T, exec, ${
-          pkgs.${osConfig.emulator}
-        }/bin/${osConfig.emulator} --class my-todo -e vim ~/.cache/todo.md"
+        ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
+        "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class clipse -e ${pkgs.clipse}/bin/clipse"
+        "SUPER, T, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class my-todo -e vim ~/.cache/todo.md"
       ];
 
       bindm = [
@@ -188,8 +178,7 @@ in {
       bindl = [
         # switches
         '',switch:on:Lid Switch,exec, hyprctl keyword monitor "eDP-1, disable"''
-        ''
-          ,switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"''
+        '',switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"''
       ];
 
       input = {
@@ -199,7 +188,9 @@ in {
 
         follow_mouse = 1;
 
-        touchpad = { natural_scroll = false; };
+        touchpad = {
+          natural_scroll = false;
+        };
 
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
       };
@@ -228,10 +219,12 @@ in {
           xray = false;
         };
 
-        drop_shadow = false;
-        shadow_range = 4;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
+        shadow = {
+          enabled = true;
+          color = "rgba(1a1a1aee)";
+          range = 4;
+          render_power = 3;
+        };
       };
       animations = {
         enabled = true;
@@ -255,8 +248,7 @@ in {
       };
       dwindle = {
         # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-        pseudotile =
-          true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+        pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
         preserve_split = true; # you probably want this
       };
 
@@ -341,13 +333,21 @@ in {
       ];
 
       # unscale XWayland
-      xwayland = { force_zero_scaling = true; };
+      xwayland = {
+        force_zero_scaling = true;
+      };
 
       # toolkit-specific scale
-      env = [ "GDK_SCALE,1" "XCURSOR_SIZE,16" ];
+      env = [
+        "GDK_SCALE,1"
+        "XCURSOR_SIZE,16"
+      ];
 
       # layers
-      layerrule = [ "blur,notifications" "ignorezero,notifications" ];
+      layerrule = [
+        "blur,notifications"
+        "ignorezero,notifications"
+      ];
 
     };
   };
