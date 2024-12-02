@@ -101,6 +101,7 @@ with types;
         "terminal/fzf.nix"
         "terminal/hyperfine.nix"
         "terminal/cargo.nix"
+        "terminal/gh.nix"
 
         "other/fontconfig.nix"
         "other/sops_config.nix"
