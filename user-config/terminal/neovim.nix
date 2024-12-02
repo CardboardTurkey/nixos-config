@@ -1,5 +1,6 @@
 { pkgs, ... }:
 {
+  home.sessionVariables.EDITOR = "vim";
   programs.neovim = {
     enable = true;
     plugins = with pkgs.vimPlugins; [
