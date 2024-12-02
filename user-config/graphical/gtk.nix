@@ -1,4 +1,5 @@
-{ pkgs, osConfig, ... }: {
+{ pkgs, osConfig, ... }:
+{
   # home.packages = [ pkgs.atool pkgs.httpie ];
   gtk = {
     enable = true;
@@ -14,8 +15,7 @@
       };
     };
     font = {
-      name =
-        "Bitstream Vera Sans ${builtins.toString osConfig.font_size_small}";
+      name = "Bitstream Vera Sans ${builtins.toString osConfig.font_size_small}";
     };
   };
 }

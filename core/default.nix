@@ -1,8 +1,12 @@
 { lib, config, ... }:
 
 with lib;
-with types; {
-  imports = [ ./nord.nix ./keys.nix ];
+with types;
+{
+  imports = [
+    ./nord.nix
+    ./keys.nix
+  ];
 
   options = {
     hostname = mkOption {
@@ -32,8 +36,7 @@ with types; {
     };
     wallpapers = mkOption {
       default = {
-        single = builtins.fetchurl
-          "https://images.pexels.com/photos/27168244/pexels-photo-27168244.jpeg";
+        single = builtins.fetchurl "https://images.pexels.com/photos/27168244/pexels-photo-27168244.jpeg";
       };
       type = attrs;
       description = "Paths to wallpapers";
@@ -59,8 +62,8 @@ with types; {
       description = "Within a given theme you might choose an accent colour";
     };
     theme = mkOption {
-      default = (lib.importJSON
-        "${config.catppuccin.sources.palette}/palette.json").${config.flavour}.colors;
+      default =
+        (lib.importJSON "${config.catppuccin.sources.palette}/palette.json").${config.flavour}.colors;
       type = attrs;
       description = "The chosen colour theme for this build";
     };

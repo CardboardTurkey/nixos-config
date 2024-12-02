@@ -1,4 +1,5 @@
-{ osConfig, ... }: {
+{ osConfig, ... }:
+{
   programs.git = {
     enable = true;
     userName = "Kiran Ostrolenk";
@@ -7,7 +8,11 @@
       enable = true;
       # skipSmudge = true;
     };
-    ignores = [ "target" ".direnv" ".vscode" ];
+    ignores = [
+      "target"
+      ".direnv"
+      ".vscode"
+    ];
     signing.key = "${osConfig.pgp_sign}";
     includes = [
       {
@@ -24,8 +29,12 @@
       }
     ];
     extraConfig = {
-      core = { editor = "vim"; };
-      pull = { rebase = "true"; };
+      core = {
+        editor = "vim";
+      };
+      pull = {
+        rebase = "true";
+      };
       alias = {
         co = "checkout";
         sw = "switch";
@@ -37,7 +46,9 @@
         dump = "cat-file -p";
         last = "log -1";
       };
-      global = { basedir = "/home/kiran/git/"; };
+      global = {
+        basedir = "/home/kiran/git/";
+      };
       format.signOff = true;
     };
     delta = {

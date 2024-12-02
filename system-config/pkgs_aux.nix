@@ -2,8 +2,7 @@
 
 {
   imports = [ ./pkgs_mine/dirtygit/module.nix ];
-  nixpkgs.overlays =
-    [ (self: super: { local = import ./pkgs_mine { pkgs = super; }; }) ];
+  nixpkgs.overlays = [ (self: super: { local = import ./pkgs_mine { pkgs = super; }; }) ];
 
   environment.systemPackages = with pkgs; [
     wdisplays

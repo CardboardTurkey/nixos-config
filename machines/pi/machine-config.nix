@@ -1,10 +1,10 @@
 { pkgs, config, ... }:
 
 let
-  home-manager = builtins.fetchTarball
-    "https://github.com/nix-community/home-manager/archive/master.tar.gz";
+  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/master.tar.gz";
 
-in {
+in
+{
 
   imports = [
     (import "${home-manager}/nixos")
@@ -62,9 +62,11 @@ in {
   users.users.kiran.openssh.authorizedKeys.keys = [ "${config.pgp_auth_ssh}" ];
 
   # rpi3 only has 1gb ram so we need a swap file (maybe I should make it bigger )
-  swapDevices = [{
-    device = "/swapfile";
-    size = 2048;
-  }];
+  swapDevices = [
+    {
+      device = "/swapfile";
+      size = 2048;
+    }
+  ];
 
 }

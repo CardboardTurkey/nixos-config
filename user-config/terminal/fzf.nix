@@ -6,9 +6,14 @@ let
     rev = "0cae36455483455a9a7b8a918962c60b16d0d353";
     hash = "sha256-J+CxlfJXsdFvNZIR2Y0kHhoonE2tC0IXpVnsGBCPyB8=";
   };
-in {
+in
+{
   home = {
-    packages = with pkgs; [ mdcat pandoc grc ];
+    packages = with pkgs; [
+      mdcat
+      pandoc
+      grc
+    ];
     file.".lessfilter" = {
       executable = true;
       # Note the TF and torch shit won't work without python deps
@@ -112,7 +117,10 @@ in {
   programs.fzf = {
     enable = true;
     enableZshIntegration = true;
-    defaultOptions = [ "--border rounded" "--preview-window border-rounded" ];
+    defaultOptions = [
+      "--border rounded"
+      "--preview-window border-rounded"
+    ];
   };
   programs.zsh = {
     initExtra = ''

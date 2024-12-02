@@ -41,7 +41,8 @@ let
     [ ''${#monitors[@]} -gt 1 ] && MONITOR=''${monitors[1]} polybar aux &disown
   '';
 
-in {
+in
+{
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "DejaVuSansMono" ]; })
@@ -50,332 +51,324 @@ in {
     ttf_bitstream_vera
   ];
 
-  environment.systemPackages =
-    [ pkgs.local.dirtygit pkgs.local.thing-of-the-day barup ];
+  environment.systemPackages = [
+    pkgs.local.dirtygit
+    pkgs.local.thing-of-the-day
+    barup
+  ];
   services.dirtygit.enable = true;
 
-  home-manager.users.kiran = { pkgs, ... }: {
+  home-manager.users.kiran =
+    { pkgs, ... }:
+    {
 
-    programs.autorandr = {
-      enable = true;
-      hooks.postswitch = { "polybar" = "${barup}/bin/barup"; };
-    };
-
-    xdg.configFile."dirtygit".text = ''
-      ~/git/cardboardturkey/nixos-config
-      ~/git/cardboardturkey/dirtygit
-      ~/git/cardboardturkey/pdgid
-      ~/git/cardboardturkey/website
-      ~/gitlab/kiran-rust-course/project
-    '';
-
-    services.polybar = {
-      enable = true;
-      package = pkgs.polybar.override {
-        i3Support = true;
-        iwSupport = true;
-        pulseSupport = true;
+      programs.autorandr = {
+        enable = true;
+        hooks.postswitch = {
+          "polybar" = "${barup}/bin/barup";
+        };
       };
-      # Doesnt seem to be doing anything:
-      script = "${barup}/bin/barup";
-      settings = {
-        "settings" = { screenchange-reload = "true"; };
-        "bar/base" = {
-          width = "1898";
-          height = "37";
-          offset-x = "11";
-          offset-y = "11";
-          override-redirect = true;
-          wm-restack = "i3";
 
-          background = "${background}";
-          foreground = "${foreground}";
+      xdg.configFile."dirtygit".text = ''
+        ~/git/cardboardturkey/nixos-config
+        ~/git/cardboardturkey/dirtygit
+        ~/git/cardboardturkey/pdgid
+        ~/git/cardboardturkey/website
+        ~/gitlab/kiran-rust-course/project
+      '';
 
-          overline-size = "3";
-          underline-size = "3";
-
-          padding-left = "3";
-          padding-right = "2";
-
-          module-margin = "2";
-
-          # Prefer Bitstream as it has minimal unicode coverage and so Font awesome and Noto can display icons
-          # Add DejaVu (Nerd font) as fallback
-          font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=${
-              builtins.toString config.font_size_medium
-            };3";
-          font-1 =
-            "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=${
-              builtins.toString config.font_size_medium
-            };3";
-          font-2 =
-            "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:size=${
-              builtins.toString config.font_size_medium
-            };3";
-          font-3 =
-            "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:size=${
-              builtins.toString config.font_size_medium
-            };3";
-          font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
-          font-5 = "DejaVu Sans:style=Roman:pixelsize=${
-              builtins.toString config.font_size_medium
-            };3";
-          font-6 =
-            "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=19;4";
-          font-7 =
-            "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=12;2";
-
-          cursor-click = "pointer";
-          cursor-scroll = "ns-resize";
-
-          enable-ipc = true;
+      services.polybar = {
+        enable = true;
+        package = pkgs.polybar.override {
+          i3Support = true;
+          iwSupport = true;
+          pulseSupport = true;
         };
-        "bar/main" = {
-          "inherit" = "bar/base";
-          modules-left = "i3";
-          # modules-center = "player-mpris-tail";
-          modules-right =
-            "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirtygit date";
-          fixed-center = false;
-        };
-        "bar/aux" = {
-          monitor = "\${env:MONITOR:}";
-          "inherit" = "bar/base";
-          modules-left = "i3";
-          modules-center = "totd";
-          fixed-center = true;
-        };
-        "module/dirtygit" = {
-          type = "custom/script";
-          exec = "dg -n";
-          interval = 2;
-          format-prefix-foreground = "${dirtygit_colour}";
-          format-prefix = "⚠️";
-          format-prefix-font = "5";
-          format-prefix-padding-right = "5pt";
-          format-underline = "${dirtygit_colour}";
+        # Doesnt seem to be doing anything:
+        script = "${barup}/bin/barup";
+        settings = {
+          "settings" = {
+            screenchange-reload = "true";
+          };
+          "bar/base" = {
+            width = "1898";
+            height = "37";
+            offset-x = "11";
+            offset-y = "11";
+            override-redirect = true;
+            wm-restack = "i3";
 
-          label-padding-right = "5pt";
-        };
-        "module/totd" = {
-          type = "custom/script";
-          exec = "totd -d 45m -w 100";
-          click-left = "firefox /home/kiran/.cache/thing-of-the-day";
-          tail = "true";
-          format-foreground = "${totd_colour}";
-        };
+            background = "${background}";
+            foreground = "${foreground}";
 
-        "module/cpu" = {
-          type = "internal/cpu";
-          interval = "2";
-          format-prefix = "";
-          format-prefix-foreground = "${cpu_colour}";
-          format-underline = "${cpu_colour}";
-          label = "%percentage:2%%";
-        };
-        "module/memory" = {
-          type = "internal/memory";
-          format-prefix = " ";
-          format-prefix-foreground = "${memory_colour}";
-          format-underline = "${memory_colour}";
-          label = "%percentage_used%%";
-        };
-        "module/xkeyboard" = {
-          type = "internal/xkeyboard";
-          blacklist-0 = "num lock";
+            overline-size = "3";
+            underline-size = "3";
 
-          format-prefix = "";
-          format-prefix-padding-right = "5pt";
-          format-prefix-foreground = "${xkeyboard_colour}";
-          format-underline = "${xkeyboard_colour}";
+            padding-left = "3";
+            padding-right = "2";
 
-          label-layout = "%layout%";
-          # label-layout-underline = "${xkeyboard_colour}";
+            module-margin = "2";
 
-        };
-        "module/wired-network" = {
-          type = "internal/network";
-          interface = "${eth_interface}";
-          interval = "1.0";
+            # Prefer Bitstream as it has minimal unicode coverage and so Font awesome and Noto can display icons
+            # Add DejaVu (Nerd font) as fallback
+            font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=${builtins.toString config.font_size_medium};3";
+            font-1 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=${builtins.toString config.font_size_medium};3";
+            font-2 = "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:size=${builtins.toString config.font_size_medium};3";
+            font-3 = "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:size=${builtins.toString config.font_size_medium};3";
+            font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
+            font-5 = "DejaVu Sans:style=Roman:pixelsize=${builtins.toString config.font_size_medium};3";
+            font-6 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=19;4";
+            font-7 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=12;2";
 
-          format-connected = "<label-connected> <ramp-signal>";
-          format-connected-underline = "${wired_colour}";
-          format-connected-font = "5";
-          label-connected-foreground = "${wired_colour}";
-          label-connected = "";
-          label-connected-padding-right = "5pt";
+            cursor-click = "pointer";
+            cursor-scroll = "ns-resize";
 
-          format-disconnected = "";
+            enable-ipc = true;
+          };
+          "bar/main" = {
+            "inherit" = "bar/base";
+            modules-left = "i3";
+            # modules-center = "player-mpris-tail";
+            modules-right = "pulseaudio battery filesystem memory cpu wired-network wireless-network xkeyboard dirtygit date";
+            fixed-center = false;
+          };
+          "bar/aux" = {
+            monitor = "\${env:MONITOR:}";
+            "inherit" = "bar/base";
+            modules-left = "i3";
+            modules-center = "totd";
+            fixed-center = true;
+          };
+          "module/dirtygit" = {
+            type = "custom/script";
+            exec = "dg -n";
+            interval = 2;
+            format-prefix-foreground = "${dirtygit_colour}";
+            format-prefix = "⚠️";
+            format-prefix-font = "5";
+            format-prefix-padding-right = "5pt";
+            format-underline = "${dirtygit_colour}";
 
-          ramp-signal-0 = "😵";
-          ramp-signal-1 = "😟";
-          ramp-signal-2 = "😐";
-          ramp-signal-3 = "😀";
-          ramp-signal-4 = "🥵";
-        };
-        "module/wireless-network" = {
-          type = "internal/network";
-          interval = "1.0";
-          interface = "${wlan_interface}";
+            label-padding-right = "5pt";
+          };
+          "module/totd" = {
+            type = "custom/script";
+            exec = "totd -d 45m -w 100";
+            click-left = "firefox /home/kiran/.cache/thing-of-the-day";
+            tail = "true";
+            format-foreground = "${totd_colour}";
+          };
 
-          format-connected = "<label-connected><ramp-signal>";
-          format-connected-underline = "${wireless_colour}";
-          format-connected-font = "5";
-          label-connected-foreground = "${wireless_colour}";
-          label-connected = "";
-          label-connected-padding-right = "5pt";
-          label-connected-padding-top = "3pt";
+          "module/cpu" = {
+            type = "internal/cpu";
+            interval = "2";
+            format-prefix = "";
+            format-prefix-foreground = "${cpu_colour}";
+            format-underline = "${cpu_colour}";
+            label = "%percentage:2%%";
+          };
+          "module/memory" = {
+            type = "internal/memory";
+            format-prefix = " ";
+            format-prefix-foreground = "${memory_colour}";
+            format-underline = "${memory_colour}";
+            label = "%percentage_used%%";
+          };
+          "module/xkeyboard" = {
+            type = "internal/xkeyboard";
+            blacklist-0 = "num lock";
 
-          format-disconnected = "";
+            format-prefix = "";
+            format-prefix-padding-right = "5pt";
+            format-prefix-foreground = "${xkeyboard_colour}";
+            format-underline = "${xkeyboard_colour}";
 
-          ramp-signal-0 = "😵";
-          ramp-signal-1 = "😟";
-          ramp-signal-2 = "😐";
-          ramp-signal-3 = "😀";
-          ramp-signal-4 = "🥵";
-        };
-        "module/date" = {
-          type = "internal/date";
-          interval = "1.0";
+            label-layout = "%layout%";
+            # label-layout-underline = "${xkeyboard_colour}";
 
-          date = "";
-          date-alt = " %A, %d %B %Y";
+          };
+          "module/wired-network" = {
+            type = "internal/network";
+            interface = "${eth_interface}";
+            interval = "1.0";
 
-          time = "%H:%M";
-          time-alt = "%H:%M:%S";
+            format-connected = "<label-connected> <ramp-signal>";
+            format-connected-underline = "${wired_colour}";
+            format-connected-font = "5";
+            label-connected-foreground = "${wired_colour}";
+            label-connected = "";
+            label-connected-padding-right = "5pt";
 
-          format-prefix = " ";
-          format-prefix-foreground = "${date_colour}";
-          format-underline = "${date_colour}";
+            format-disconnected = "";
 
-          label = "%time%%date%";
-        };
-        "module/filesystem" = {
-          type = "internal/fs";
-          interval = "25";
+            ramp-signal-0 = "😵";
+            ramp-signal-1 = "😟";
+            ramp-signal-2 = "😐";
+            ramp-signal-3 = "😀";
+            ramp-signal-4 = "🥵";
+          };
+          "module/wireless-network" = {
+            type = "internal/network";
+            interval = "1.0";
+            interface = "${wlan_interface}";
 
-          mount-0 = "/";
+            format-connected = "<label-connected><ramp-signal>";
+            format-connected-underline = "${wireless_colour}";
+            format-connected-font = "5";
+            label-connected-foreground = "${wireless_colour}";
+            label-connected = "";
+            label-connected-padding-right = "5pt";
+            label-connected-padding-top = "3pt";
 
-          format-mounted = "%{F${filesystem_colour}}%{F-} <label-mounted>";
-          format-mounted-underline = "${filesystem_colour}";
+            format-disconnected = "";
 
-          format-unmounted = "<label-unmounted>";
-          format-unmounted-underline = "${filesystem_colour}";
+            ramp-signal-0 = "😵";
+            ramp-signal-1 = "😟";
+            ramp-signal-2 = "😐";
+            ramp-signal-3 = "😀";
+            ramp-signal-4 = "🥵";
+          };
+          "module/date" = {
+            type = "internal/date";
+            interval = "1.0";
 
-          label-mounted = "%percentage_used%%";
-          label-unmounted = "%mountpoint% not mounted";
-          label-unmounted-foreground = "${filesystem_colour}";
-        };
-        "module/i3" = {
-          type = "internal/i3";
-          format = "<label-state> <label-mode>";
-          index-sort = "true";
-          wrapping-scroll = "false";
+            date = "";
+            date-alt = " %A, %d %B %Y";
 
-          ws-icon-0 = "1;";
-          ws-icon-1 = "2;";
-          ws-icon-3 = "3;";
-          ws-icon-4 = "4;";
-          ws-icon-2 = "5;";
-          ws-icon-5 = "6;";
-          ws-icon-6 = "7;";
-          ws-icon-7 = "8;";
-          ws-icon-8 = "9;";
-          ws-icon-default = "";
+            time = "%H:%M";
+            time-alt = "%H:%M:%S";
 
-          label-focused = "%icon%";
-          label-focused-foreground = "${ws_focused}";
-          label-focused-padding = "2";
-          label-focused-font = "7";
+            format-prefix = " ";
+            format-prefix-foreground = "${date_colour}";
+            format-underline = "${date_colour}";
 
-          label-unfocused = "\${self.label-focused}";
-          label-unfocused-foreground = "${ws_unfocused}";
-          label-unfocused-padding = "\${self.label-focused-padding}";
-          label-unfocused-font = "8";
+            label = "%time%%date%";
+          };
+          "module/filesystem" = {
+            type = "internal/fs";
+            interval = "25";
 
-          label-visible = "\${self.label-focused}";
-          label-visible-foreground = "${ws_unfocused}";
-          label-visible-padding = "\${self.label-focused-padding}";
-          label-visible-font = "\${self.label-unfocused-font}";
+            mount-0 = "/";
 
-          label-urgent = "\${self.label-focused}";
-          label-urgent-foreground = "${ws_urgent}";
-          label-urgent-padding = "\${self.label-focused-padding}";
-          label-urgent-font = "\${self.label-focused-font}";
-        };
-        "module/pulseaudio" = {
-          type = "internal/pulseaudio";
+            format-mounted = "%{F${filesystem_colour}}%{F-} <label-mounted>";
+            format-mounted-underline = "${filesystem_colour}";
 
-          format-volume = "<bar-volume> <label-volume>";
+            format-unmounted = "<label-unmounted>";
+            format-unmounted-underline = "${filesystem_colour}";
 
-          label-volume = "%percentage%%";
-          label-volume-foreground = "${foreground}";
+            label-mounted = "%percentage_used%%";
+            label-unmounted = "%mountpoint% not mounted";
+            label-unmounted-foreground = "${filesystem_colour}";
+          };
+          "module/i3" = {
+            type = "internal/i3";
+            format = "<label-state> <label-mode>";
+            index-sort = "true";
+            wrapping-scroll = "false";
 
-          label-muted = " muted";
-          label-muted-foreground = "${muted_colour}";
+            ws-icon-0 = "1;";
+            ws-icon-1 = "2;";
+            ws-icon-3 = "3;";
+            ws-icon-4 = "4;";
+            ws-icon-2 = "5;";
+            ws-icon-5 = "6;";
+            ws-icon-6 = "7;";
+            ws-icon-7 = "8;";
+            ws-icon-8 = "9;";
+            ws-icon-default = "";
 
-          bar-volume-width = "10";
-          bar-volume-foreground-0 = "${quiet_colour}";
-          bar-volume-foreground-1 = "${quiet_colour}";
-          bar-volume-foreground-2 = "${quiet_colour}";
-          bar-volume-foreground-3 = "${quiet_colour}";
-          bar-volume-foreground-4 = "${quiet_colour}";
-          bar-volume-foreground-5 = "${loud_colour}";
-          bar-volume-foreground-6 = "${booming_colour}";
-          bar-volume-gradient = "false";
-          bar-volume-indicator = "";
-          bar-volume-fill = "─";
-          bar-volume-empty = "─";
-          bar-volume-empty-foreground = "${volume_bar}";
-        };
-        "module/battery" = {
-          type = "internal/battery";
-          # full-at = "99";
-          battery = "${battery}";
-          adapter = "${adapter}";
+            label-focused = "%icon%";
+            label-focused-foreground = "${ws_focused}";
+            label-focused-padding = "2";
+            label-focused-font = "7";
 
-          format-charging = "<animation-charging> <label-charging>";
-          format-discharging = "<ramp-capacity> <label-discharging>";
-          format-full = "<ramp-capacity> <label-full>";
-          format-low = "<label-low> <animation-low>";
+            label-unfocused = "\${self.label-focused}";
+            label-unfocused-foreground = "${ws_unfocused}";
+            label-unfocused-padding = "\${self.label-focused-padding}";
+            label-unfocused-font = "8";
 
-          format-charging-underline = "${battery_colour}";
-          format-discharging-underline = "${battery_colour}";
-          format-full-underline = "${battery_colour}";
-          format-low-underline = "${battery_colour}";
+            label-visible = "\${self.label-focused}";
+            label-visible-foreground = "${ws_unfocused}";
+            label-visible-padding = "\${self.label-focused-padding}";
+            label-visible-font = "\${self.label-unfocused-font}";
 
-          label-charging = "%percentage%%";
-          label-discharging = "%percentage%%";
-          label-full = "👌";
+            label-urgent = "\${self.label-focused}";
+            label-urgent-foreground = "${ws_urgent}";
+            label-urgent-padding = "\${self.label-focused-padding}";
+            label-urgent-font = "\${self.label-focused-font}";
+          };
+          "module/pulseaudio" = {
+            type = "internal/pulseaudio";
 
-          label-low = "BATTERY LOW";
+            format-volume = "<bar-volume> <label-volume>";
 
-          ramp-capacity-0 = "%{F${battery_colour}}%{F-}";
-          ramp-capacity-1 = "%{F${battery_colour}}%{F-}";
-          ramp-capacity-2 = "%{F${battery_colour}}%{F-}";
-          ramp-capacity-3 = "%{F${battery_colour}}%{F-}";
-          ramp-capacity-4 = "%{F${battery_colour}}%{F-}";
+            label-volume = "%percentage%%";
+            label-volume-foreground = "${foreground}";
 
-          animation-charging-0 = "%{F${battery_colour}}%{F-}";
-          animation-charging-1 = "%{F${battery_colour}}%{F-}";
-          animation-charging-2 = "%{F${battery_colour}}%{F-}";
-          animation-charging-3 = "%{F${battery_colour}}%{F-}";
-          animation-charging-4 = "%{F${battery_colour}}%{F-}";
-          animation-charging-framerate = "900";
+            label-muted = " muted";
+            label-muted-foreground = "${muted_colour}";
 
-          animation-discharging-0 = "%{F${battery_colour}}%{F-}";
-          animation-discharging-1 = "%{F${battery_colour}}%{F-}";
-          animation-discharging-2 = "%{F${battery_colour}}%{F-}";
-          animation-discharging-3 = "%{F${battery_colour}}%{F-}";
-          animation-discharging-4 = "%{F${battery_colour}}%{F-}";
-          animation-discharging-framerate = "500";
+            bar-volume-width = "10";
+            bar-volume-foreground-0 = "${quiet_colour}";
+            bar-volume-foreground-1 = "${quiet_colour}";
+            bar-volume-foreground-2 = "${quiet_colour}";
+            bar-volume-foreground-3 = "${quiet_colour}";
+            bar-volume-foreground-4 = "${quiet_colour}";
+            bar-volume-foreground-5 = "${loud_colour}";
+            bar-volume-foreground-6 = "${booming_colour}";
+            bar-volume-gradient = "false";
+            bar-volume-indicator = "";
+            bar-volume-fill = "─";
+            bar-volume-empty = "─";
+            bar-volume-empty-foreground = "${volume_bar}";
+          };
+          "module/battery" = {
+            type = "internal/battery";
+            # full-at = "99";
+            battery = "${battery}";
+            adapter = "${adapter}";
 
-          animation-low-0 = "%{F${battery_warning}}%{F-}";
-          animation-low-1 = "%{F${battery_colour}}%{F-}";
-          animation-low-framerate = "200";
+            format-charging = "<animation-charging> <label-charging>";
+            format-discharging = "<ramp-capacity> <label-discharging>";
+            format-full = "<ramp-capacity> <label-full>";
+            format-low = "<label-low> <animation-low>";
+
+            format-charging-underline = "${battery_colour}";
+            format-discharging-underline = "${battery_colour}";
+            format-full-underline = "${battery_colour}";
+            format-low-underline = "${battery_colour}";
+
+            label-charging = "%percentage%%";
+            label-discharging = "%percentage%%";
+            label-full = "👌";
+
+            label-low = "BATTERY LOW";
+
+            ramp-capacity-0 = "%{F${battery_colour}}%{F-}";
+            ramp-capacity-1 = "%{F${battery_colour}}%{F-}";
+            ramp-capacity-2 = "%{F${battery_colour}}%{F-}";
+            ramp-capacity-3 = "%{F${battery_colour}}%{F-}";
+            ramp-capacity-4 = "%{F${battery_colour}}%{F-}";
+
+            animation-charging-0 = "%{F${battery_colour}}%{F-}";
+            animation-charging-1 = "%{F${battery_colour}}%{F-}";
+            animation-charging-2 = "%{F${battery_colour}}%{F-}";
+            animation-charging-3 = "%{F${battery_colour}}%{F-}";
+            animation-charging-4 = "%{F${battery_colour}}%{F-}";
+            animation-charging-framerate = "900";
+
+            animation-discharging-0 = "%{F${battery_colour}}%{F-}";
+            animation-discharging-1 = "%{F${battery_colour}}%{F-}";
+            animation-discharging-2 = "%{F${battery_colour}}%{F-}";
+            animation-discharging-3 = "%{F${battery_colour}}%{F-}";
+            animation-discharging-4 = "%{F${battery_colour}}%{F-}";
+            animation-discharging-framerate = "500";
+
+            animation-low-0 = "%{F${battery_warning}}%{F-}";
+            animation-low-1 = "%{F${battery_colour}}%{F-}";
+            animation-low-framerate = "200";
+          };
         };
       };
     };
-  };
 }
-

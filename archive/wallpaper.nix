@@ -1,4 +1,5 @@
-{ pkgs, lib, ... }: {
+{ pkgs, lib, ... }:
+{
   home.activation = {
     wallpaper-setup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       if ! [ -f "$HOME/.background-image" ] 

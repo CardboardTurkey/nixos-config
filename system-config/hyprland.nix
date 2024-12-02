@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment = {
     # Optional, hint electron apps to use wayland
     sessionVariables.NIXOS_OZONE_WL = "1";

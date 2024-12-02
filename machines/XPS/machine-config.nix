@@ -1,11 +1,14 @@
 { lib, pkgs, ... }:
 
 let
-  patchDesktop = pkg: appName: from: to:
-    lib.hiPrio (pkgs.runCommand "$patched-desktop-entry-for-${appName}" { } ''
-      ${pkgs.coreutils}/bin/mkdir -p $out/share/applications
-      ${pkgs.gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
-    '');
+  patchDesktop =
+    pkg: appName: from: to:
+    lib.hiPrio (
+      pkgs.runCommand "$patched-desktop-entry-for-${appName}" { } ''
+        ${pkgs.coreutils}/bin/mkdir -p $out/share/applications
+        ${pkgs.gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
+      ''
+    );
 
   nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
     export __NV_PRIME_RENDER_OFFLOAD=1
@@ -15,11 +18,19 @@ let
     exec "$@"
   '';
 
-in {
+in
+{
 
-  imports = [ ../pc_common.nix ../../system-config/sops.nix ];
+  imports = [
+    ../pc_common.nix
+    ../../system-config/sops.nix
+  ];
 
-  boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
 
   root = "172c2b88-8909-441b-b441-6ea20cd54450";
   hostname = "Kestrel";
@@ -47,19 +58,21 @@ in {
 
       ];
 
-      cursor = { no_hardware_cursors = true; };
+      cursor = {
+        no_hardware_cursors = true;
+      };
     };
-    services.hypridle.settings.listener = [{
-      timeout = 150; # 2.5min.
-      on-timeout =
-        "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
-      on-resume = "brightnessctl -r"; # monitor backlight restore.
-    }
-    # {
-    #   timeout = 300; # 5min
-    #   on-timeout = "systemctl suspend"; # suspend pc
-    # }
-      ];
+    services.hypridle.settings.listener = [
+      {
+        timeout = 150; # 2.5min.
+        on-timeout = "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
+        on-resume = "brightnessctl -r"; # monitor backlight restore.
+      }
+      # {
+      #   timeout = 300; # 5min
+      #   on-timeout = "systemctl suspend"; # suspend pc
+      # }
+    ];
   };
 
   # ------
@@ -121,14 +134,13 @@ in {
     };
     graphics = {
       enable = true;
-      extraPackages = with pkgs;
-        [
-          nvidia-vaapi-driver
-          # intel-media-driver
-          # vaapiIntel
-          # vaapiVdpau
-          # libvdpau-va-gl
-        ];
+      extraPackages = with pkgs; [
+        nvidia-vaapi-driver
+        # intel-media-driver
+        # vaapiIntel
+        # vaapiVdpau
+        # libvdpau-va-gl
+      ];
     };
   };
 

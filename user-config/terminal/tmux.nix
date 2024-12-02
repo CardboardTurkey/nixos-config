@@ -1,4 +1,5 @@
-{ osConfig, ... }: {
+{ osConfig, ... }:
+{
   programs.tmux = {
     enable = true;
     prefix = "C-a";

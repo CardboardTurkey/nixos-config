@@ -1,54 +1,62 @@
-{ pkgs, osConfig, config, ... }:
+{
+  pkgs,
+  osConfig,
+  config,
+  ...
+}:
 let
-  codium-extensions = (with pkgs.vscode-extensions; [
-    jnoortheen.nix-ide
-    tamasfe.even-better-toml
-    (catppuccin.catppuccin-vsc.override {
-      accent = osConfig.accent;
-      customUIColors = {
-        all = {
-          "statusBar.foreground" = "accent";
-          "statusBar.noFolderForeground" = "accent";
+  codium-extensions =
+    (with pkgs.vscode-extensions; [
+      jnoortheen.nix-ide
+      tamasfe.even-better-toml
+      (catppuccin.catppuccin-vsc.override {
+        accent = osConfig.accent;
+        customUIColors = {
+          all = {
+            "statusBar.foreground" = "accent";
+            "statusBar.noFolderForeground" = "accent";
+          };
         };
-      };
-    })
-    catppuccin.catppuccin-vsc-icons
-    rust-lang.rust-analyzer
-    serayuzgur.crates
-    streetsidesoftware.code-spell-checker
-    vadimcn.vscode-lldb
-    mkhl.direnv
-    xaver.clang-format
-    zhwu95.riscv
-    davidanson.vscode-markdownlint
-    thenuprojectcontributors.vscode-nushell-lang
-    asciidoctor.asciidoctor-vscode
-    waderyan.gitblame
-    mattn.lisp
-    gitlab.gitlab-workflow
-    redhat.vscode-yaml
-    stkb.rewrap
-    nvarner.typst-lsp
-    tomoki1207.pdf
-    timonwong.shellcheck
-    usernamehw.errorlens
+      })
+      catppuccin.catppuccin-vsc-icons
+      rust-lang.rust-analyzer
+      serayuzgur.crates
+      streetsidesoftware.code-spell-checker
+      vadimcn.vscode-lldb
+      mkhl.direnv
+      xaver.clang-format
+      zhwu95.riscv
+      davidanson.vscode-markdownlint
+      thenuprojectcontributors.vscode-nushell-lang
+      asciidoctor.asciidoctor-vscode
+      waderyan.gitblame
+      mattn.lisp
+      gitlab.gitlab-workflow
+      redhat.vscode-yaml
+      stkb.rewrap
+      nvarner.typst-lsp
+      tomoki1207.pdf
+      timonwong.shellcheck
+      usernamehw.errorlens
 
-  ]) ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-    {
-      name = "yuck";
-      publisher = "eww-yuck";
-      version = "0.0.3";
-      sha256 = "sha256-DITgLedaO0Ifrttu+ZXkiaVA7Ua5RXc4jXQHPYLqrcM=";
-    }
-    {
-      name = "insta";
-      publisher = "mitsuhiko";
-      version = "1.0.7";
-      sha256 = "sha256-2Z7uEenvZ39kcPRE+dvl0G/Wjxm5Pp+RPRn/gRhuM6I=";
-    }
-  ];
+    ])
+    ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "yuck";
+        publisher = "eww-yuck";
+        version = "0.0.3";
+        sha256 = "sha256-DITgLedaO0Ifrttu+ZXkiaVA7Ua5RXc4jXQHPYLqrcM=";
+      }
+      {
+        name = "insta";
+        publisher = "mitsuhiko";
+        version = "1.0.7";
+        sha256 = "sha256-2Z7uEenvZ39kcPRE+dvl0G/Wjxm5Pp+RPRn/gRhuM6I=";
+      }
+    ];
 
-in {
+in
+{
   home.packages = with pkgs; [ clang-tools ];
   programs.vscode = {
     enable = true;
@@ -112,7 +120,9 @@ in {
       # make the window's titlebar use the workbench colors
       window.titleBarStyle = "custom";
       # applicable if you use Go, this is an opt-in flag!
-      gopls = { ui.semanticTokens = true; };
+      gopls = {
+        ui.semanticTokens = true;
+      };
 
       "explorer.confirmDragAndDrop" = false;
       "files.autoSave" = "afterDelay";
@@ -128,7 +138,9 @@ in {
         serverPath = "${pkgs.nixd}/bin/nixd";
         serverSettings = {
           nixd = {
-            formatting = { command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ]; };
+            formatting = {
+              command = [ "${pkgs.nixfmt-rfc-style}/bin/nixfmt" ];
+            };
           };
         };
       };
@@ -138,15 +150,18 @@ in {
           CARGO_TARGET_DIR = "${config.cargo_target_dir}/rust-analyzer";
           RUSTUP_TOOLCHAIN = "stable";
         };
-        check.extraArgs =
-          [ "--target-dir=${config.cargo_target_dir}/rust-analyzer" ];
+        check.extraArgs = [ "--target-dir=${config.cargo_target_dir}/rust-analyzer" ];
       };
       "redhat.telemetry.enabled" = false;
       "window.titleBarStyle" = "custom";
       "explorer.confirmDelete" = false;
       cSpell = {
         language = "en,en-GB";
-        userWords = [ "Kiran" "Ostrolenk" "scrutinee" ];
+        userWords = [
+          "Kiran"
+          "Ostrolenk"
+          "scrutinee"
+        ];
       };
       shellcheck.customArgs = [ "-x" ];
     };

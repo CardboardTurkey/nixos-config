@@ -1,4 +1,5 @@
-{ config, lib, ... }: {
+{ config, lib, ... }:
+{
   options.cargo_target_dir = lib.mkOption {
     default = "${config.xdg.cacheHome}/cargo/target";
     type = lib.types.str;

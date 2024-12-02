@@ -21,5 +21,7 @@ stdenv.mkDerivation rec {
     cp -r colorful_loop $install_path
   '';
 
-  meta = with stdenv.lib; { platfotms = platforms.linux; };
+  meta = with stdenv.lib; {
+    platfotms = platforms.linux;
+  };
 }

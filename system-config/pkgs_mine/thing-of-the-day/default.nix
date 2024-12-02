@@ -1,4 +1,10 @@
-{ pkgs, lib, rustPlatform, fetchFromGitLab, ... }:
+{
+  pkgs,
+  lib,
+  rustPlatform,
+  fetchFromGitLab,
+  ...
+}:
 rustPlatform.buildRustPackage rec {
   pname = "thing-of-the-day";
   name = "thing-of-the-day";
@@ -17,8 +23,7 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "";
 
   meta = with lib; {
-    description =
-      "Display word-of-the-day and news headline at regular intervals";
+    description = "Display word-of-the-day and news headline at regular intervals";
     homepage = "https://gitlab.com/CardboardTurkey/thing-of-the-day";
     license = licenses.unlicense;
     maintainers = [ maintainers.tailhook ];

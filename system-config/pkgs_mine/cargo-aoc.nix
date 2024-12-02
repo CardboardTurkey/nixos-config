@@ -1,4 +1,10 @@
-{ lib, fetchFromGitHub, rustPlatform, pkgs, ... }:
+{
+  lib,
+  fetchFromGitHub,
+  rustPlatform,
+  pkgs,
+  ...
+}:
 
 rustPlatform.buildRustPackage rec {
   pname = "cargo-aoc";
@@ -17,8 +23,7 @@ rustPlatform.buildRustPackage rec {
   cargoHash = "sha256-lUQwwGJLHLI9bfJiLUUE8j1svBAgbvr+8hKB/bRzwNA=";
 
   meta = with lib; {
-    description =
-      "cargo-aoc is a simple CLI tool that aims to be a helper for the Advent of Code";
+    description = "cargo-aoc is a simple CLI tool that aims to be a helper for the Advent of Code";
     homepage = "https://github.com/gobanos/cargo-aoc";
     license = licenses.unlicense; # No license
     maintainers = [ ];

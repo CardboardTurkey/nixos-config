@@ -1,4 +1,5 @@
-{ pkgs, config, ... }: {
+{ pkgs, config, ... }:
+{
 
   imports = [
     ../pc_common.nix
@@ -6,7 +7,11 @@
     ../../system-config/ayden_vpn.nix
   ];
 
-  boot.initrd.availableKernelModules = [ "usbhid" "usb_storage" "sd_mod" ];
+  boot.initrd.availableKernelModules = [
+    "usbhid"
+    "usb_storage"
+    "sd_mod"
+  ];
 
   services.logind.lidSwitch = "suspend-then-hibernate";
   systemd.sleep.extraConfig = "HibernateDelaySec=30m";
@@ -53,7 +58,7 @@
     # Project change
     programs.git = {
       extraConfig.credential.helper = "store";
-      includes = [{ path = config.sops.secrets."gitconfig/url1".path; }];
+      includes = [ { path = config.sops.secrets."gitconfig/url1".path; } ];
     };
     # Project change
     programs.ssh = {
@@ -75,7 +80,10 @@
     };
   };
   # Project change
-  users.users.kiran.extraGroups = [ "dialout" "docker" ];
+  users.users.kiran.extraGroups = [
+    "dialout"
+    "docker"
+  ];
   wallpapers = {
     single = "/home/kiran/Pictures/Wallpapers/ice_breaker.jpg";
     dual = {
@@ -85,7 +93,9 @@
   };
 
   # Project change
-  boot.kernel.sysctl = { "kernel.perf_event_paranoid" = 0; };
+  boot.kernel.sysctl = {
+    "kernel.perf_event_paranoid" = 0;
+  };
 
   # powerManagement.cpuFreqGovernor = "performance";
 
@@ -95,8 +105,7 @@
   environment.systemPackages = [ pkgs.sshfs ];
   # user@host:/remote/path /local/path  fuse.sshfs noauto,x-systemd.automount,_netdev,users,idmap=user,IdentityFile=/home/user/.ssh/id_rsa,allow_other,reconnect 0 0
   fileSystems."/fs" = {
-    device =
-      "kiranostrolenk@fs.office.codethink.co.uk:/home/users/kiranostrolenk/public_html";
+    device = "kiranostrolenk@fs.office.codethink.co.uk:/home/users/kiranostrolenk/public_html";
     fsType = "fuse.sshfs";
     noCheck = true;
     options = [
@@ -116,7 +125,10 @@
   # NVIDIA
   # ------
 
-  allowed_unfree = [ "nvidia-x11" "nvidia-settings" ];
+  allowed_unfree = [
+    "nvidia-x11"
+    "nvidia-settings"
+  ];
 
   home-manager.users.kiran.wayland.windowManager.hyprland.extraConfig = ''
     # Some default env vars.

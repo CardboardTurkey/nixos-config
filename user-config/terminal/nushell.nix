@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.nushell = {
     enable = true;
     extraEnv = ''
@@ -17,7 +18,7 @@
       $env.config = {
         show_banner: false,
       }
-    
+
       use ${pkgs.nu_scripts}/share/nu_scripts/modules/git/git.nu *
       use ${pkgs.nu_scripts}/share/nu_scripts/custom-completions/git/git-completions.nu *
     '';

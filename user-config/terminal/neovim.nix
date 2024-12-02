@@ -1,7 +1,11 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   programs.neovim = {
     enable = true;
-    plugins = with pkgs.vimPlugins; [ vim-nix robotframework-vim ];
+    plugins = with pkgs.vimPlugins; [
+      vim-nix
+      robotframework-vim
+    ];
     vimAlias = true;
 
     extraConfig = ''

@@ -1,15 +1,16 @@
-{ pkgs, lib, osConfig, ... }: {
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
+{
 
   xsession.windowManager.i3 = {
     config = {
       keybindings = lib.mkOptionDefault {
-        "${osConfig.i3_mod}+Control+Return" =
-          "exec ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}";
-        "${osConfig.i3_mod}+Return" = "workspace 1; exec pgrep ${
-            pkgs.${osConfig.emulator}
-          }/bin/${osConfig.emulator} || ${
-            pkgs.${osConfig.emulator}
-          }/bin/${osConfig.emulator} -e tmuxup";
+        "${osConfig.i3_mod}+Control+Return" = "exec ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}";
+        "${osConfig.i3_mod}+Return" = "workspace 1; exec pgrep ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} || ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} -e tmuxup";
       };
     };
   };

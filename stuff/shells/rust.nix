@@ -1,9 +1,11 @@
 let
-  oxalica_overlay = import (builtins.fetchTarball
-    "https://github.com/oxalica/rust-overlay/archive/master.tar.gz");
+  oxalica_overlay = import (
+    builtins.fetchTarball "https://github.com/oxalica/rust-overlay/archive/master.tar.gz"
+  );
   nixpkgs = import <nixpkgs> { overlays = [ oxalica_overlay ]; };
 
-in with nixpkgs;
+in
+with nixpkgs;
 
 stdenv.mkDerivation {
   name = "rust-env";
@@ -19,4 +21,3 @@ stdenv.mkDerivation {
   RUST_BACKTRACE = 1;
 
 }
-

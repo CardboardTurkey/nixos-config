@@ -1,4 +1,5 @@
-{ catppuccin-hm, osConfig, ... }: {
+{ catppuccin-hm, osConfig, ... }:
+{
   imports = [ catppuccin-hm ];
   catppuccin = {
     enable = true;

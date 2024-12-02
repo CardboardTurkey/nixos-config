@@ -1,9 +1,18 @@
-{ pkgs, config, lib, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
+{
   networking = {
     hostName = "${config.hostname}"; # Define your hostname.
     networkmanager = {
       enable = true;
-      plugins = [ pkgs.networkmanager-openconnect pkgs.networkmanager-openvpn ];
+      plugins = [
+        pkgs.networkmanager-openconnect
+        pkgs.networkmanager-openvpn
+      ];
       dns = "systemd-resolved";
     };
   };

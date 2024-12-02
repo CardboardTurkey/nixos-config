@@ -1,10 +1,16 @@
 with import <nixpkgs> { };
 
-let pythonPackages = python3Packages;
-in pkgs.mkShell rec {
+let
+  pythonPackages = python3Packages;
+in
+pkgs.mkShell rec {
   name = "pdgid";
   venvDir = "./.venv";
-  buildInputs = [ pythonPackages.python pythonPackages.venvShellHook ripgrep ];
+  buildInputs = [
+    pythonPackages.python
+    pythonPackages.venvShellHook
+    ripgrep
+  ];
 
   postShellHook = ''
     if cat dev-requirements.txt \

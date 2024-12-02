@@ -16,7 +16,8 @@ let
     };
   '';
 
-in {
+in
+{
   environment.systemPackages = with pkgs; [ xorg.xkbcomp ];
   services.xserver = {
     layout = "ko";

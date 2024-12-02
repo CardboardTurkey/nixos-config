@@ -1,4 +1,5 @@
-{ osConfig, ... }: {
+{ osConfig, ... }:
+{
   home.file.".sops.yaml".text = ''
     creation_rules:
       - path_regex: .*\.yaml$

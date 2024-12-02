@@ -1,10 +1,13 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   home.shellAliases = {
     "pj" = "${pkgs.bat-extras.prettybat}/bin/prettybat -l json";
     "todo" = "vim ~/.cache/todo.md";
   };
   programs.zsh = {
-    shellAliases = { "nix-shell" = "nix-shell --command zsh"; };
+    shellAliases = {
+      "nix-shell" = "nix-shell --command zsh";
+    };
     enable = true;
     # dotDir = ".config/zsh";
     autosuggestion.enable = true;

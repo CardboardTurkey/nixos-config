@@ -1,8 +1,10 @@
 { pkgs, config, ... }:
 
-let password = "passwords/${config.hostname}";
+let
+  password = "passwords/${config.hostname}";
 
-in {
+in
+{
   imports = [ ./../system-config/sops.nix ];
   sops.secrets."${password}".neededForUsers = true;
   # Define a user account.
@@ -15,7 +17,10 @@ in {
         home = "/home/kiran";
         description = "Kiran Ostrolenk";
         shell = pkgs.zsh;
-        extraGroups = [ "kiran" "wheel" ]; # Enable ‘sudo’ for the user.
+        extraGroups = [
+          "kiran"
+          "wheel"
+        ]; # Enable ‘sudo’ for the user.
         # nix shell nixpkgs\#mkpasswd -c mkpasswd
         hashedPasswordFile = config.sops.secrets."${password}".path;
       };
@@ -24,7 +29,10 @@ in {
         home = "/home/choochoo";
         description = "Anon";
         shell = pkgs.zsh;
-        extraGroups = [ "choochoo" "wheel" ]; # Enable ‘sudo’ for the user.
+        extraGroups = [
+          "choochoo"
+          "wheel"
+        ]; # Enable ‘sudo’ for the user.
         # nix shell nixpkgs\#mkpasswd -c mkpasswd
         hashedPasswordFile = config.sops.secrets."${password}".path;
       };
@@ -32,5 +40,8 @@ in {
   };
   users.groups.kiran = { };
   users.groups.choochoo = { };
-  environment.shells = with pkgs; [ bash zsh ];
+  environment.shells = with pkgs; [
+    bash
+    zsh
+  ];
 }
