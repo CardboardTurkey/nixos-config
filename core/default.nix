@@ -80,6 +80,7 @@ with types; {
         "graphical/hyprlock.nix"
         "graphical/codium.nix"
         "graphical/btop.nix"
+        "graphical/firefox.nix"
 
         "terminal/git.nix"
         "terminal/eza.nix"

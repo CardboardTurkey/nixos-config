@@ -6,7 +6,6 @@
     [ (self: super: { local = import ./pkgs_mine { pkgs = super; }; }) ];
 
   environment.systemPackages = with pkgs; [
-    firefox
     wdisplays
     thunderbird
     quasselClient
