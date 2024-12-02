@@ -289,7 +289,7 @@ in
         "workspace 3, firefox-default"
         "workspace 4, thunderbird"
         "workspace 5, quassel"
-        "workspace 5, Signal"
+        "workspace 5, signal"
         "workspace 6, steam"
         "workspace 7, Gimp"
       ];
