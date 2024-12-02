@@ -30,7 +30,7 @@
     dasel
     sound-juicer
     gitui
-    nixfmt-classic
+    nixfmt-rfc-style
     gcolor3
     borgbackup
     nautilus
