@@ -283,6 +283,7 @@ in
 
         # Assign program to workspace
         # windowrule=workspace 1 silent,kitty
+        "workspace 2, codium"
         "workspace 2, codium-url-handler"
         "workspace 3, firefox"
         "workspace 3, firefox-default"
