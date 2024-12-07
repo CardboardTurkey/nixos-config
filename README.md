@@ -14,8 +14,8 @@ e.g. to install for XPS machine:
 * Set root uuid in core using `ls -l /dev/disk/by-uuid`
 * update sops config and then `sops updatekeys user-config/files/secrets.yaml`
 * download public key from keyserver
-* Enable yubikey with `pamu2cfg > ~/.config/Yubico/u2f_keys`
-* Add second with `pamu2cfg -n >> ~/.config/Yubico/u2f_keys`
+* Enable yubikey with `pamu2fcfg > ~/.config/Yubico/u2f_keys`
+* Add second with `pamu2fcfg -n >> ~/.config/Yubico/u2f_keys`
 * Then scrap your password: `sudo passwd -d kiran`
 
 ## Partitioning
