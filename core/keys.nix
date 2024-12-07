@@ -24,7 +24,7 @@ with lib;
       description = "Kestrel ssh host key converted to age";
     };
     harrier_host_age = mkOption {
-      default = "age1xy7x3pkfpqzkjjqn2gqes3623r7y2ftmgt90x3yr9c82jceydegqt7923l";
+      default = "age18ylcu7jgfpczs58g3k7hr0sjhvhrqmjfzwr0pntxczk5lpgpgy7q3tlxrn";
       type = with types; uniq str;
       description = "Harrier ssh host key converted to age";
     };

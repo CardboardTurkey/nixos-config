@@ -118,6 +118,23 @@
             ];
           specialArgs = shared_args;
         };
+        Harrier = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules =
+            shared_modules
+            ++ systemModPaths (system_modules ++ [ "battery.nix" ])
+            ++ [
+              ./machines/Harrier/machine-config.nix
+              ./machines/Harrier/hardware-configuration.nix
+              nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
+              {
+                home-manager.extraSpecialArgs = {
+                  catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
+                };
+              }
+            ];
+          specialArgs = shared_args;
+        };
         Goshawk = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules =
