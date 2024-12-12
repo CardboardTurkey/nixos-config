@@ -33,6 +33,7 @@ let
       mattn.lisp
       gitlab.gitlab-workflow
       redhat.vscode-yaml
+      redhat.vscode-xml
       stkb.rewrap
       nvarner.typst-lsp
       tomoki1207.pdf
