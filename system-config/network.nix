@@ -5,6 +5,9 @@
   ...
 }:
 {
+  # It's handy to modify this everynow and then
+  environment.etc.hosts.mode = "0644";
+
   networking = {
     hostName = "${config.hostname}"; # Define your hostname.
     networkmanager = {
