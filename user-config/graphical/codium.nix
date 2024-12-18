@@ -162,6 +162,15 @@ in
           "Kiran"
           "Ostrolenk"
           "scrutinee"
+          "nixpkgs"
+          "nixos"
+          "devenv"
+          "cachix"
+          "pkgs"
+          "sbuk"
+          "serde"
+          "ratatui"
+          "crossterm"
         ];
       };
       shellcheck.customArgs = [ "-x" ];
