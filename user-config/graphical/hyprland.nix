@@ -213,8 +213,8 @@ in
         rounding = 8;
         blur = {
           enabled = true;
-          size = 5;
-          passes = 3;
+          size = 12;
+          passes = 5;
           new_optimizations = true;
           xray = false;
         };
