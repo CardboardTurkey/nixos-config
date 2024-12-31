@@ -321,11 +321,6 @@ in
         "${pkgs.eww}/bin/eww daemon && ${pkgs.eww}/bin/eww open bar"
       ];
 
-      exec = [
-        # wallpaper
-        "${pkgs.wbg}/bin/wbg ${osConfig.wallpapers.single}&"
-      ];
-
       # change monitor to hires, the last argument is the scale factor
       monitor = [
         ",highres,auto,1"

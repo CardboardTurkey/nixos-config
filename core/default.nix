@@ -81,6 +81,7 @@ with types;
         "graphical/rofi.nix"
         "graphical/eww"
         "graphical/hyprlock.nix"
+        "graphical/hyprpaper.nix"
         "graphical/codium.nix"
         "graphical/btop.nix"
         "graphical/firefox.nix"
