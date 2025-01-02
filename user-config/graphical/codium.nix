@@ -113,7 +113,7 @@ in
       "workbench.colorTheme" = "Catppuccin Frappé";
       "workbench.iconTheme" = "catppuccin-frappe";
 
-      # Catppuccin reccomendations
+      # Catppuccin recommendations
       # we try to make semantic highlighting look good
       editor.semanticHighlighting.enabled = true;
       # prevent VSCode from modifying the terminal colors
@@ -171,6 +171,19 @@ in
           "serde"
           "ratatui"
           "crossterm"
+          "joypixels"
+          "rustup"
+          "clippy"
+          "shellcheck"
+          "nixfmt"
+          "nixd"
+          "catppuccin"
+          "insta"
+          "riscv"
+          "direnv"
+          "dejavu"
+          "fira"
+          "hasklig"
         ];
       };
       shellcheck.customArgs = [ "-x" ];
