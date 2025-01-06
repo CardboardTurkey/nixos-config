@@ -184,6 +184,7 @@ in
           "dejavu"
           "fira"
           "hasklig"
+          "smoothbrained"
         ];
       };
       shellcheck.customArgs = [ "-x" ];
