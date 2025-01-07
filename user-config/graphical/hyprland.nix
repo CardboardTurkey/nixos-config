@@ -80,7 +80,7 @@ let
     };
   '';
 
-  launchTerminal = pkgs.writeScript "launchterminal" ''
+  launchTerminal = pkgs.writeScript "launch_terminal" ''
     hyprctl dispatch workspace 1 &&\
     test -n "$(\
       hyprctl clients -j\
@@ -94,6 +94,7 @@ in
     systemd.enable = true;
     xwayland.enable = true;
     settings = {
+      # source = [ "${hyde}/Configs/.config/hypr/animations/animations-me-1.conf" ];
       bind = [
         "SUPER, Return, exec, ${launchTerminal}"
         "MOD3, Return, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}&"
@@ -226,24 +227,34 @@ in
           render_power = 3;
         };
       };
+      # https://github.com/prasanthrangan/hyprdots/blob/47572bbcac007d1d51e9251debb5dad5df4bbbb9/Configs/.config/hypr/animations/animations-diablo-1.conf
       animations = {
         enabled = true;
-
-        # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
         bezier = [
-          "overshot, 0.05, 0.9, 0.1, 1.05"
-          "smoothOut, 0.36, 0, 0.66, -0.56"
-          "smoothIn, 0.25, 1, 0.5, 1"
+          "default, 0.05, 0.9, 0.1, 1.05"
+          "wind, 0.05, 0.9, 0.1, 1.05"
+          "overshot, 0.13, 0.99, 0.29, 1.08"
+          "liner, 1, 1, 1, 1"
+          "bounce, 0.4, 0.9, 0.6, 1.0"
+          "snappyReturn, 0.4, 0.9, 0.6, 1.0"
+          "slideInFromRight, 0.5, 0.0, 0.5, 1.0"
         ];
-
         animation = [
-          "windows, 1, 5, overshot, slide"
-          "windowsOut, 1, 4, smoothOut, slide"
-          "windowsMove, 1, 4, default"
-          "border, 1, 10, default"
-          "fade, 1, 10, smoothIn"
-          "fadeDim, 1, 10, smoothIn"
-          "workspaces, 1, 6, default"
+          "windows, 1, 5,  snappyReturn, slidevert"
+          "windowsIn, 1, 5, snappyReturn, slidevert right"
+          "windowsOut, 1, 5, snappyReturn, slide"
+          "windowsMove, 1, 6, bounce, slide"
+          "layersOut, 1, 5, bounce, slidevert right"
+          "fadeIn, 1, 10, default"
+          "fadeOut, 1, 10, default"
+          "fadeSwitch, 1, 10, default"
+          "fadeShadow, 1, 10, default"
+          "fadeDim, 1, 10, default"
+          "fadeLayers, 1, 10, default"
+          "workspaces, 1, 7, overshot, slide"
+          "border, 1, 1, liner"
+          "layers, 1, 4, bounce, slidevert right"
+          "borderangle, 1, 30, liner, loop"
         ];
       };
       dwindle = {
@@ -328,7 +339,6 @@ in
         "FALLBACK,1920x1080@60,auto,1"
       ];
 
-      # unscale XWayland
       xwayland = {
         force_zero_scaling = true;
       };
