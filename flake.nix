@@ -3,13 +3,20 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-24.11";
+    home-manager-stable = {
+      url = "github:nix-community/home-manager/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    home-manager = {
-      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     apple-silicon = {
@@ -23,19 +30,21 @@
     {
       self,
       nixpkgs,
+      home-manager,
+      nixpkgs-stable,
+      home-manager-stable,
       nixos-hardware,
       nix-index-database,
-      home-manager,
       apple-silicon,
       catppuccin,
       catppuccin-vsc,
     }:
     let
-      shared_modules = [
+      shared_modules = hm: [
         ./configuration.nix
-        home-manager.nixosModules.home-manager
         nix-index-database.nixosModules.nix-index
         catppuccin.nixosModules.catppuccin
+        hm.nixosModules.home-manager
         { nixpkgs.overlays = [ catppuccin-vsc.overlays.default ]; }
       ];
       systemModPaths = builtins.map (moduleName: "${self.outPath}/system-config/${moduleName}");
@@ -77,10 +86,10 @@
     in
     {
       nixosConfigurations = {
-        mini = nixpkgs.lib.nixosSystem {
+        mini = nixpkgs-stable.lib.nixosSystem {
           system = "aarch64-linux";
           modules =
-            shared_modules
+            shared_modules home-manager-stable
             ++ systemModPaths (
               system_modules
               ++ [
@@ -104,7 +113,7 @@
         XPS = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules =
-            shared_modules
+            shared_modules home-manager
             ++ systemModPaths (system_modules ++ [ "battery.nix" ])
             ++ [
               ./machines/XPS/machine-config.nix
@@ -121,7 +130,7 @@
         Harrier = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules =
-            shared_modules
+            shared_modules home-manager
             ++ systemModPaths (system_modules ++ [ "battery.nix" ])
             ++ [
               ./machines/Harrier/machine-config.nix
@@ -138,7 +147,7 @@
         Goshawk = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules =
-            shared_modules
+            shared_modules home-manager
             ++ systemModPaths [
               "at.nix"
               "greetd.nix"
