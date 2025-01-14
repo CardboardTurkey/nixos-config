@@ -36,7 +36,7 @@ with types;
     };
     wallpapers = mkOption {
       default = {
-        single = builtins.fetchurl "https://images.pexels.com/photos/27168244/pexels-photo-27168244.jpeg";
+        single = builtins.fetchurl "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/refs/heads/main/landscapes/Rainnight.jpg";
       };
       type = attrs;
       description = "Paths to wallpapers";
