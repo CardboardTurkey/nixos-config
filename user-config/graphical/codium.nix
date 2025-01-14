@@ -1,10 +1,20 @@
 {
   pkgs,
+  lib,
   osConfig,
   config,
   ...
 }:
 let
+  patchDesktop =
+    pkg: appName: from: to:
+    lib.hiPrio (
+      pkgs.runCommand "$patched-desktop-entry-for-${appName}" { } ''
+        ${pkgs.coreutils}/bin/mkdir -p $out/share/applications
+        ${pkgs.gnused}/bin/sed 's#${from}#${to}#g' < ${pkg}/share/applications/${appName}.desktop > $out/share/applications/${appName}.desktop
+      ''
+    );
+
   codium-extensions =
     (with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
@@ -58,7 +68,10 @@ let
 
 in
 {
-  home.packages = with pkgs; [ clang-tools ];
+  home.packages = with pkgs; [
+    clang-tools
+    (patchDesktop vscodium "codium" "^Name=VSCodium" "Name=Codium")
+  ];
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
