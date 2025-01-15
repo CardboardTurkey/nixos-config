@@ -38,6 +38,7 @@
   programs.kitty = {
     enable = true;
     settings = {
+      cursor_trail = 1;
       font_family = "JetBrainsMono Nerd Font";
       font_size = builtins.toString osConfig.font_size_small;
       window_padding_width = 10;
