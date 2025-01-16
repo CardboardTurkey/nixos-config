@@ -72,6 +72,11 @@ with types;
       type = str;
       description = "Which console emulator to use";
     };
+    file_manager = mkOption {
+      default = "pcmanfm";
+      type = str;
+      description = "Which file manager to use";
+    };
     userModules = mkOption {
       default = [
         "graphical/gtk.nix"
@@ -108,6 +113,7 @@ with types;
         "other/sops_config.nix"
         "other/batsignal.nix"
         "other/catppuccin.nix"
+        "other/mime_apps.nix"
       ];
       type = listOf str;
       description = "Home manager modules";

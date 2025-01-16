@@ -1,5 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
-  environment.systemPackages = with pkgs; [ pcmanfm ];
+  environment.systemPackages = [ pkgs."${config.file_manager}" ];
   services.gvfs.enable = true;
 }
