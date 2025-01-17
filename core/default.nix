@@ -1,4 +1,9 @@
-{ lib, config, ... }:
+{
+  pkgs,
+  lib,
+  config,
+  ...
+}:
 
 with lib;
 with types;
@@ -36,7 +41,18 @@ with types;
     };
     wallpapers = mkOption {
       default = {
-        single = builtins.fetchurl "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/refs/heads/main/landscapes/Rainnight.jpg";
+        single = builtins.toString (
+          pkgs.fetchurl {
+            url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/refs/heads/main/landscapes/Rainnight.jpg";
+            hash = "sha256-rv5A1MY2NMg3whMXD3eHcL0AnUnosTuRPUbLxEOqV4I=";
+          }
+        );
+        lock = builtins.toString (
+          pkgs.fetchurl {
+            url = "https://unsplash.com/photos/jeClWqN2BUU/download";
+            hash = "sha256-STS3ScNqtIiJ0VPm1uYDp8xJsFo3cf4iqDKrh6HhUeU=";
+          }
+        );
       };
       type = attrs;
       description = "Paths to wallpapers";

@@ -1,4 +1,8 @@
-{ config, userModPaths, ... }:
+{
+  config,
+  userModPaths,
+  ...
+}:
 {
   # For zsh compeletion (apparently)
   environment.pathsToLink = [ "/share/zsh" ];

@@ -44,9 +44,8 @@ in
 
       background = {
         monitor = "";
-        path = osConfig.wallpapers.single;
-        blur_passes = 3; # 0 disables blurring
-        blur_size = 3;
+        path = osConfig.wallpapers.lock;
+        blur_passes = 0; # 0 disables blurring
       };
 
       input-field = {
@@ -115,24 +114,6 @@ in
         #   shadow_size = osConfig.monitor_scale * 10;
         # }
       ];
-
-      image = {
-        monitor = "";
-        path = osConfig.wallpapers.single;
-        size = osConfig.monitor_scale * 280; # lesser side if not 1:1 ratio
-        rounding = -1; # negative values mean circle
-        border_size = osConfig.monitor_scale * 4;
-        border_color = "rgb(${osConfig.nord6})";
-        rotate = 0; # degrees, counter-clockwise
-        reload_time = -1; # seconds between reloading, 0 to reload with SIGUSR2
-        #    reload_cmd = ; # command to get new path. if empty, old path will be used. don't run "follow" commands like tail -F
-        position = scaleArray [
-          0
-          200
-        ];
-        halign = "center";
-        valign = "center";
-      };
     };
   };
 }
