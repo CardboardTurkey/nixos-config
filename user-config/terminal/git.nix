@@ -59,6 +59,7 @@
         navigate = true;
         conflictstyle = "diff3";
         colorMoved = "default";
+        side-by-side = true;
         hyperlinks = true;
       };
     };
