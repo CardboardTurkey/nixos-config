@@ -131,7 +131,13 @@
           system = "x86_64-linux";
           modules =
             shared_modules home-manager
-            ++ systemModPaths (system_modules ++ [ "battery.nix" ])
+            ++ systemModPaths (
+              system_modules
+              ++ [
+                "battery.nix"
+                "influxdb.nix"
+              ]
+            )
             ++ [
               ./machines/Harrier/machine-config.nix
               ./machines/Harrier/hardware-configuration.nix
