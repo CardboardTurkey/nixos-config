@@ -5,8 +5,8 @@
     controlPersist = "2h";
     forwardAgent = true;
     matchBlocks = {
-      "www1" = {
-        hostname = "5.78.76.134";
+      "mgmt" = {
+        hostname = "www1.mgmt.smoothbrained.co.uk";
         user = "kostrolenk";
       };
       "rpi" = {
