@@ -252,7 +252,7 @@ in
           "fadeDim, 1, 10, default"
           "fadeLayers, 1, 10, default"
           "workspaces, 1, 7, overshot, slide"
-          "border, 1, 1, liner"
+          "border, 1, 50, liner"
           "layers, 1, 4, bounce, slidevert right"
           "borderangle, 1, 30, liner, loop"
         ];
