@@ -43,8 +43,8 @@ with types;
       default = {
         single = builtins.toString (
           pkgs.fetchurl {
-            url = "https://raw.githubusercontent.com/zhichaoh/catppuccin-wallpapers/refs/heads/main/landscapes/Rainnight.jpg";
-            hash = "sha256-rv5A1MY2NMg3whMXD3eHcL0AnUnosTuRPUbLxEOqV4I=";
+            url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/master/crane.png";
+            hash = "sha256-h3C531cWmp5w262ReqjHzqZwjOVEpS8UtSOPNApyGfs=";
           }
         );
         lock = builtins.toString (
