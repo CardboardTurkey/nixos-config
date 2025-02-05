@@ -132,7 +132,7 @@
               system_modules
               ++ [
                 "battery.nix"
-                "influxdb.nix"
+                "data.nix"
               ]
             )
             ++ [
