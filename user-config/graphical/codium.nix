@@ -45,7 +45,7 @@ let
       redhat.vscode-yaml
       redhat.vscode-xml
       stkb.rewrap
-      nvarner.typst-lsp
+      # nvarner.typst-lsp got removed
       tomoki1207.pdf
       timonwong.shellcheck
       usernamehw.errorlens
