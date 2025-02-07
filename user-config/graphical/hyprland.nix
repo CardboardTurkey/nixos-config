@@ -353,6 +353,7 @@ in
       layerrule = [
         "blur,notifications"
         "ignorezero,notifications"
+        "noanim,selection"
       ];
 
     };
