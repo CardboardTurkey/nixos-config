@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     git
+    glab
     wget
     pass
     wl-clipboard
