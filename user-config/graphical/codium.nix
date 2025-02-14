@@ -53,6 +53,12 @@ let
     ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
+        name = "rustowl-vscode";
+        publisher = "cordx56";
+        version = "0.1.1";
+        sha256 = "sha256-wpXaX8B7lmrnmweMcaoOZHdtzc35sJnyYxiM8xcCMdQ=";
+      }
+      {
         name = "yuck";
         publisher = "eww-yuck";
         version = "0.0.3";
@@ -71,12 +77,37 @@ let
         sha256 = "sha256-2Z7uEenvZ39kcPRE+dvl0G/Wjxm5Pp+RPRn/gRhuM6I=";
       }
     ];
+  rustowl = pkgs.rustPlatform.buildRustPackage rec {
+    pname = "rustowl";
+    version = "0.1.1";
 
+    src = "${
+      pkgs.fetchFromGitHub {
+        owner = "cordx56";
+        repo = pname;
+        rev = "v${version}";
+        hash = "sha256-Cw8IFPU7mdufzKKaPi9nevgBHf3yKGIbPVwJF9lOFw0=";
+      }
+    }/rustowl";
+
+    nativeBuildInputs = [ pkgs.pkg-config ];
+    buildInputs = [ pkgs.openssl ];
+
+    cargoHash = "sha256-YDQW7TykPkg4nOYR9+SqTHoC42juvEMqURYc48dgSYc=";
+
+    meta = with lib; {
+      description = "rustowl ";
+      homepage = "https://github.com/cordx56/rustowl";
+      license = licenses.mpl20;
+      maintainers = [ ];
+    };
+  };
 in
 {
   home.packages = with pkgs; [
     clang-tools
     (patchDesktop vscodium "codium" "^Name=VSCodium" "Name=Codium")
+    rustowl
   ];
   programs.vscode = {
     enable = true;
