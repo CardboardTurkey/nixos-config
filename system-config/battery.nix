@@ -2,7 +2,8 @@
   services.logind = {
     # lidSwitchExternalPower = "ignore";
     lidSwitchDocked = "ignore";
-    lidSwitch = "suspend-then-hibernate";
+    # lidSwitch = "suspend-then-hibernate";
+    lidSwitch = "suspend";
   };
   systemd.sleep.extraConfig = "HibernateDelaySec=24h";
   # Battery threshold
