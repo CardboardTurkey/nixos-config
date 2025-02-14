@@ -10,7 +10,9 @@
         "hyprland",
         "inet",
         "keymap",
+        "langserver",
         "layerrule",
+        "markdownlint",
         "setxkbmap",
         "slidevert",
         "xwayland"
