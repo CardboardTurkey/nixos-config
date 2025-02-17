@@ -1,5 +1,6 @@
 { pkgs, lib, ... }:
 {
+  home.sessionVariables.EDITOR = "hx";
   programs.helix = {
     enable = true;
     languages = {
