@@ -7,6 +7,7 @@
         "evdev",
         "highres",
         "hyprctl",
+        "hyprcursor",
         "hyprland",
         "inet",
         "keymap",
