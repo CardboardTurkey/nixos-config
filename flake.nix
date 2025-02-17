@@ -133,6 +133,7 @@
               ++ [
                 "battery.nix"
                 "data.nix"
+                "sbuk.nix"
               ]
             )
             ++ [
