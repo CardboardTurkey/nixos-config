@@ -170,6 +170,9 @@ in
           };
         };
       };
+      yaml.customTags = [
+        "!reference sequence"
+      ];
       rust-analyzer = {
         checkOnSave.command = "clippy";
         server.extraEnv = {
