@@ -30,7 +30,7 @@
     ];
     extraConfig = {
       core = {
-        editor = "vim";
+        editor = "hx";
       };
       pull = {
         rebase = "true";
