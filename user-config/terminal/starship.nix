@@ -11,6 +11,9 @@
         success_symbol = "[](bold green)";
         error_symbol = "[🤌](bold red)";
       };
+      # Should be the default but for some reason an extra right space gets
+      # added.
+      nix_shell.symbol = "❄️ ";
     };
   };
 }
