@@ -10,7 +10,8 @@
     config = {
       keybindings = lib.mkOptionDefault {
         "${osConfig.i3_mod}+Control+Return" = "exec ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}";
-        "${osConfig.i3_mod}+Return" = "workspace 1; exec pgrep ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} || ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} -e tmuxup";
+        "${osConfig.i3_mod}+Return" =
+          "workspace 1; exec pgrep ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} || ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} -e tmuxup";
       };
     };
   };
@@ -39,7 +40,7 @@
     enable = true;
     settings = {
       cursor_trail = 1;
-      font_family = "JetBrainsMono Nerd Font";
+      font_family = "monospace";
       font_size = builtins.toString osConfig.font_size_small;
       window_padding_width = 10;
       enable_audio_bell = false;
