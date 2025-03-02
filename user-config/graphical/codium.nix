@@ -39,7 +39,6 @@ let
       davidanson.vscode-markdownlint
       thenuprojectcontributors.vscode-nushell-lang
       asciidoctor.asciidoctor-vscode
-      waderyan.gitblame
       mattn.lisp
       gitlab.gitlab-workflow
       redhat.vscode-yaml
