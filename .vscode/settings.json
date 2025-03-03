@@ -5,6 +5,7 @@
         "borderangle",
         "dasel",
         "evdev",
+        "fontconfig",
         "highres",
         "hyprctl",
         "hyprcursor",
@@ -14,6 +15,7 @@
         "langserver",
         "layerrule",
         "markdownlint",
+        "nerdfonts",
         "setxkbmap",
         "slidevert",
         "xwayland"
