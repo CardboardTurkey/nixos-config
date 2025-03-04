@@ -49,6 +49,7 @@ let
       timonwong.shellcheck
       usernamehw.errorlens
       ms-dotnettools.vscode-dotnet-runtime # needed by devskim
+      zxh404.vscode-proto3
     ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
