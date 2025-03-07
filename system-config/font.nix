@@ -1,7 +1,5 @@
 { pkgs, config, ... }:
 {
-  allowed_unfree = [ "joypixels" ];
-  nixpkgs.config.joypixels.acceptLicense = true;
   fonts = {
     packages =
       (
@@ -26,8 +24,8 @@
         hasklig
         # dejavu_fonts
         ttf_bitstream_vera
-        joypixels
         font-awesome
+        noto-fonts-color-emoji
         cantarell-fonts
         texlivePackages.alfaslabone # for rust manchester
         fira-sans # for rust manchester
@@ -38,21 +36,19 @@
       defaultFonts = {
         # Just mash them all in and see what happens
         monospace = [
-          "JoyPixels"
           "Font Awesome 6 Free,Font Awesome 6 Free Regular"
           "Font Awesome 6 Free,Font Awesome 6 Free Solid"
           "Font Awesome 6 Brands,Font Awesome 6 Brands Regular"
           "JetBrainsMono Nerd Font"
         ];
         sansSerif = [
-          "JoyPixels"
           "Font Awesome 6 Free,Font Awesome 6 Free Regular"
           "Font Awesome 6 Free,Font Awesome 6 Free Solid"
           "Font Awesome 6 Brands,Font Awesome 6 Brands Regular"
           "Bitstream Vera Sans"
         ];
         emoji = [
-          "JoyPixels"
+          "Noto Color Emoji"
         ];
       };
     };
