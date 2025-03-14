@@ -13,6 +13,8 @@
 
   # Also need hyprland from system-config
 
+  allowed_unfree = [ "vscode-extension-github-copilot" ];
+
   home-manager = {
     users = {
       kiran = {
