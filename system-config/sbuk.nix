@@ -8,12 +8,14 @@ let
         key = "sbuk/admin_key";
         address = "172.16.1.2/32";
         peer = "3TKJwAaLM7Q32cTEMT4Mb91sDGnmnq5wjphgOxf9+kY=";
+        endpoint = "9401";
       }
     else if (config.hostname == "Harrier") then
       {
         key = "sbuk/user_key";
         address = "172.16.3.2/32";
         peer = "Ekq80c8P4qky3DhepP5dFFU/Dxp1p2knaVUuC9xyUCs=";
+        endpoint = "5498";
       }
     else
       "";
@@ -28,7 +30,7 @@ in
     # dns = [ "172.16.1.254" ];
     peers = [
       {
-        endpoint = "128.140.103.62:5498";
+        endpoint = "128.140.103.62:${wg.endpoint}";
         publicKey = "${wg.peer}";
         allowedIPs = [
           "172.16.0.0/16"
