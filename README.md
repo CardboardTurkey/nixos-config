@@ -80,6 +80,7 @@ Can use sean's image because it already has a swap space applied. Remember to up
 * Nix config
   * Machines
 * Drop custom rofi themes
+* zerossl rust lib
 
 ## Links
 
