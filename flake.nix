@@ -90,6 +90,7 @@
             ++ systemModPaths (
               system_modules
               ++ [
+                "atuin.nix"
                 "ayden_vpn.nix"
                 "sbuk.nix"
                 "jellyfin.nix"

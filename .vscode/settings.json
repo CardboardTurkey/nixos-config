@@ -1,11 +1,13 @@
 {
     "cSpell.words": [
+        "atuin",
         "bemoji",
         "bksp",
         "borderangle",
         "dasel",
         "evdev",
         "fontconfig",
+        "greetd",
         "highres",
         "hyprctl",
         "hyprcursor",
@@ -18,6 +20,9 @@
         "nerdfonts",
         "setxkbmap",
         "slidevert",
-        "xwayland"
+        "tailscale",
+        "thinkpad",
+        "xwayland",
+        "yubikey"
     ]
 }
