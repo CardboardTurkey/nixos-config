@@ -16,6 +16,7 @@ in
       gtk.enable = true;
       x11.enable = true;
     }
+    # Hyprcursor option not present in home-manager release 24.11
     // lib.optionalAttrs (builtins.hasAttr "hyprcursor" options.home.pointerCursor) {
       hyprcursor.enable = true;
     };

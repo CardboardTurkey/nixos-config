@@ -108,6 +108,7 @@ with types;
         "graphical/firefox.nix"
         "graphical/cursor.nix"
 
+        "terminal/atuin.nix"
         "terminal/git.nix"
         "terminal/eza.nix"
         "terminal/starship.nix"
