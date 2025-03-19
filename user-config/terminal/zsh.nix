@@ -2,7 +2,7 @@
 {
   home.shellAliases = {
     "pj" = "${pkgs.bat-extras.prettybat}/bin/prettybat -l json";
-    "todo" = "vim ~/.cache/todo.md";
+    "todo" = "\"$EDITOR\" ~/.cache/todo.md";
     "nfu" = "nix flake update";
   };
   programs.zsh = {
