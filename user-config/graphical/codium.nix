@@ -173,6 +173,7 @@ in
       };
       yaml.customTags = [
         "!reference sequence"
+        "!vault scalar"
       ];
       rust-analyzer = {
         checkOnSave.command = "clippy";
