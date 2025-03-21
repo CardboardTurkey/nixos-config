@@ -22,6 +22,14 @@
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon/releasep2-2024-12-25";
     catppuccin.url = "github:catppuccin/nix";
     catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*.tar.gz";
+    launcher-theme = {
+      url = "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-3/style-1.rasi";
+      flake = false;
+    };
+    rofi-emoji-theme = {
+      url = "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-2/style-2.rasi";
+      flake = false;
+    };
   };
   outputs =
     {
@@ -35,6 +43,8 @@
       apple-silicon,
       catppuccin,
       catppuccin-vsc,
+      launcher-theme,
+      rofi-emoji-theme,
     }:
     let
       shared_modules = hm: [
@@ -77,8 +87,12 @@
         "gnupg.nix"
         "devenv.nix"
       ];
-      shared_args = {
+      sharedArgs = {
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
+      };
+      hmSharedArgs = {
+        catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
+        inherit launcher-theme rofi-emoji-theme;
       };
     in
     {
@@ -101,12 +115,10 @@
               ./machines/mini/machine-config.nix
               ./machines/mini/hardware-configuration.nix
               {
-                home-manager.extraSpecialArgs = {
-                  catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
-                };
+                home-manager.extraSpecialArgs = hmSharedArgs;
               }
             ];
-          specialArgs = shared_args;
+          specialArgs = sharedArgs;
         };
         XPS = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -118,12 +130,10 @@
               ./machines/XPS/hardware-configuration.nix
               nixos-hardware.nixosModules.dell-xps-15-7590
               {
-                home-manager.extraSpecialArgs = {
-                  catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
-                };
+                home-manager.extraSpecialArgs = hmSharedArgs;
               }
             ];
-          specialArgs = shared_args;
+          specialArgs = sharedArgs;
         };
         Harrier = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -142,12 +152,10 @@
               ./machines/Harrier/hardware-configuration.nix
               nixos-hardware.nixosModules.lenovo-thinkpad-t14s-amd-gen4
               {
-                home-manager.extraSpecialArgs = {
-                  catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
-                };
+                home-manager.extraSpecialArgs = hmSharedArgs;
               }
             ];
-          specialArgs = shared_args;
+          specialArgs = sharedArgs;
         };
         Goshawk = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -178,12 +186,10 @@
               ./machines/Goshawk/machine-config.nix
               ./machines/Goshawk/hardware-configuration.nix
               {
-                home-manager.extraSpecialArgs = {
-                  catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
-                };
+                home-manager.extraSpecialArgs = hmSharedArgs;
               }
             ];
-          specialArgs = shared_args;
+          specialArgs = sharedArgs;
         };
         pi = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
@@ -191,7 +197,7 @@
             ./machines/pi/machine-config.nix
             ./machines/pi/hardware-configuration.nix
           ];
-          specialArgs = shared_args;
+          specialArgs = sharedArgs;
         };
       };
     };

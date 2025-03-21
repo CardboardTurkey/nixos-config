@@ -112,6 +112,18 @@
         "type": "github"
       }
     },
+    "launcher-theme": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-FfJJVigtzdRsheDqP1cnM2WHWWo9LLq6NeTxQ85xJKU=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-3/style-1.rasi"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-3/style-1.rasi"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -228,6 +240,18 @@
         "type": "github"
       }
     },
+    "rofi-emoji-theme": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-vUjV4qg0WpuXULHey5+vgA8D2IWZhFXleH+3PLCt3Mk=",
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-2/style-2.rasi"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-2/style-2.rasi"
+      }
+    },
     "root": {
       "inputs": {
         "apple-silicon": "apple-silicon",
@@ -235,10 +259,12 @@
         "catppuccin-vsc": "catppuccin-vsc",
         "home-manager": "home-manager",
         "home-manager-stable": "home-manager-stable",
+        "launcher-theme": "launcher-theme",
         "nix-index-database": "nix-index-database",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_4",
-        "nixpkgs-stable": "nixpkgs-stable"
+        "nixpkgs-stable": "nixpkgs-stable",
+        "rofi-emoji-theme": "rofi-emoji-theme"
       }
     },
     "rust-overlay": {

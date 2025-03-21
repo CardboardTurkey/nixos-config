@@ -98,7 +98,6 @@ in
       bind = [
         "SUPER, Return, exec, ${launchTerminal}"
         "MOD3, Return, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}&"
-        "MOD3, PERIOD, exec, ${pkgs.bemoji}/bin/bemoji -n"
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         "$mainMod, Q, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}"
