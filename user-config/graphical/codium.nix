@@ -131,7 +131,7 @@ in
     };
     userSettings = {
       "workbench.colorTheme" = "Catppuccin Frappé";
-      "workbench.iconTheme" = "catppuccin-frappe";
+      "workbench.iconTheme" = "catppuccin-${osConfig.flavour}";
 
       # Catppuccin recommendations
       # we try to make semantic highlighting look good

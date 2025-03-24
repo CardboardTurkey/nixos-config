@@ -37,7 +37,7 @@ in
       source = rofi-emoji-theme;
     };
     "rofi/themes/shared/colors.rasi".text = ''
-      @import "/home/kiran/.local/share/rofi/themes/catppuccin-frappe.rasi"
+      @import "/home/kiran/.local/share/rofi/themes/catppuccin-${osConfig.flavour}.rasi"
       * {
           background:     @base;
           background-alt: @mantle;
