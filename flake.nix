@@ -86,6 +86,7 @@
         "bluetooth.nix"
         "gnupg.nix"
         "devenv.nix"
+        "trash.nix"
       ];
       sharedArgs = {
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
