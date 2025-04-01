@@ -38,82 +38,154 @@ in
     enable = true;
     settings = {
       general = {
-        # pam_module = "login";
+        no_fade_in = false;
+        grace = 0;
         disable_loading_bar = false;
       };
 
+      # BACKGROUND
       background = {
         monitor = "";
-        path = osConfig.wallpapers.lock;
-        blur_passes = 0; # 0 disables blurring
+        path = osConfig.pics.lock;
+        blur_passes = 0;
+        contrast = 0.8916;
+        brightness = 0.8172;
+        vibrancy = 0.1696;
+        vibrancy_darkness = 0.0;
       };
 
-      input-field = {
-        monitor = "";
-        size = scaleArray [
-          200
-          50
-        ];
-        outline_thickness = osConfig.monitor_scale * 3;
-        dots_size = 0.33; # Scale of input-field height, 0.2 - 0.8
-        dots_spacing = 0.15; # Scale of dots' absolute size, 0.0 - 1.0
-        dots_center = true;
-        dots_rounding = -1; # -1 default circle, -2 follow input-field rounding
-        outer_color = "rgb(${osConfig.nord3})";
-        inner_color = "rgb(${osConfig.nord4})";
-        font_color = "rgb(${osConfig.nord0})";
-        fade_on_empty = true;
-        fade_timeout = 1000; # Milliseconds before fade_on_empty is triggered.
-        placeholder_text = "<i>the way is shut</i>"; # Text rendered in the input box when it's empty.
-        hide_input = false;
-        rounding = -1; # -1 means complete rounding (circle/oval)
-        check_color = "rgb(${osConfig.nord12})";
-        fail_color = "rgb(${osConfig.nord11})"; # if authentication failed, changes outer_color and fail message color
-        fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>"; # can be set to empty
-        fail_transition = 300; # transition time in ms between normal outer_color and fail_color
-        capslock_color = -1;
-        numlock_color = -1;
-        bothlock_color = -1; # when both locks are active. -1 means don't change outer color (same for above)
-        invert_numlock = false; # change color if numlock is off
-        swap_font_color = false; # see below
-        position = scaleArray [
-          0
-          (builtins.fromJSON "-20")
-        ];
-        halign = "center";
-        valign = "center";
-      };
-
+      # GREETINGS
       label = [
         {
           monitor = "";
-          #clock
-          text = ''cmd[update:1000] echo "$TIME"'';
-          color = "rgb(${osConfig.nord5})";
-          font_size = osConfig.monitor_scale * 55;
-          font_family = "DejaVuSansM Nerd Font";
+          text = "Bug off";
+          color = "rgba(216, 222, 233, .75)";
+          font_size = 55;
+          font_family = "DejaVu Sans";
           position = scaleArray [
-            (builtins.fromJSON "-100")
-            (builtins.fromJSON "60")
+            185
+            320
           ];
-          halign = "right";
-          valign = "bottom";
-          shadow_passes = 5;
-          shadow_size = osConfig.monitor_scale * 10;
+          halign = "left";
+          valign = "center";
         }
-        # {
-        #   monitor = "";
-        #   text = "$USER";
-        #   color = "rgb(${osConfig.nord5})";
-        #   font_size = osConfig.monitor_scale * 20;
-        #   font_family = "DejaVuSansM Nerd Font";
-        #   position = scaleArray [ (builtins.fromJSON "-100") 160 ];
-        #   halign = "right";
-        #   valign = "bottom";
-        #   shadow_passes = 5;
-        #   shadow_size = osConfig.monitor_scale * 10;
-        # }
+
+        # Time
+        {
+          monitor = "";
+          text = "cmd[update:1000] echo \"<span>$(date +\"%I:%M\")</span>\"";
+          color = "rgba(216, 222, 233, .75)";
+          font_size = 40;
+          font_family = "DejaVu Sans";
+          position = scaleArray [
+            240
+            240
+          ];
+          halign = "left";
+          valign = "center";
+        }
+
+        # Day-Month-Date
+        {
+          monitor = "";
+          text = "cmd[update:1000] echo -e \"$(date +\"%A, %B %d\")\"";
+          color = "rgba(216, 222, 233, .75)";
+          font_size = 19;
+          font_family = "DejaVu Sans";
+          position = scaleArray [
+            217
+            175
+          ];
+          halign = "left";
+          valign = "center";
+        }
+
+        # USER
+        {
+          monitor = "";
+          text = "    $USER";
+          color = "rgba(216, 222, 233, 0.80)";
+          outline_thickness = 0;
+          dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
+          dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0
+          dots_center = true;
+          font_size = 16;
+          font_family = "DejaVu Sans";
+          position = scaleArray [
+            275
+            (builtins.fromJSON "-140")
+          ];
+          halign = "left";
+          valign = "center";
+        }
       ];
+
+      # Profile-Photo
+      image = {
+        monitor = "";
+        path = osConfig.pics.avatar;
+        border_size = 2;
+        border_color = "rgba(255, 255, 255, .75)";
+        size = 95;
+        rounding = -1;
+        rotate = 0;
+        reload_time = -1;
+        reload_cmd = "";
+        position = scaleArray [
+          270
+          25
+        ];
+        halign = "left";
+        valign = "center";
+      };
+
+      # USER-BOX
+      shape = {
+        monitor = "";
+        size = scaleArray [
+          320
+          55
+        ];
+        color = "rgba(255, 255, 255, .1)";
+        rounding = -1;
+        border_size = 0;
+        border_color = "rgba(255, 255, 255, 1)";
+        rotate = 0;
+        xray = false; # if true, make a "hole" in the background (rectangle of specified size, no rotation)
+
+        position = scaleArray [
+          160
+          (builtins.fromJSON "-140")
+        ];
+        halign = "left";
+        valign = "center";
+      };
+
+      # INPUT FIELD
+      input-field = {
+        monitor = "";
+        size = scaleArray [
+          320
+          55
+        ];
+        outline_thickness = 0;
+        dots_size = 0.2; # Scale of input-field height, 0.2 - 0.8
+        dots_spacing = 0.2; # Scale of dots' absolute size, 0.0 - 1.0
+        dots_center = true;
+        outer_color = "rgba(255, 255, 255, 0)";
+        inner_color = "rgba(255, 255, 255, 0.1)";
+        font_color = "rgb(200, 200, 200)";
+        fade_on_empty = false;
+        font_family = "DejaVu Sans";
+        placeholder_text = "<i><span foreground=\"##ffffff99\">🔒  Enter Pass</span></i>";
+        hide_input = false;
+        position = scaleArray [
+          160
+          (builtins.fromJSON "-220")
+        ];
+        halign = "left";
+        valign = "center";
+      };
     };
   };
 }

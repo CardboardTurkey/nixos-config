@@ -39,9 +39,9 @@ with types;
       type = listOf str;
       description = "Allowed unfree packages";
     };
-    wallpapers = mkOption {
+    pics = mkOption {
       default = {
-        single = builtins.toString (
+        wallpaper = builtins.toString (
           pkgs.fetchurl {
             url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/master/crane.png";
             hash = "sha256-h3C531cWmp5w262ReqjHzqZwjOVEpS8UtSOPNApyGfs=";
@@ -49,8 +49,14 @@ with types;
         );
         lock = builtins.toString (
           pkgs.fetchurl {
-            url = "https://unsplash.com/photos/jeClWqN2BUU/download";
-            hash = "sha256-STS3ScNqtIiJ0VPm1uYDp8xJsFo3cf4iqDKrh6HhUeU=";
+            url = "https://images.pexels.com/photos/681467/pexels-photo-681467.jpeg";
+            hash = "sha256-ZZOoBai9omKebZfHuJ204uw7EmKNv5K4iUCNE4PCXhY=";
+          }
+        );
+        avatar = builtins.toString (
+          pkgs.fetchurl {
+            url = "https://i.imgur.com/0hm6hFw.png";
+            hash = "sha256-B6LOBD2eZHGYxAcNRWuXHDKJlq2lcrfgFUIzdRWIUGU=";
           }
         );
       };

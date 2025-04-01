@@ -8,9 +8,9 @@
     settings = {
       ipc = "off";
       splash = false;
-      preload = [ "${osConfig.wallpapers.single}" ];
+      preload = [ "${osConfig.pics.wallpaper}" ];
       wallpaper = [
-        ", ${osConfig.wallpapers.single}"
+        ", ${osConfig.pics.wallpaper}"
       ];
     };
   };
