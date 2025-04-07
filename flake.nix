@@ -92,7 +92,7 @@
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
       };
       hmSharedArgs = {
-        catppuccin-hm = catppuccin.homeManagerModules.catppuccin;
+        catppuccin-hm = catppuccin.homeModules.catppuccin;
         inherit launcher-theme rofi-emoji-theme;
       };
     in
