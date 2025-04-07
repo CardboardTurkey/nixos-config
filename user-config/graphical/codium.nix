@@ -50,7 +50,7 @@ let
       usernamehw.errorlens
       ms-dotnettools.vscode-dotnet-runtime # needed by devskim
       zxh404.vscode-proto3
-      github.copilot
+      # github.copilot
     ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
