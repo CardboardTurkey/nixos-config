@@ -4,7 +4,7 @@
   rustPlatform,
   ...
 }:
-rustPlatform.buildRustPackage rec {
+rustPlatform.buildRustPackage {
   pname = "dirtygit";
   name = "dirtygit";
   # version = "0.1.0";

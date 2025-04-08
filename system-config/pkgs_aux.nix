@@ -10,7 +10,7 @@
     quasselClient
     local.scripts
     local.logiops
-    local.dirtygit
+    # local.dirtygit
     feh
     arandr
     flameshot
