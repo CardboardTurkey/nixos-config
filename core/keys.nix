@@ -18,6 +18,11 @@ with lib;
       type = with types; uniq str;
       description = "Auth key converted to ssh";
     };
+    pgp_auth_2_ssh = mkOption {
+      default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKbvbmYI5qAUAVgvxHs4wV+Zi6X/M5CMkxf/5qZbXgX7WGwJ+mlhViHaJXiw4p8C4JlOkizPqfnbaNC6w0QjDQiSUJAH4dVwn9GdDqWOEVJsT2M1aMg4tD7fktoDvJ3a1l24jDJyztAIrd2X1hGmKiL7qLNwFvO6D02ba1u+C+OGZJVZKXEhte6WL/5NAKjppWebsvGkEvJ4tuzP8/F2BOZzRVVehhVzeVvZ0irf6TPvlTQZKUnK8B4HcGjoY92Tfp9EfgDnNiVwlghk/csnOKYZjE3+aYanwn6WwzjT1uj1ogo1gRseJvTWCQySVtOYQ3AxoLwXouv5Uv4GpqAExF cardno:20_683_057";
+      type = with types; uniq str;
+      description = "2nd auth key converted to ssh";
+    };
     kestrel_host_age = mkOption {
       default = "age1u2devzwhhkrc9samflwf20zj72hxu86jn608jkrp3lwrk0na45wqpykyfr";
       type = with types; uniq str;

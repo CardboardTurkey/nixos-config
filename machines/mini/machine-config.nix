@@ -50,4 +50,6 @@
       allowDiscards = true;
     };
   };
+
+  users.users.kiran.openssh.authorizedKeys.keys = [ "${config.pgp_auth_2_ssh}" ];
 }
