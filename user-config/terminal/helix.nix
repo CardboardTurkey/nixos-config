@@ -22,11 +22,21 @@
             "marksman"
           ];
         }
+        {
+          name = "python";
+          # Make sure lsp is present in dev env
+          language-servers = [
+            "pylsp"
+            "ruff"
+          ];
+          formatter.command = "${lib.getExe pkgs.ruff} check --select I --fix - | ${lib.getExe pkgs.ruff} format -";
+        }
       ];
       language-server = {
         rust-analyzer.config.check.command = "clippy";
         nixd.command = lib.getExe pkgs.nixd;
         marksman.command = lib.getExe pkgs.marksman;
+        ruff.command = lib.getExe pkgs.ruff;
       };
     };
     settings = {
