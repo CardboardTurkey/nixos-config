@@ -51,6 +51,7 @@ let
       ms-dotnettools.vscode-dotnet-runtime # needed by devskim
       zxh404.vscode-proto3
       # github.copilot
+      bluebrown.yamlfmt
     ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
