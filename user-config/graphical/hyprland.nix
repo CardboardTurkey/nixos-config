@@ -293,18 +293,16 @@ in
 
         # Assign program to workspace
         # windowrule=workspace 1 silent,kitty
-        "workspace 2, codium"
-        "workspace 2, codium-url-handler"
-        "workspace 3, firefox"
-        "workspace 3, firefox-default"
-        "workspace 4, thunderbird"
-        "workspace 5, quassel"
-        "workspace 5, signal"
-        "workspace 6, steam"
-        "workspace 7, Gimp"
-      ];
+        "workspace 2, class:codium"
+        "workspace 2, class:codium-url-handler"
+        "workspace 3, class:firefox"
+        "workspace 3, class:firefox-default"
+        "workspace 4, class:thunderbird"
+        "workspace 5, class:quassel"
+        "workspace 5, class:signal"
+        "workspace 6, class:steam"
+        "workspace 7, class:Gimp"
 
-      windowrulev2 = [
         "float,class:(clipse)"
         "size 622 652,class:(clipse)"
 
