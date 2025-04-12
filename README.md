@@ -68,6 +68,8 @@ Enabling notifications on firefox websites.
 
 Update root partition uuid `ls -l /dev/disk/by-uuid`.
 
+Login to atuin: `atuin login -u kiran`.
+
 ## Pi
 
 Can use sean's image because it already has a swap space applied. Remember to update channel first.
