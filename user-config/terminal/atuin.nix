@@ -1,4 +1,9 @@
-{ lib, options, ... }:
+{
+  osConfig,
+  lib,
+  options,
+  ...
+}:
 {
   programs.atuin =
     {
@@ -7,7 +12,7 @@
       settings = {
         auto_sync = true;
         sync_frequency = "5m";
-        sync_address = "http://100.72.92.20:8888";
+        sync_address = "http://${osConfig.atuinAddress}:8888";
       };
     }
     # daemon option not present in home-manager release 24.11
