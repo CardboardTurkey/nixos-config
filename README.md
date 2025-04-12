@@ -10,7 +10,6 @@ e.g. to install for XPS machine:
 
 ## First boot
 
-* Edit link.sh to append `/mnt` and edit `pc-common.nix` to include from `/mnt`.
 * Set root uuid in core using `ls -l /dev/disk/by-uuid`
 * update sops config and then `sops updatekeys user-config/files/secrets.yaml`
 * download public key from keyserver
