@@ -286,7 +286,7 @@ in
       # Example windowrule v2
       # windowrulev2 = float,class:^(alacritty)$,title:^(alacritty)$
       # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-      windowrule = [
+      windowrulev2 = [
         "opacity 1.0 0.7, title:^(.*)$"
         "float,title:^(Firefox — Sharing Indicator)$"
         "float,title:^(Password Required - Mozilla Firefox)$"
