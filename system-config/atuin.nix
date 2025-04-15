@@ -1,16 +1,10 @@
 {
   pkgs,
-  lib,
   config,
   ...
 }:
 {
-  options.atuinAddress = lib.mkOption {
-    default = "100.72.92.20";
-    type = lib.types.str;
-    description = "IP address for atuin server";
-  };
-  config.services = {
+  services = {
     postgresql = {
       enable = true;
       package = pkgs.postgresql_15;

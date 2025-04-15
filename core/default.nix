@@ -99,6 +99,11 @@ with types;
       type = str;
       description = "Which file manager to use";
     };
+    atuinAddress = lib.mkOption {
+      default = "100.72.92.20";
+      type = lib.types.str;
+      description = "IP address for atuin server";
+    };
     userModules = mkOption {
       default = [
         "graphical/gtk.nix"
