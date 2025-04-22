@@ -52,4 +52,15 @@
   };
 
   users.users.kiran.openssh.authorizedKeys.keys = [ "${config.pgp_auth_2_ssh}" ];
+
+  # services.datadog-agent = {
+  #   enable = true;
+  #   enableLiveProcessCollection = true;
+  #   enableTraceAgent = true;
+  #   apiKeyFile = "/var/log/datadog/ddagent.key";
+  #   extraConfig = {
+  #     logs_enabled = true;
+  #     GUI_port = 5112;
+  #   };
+  # };
 }
