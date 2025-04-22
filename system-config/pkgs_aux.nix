@@ -37,5 +37,6 @@
     brightnessctl
     pulseaudio # for pactl
     jellyfin-media-player
+    webcord
   ];
 }
