@@ -147,11 +147,16 @@ in
 
       "explorer.confirmDragAndDrop" = false;
       "files.autoSave" = "afterDelay";
-      "editor.fontSize" = osConfig.font_size_medium;
-      "editor.fontFamily" = "'JetBrainsMono Nerd Font'";
-      "editor.formatOnSave" = true;
-      "editor.inlayHints.fontSize" = osConfig.font_size_small;
-      "editor.fontLigatures" = true;
+      editor = {
+        fontSize = osConfig.font_size_medium;
+        fontFamily = "'JetBrainsMono Nerd Font'";
+        formatOnSave = true;
+        inlayHints.fontSize = osConfig.font_size_small;
+        fontLigatures = true;
+        bracketPairColorization.enabled = true;
+        guides.bracketPairs = "active";
+        guides.bracketPairsHorizontal = true;
+      };
       "update.mode" = "none";
       "debug.allowBreakpointsEverywhere" = true;
       "dotnetAcquisitionExtension.existingDotnetPath" = [
