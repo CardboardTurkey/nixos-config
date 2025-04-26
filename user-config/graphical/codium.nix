@@ -71,6 +71,12 @@ let
         version = "1.0.7";
         sha256 = "sha256-2Z7uEenvZ39kcPRE+dvl0G/Wjxm5Pp+RPRn/gRhuM6I=";
       }
+      {
+        name = "yamlfmt";
+        publisher = "bluebrown";
+        version = "0.1.6";
+        sha256 = "sha256-a+bIpgLHHcPJd2DEEenTP2jZKlT9fz039U/O+IGZf4c=";
+      }
     ];
 
 in
