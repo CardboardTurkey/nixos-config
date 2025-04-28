@@ -11,6 +11,7 @@
     local.scripts
     local.logiops
     # local.dirtygit
+    local.spinner
     feh
     arandr
     flameshot
