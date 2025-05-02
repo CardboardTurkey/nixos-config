@@ -33,7 +33,10 @@
         }
       ];
       language-server = {
-        rust-analyzer.config.check.command = "clippy";
+        rust-analyzer.config = {
+          check.command = "clippy";
+          files.watcher = "server";
+        };
         nixd.command = lib.getExe pkgs.nixd;
         marksman.command = lib.getExe pkgs.marksman;
         ruff.command = lib.getExe pkgs.ruff;
