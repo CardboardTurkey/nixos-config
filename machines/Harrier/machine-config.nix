@@ -1,11 +1,22 @@
+{ config, userModPaths, ... }:
 {
-
   imports = [
     ../pc_common.nix
     ../../system-config/sops.nix
   ];
 
   hostname = "Harrier";
+
+  # Extra user
+  home-manager = {
+    users = {
+      choochoo = {
+        home.stateVersion = "22.11";
+        imports = userModPaths config.userModules;
+      };
+    };
+  };
+
   boot = {
     initrd.luks.devices = {
       crypted = {
