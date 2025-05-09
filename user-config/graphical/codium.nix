@@ -30,7 +30,7 @@ let
       })
       catppuccin.catppuccin-vsc-icons
       rust-lang.rust-analyzer
-      serayuzgur.crates
+      fill-labs.dependi
       streetsidesoftware.code-spell-checker
       vadimcn.vscode-lldb
       mkhl.direnv

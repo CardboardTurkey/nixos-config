@@ -13,7 +13,10 @@
 
   # Also need hyprland from system-config
 
-  allowed_unfree = [ "vscode-extension-github-copilot" ];
+  allowed_unfree = [
+    "vscode-extension-github-copilot"
+    "vscode-extension-fill-labs-dependi"
+  ];
 
   home-manager = {
     users = {
