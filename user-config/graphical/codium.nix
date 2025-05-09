@@ -187,12 +187,15 @@ in
         "!vault scalar"
       ];
       rust-analyzer = {
-        checkOnSave.command = "clippy";
+        checkOnSave = true;
         server.extraEnv = {
           CARGO_TARGET_DIR = "${config.cargo_target_dir}/rust-analyzer";
           RUSTUP_TOOLCHAIN = "stable";
         };
-        check.extraArgs = [ "--target-dir=${config.cargo_target_dir}/rust-analyzer" ];
+        check = {
+          extraArgs = [ "--target-dir=${config.cargo_target_dir}/rust-analyzer" ];
+          command = "clippy";
+        };
       };
       "redhat.telemetry.enabled" = false;
       "window.titleBarStyle" = "custom";
