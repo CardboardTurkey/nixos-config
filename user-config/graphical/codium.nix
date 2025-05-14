@@ -171,6 +171,12 @@ in
           "path" = "${lib.getExe pkgs.dotnetCorePackages.sdk_8_0_3xx}";
         }
       ];
+      files.exclude = {
+        "**/.devenv" = true;
+        "**/.direnv" = true;
+        "**/.repo" = true;
+      };
+      explorer.excludeGitIgnore = true;
       nix = {
         enableLanguageServer = true;
         serverPath = "${pkgs.nixd}/bin/nixd";
