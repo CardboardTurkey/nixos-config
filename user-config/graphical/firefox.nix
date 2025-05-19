@@ -1,5 +1,9 @@
+{ pkgs, ... }:
 {
-  home.sessionVariables.BROWSER = "firefox";
+  home = {
+    sessionVariables.BROWSER = "firefox";
+    packages = [ pkgs.vdhcoapp ];
+  };
   programs.firefox = {
     enable = true;
     profiles.default = {
