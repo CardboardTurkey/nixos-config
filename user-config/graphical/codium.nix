@@ -48,7 +48,7 @@ let
       tomoki1207.pdf
       timonwong.shellcheck
       usernamehw.errorlens
-      ms-dotnettools.vscode-dotnet-runtime # needed by devskim
+      # ms-dotnettools.vscode-dotnet-runtime # needed by devskim
       zxh404.vscode-proto3
       # github.copilot
     ])
@@ -59,12 +59,12 @@ let
         version = "0.0.3";
         sha256 = "sha256-DITgLedaO0Ifrttu+ZXkiaVA7Ua5RXc4jXQHPYLqrcM=";
       }
-      {
-        name = "vscode-devskim";
-        publisher = "ms-cst-e";
-        version = "1.0.52";
-        sha256 = "sha256-f5U8/t669aGV5bHsdxY6U1WPzLuzUxqkaHZBSqrGULU=";
-      }
+      # {
+      #   name = "vscode-devskim";
+      #   publisher = "ms-cst-e";
+      #   version = "1.0.52";
+      #   sha256 = "sha256-f5U8/t669aGV5bHsdxY6U1WPzLuzUxqkaHZBSqrGULU=";
+      # }
       {
         name = "insta";
         publisher = "mitsuhiko";
@@ -165,12 +165,12 @@ in
       };
       "update.mode" = "none";
       "debug.allowBreakpointsEverywhere" = true;
-      "dotnetAcquisitionExtension.existingDotnetPath" = [
-        {
-          "extensionId" = "MS-CST-E.vscode-devskim";
-          "path" = "${lib.getExe pkgs.dotnetCorePackages.sdk_8_0_3xx}";
-        }
-      ];
+      # "dotnetAcquisitionExtension.existingDotnetPath" = [
+      #   {
+      #     "extensionId" = "MS-CST-E.vscode-devskim";
+      #     "path" = "${lib.getExe pkgs.dotnetCorePackages.sdk_8_0_3xx}";
+      #   }
+      # ];
       files.exclude = {
         "**/.devenv" = true;
         "**/.direnv" = true;
