@@ -60,6 +60,7 @@
       keys.normal = {
         space.w = ":w";
         space.q = ":q";
+        space.space.b = ":sh ${pkgs.git}/bin/git blame -L %{cursor_line},%{cursor_line} %{buffer_name}";
         esc = [
           "collapse_selection"
           "keep_primary_selection"
