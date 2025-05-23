@@ -43,8 +43,8 @@ with types;
       default = {
         wallpaper = builtins.toString (
           pkgs.fetchurl {
-            url = "https://images7.alphacoders.com/119/1195938.png";
-            hash = "sha256-EZq4VOQm00aDezPM7XosnuldnK5UkjxJxwQVLEYuA8U=";
+            url = "https://unsplash.com/photos/p-kyrENoi6U/download";
+            hash = "sha256-UE6dDLRxLlSSHZzwMlaUC9PZ8WTvv/CFcalRoQu5Z7o=";
           }
         );
         lock = builtins.toString (
