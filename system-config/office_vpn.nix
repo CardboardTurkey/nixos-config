@@ -10,6 +10,6 @@
   # };
 
   environment.systemPackages = [
-    (pkgs.writeScriptBin "vpnup" "pass -c vpn/sigma && nmcli c u sigma; sudo ip route delete default dev tun0")
+    (pkgs.writeScriptBin "vpnup" "pass -c vpn/sigma && nmcli c u sigma --ask; sudo ip route delete default dev tun0")
   ];
 }
