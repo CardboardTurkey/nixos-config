@@ -77,6 +77,12 @@ let
         version = "0.1.6";
         sha256 = "sha256-a+bIpgLHHcPJd2DEEenTP2jZKlT9fz039U/O+IGZf4c=";
       }
+      {
+        name = "vscode-pgsql";
+        publisher = "ms-ossdata";
+        version = "1.4.1";
+        sha256 = "sha256-P6o4E3Qh1Lo9/+SFzhm0+Po0eT96gK30RjMsK2tuQg8=";
+      }
     ];
 
 in
