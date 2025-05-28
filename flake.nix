@@ -109,7 +109,6 @@
                 "atuin.nix"
                 "ayden_vpn.nix"
                 "sbuk.nix"
-                "jellyfin.nix"
               ]
             )
             ++ [
@@ -126,7 +125,13 @@
           system = "x86_64-linux";
           modules =
             shared_modules home-manager
-            ++ systemModPaths (system_modules ++ [ "battery.nix" ])
+            ++ systemModPaths (
+              system_modules
+              ++ [
+                "battery.nix"
+                "jellyfin.nix"
+              ]
+            )
             ++ [
               ./machines/XPS/machine-config.nix
               ./machines/XPS/hardware-configuration.nix

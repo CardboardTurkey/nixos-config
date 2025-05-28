@@ -38,10 +38,6 @@
     };
   };
 
-  fileSystems = {
-    "/media".device = "/dev/sda1";
-  };
-
   # luks
   boot.initrd.luks.devices = {
     crypted = {
