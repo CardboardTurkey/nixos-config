@@ -25,6 +25,7 @@
         "nerdfonts",
         "pkill",
         "Powermenu",
+        "procps",
         "rasi",
         "rofi",
         "rofimoji",
@@ -32,6 +33,7 @@
         "slidevert",
         "tailscale",
         "thinkpad",
+        "tmpfiles",
         "xwayland",
         "yubikey",
         "Zafiro"

@@ -87,6 +87,7 @@
         "gnupg.nix"
         "devenv.nix"
         "trash.nix"
+        "system_channel.nix"
       ];
       sharedArgs = {
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
