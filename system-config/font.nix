@@ -1,25 +1,11 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   fonts = {
     packages =
-      (
-        if (config.hostname == "Osprey") then
-          with pkgs;
-          [
-            (nerdfonts.override {
-              fonts = [
-                "DejaVuSansMono"
-                "JetBrainsMono"
-              ];
-            })
-          ]
-        else
-          with pkgs.nerd-fonts;
-          [
-            dejavu-sans-mono
-            jetbrains-mono
-          ]
-      )
+      (with pkgs.nerd-fonts; [
+        dejavu-sans-mono
+        jetbrains-mono
+      ])
       ++ (with pkgs; [
         hasklig
         # dejavu_fonts

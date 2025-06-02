@@ -10,11 +10,6 @@ let
   borderGradient = "window { background-image: linear-gradient(45deg,#${osConfig.theme.surface0.hex},#${
     osConfig.theme.${osConfig.accent}.hex
   }); padding: 3px; border-radius: 15px; } mainbox { border-radius: 13px; background-color: @base; }";
-  rofimoji =
-    if (osConfig.hostname == "Osprey") then
-      (pkgs.rofimoji.override { rofi = pkgs.rofi-wayland; })
-    else
-      pkgs.rofimoji;
 in
 {
   programs.rofi = {
@@ -57,7 +52,7 @@ in
     ];
     bind = [
       "MOD3, P, exec, rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu"
-      "MOD3, PERIOD, exec, ${pkgs.procps}/bin/pkill rofi || ${lib.getExe rofimoji} --prompt 🔍 --selector-args=\"-no-show-icons -theme emoji -theme-str '${borderGradient} element selected.normal { text-color: @foreground; }'\" -f emojis fontawesome6 arrows runic"
+      "MOD3, PERIOD, exec, ${pkgs.procps}/bin/pkill rofi || ${lib.getExe pkgs.rofimoji} --prompt 🔍 --selector-args=\"-no-show-icons -theme emoji -theme-str '${borderGradient} element selected.normal { text-color: @foreground; }'\" -f emojis fontawesome6 arrows runic"
     ];
     layerrule = [
       "ignorezero,rofi"
