@@ -75,7 +75,7 @@
                     action =
                     {
                         type: "Keypress";
-                        keys: ["KEY_LEFT"];
+                        keys: ["KEY_LEFTCTRL", "KEY_LEFT"];
                     }
                 },
                 {
@@ -84,7 +84,7 @@
                     action =
                     {
                         type: "Keypress";
-                        keys: ["KEY_RIGHT"];
+                        keys: ["KEY_LEFTCTRL", "KEY_RIGHT"];
                     }
                     },
                 {
