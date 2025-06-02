@@ -109,6 +109,7 @@
                 "atuin.nix"
                 "ayden_vpn.nix"
                 "sbuk.nix"
+                "logiops.nix"
               ]
             )
             ++ [
