@@ -1,32 +1,51 @@
+{ config, pkgs, ... }:
 {
-  pkgs,
-  ...
-}:
-{
+  sops.secrets = {
+    "domains/ostrolenk/id" = {
+      owner = config.security.acme.defaults.group;
+      group = config.security.acme.defaults.group;
+    };
+    "domains/ostrolenk/secret" = {
+      owner = config.security.acme.defaults.group;
+      group = config.security.acme.defaults.group;
+    };
+  };
   networking.firewall.allowedTCPPorts = [
     80
     443
   ];
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "kiran@ostrolenk.co.uk";
+      group = config.services.nginx.group;
+    };
+    certs."watch.ostrolenk.co.uk" = {
+      dnsProvider = "mythicbeasts";
+      environmentFile = "${pkgs.writeText "mythbea-creds" ''
+        MYTHICBEASTS_USERNAME_FILE=${config.sops.secrets."domains/ostrolenk/id".path}
+        MYTHICBEASTS_PASSWORD_FILE=${config.sops.secrets."domains/ostrolenk/secret".path}
+      ''}";
+    };
+  };
   services = {
+    nginx = {
+      enable = true;
+      recommendedProxySettings = true;
+      virtualHosts."watch.ostrolenk.co.uk" = {
+        forceSSL = true;
+        sslCertificate = "/var/lib/acme/watch.ostrolenk.co.uk/cert.pem";
+        sslCertificateKey = "/var/lib/acme/watch.ostrolenk.co.uk/key.pem";
+        locations."/" = {
+          proxyPass = "http://localhost:8096";
+        };
+      };
+    };
     jellyfin = {
       enable = true;
       openFirewall = true;
       user = "kiran";
       group = "kiran";
-    };
-    caddy = {
-      enable = true;
-      email = "kiran@ostrolenk.co.uk";
-      extraConfig = ''
-        watch.ostrolenk.co.uk {
-          bind 100.92.39.50
-          reverse_proxy tcp4/100.92.39.50:8096 {
-              # Pass the original Host header from the client to Jellyfin.
-              # This is important for Jellyfin to generate correct URLs.
-              header_up Host {host}
-          }
-        }
-      '';
     };
   };
   environment.systemPackages = with pkgs; [
