@@ -52,7 +52,7 @@ in
     ];
     bind = [
       "MOD3, P, exec, rofi -modi 'Powermenu:rofi-powermenu' -show Powermenu -theme powermenu"
-      "MOD3, PERIOD, exec, ${pkgs.procps}/bin/pkill rofi || ${lib.getExe pkgs.rofimoji} --prompt 🔍 --selector-args=\"-no-show-icons -theme emoji -theme-str '${borderGradient} element selected.normal { text-color: @foreground; }'\" -f emojis fontawesome6 arrows runic"
+      "MOD3, PERIOD, exec, ${pkgs.procps}/bin/pkill rofi || ${lib.getExe pkgs.rofimoji} -a copy --prompt 🔍 --selector-args=\"-no-show-icons -theme emoji -theme-str '${borderGradient} element selected.normal { text-color: @foreground; }'\" -f emojis fontawesome6 arrows runic"
     ];
     layerrule = [
       "ignorezero,rofi"
