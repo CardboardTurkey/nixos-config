@@ -38,21 +38,21 @@ let
         xkb_symbols   {
           include "pc+gb+inet(evdev)+terminate(ctrl_alt_bksp)"
 
+          key <AC06> {
+              type[Group1]="SHIFT_HYPER_LEVEL3",
+              symbols[Group1] = [ h, H, Left ]
+          };
           key <AC07> {
               type[Group1]="SHIFT_HYPER_LEVEL3",
-              symbols[Group1] = [ j, J, Left ]
+              symbols[Group1] = [ j, J, Down ]
           };
           key <AC08> {
               type[Group1]="SHIFT_HYPER_LEVEL3",
-              symbols[Group1] = [ k, K, Down ]
+              symbols[Group1] = [ k, K, Up ]
           };
           key <AC09> {
               type[Group1]="SHIFT_HYPER_LEVEL3",
-              symbols[Group1] = [ l, L, Up ]
-          };
-          key <AC10> {
-              type[Group1]="SHIFT_HYPER_LEVEL3",
-              symbols[Group1] = [ semicolon, colon, Right ]
+              symbols[Group1] = [ l, L, Right ]
           };
 
           key <AB01> {
