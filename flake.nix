@@ -88,6 +88,7 @@
         "devenv.nix"
         "trash.nix"
         "system_channel.nix"
+        "usbip.nix"
       ];
       sharedArgs = {
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
@@ -109,6 +110,7 @@
                 "atuin.nix"
                 "ayden_vpn.nix"
                 "logiops.nix"
+                "usbip_host.nix"
               ]
             )
             ++ [
