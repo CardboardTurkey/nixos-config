@@ -17,6 +17,13 @@ let
         peer = "Ekq80c8P4qky3DhepP5dFFU/Dxp1p2knaVUuC9xyUCs=";
         endpoint = "5498";
       }
+    else if (config.hostname == "Kestrel") then
+      {
+        key = "sbuk/service_key";
+        address = "172.16.100.3/32";
+        peer = "7u+PJ5NQrC1lAIb4K2OSNHT/fgxSSj++VIejnYw93mk=";
+        endpoint = "6312";
+      }
     else
       "";
 in
