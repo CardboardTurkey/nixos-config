@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  config,
+  ...
+}:
 
 let
   patchDesktop =
@@ -24,6 +29,11 @@ in
   imports = [
     ../pc_common.nix
     ../../system-config/sops.nix
+  ];
+
+  users.users.kiran.openssh.authorizedKeys.keys = [
+    "${config.pgp_auth_2_ssh}"
+    "${config.pgp_auth_ssh}"
   ];
 
   boot.initrd.availableKernelModules = [
