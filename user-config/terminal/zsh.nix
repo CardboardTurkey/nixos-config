@@ -45,7 +45,7 @@
       autoload -Uz compinit
       compinit
     '';
-    initExtra = ''
+    initContent = ''
       # Keybindings
       bindkey "^[[H" beginning-of-line
       bindkey "^[[F" end-of-line

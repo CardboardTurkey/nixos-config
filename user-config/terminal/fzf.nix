@@ -123,7 +123,7 @@ in
     ];
   };
   programs.zsh = {
-    initExtra = ''
+    initContent = ''
       export FAST_WORK_DIR=XDG
       source ${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions/fast-syntax-highlighting.plugin.zsh
 
