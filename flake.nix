@@ -111,6 +111,7 @@
                 "ayden_vpn.nix"
                 "logiops.nix"
                 "usbip_host.nix"
+                "sbuk.nix"
               ]
             )
             ++ [
@@ -132,7 +133,6 @@
               ++ [
                 "battery.nix"
                 "jellyfin.nix"
-                "sbuk.nix"
               ]
             )
             ++ [
