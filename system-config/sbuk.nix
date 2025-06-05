@@ -3,7 +3,7 @@
 let
   sbuk_if = "sbuk";
   wg =
-    if (config.hostname == "Osprey") then
+    if (config.hostname == "Kestrel") then
       {
         key = "sbuk/admin_key";
         address = "172.16.1.2/32";

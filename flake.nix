@@ -108,7 +108,6 @@
               ++ [
                 "atuin.nix"
                 "ayden_vpn.nix"
-                "sbuk.nix"
                 "logiops.nix"
               ]
             )
@@ -131,6 +130,7 @@
               ++ [
                 "battery.nix"
                 "jellyfin.nix"
+                "sbuk.nix"
               ]
             )
             ++ [
