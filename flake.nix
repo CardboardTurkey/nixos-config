@@ -133,6 +133,8 @@
               ++ [
                 "battery.nix"
                 "jellyfin.nix"
+                "hedgedoc.nix"
+                "sbuk.nix"
               ]
             )
             ++ [
