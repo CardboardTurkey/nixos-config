@@ -16,6 +16,7 @@ in
       port = port;
       host = ipAddress;
       domain = domain;
+      protocolUseSSL = true;
       ldap = {
         url = "ldaps://ldap.smoothbrained.co.uk";
         # bindDn = ldap.bindDN;
