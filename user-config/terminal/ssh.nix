@@ -9,7 +9,7 @@
         hostname = "fw1.core.smoothbrained.co.uk";
         user = "local-kostrolenk";
       };
-      "fw1.mgmt.smoothbrained.co.uk" = {
+      "fw1.core.smoothbrained.co.uk" = {
         hostname = "fw1.core.smoothbrained.co.uk";
         user = "local-kostrolenk";
       };
