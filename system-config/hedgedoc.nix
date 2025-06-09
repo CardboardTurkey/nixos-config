@@ -13,6 +13,7 @@ in
   services.hedgedoc = {
     enable = true;
     settings = {
+      loglevel = "verbose";
       port = port;
       host = ipAddress;
       domain = domain;
@@ -26,6 +27,7 @@ in
         searchBase = "ou=people,dc=smoothbrained,dc=co,dc=uk";
         searchFilter = "(uid={{username}})";
         useridField = "uid";
+        providerName = "Smoothbrained 🧠";
       };
     };
   };
