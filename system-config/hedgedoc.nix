@@ -17,6 +17,8 @@ in
       host = ipAddress;
       domain = domain;
       protocolUseSSL = true;
+      email = false;
+      allowEmailRegister = false;
       ldap = {
         url = "ldaps://ldap.smoothbrained.co.uk";
         # bindDn = ldap.bindDN;
