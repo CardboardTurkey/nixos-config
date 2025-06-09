@@ -13,7 +13,7 @@ in
   services.hedgedoc = {
     enable = true;
     settings = {
-      loglevel = "verbose";
+      loglevel = "debug";
       port = port;
       host = ipAddress;
       domain = domain;
@@ -22,7 +22,7 @@ in
       allowEmailRegister = false;
       ldap = {
         url = "ldaps://ldap.smoothbrained.co.uk";
-        # bindDn = ldap.bindDN;
+        bindDn = "cn=hedgedoc,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk";
         # bindCredentials = "$bindCredentials";
         searchBase = "ou=people,dc=smoothbrained,dc=co,dc=uk";
         searchFilter = "(uid={{username}})";
