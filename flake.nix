@@ -108,7 +108,6 @@
               system_modules
               ++ [
                 "atuin.nix"
-                "ayden_vpn.nix"
                 "logiops.nix"
                 "usbip_host.nix"
                 "sbuk.nix"
@@ -131,6 +130,7 @@
             ++ systemModPaths (
               system_modules
               ++ [
+                "ayden_vpn.nix"
                 "battery.nix"
                 "jellyfin.nix"
                 "hedgedoc.nix"
