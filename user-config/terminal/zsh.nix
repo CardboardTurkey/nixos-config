@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.shellAliases = {
     "pj" = "${pkgs.bat-extras.prettybat}/bin/prettybat -l json";
-    "todo" = "\"$EDITOR\" ~/.cache/todo.md";
+    "todo" =
+      "${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw";
     "nfu" = "nix flake update";
   };
   programs.zsh = {

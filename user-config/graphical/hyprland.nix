@@ -1,4 +1,9 @@
-{ pkgs, osConfig, ... }:
+{
+  pkgs,
+  osConfig,
+  lib,
+  ...
+}:
 let
   # check ${pkgs.setxkbmap}/share/X11/xkb for default configs.
   myCustomLayout = pkgs.writeText "layout.xkb" ''
@@ -166,7 +171,7 @@ in
         ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
         "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class clipse -e ${pkgs.clipse}/bin/clipse"
-        "SUPER, T, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class my-todo -e \"$EDITOR\" ~/.cache/todo.md"
+        "SUPER, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
       ];
 
       bindm = [
