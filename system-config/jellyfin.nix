@@ -48,6 +48,7 @@
       group = "kiran";
     };
   };
+  systemd.services.jellyfin.environment = config.nvidiaOffload;
   environment.systemPackages = with pkgs; [
     jellyfin
     jellyfin-web

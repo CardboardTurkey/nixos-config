@@ -11,6 +11,7 @@ with types;
   imports = [
     ./nord.nix
     ./keys.nix
+    ./hardware.nix
   ];
 
   options = {
