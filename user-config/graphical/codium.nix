@@ -54,10 +54,10 @@ let
     ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
-        name = "yuck";
-        publisher = "eww-yuck";
-        version = "0.0.3";
-        sha256 = "sha256-DITgLedaO0Ifrttu+ZXkiaVA7Ua5RXc4jXQHPYLqrcM=";
+        name = "geminicodeassist";
+        publisher = "google";
+        version = "2.35.0";
+        sha256 = "sha256-4l1YKwYPkSShEJVoN+4m8SUQXLC5V3ioPNAKDuTVDsk=";
       }
       # {
       #   name = "vscode-devskim";
@@ -157,6 +157,8 @@ in
         gopls = {
           ui.semanticTokens = true;
         };
+
+        diffEditor.codeLens = true;
 
         "explorer.confirmDragAndDrop" = false;
         "files.autoSave" = "afterDelay";
