@@ -161,7 +161,7 @@ in
 
   boot.initrd.luks.devices = {
     crypted = {
-      device = "/dev/disk/by-partuuid/2de02d4e-f542-495d-9123-6180ab1acb21";
+      device = "/dev/disk/by-partuuid/72c5fd60-a3d6-4a10-8832-3ca610a8d984";
       preLVM = true;
       allowDiscards = true;
     };

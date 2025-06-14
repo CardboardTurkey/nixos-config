@@ -28,3 +28,4 @@ wget https://gitlab.com/CardboardTurkey/nixos-config/-/raw/master/stuff/first_bo
 UUID=$(ls -l /dev/disk/by-partuuid/ | grep "$(basename "$1")" | awk '{print $9}')
 sed -i "s/__PART_UUID__/$UUID/" /mnt/etc/nixos/configuration.nix
 nixos-install
+echo "Next update uuid in machine config to: $UUID"
