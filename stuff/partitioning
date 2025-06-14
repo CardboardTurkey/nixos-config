@@ -1,0 +1,16 @@
+#!/usr/bin/env sh
+#
+# Partition a disk with a 512MB boot partition and root partition filling all
+# remaining space.
+
+set -e
+
+[ -z "$1" ] && { echo Provide disk; exit 1; }
+
+parted "$1" -- mklabel gpt
+parted "$1" -- mkpart root ext4 512MB 100%
+parted "$1" -- mkpart ESP fat32 1MB 512MB
+parted "$1" -- set 2 esp on
+# Slightly hacky way to get name of the boot partition we just created.
+nix-shell -p jq
+mkfs.fat -F 32 -n boot "/dev/$(lsblk -J /dev/nvme0n1 | jq -r ".blockdevices[0].children[1].name")"

@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+
+echo "Don't forget to setup network first"
+
+AGE=$(nix-shell -p ssh-to-age --run 'cat /etc/ssh/ssh_host_ed25519_key.pub | ssh-to-age')
+echo "Add the follow host age to core/keys: $AGE"
+echo "Press enter when done"
+read -r reply

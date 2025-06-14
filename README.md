@@ -29,24 +29,6 @@ Create a single partition. Encrypt it. Then LVM it to create root and swap.
 
 Create the single partition using gparted. I used lvm name and label but I dont think it matters.
 
-This partition ended up being called /dev/nvme0n1p5. This is what I did after:
-
-```shell
-cryptsetup luksFormat /dev/nvme0n1p5
-cryptsetup open /dev/nvme0n1p5 cryptlvm
-pvcreate /dev/mapper/cryptlvm
-vgcreate vg /dev/mapper/cryptlvm
-lvcreate -C y -L 40G vg -n swap # RAM size +2GB is recommended for swapsize
-lvcreate -l 100%FREE vg -n root
-lvreduce -L -256M vg/root # See the tip here https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes
-mkfs.ext4 /dev/vg/root
-mkswap /dev/vg/swap
-mount /dev/vg/root /mnt
-mkdir /mnt/boot
-mount /dev/nvme0n1p1 /mnt/boot
-swapon /dev/vg/swap
-```
-
 Follow nixos [guide] for setting up boot and swap partition. Use [lvm] for the
 root partition though (`parted /dev/sda -- mkpart lvm 512MB -8GB` seems to
 work).

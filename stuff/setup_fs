@@ -1,0 +1,30 @@
+#!/usr/bin/env sh
+
+set -e
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Provide root and boot partitions in that order"
+    exit 1
+fi
+
+cryptsetup luksFormat "$1"
+cryptsetup open "$1" cryptlvm
+pvcreate /dev/mapper/cryptlvm
+vgcreate vg /dev/mapper/cryptlvm
+lvcreate -C y -L "$(awk '/MemTotal/ { printf "%i\n", $2/1e6 + 3 }' /proc/meminfo)G" vg -n swap # RAM size +2GB is recommended for swapsize
+lvcreate -l 100%FREE vg -n root
+lvreduce -L -256M vg/root # See the tip here https://wiki.archlinux.org/title/dm-crypt/Encrypting_an_entire_system#Preparing_the_logical_volumes
+mkfs.ext4 /dev/vg/root
+mkfs.fat -F 32 -n boot "$2"
+mkswap /dev/vg/swap
+mount /dev/vg/root /mnt
+mkdir /mnt/boot
+mount -o umask=077 "$2" /mnt/boot
+swapon /dev/vg/swap
+
+nixos-generate-config --root /mnt
+wget https://gitlab.com/CardboardTurkey/nixos-config/-/raw/master/stuff/first_boot.nix -O /mnt/etc/nixos/configuration.nix
+# shellcheck disable=SC2010
+UUID=$(ls -l /dev/disk/by-partuuid/ | grep "$(basename "$1")" | awk '{print $9}')
+sed -i "s/__PART_UUID__/$UUID/" /mnt/etc/nixos/configuration.nix
+nixos-install

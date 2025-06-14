@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+cryptsetup open "$1" cryptlvm
+mount /dev/vg/root /mnt
