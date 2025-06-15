@@ -2,12 +2,12 @@
 {
   sops.secrets = {
     "domains/ostrolenk/id" = {
-      owner = config.security.acme.defaults.group;
-      group = config.security.acme.defaults.group;
+      owner = "acme";
+      group = "acme";
     };
     "domains/ostrolenk/secret" = {
-      owner = config.security.acme.defaults.group;
-      group = config.security.acme.defaults.group;
+      owner = "acme";
+      group = "acme";
     };
   };
   networking.firewall.allowedTCPPorts = [
