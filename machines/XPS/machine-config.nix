@@ -56,7 +56,7 @@ in
     "prismlauncher"
   ];
 
-  fileSystems."/external".device = "/dev/sda1";
+  # fileSystems."/external".device = "/dev/sda1";
 
   home-manager.users.kiran = {
     wayland.windowManager.hyprland.settings = {
