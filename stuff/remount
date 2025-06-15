@@ -1,4 +1,13 @@
 #!/usr/bin/env sh
 
+set -e
+
+if [ -z "$1" ] || [ -z "$2" ]; then
+    echo "Provide root and boot partitions in that order"
+    exit 1
+fi
+
 cryptsetup open "$1" cryptlvm
+sleep 1
 mount /dev/vg/root /mnt
+mount -o umask=077 "$2" /mnt/boot

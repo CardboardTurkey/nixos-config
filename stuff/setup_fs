@@ -27,5 +27,10 @@ wget https://gitlab.com/CardboardTurkey/nixos-config/-/raw/master/stuff/first_bo
 # shellcheck disable=SC2010
 UUID=$(ls -l /dev/disk/by-partuuid/ | grep "$(basename "$1")" | awk '{print $9}')
 sed -i "s/__PART_UUID__/$UUID/" /mnt/etc/nixos/configuration.nix
-nixos-install
+# shellcheck disable=SC2016
+echo 'You can run `nixos-install` for a tty env if you want now'
 echo "Next update uuid in machine config to: $UUID"
+echo "Copy /etc/nixos/hardware-configuration.nix into the hardware config in repo"
+echo "Comment out the declarative password shit"
+# shellcheck disable=SC2016
+echo 'Now run if you like `nixos-install --flake /mnt/root/nixos-config#__HOST__ --impure`'
