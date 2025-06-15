@@ -40,44 +40,44 @@ in
       };
     };
   };
-  systemd = {
-    services = {
-      hedgedoc.serviceConfig.EnvironmentFile = config.sops.secrets."hedgedoc".path;
-      # Annoyance: first times this runs borg will question the lack of encryption.
-      # Annoyance: root user needs to approve ssh host key
-      hedgedocBackup = {
-        enable = true;
-        description = "Backup hedgedoc data";
-        after = [ "network-online.target" ];
-        wants = [ "network-online.target" ];
-        serviceConfig = {
-          Type = "exec";
-          ExecStart = pkgs.writeScript "hedgedoc-backup" ''
-            #!${pkgs.bash}/bin/bash
-            archiveName="Kestrel-hedgedoc-$(${pkgs.coreutils}/bin/date +%Y-%m-%dT%H:%M:%S)"
-            ${pkgs.sqlite}/bin/sqlite3 ${dataDir}/db.sqlite ".backup '${dataDir}/backup.sq3'"
-            ${pkgs.borgbackup}/bin/borg create --rsh 'ssh -i ${
-              config.sops.secrets."hedgedoc_ssh".path
-            }' --compression auto,zstd "kostrolenk@crista.service.eyegog.co.uk:/home/kostrolenk/backups/hedgedoc::$archiveName" ${dataDir}/uploads ${dataDir}/backup.sq3
-          '';
-        };
-        wantedBy = [ "multi-user.target" ];
-      };
-    };
-    timers = {
-      hedgedocBackup = {
-        enable = true;
-        unitConfig = {
-          Description = "Regularly backup hedgedoc data";
-          PartOf = [ "hedgedocBackup.service" ];
-        };
-        timerConfig = {
-          OnCalendar = "*-*-* 00:00:00";
-          Unite = "hedgedocBackup.service";
-        };
-        wantedBy = [ "timers.target" ];
-      };
-    };
-  };
+  # systemd = {
+  #   services = {
+  #     hedgedoc.serviceConfig.EnvironmentFile = config.sops.secrets."hedgedoc".path;
+  #     # Annoyance: first times this runs borg will question the lack of encryption.
+  #     # Annoyance: root user needs to approve ssh host key
+  #     hedgedocBackup = {
+  #       enable = true;
+  #       description = "Backup hedgedoc data";
+  #       after = [ "network-online.target" ];
+  #       wants = [ "network-online.target" ];
+  #       serviceConfig = {
+  #         Type = "exec";
+  #         ExecStart = pkgs.writeScript "hedgedoc-backup" ''
+  #           #!${pkgs.bash}/bin/bash
+  #           archiveName="Kestrel-hedgedoc-$(${pkgs.coreutils}/bin/date +%Y-%m-%dT%H:%M:%S)"
+  #           ${pkgs.sqlite}/bin/sqlite3 ${dataDir}/db.sqlite ".backup '${dataDir}/backup.sq3'"
+  #           ${pkgs.borgbackup}/bin/borg create --rsh 'ssh -i ${
+  #             config.sops.secrets."hedgedoc_ssh".path
+  #           }' --compression auto,zstd "kostrolenk@crista.service.eyegog.co.uk:/home/kostrolenk/backups/hedgedoc::$archiveName" ${dataDir}/uploads ${dataDir}/backup.sq3
+  #         '';
+  #       };
+  #       wantedBy = [ "multi-user.target" ];
+  #     };
+  #   };
+  #   timers = {
+  #     hedgedocBackup = {
+  #       enable = true;
+  #       unitConfig = {
+  #         Description = "Regularly backup hedgedoc data";
+  #         PartOf = [ "hedgedocBackup.service" ];
+  #       };
+  #       timerConfig = {
+  #         OnCalendar = "*-*-* 00:00:00";
+  #         Unite = "hedgedocBackup.service";
+  #       };
+  #       wantedBy = [ "timers.target" ];
+  #     };
+  #   };
+  # };
 
 }
