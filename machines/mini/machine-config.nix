@@ -30,11 +30,9 @@
 
   # Extra user
   home-manager = {
-    users = {
-      choochoo = {
-        home.stateVersion = "22.11";
-        imports = userModPaths config.userModules;
-      };
+    users.choochoo = {
+      home.stateVersion = "22.11";
+      imports = userModPaths config.userModules;
     };
   };
 
