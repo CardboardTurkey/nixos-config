@@ -56,8 +56,6 @@ in
     "prismlauncher"
   ];
 
-  # fileSystems."/external".device = "/dev/sda1";
-
   home-manager.users.kiran = {
     wayland.windowManager.hyprland.settings = {
       env = [
@@ -159,13 +157,25 @@ in
   # Optionally, you may need to select the appropriate driver version for your specific GPU.
   # hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  boot.initrd.luks.devices = {
-    crypted = {
-      device = "/dev/disk/by-partuuid/72c5fd60-a3d6-4a10-8832-3ca610a8d984";
-      preLVM = true;
-      allowDiscards = true;
+  boot.initrd.luks = {
+    # Would like to reuse passphrase but nix complains:
+    #   Failed assertions:
+    #     - boot.initrd.luks.reusePassphrases has no effect with systemd stage 1.
+    # reusePassphrases = true;
+    devices = {
+      crypted = {
+        device = "/dev/disk/by-partuuid/72c5fd60-a3d6-4a10-8832-3ca610a8d984";
+        preLVM = true;
+        allowDiscards = true;
+      };
+      backup = {
+        device = "/dev/disk/by-partuuid/3344f210-67d7-46dd-a3a7-b8fdeb1a76ae";
+        preLVM = true;
+        allowDiscards = true;
+      };
     };
   };
+  fileSystems."/backup".device = "/dev/mapper/backup";
 
   services.logind.lidSwitchExternalPower = "ignore";
 }
