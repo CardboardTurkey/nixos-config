@@ -247,6 +247,8 @@ in
           ];
         };
         shellcheck.customArgs = [ "-x" ];
+        # Useless for rust
+        geminicodeassist.enable = true;
       };
       keybindings = [
         {
