@@ -101,7 +101,7 @@ with types;
       description = "Which file manager to use";
     };
     atuinAddress = lib.mkOption {
-      default = "100.72.92.20";
+      default = "0.0.0.0";
       type = lib.types.str;
       description = "IP address for atuin server";
     };
