@@ -107,7 +107,6 @@
             ++ systemModPaths (
               system_modules
               ++ [
-                "atuin.nix"
                 "logiops.nix"
                 "usbip_host.nix"
                 "sbuk.nix"
@@ -130,6 +129,7 @@
             ++ systemModPaths (
               system_modules
               ++ [
+                "atuin.nix"
                 "ayden_vpn.nix"
                 "battery.nix"
                 "jellyfin.nix"

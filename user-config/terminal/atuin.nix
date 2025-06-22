@@ -1,5 +1,4 @@
 {
-  osConfig,
   # lib,
   # options,
   ...
@@ -12,7 +11,7 @@
       auto_sync = true;
       filter_mode = "directory";
       sync_frequency = "5m";
-      sync_address = "http://${osConfig.atuinAddress}:8888";
+      sync_address = "https://atuin.kiran.smoothbrained.co.uk";
       history_filter = [ ".*[a-zA-Z]+-[a-zA-Z]+-[a-zA-Z]+.*" ];
       # daemon.enable = true;
     };
