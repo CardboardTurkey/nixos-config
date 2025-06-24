@@ -50,14 +50,8 @@ with types;
         );
         lock = builtins.toString (
           pkgs.fetchurl {
-            url = "https://images.pexels.com/photos/681467/pexels-photo-681467.jpeg";
-            hash = "sha256-ZZOoBai9omKebZfHuJ204uw7EmKNv5K4iUCNE4PCXhY=";
-          }
-        );
-        avatar = builtins.toString (
-          pkgs.fetchurl {
-            url = "https://i.imgur.com/0hm6hFw.png";
-            hash = "sha256-B6LOBD2eZHGYxAcNRWuXHDKJlq2lcrfgFUIzdRWIUGU=";
+            url = "https://unsplash.com/photos/p-kyrENoi6U/download";
+            hash = "sha256-UE6dDLRxLlSSHZzwMlaUC9PZ8WTvv/CFcalRoQu5Z7o=";
           }
         );
       };
