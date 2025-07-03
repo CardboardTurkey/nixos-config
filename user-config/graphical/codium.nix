@@ -204,11 +204,11 @@ in
         rust-analyzer = {
           checkOnSave = true;
           server.extraEnv = {
-            CARGO_TARGET_DIR = "${config.cargo_target_dir}/rust-analyzer";
+            CARGO_TARGET_DIR = "${config.cargoTargetDir}/rust-analyzer";
             RUSTUP_TOOLCHAIN = "stable";
           };
           check = {
-            extraArgs = [ "--target-dir=${config.cargo_target_dir}/rust-analyzer" ];
+            extraArgs = [ "--target-dir=${config.cargoTargetDir}/rust-analyzer" ];
             command = "clippy";
           };
         };

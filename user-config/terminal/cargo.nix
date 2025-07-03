@@ -1,6 +1,11 @@
-{ config, lib, ... }:
 {
-  options.cargo_target_dir = lib.mkOption {
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  options.cargoTargetDir = lib.mkOption {
     default = "${config.xdg.cacheHome}/cargo/target";
     type = lib.types.str;
     description = "Global cargo target directory";
@@ -10,10 +15,10 @@
   config.home.file = {
     ".cargo/config.toml" = {
       enable = true;
-      text = ''
-        [build]
-        target-dir = "${config.cargo_target_dir}"
-      '';
+      source = (pkgs.formats.toml { }).generate "cargo-config.toml" {
+        build.target-dir = config.cargoTargetDir;
+        net.git-fetch-with-cli = true;
+      };
     };
   };
 }
