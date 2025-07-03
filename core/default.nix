@@ -128,6 +128,7 @@ with types;
         "terminal/ssh.nix"
         "terminal/zoxide.nix"
         "terminal/fzf.nix"
+        "terminal/less.nix"
         "terminal/cargo.nix"
         "terminal/gh.nix"
         "terminal/misc.nix"
