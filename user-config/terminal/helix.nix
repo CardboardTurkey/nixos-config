@@ -65,6 +65,12 @@
           "collapse_selection"
           "keep_primary_selection"
         ];
+        C-g = [
+          ":write-all"
+          ":insert-output ${lib.getExe pkgs.lazygit} >/dev/tty"
+          ":redraw"
+          ":reload-all"
+        ];
       };
     };
   };
