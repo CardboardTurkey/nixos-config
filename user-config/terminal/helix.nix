@@ -3,6 +3,10 @@
   home.sessionVariables.EDITOR = "hx";
   programs.helix = {
     enable = true;
+    extraPackages = with pkgs; [
+      yaml-language-server
+      ansible-language-server
+    ];
     languages = {
       language = [
         {

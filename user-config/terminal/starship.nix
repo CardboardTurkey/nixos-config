@@ -14,6 +14,8 @@
       # Should be the default but for some reason an extra right space gets
       # added.
       nix_shell.symbol = "❄️ ";
+      sudo.disabled = false;
+      time.disabled = false;
     };
   };
 }
