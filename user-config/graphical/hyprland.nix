@@ -307,6 +307,7 @@ in
         "workspace 5, class:signal"
         "workspace 6, class:steam"
         "workspace 7, class:Gimp"
+        "workspace 8, title:btop"
 
         "float,class:(clipse)"
         "size 622 652,class:(clipse)"
