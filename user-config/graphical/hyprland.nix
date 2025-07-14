@@ -157,6 +157,14 @@ in
         "$mainMod, S, togglespecialworkspace, magic"
 
         # Scroll throurightgh existing workspaces with mainMod + scroll
+        "$mainMod, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
+        "$mainMod, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
+        "$mainMod SHIFT, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor 1"
+        "$mainMod SHIFT, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor 1"
+        "$mainMod SHIFT, minus, exec, hyprctl -q keyword cursor:zoom_factor 1"
+        "$mainMod SHIFT, KP_SUBTRACT, exec, hyprctl -q keyword cursor:zoom_factor 1"
+        "$mainMod SHIFT, 0, exec, hyprctl -q keyword cursor:zoom_factor 1"
+
         "MOD3, right, workspace, e+1"
         "MOD3, left, workspace, e-1"
 
@@ -172,6 +180,13 @@ in
         ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
         "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class clipse -e ${pkgs.clipse}/bin/clipse"
         "SUPER, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
+      ];
+
+      binde = [
+        "$mainMod, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
+        "$mainMod, minus, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
+        "$mainMod, KP_ADD, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
+        "$mainMod, KP_SUBTRACT, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
       ];
 
       bindm = [
