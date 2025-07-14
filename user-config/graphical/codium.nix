@@ -154,9 +154,7 @@ in
         # make the window's title bar use the workbench colors
         window.titleBarStyle = "custom";
         # applicable if you use Go, this is an opt-in flag!
-        gopls = {
-          ui.semanticTokens = true;
-        };
+        gopls.ui.semanticTokens = true;
 
         diffEditor.codeLens = true;
 
@@ -248,6 +246,9 @@ in
         shellcheck.customArgs = [ "-x" ];
         # Useless for rust
         geminicodeassist.enable = true;
+        errorLens.excludeBySource = [
+          "cSpell"
+        ];
       };
       keybindings = [
         {
