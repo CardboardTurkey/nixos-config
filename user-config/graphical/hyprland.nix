@@ -273,8 +273,8 @@ in
           "workspaces, 1, 7, overshot, slide"
           "border, 1, 50, liner"
           "layers, 1, 4, bounce, slidevert right"
-          "borderangle, 1, 30, liner, loop"
-        ];
+
+        ] ++ (if osConfig.hostname == "Osprey" then [ "borderangle, 1, 30, liner, loop" ] else [ ]);
       };
       dwindle = {
         # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
