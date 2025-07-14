@@ -113,6 +113,7 @@ with types;
         "graphical/btop.nix"
         "graphical/firefox.nix"
         "graphical/cursor.nix"
+        "graphical/swayosd.nix"
 
         "terminal/atuin.nix"
         "terminal/git.nix"

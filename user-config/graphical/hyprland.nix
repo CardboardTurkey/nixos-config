@@ -171,12 +171,21 @@ in
         # full screen
         "SUPER, F, fullscreen"
 
+        # Sink volume raise optionally with --device
+        ", XF86AudioRaiseVolume, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume raise"
+        # Sink volume lower optionally with --device
+        ", XF86AudioLowerVolume, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume lower"
+        # Sink volume toggle mute
+        ", XF86AudioMute, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle"
+        # Source volume toggle mute
+        ", XF86AudioMicMute, exec, ${pkgs.swayosd}/bin/swayosd-client --input-volume mute-toggle"
+
+        # Brightness raise
+        ", XF86MonBrightnessUp, exec, ${pkgs.swayosd}/bin/swayosd-client --brightness raise"
+        # Brightness lower
+        ", XF86MonBrightnessDown, exec, ${pkgs.swayosd}/bin/swayosd-client --brightness lower"
+
         # random bindings
-        ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-        ", XF86AudioLowerVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
-        ", XF86AudioRaiseVolume, exec, ${pkgs.wireplumber}/bin/wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+"
-        ", XF86MonBrightnessDown, exec, brightnessctl set 5%-"
-        ", XF86MonBrightnessUp, exec, brightnessctl set 5%+"
         ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
         "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class clipse -e ${pkgs.clipse}/bin/clipse"
         "SUPER, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
@@ -371,9 +380,11 @@ in
       layerrule = [
         "blur,notifications"
         "ignorezero,notifications"
+        "blur,swayosd"
+        "ignorezero,swayosd"
+        "animation slide,swayosd"
         "noanim,selection"
       ];
-
     };
   };
 }
