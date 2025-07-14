@@ -143,15 +143,15 @@ in
         };
       };
       userSettings = {
-        "workbench.colorTheme" = "Catppuccin Frappé";
-        "workbench.iconTheme" = "catppuccin-${osConfig.flavour}";
+        workbench.colorTheme = "Catppuccin Frappé";
+        workbench.iconTheme = "catppuccin-${osConfig.flavour}";
 
         # Catppuccin recommendations
         # we try to make semantic highlighting look good
         editor.semanticHighlighting.enabled = true;
         # prevent VSCode from modifying the terminal colors
         terminal.integrated.minimumContrastRatio = 1;
-        # make the window's titlebar use the workbench colors
+        # make the window's title bar use the workbench colors
         window.titleBarStyle = "custom";
         # applicable if you use Go, this is an opt-in flag!
         gopls = {
@@ -160,8 +160,8 @@ in
 
         diffEditor.codeLens = true;
 
-        "explorer.confirmDragAndDrop" = false;
-        "files.autoSave" = "afterDelay";
+        explorer.confirmDragAndDrop = false;
+        files.autoSave = "afterDelay";
         editor = {
           fontSize = osConfig.font_size_medium;
           fontFamily = "'JetBrainsMono Nerd Font'";
@@ -172,8 +172,8 @@ in
           guides.bracketPairs = "active";
           guides.bracketPairsHorizontal = true;
         };
-        "update.mode" = "none";
-        "debug.allowBreakpointsEverywhere" = true;
+        update.mode = "none";
+        debug.allowBreakpointsEverywhere = true;
         # "dotnetAcquisitionExtension.existingDotnetPath" = [
         #   {
         #     "extensionId" = "MS-CST-E.vscode-devskim";
@@ -212,9 +212,8 @@ in
             command = "clippy";
           };
         };
-        "redhat.telemetry.enabled" = false;
-        "window.titleBarStyle" = "custom";
-        "explorer.confirmDelete" = false;
+        redhat.telemetry.enabled = false;
+        explorer.confirmDelete = false;
         cSpell = {
           language = "en,en-GB";
           userWords = [
