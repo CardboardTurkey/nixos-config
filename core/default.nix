@@ -103,7 +103,6 @@ with types;
       default = [
         "graphical/gtk.nix"
         "graphical/hyprland.nix"
-        "graphical/dunst.nix"
         "graphical/obs-studio.nix"
         "graphical/rofi.nix"
         "graphical/eww"
@@ -114,6 +113,7 @@ with types;
         "graphical/firefox.nix"
         "graphical/cursor.nix"
         "graphical/swayosd.nix"
+        "graphical/swaync.nix"
 
         "terminal/atuin.nix"
         "terminal/git.nix"

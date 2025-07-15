@@ -108,9 +108,7 @@ in
         "$mainMod, Q, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}"
         "$mainMod, C, killactive,"
         "$mainMod, M, exit,"
-        "$mainMod, E, exec, dolphin"
         "$mainMod, V, togglefloating,"
-        "$mainMod, R, exec, wofi --show drun"
         "$mainMod, P, pseudo, # dwindle"
         "$mainMod, J, togglesplit, # dwindle"
 
@@ -310,11 +308,6 @@ in
         focus_on_activate = true;
       };
 
-      # Example windowrule v1
-      # windowrule = float, ^(alacritty)$
-      # Example windowrule v2
-      # windowrulev2 = float,class:^(alacritty)$,title:^(alacritty)$
-      # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
       windowrulev2 = [
         "opacity 1.0 0.7, title:^(.*)$"
         "float,title:^(Firefox — Sharing Indicator)$"
