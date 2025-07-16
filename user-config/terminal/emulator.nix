@@ -20,7 +20,7 @@
     enable = true;
     settings = {
       font = {
-        size = osConfig.font_size_small;
+        size = osConfig.fontSizeSmall;
         normal = {
           family = "Bitstream Vera Sans Mono";
           style = "Roman";
@@ -41,7 +41,7 @@
     settings = {
       cursor_trail = 1;
       font_family = "monospace";
-      font_size = builtins.toString osConfig.font_size_small;
+      font_size = builtins.toString osConfig.fontSizeSmall;
       window_padding_width = 10;
       enable_audio_bell = false;
       background_opacity = 0.85;

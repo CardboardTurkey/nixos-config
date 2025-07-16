@@ -169,15 +169,6 @@ in
         # full screen
         "SUPER, F, fullscreen"
 
-        # Sink volume raise optionally with --device
-        ", XF86AudioRaiseVolume, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume raise"
-        # Sink volume lower optionally with --device
-        ", XF86AudioLowerVolume, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume lower"
-        # Sink volume toggle mute
-        ", XF86AudioMute, exec, ${pkgs.swayosd}/bin/swayosd-client --output-volume mute-toggle"
-        # Source volume toggle mute
-        ", XF86AudioMicMute, exec, ${pkgs.swayosd}/bin/swayosd-client --input-volume mute-toggle"
-
         # Brightness raise
         ", XF86MonBrightnessUp, exec, ${pkgs.swayosd}/bin/swayosd-client --brightness raise"
         # Brightness lower
@@ -226,7 +217,7 @@ in
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
         gaps_in = 4;
-        gaps_out = 10;
+        gaps_out = osConfig.gapsOut;
         border_size = 2;
         "col.active_border" = "$surface0 $accent 45deg";
         "col.inactive_border" = "$surface0";
@@ -237,7 +228,7 @@ in
       decoration = {
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        rounding = 8;
+        rounding = osConfig.cornerRadius;
         blur = {
           enabled = true;
           size = 12;
@@ -349,7 +340,6 @@ in
       exec-once = [
         "${pkgs.clipse}/bin/clipse -listen"
         "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular"
-        "${pkgs.eww}/bin/eww daemon && ${pkgs.eww}/bin/eww open bar"
       ];
 
       # change monitor to hires, the last argument is the scale factor
@@ -373,9 +363,6 @@ in
       layerrule = [
         "blur,notifications"
         "ignorezero,notifications"
-        "blur,swayosd"
-        "ignorezero,swayosd"
-        "animation slide,swayosd"
         "noanim,selection"
       ];
     };

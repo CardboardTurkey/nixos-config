@@ -15,7 +15,7 @@
       };
     };
     font = {
-      name = "Bitstream Vera Sans ${builtins.toString osConfig.font_size_small}";
+      name = "Bitstream Vera Sans ${builtins.toString osConfig.fontSizeSmall}";
     };
   };
 }

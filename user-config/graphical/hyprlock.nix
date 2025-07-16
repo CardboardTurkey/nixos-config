@@ -5,9 +5,8 @@
   ...
 }:
 let
-  scaleArray =
-    array: lib.concatStringsSep ", " (map (x: toString (x * osConfig.monitor_scale)) array);
-  lock_cmd = "pidof ${pkgs.hyprlock}/bin/hyprlock || { ${pkgs.hyprlock}/bin/hyprlock && ${pkgs.eww}/bin/eww open bar; }"; # avoid starting multiple hyprlock instances.
+  scaleArray = array: lib.concatStringsSep ", " (map (x: toString (x * osConfig.monitorScale)) array);
+  lock_cmd = "pidof ${pkgs.hyprlock}/bin/hyprlock || { ${pkgs.hyprlock}/bin/hyprlock && ${pkgs.hyprland}/bin/hyprctl layers | ${pkgs.ripgrep}/bin/rg bar-0 || systemctl restart --user hyprpanel.service; }"; # avoid starting multiple hyprlock instances.
 in
 {
   wayland.windowManager.hyprland.settings.bind = [ "$mainMod, L, exec, ${lock_cmd}" ];

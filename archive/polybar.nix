@@ -111,12 +111,12 @@ in
 
             # Prefer Bitstream as it has minimal unicode coverage and so Font awesome and Noto can display icons
             # Add DejaVu (Nerd font) as fallback
-            font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=${builtins.toString config.font_size_medium};3";
-            font-1 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=${builtins.toString config.font_size_medium};3";
-            font-2 = "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:size=${builtins.toString config.font_size_medium};3";
-            font-3 = "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:size=${builtins.toString config.font_size_medium};3";
+            font-0 = "Bitstream Vera Sans:style=Roman:pixelsize=${builtins.toString config.fontSizeMedium};3";
+            font-1 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=${builtins.toString config.fontSizeMedium};3";
+            font-2 = "Font Awesome 6 Free,Font Awesome 6 Free Regular:style=Regular:size=${builtins.toString config.fontSizeMedium};3";
+            font-3 = "Font Awesome 6 Brands,Font Awesome 6 Brands Regular:style=Regular:size=${builtins.toString config.fontSizeMedium};3";
             font-4 = "Noto Color Emoji:style=Regular:scale=8;2";
-            font-5 = "DejaVu Sans:style=Roman:pixelsize=${builtins.toString config.font_size_medium};3";
+            font-5 = "DejaVu Sans:style=Roman:pixelsize=${builtins.toString config.fontSizeMedium};3";
             font-6 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=19;4";
             font-7 = "Font Awesome 6 Free,Font Awesome 6 Free Solid:style=Solid:size=12;2";
 

@@ -58,7 +58,7 @@ in
           fonts = {
             names = [ "DejaVuSansMono Nerd Font" ];
             style = "Bold Semi-Condensed";
-            size = config.font_size_small;
+            size = config.fontSizeSmall;
           };
           keybindings = lib.mkOptionDefault {
             "${mod}+Control+space" = "focus mode_toggle";

@@ -5,7 +5,6 @@
     "graphical/hyprland.nix"
     "graphical/dunst.nix"
     "graphical/rofi.nix"
-    "graphical/eww"
     "graphical/hyprlock.nix"
     "graphical/codium.nix"
     "graphical/btop.nix"

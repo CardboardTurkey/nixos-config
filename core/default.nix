@@ -1,7 +1,5 @@
 {
-  pkgs,
   lib,
-  config,
   ...
 }:
 
@@ -12,6 +10,7 @@ with types;
     ./nord.nix
     ./keys.nix
     ./hardware.nix
+    ./rice.nix
   ];
 
   options = {
@@ -20,69 +19,15 @@ with types;
       type = uniq str;
       description = "Network hostname";
     };
-    font_size_small = mkOption {
-      default = 12.0;
-      type = float;
-      description = "Small font size";
-    };
-    font_size_medium = mkOption {
-      default = 15.0;
-      type = float;
-      description = "Medium font size";
-    };
-    font_size_large = mkOption {
-      default = 19.0;
-      type = float;
-      description = "Large font size";
-    };
     allowed_unfree = mkOption {
       default = [ ];
       type = listOf str;
       description = "Allowed unfree packages";
     };
-    pics = mkOption {
-      default = {
-        wallpaper = builtins.toString (
-          pkgs.fetchurl {
-            url = "https://unsplash.com/photos/p-kyrENoi6U/download";
-            hash = "sha256-UE6dDLRxLlSSHZzwMlaUC9PZ8WTvv/CFcalRoQu5Z7o=";
-          }
-        );
-        lock = builtins.toString (
-          pkgs.fetchurl {
-            url = "https://unsplash.com/photos/p-kyrENoi6U/download";
-            hash = "sha256-UE6dDLRxLlSSHZzwMlaUC9PZ8WTvv/CFcalRoQu5Z7o=";
-          }
-        );
-      };
-      type = attrs;
-      description = "Paths to wallpapers";
-    };
-    monitor_scale = mkOption {
-      default = 1;
-      type = int;
-      description = "For when you need to rescale for monitor size";
-    };
     root = mkOption {
       default = "";
       type = with types; uniq str;
       description = "Root partition id";
-    };
-    flavour = mkOption {
-      default = "frappe";
-      type = str;
-      description = "Within a given theme you might choose a flavour";
-    };
-    accent = mkOption {
-      default = "teal";
-      type = str;
-      description = "Within a given theme you might choose an accent colour";
-    };
-    theme = mkOption {
-      default =
-        (lib.importJSON "${config.catppuccin.sources.palette}/palette.json").${config.flavour}.colors;
-      type = attrs;
-      description = "The chosen colour theme for this build";
     };
     emulator = mkOption {
       default = "kitty";
@@ -105,15 +50,13 @@ with types;
         "graphical/hyprland.nix"
         "graphical/obs-studio.nix"
         "graphical/rofi.nix"
-        "graphical/eww"
         "graphical/hyprlock.nix"
         "graphical/hyprpaper.nix"
         "graphical/codium.nix"
         "graphical/btop.nix"
         "graphical/firefox.nix"
         "graphical/cursor.nix"
-        "graphical/swayosd.nix"
-        "graphical/swaync.nix"
+        "graphical/hyprpanel.nix"
 
         "terminal/atuin.nix"
         "terminal/git.nix"

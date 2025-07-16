@@ -161,10 +161,10 @@ in
         explorer.confirmDragAndDrop = false;
         files.autoSave = "afterDelay";
         editor = {
-          fontSize = osConfig.font_size_medium;
+          fontSize = osConfig.fontSizeMedium;
           fontFamily = "'JetBrainsMono Nerd Font'";
           formatOnSave = true;
-          inlayHints.fontSize = osConfig.font_size_small;
+          inlayHints.fontSize = osConfig.fontSizeSmall;
           fontLigatures = true;
           bracketPairColorization.enabled = true;
           guides.bracketPairs = "active";
