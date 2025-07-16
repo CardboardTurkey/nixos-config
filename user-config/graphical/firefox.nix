@@ -6,8 +6,6 @@
   };
   programs.firefox = {
     enable = true;
-    profiles.default = {
-      name = "Default";
-    };
+    profiles.default.extensions.force = true;
   };
 }
