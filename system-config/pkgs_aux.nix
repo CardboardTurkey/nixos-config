@@ -27,7 +27,7 @@
     kooha
     rust-script
     dasel
-    sound-juicer
+    # sound-juicer
     gitui
     nixfmt-rfc-style
     gcolor3
