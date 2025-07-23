@@ -15,7 +15,6 @@
       # added.
       nix_shell.symbol = "❄️ ";
       sudo.disabled = false;
-      time.disabled = false;
     };
   };
 }
