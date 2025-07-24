@@ -83,7 +83,7 @@ in
         };
       };
 
-      terminal = "kitty";
+      terminal = osConfig.emulator;
 
       bar = {
         layouts = {
@@ -97,19 +97,21 @@ in
             middle = [
               "clock"
             ];
-            right = [
-              "volume"
-              "network"
-              "bluetooth"
-            ]
-            # Include battery if not desktop
-            ++ (if (osConfig.hostname != "Osprey") then [ "battery" ] else [ ])
-            ++ [
-              "hypridle"
-              "systray"
-              "notifications"
-              "power"
-            ];
+            right =
+              [
+                "cava"
+                "volume"
+                "network"
+                "bluetooth"
+              ]
+              # Include battery if not desktop
+              ++ (if (osConfig.hostname != "Osprey") then [ "battery" ] else [ ])
+              ++ [
+                "hypridle"
+                "systray"
+                "notifications"
+                "power"
+              ];
           };
         };
         clock = {
@@ -168,9 +170,12 @@ in
           rightClick = "${lib.getExe pkgs.playerctl} play-pause";
           show_active_only = true;
         };
-        bluetooth.label = true;
-        customModules.power.icon = "";
+        customModules = {
+          power.icon = "";
+          cava.showActiveOnly = true;
+        };
         launcher.icon = "";
+        bluetooth.label = true;
       };
 
       menus = {
@@ -225,6 +230,7 @@ in
       "theme.bar.menus.popover.border" = osConfig.theme.surface0.hex;
       "theme.bar.menus.menu.power.border.color" = osConfig.theme.surface0.hex;
       "theme.bar.buttons.modules.power.border" = osConfig.theme.surface0.hex;
+      "theme.bar.buttons.modules.cava.border" = osConfig.theme.surface0.hex;
       "theme.bar.buttons.modules.weather.border" = osConfig.theme.surface0.hex;
       "theme.bar.buttons.modules.kbLayout.border" = osConfig.theme.surface0.hex;
       "theme.bar.buttons.modules.storage.border" = osConfig.theme.surface0.hex;
