@@ -178,6 +178,7 @@ in
         ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
         "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class=com.clipse -e ${pkgs.clipse}/bin/clipse"
         "SUPER, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
+        "MOD3, Space, exec, ${lib.getExe pkgs.playerctl} play-pause"
       ];
 
       binde = [
