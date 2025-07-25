@@ -15,6 +15,7 @@
         cantarell-fonts
         texlivePackages.alfaslabone # for rust manchester
         fira-sans # for rust manchester
+        ipafont # for japanese
       ]);
     fontconfig = {
       enable = true;
