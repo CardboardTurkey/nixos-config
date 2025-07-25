@@ -2,7 +2,7 @@
 {
   home = {
     packages = with pkgs; [ hyperfine ];
-    shellAliases.time = "use hyperfine!";
+    shellAliases.time = "print 'Use hyperfine!'";
   };
 
   services.pueue = {
