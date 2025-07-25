@@ -5,6 +5,8 @@
     "todo" =
       "${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw";
     "nfu" = "nix flake update";
+    "wt" =
+      "if [ -f Cargo.toml ]; then mv Cargo.toml _Cargo.toml; elif [ -f _Cargo.toml ]; then mv _Cargo.toml Cargo.toml; else; echo Theres nothing here; fi";
   };
   programs.zsh = {
     shellAliases = {

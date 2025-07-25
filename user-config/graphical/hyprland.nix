@@ -88,8 +88,8 @@ let
   launchTerminal = pkgs.writeScript "launch_terminal" ''
     hyprctl dispatch workspace 1 &&\
     test -n "$(\
-      hyprctl clients -j\
-      | ${pkgs.dasel}/bin/dasel -r json -w - 'all().filter(equal(workspace.id,1)).filter(equal(class,kitty))'\
+      hyprctl clients -j | ${lib.getExe pkgs.dasel} -r json 'all().filter(equal(workspace.id,1))' \
+      | ${lib.getExe pkgs.ripgrep} '"class": ".*${osConfig.emulator}.*",'\
     )" || hyprctl keyword exec '[workspace 1] ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}' '';
 
 in
@@ -176,7 +176,7 @@ in
 
         # random bindings
         ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
-        "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class clipse -e ${pkgs.clipse}/bin/clipse"
+        "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class=com.clipse -e ${pkgs.clipse}/bin/clipse"
         "SUPER, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
       ];
 
@@ -305,7 +305,6 @@ in
         "float,title:^(Password Required - Mozilla Firefox)$"
 
         # Assign program to workspace
-        # windowrule=workspace 1 silent,kitty
         "workspace 2, class:codium"
         "workspace 2, class:codium-url-handler"
         "workspace 3, class:firefox"
@@ -317,8 +316,8 @@ in
         "workspace 7, class:Gimp"
         "workspace 8, title:btop"
 
-        "float,class:(clipse)"
-        "size 622 652,class:(clipse)"
+        "float,class:(com.clipse)"
+        "size 622 652,class:(com.clipse)"
 
         "float,title:(Picture-in-Picture)"
         "pin,title:(Picture-in-Picture)"

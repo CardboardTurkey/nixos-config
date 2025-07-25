@@ -28,7 +28,7 @@ with types;
         wallpaper = builtins.toString (
           pkgs.fetchurl {
             url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/master/train-sideview.png";
-            hash = "";
+            hash = "sha256-kUepVhpcWZAN/lRH3KYH5+uMBx9XmQ94lzNj9QL0iXc=";
           }
         );
         lock = builtins.toString (

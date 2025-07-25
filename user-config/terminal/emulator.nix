@@ -16,35 +16,32 @@
     };
   };
 
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      font = {
-        size = osConfig.fontSizeSmall;
-        normal = {
-          family = "Bitstream Vera Sans Mono";
-          style = "Roman";
-        };
+  programs = {
+    ghostty = {
+      enable = true;
+      enableZshIntegration = true;
+      settings = {
+        theme = "catppuccin-${osConfig.flavour}";
+        font-size = osConfig.fontSizeSmall;
+        keybind = [
+          "ctrl+shift+h=goto_split:previous"
+          "ctrl+shift+l=goto_split:next"
+        ];
+        window-padding-x = 30;
+        window-padding-y = 30;
+        background-opacity = 0.8;
       };
-      window = {
-        opacity = 0.78;
-        padding.x = 20;
-        padding.y = 10;
-        dynamic_padding = true;
-      };
-      env.WINIT_X11_SCALE_FACTOR = "1";
     };
-  };
-
-  programs.kitty = {
-    enable = true;
-    settings = {
-      cursor_trail = 1;
-      font_family = "monospace";
-      font_size = builtins.toString osConfig.fontSizeSmall;
-      window_padding_width = 10;
-      enable_audio_bell = false;
-      background_opacity = 0.85;
+    kitty = {
+      enable = true;
+      settings = {
+        cursor_trail = 1;
+        font_family = "monospace";
+        font_size = builtins.toString osConfig.fontSizeSmall;
+        window_padding_width = 10;
+        enable_audio_bell = false;
+        background_opacity = 0.85;
+      };
     };
   };
 }

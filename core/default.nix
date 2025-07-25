@@ -30,7 +30,7 @@ with types;
       description = "Root partition id";
     };
     emulator = mkOption {
-      default = "kitty";
+      default = "ghostty";
       type = str;
       description = "Which console emulator to use";
     };
