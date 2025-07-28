@@ -19,9 +19,10 @@ in
   wayland.windowManager.hyprland.settings.bind = [
     ", XF86AudioRaiseVolume, exec, ${pkgs.hyprpanel}/bin/hyprpanel vol +1"
     ", XF86AudioLowerVolume, exec, ${pkgs.hyprpanel}/bin/hyprpanel vol -1"
-    ", XF86AudioMute, exec, ${pkgs.hyprpanel}/bin/hyprpanel --output-volume mute-toggle"
-    ", XF86AudioMicMute, exec, ${pkgs.hyprpanel}/bin/hyprpanel --input-volume mute-toggle"
-
+    ", XF86AudioMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    ", XF86AudioMicMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+    ", XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
+    ", XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set 5%+"
   ];
   programs.hyprpanel = {
     enable = true;
