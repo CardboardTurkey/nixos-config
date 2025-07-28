@@ -24,6 +24,9 @@ in
     ", XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
     ", XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set 5%+"
   ];
+
+  sops.secrets."weatherapi.com" = { };
+
   programs.hyprpanel = {
     enable = true;
     settings = lib.recursiveUpdate themeColours {
@@ -182,9 +185,11 @@ in
       menus = {
         clock = {
           time.military = true;
-          weather.unit = "metric";
-          weather.key = "6b3b8890ab3b46b08c2135444240311";
-          weather.location = "Manchester";
+          weather = {
+            unit = "metric";
+            key = config.sops.secrets."weatherapi.com".path;
+            location = "Manchester";
+          };
         };
         dashboard = {
           powermenu.avatar = {
