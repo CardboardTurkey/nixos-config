@@ -23,6 +23,9 @@ in
     ", XF86AudioMicMute, exec, ${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
     ", XF86KbdBrightnessDown, exec, ${lib.getExe pkgs.brightnessctl} set 5%-"
     ", XF86KbdBrightnessUp, exec, ${lib.getExe pkgs.brightnessctl} set 5%+"
+    ", XF86AudioNext, exec, ${lib.getExe pkgs.playerctl} next"
+    ", XF86AudioPlay, exec, ${lib.getExe pkgs.playerctl} play-pause"
+    ", XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
   ];
 
   sops.secrets."weatherapi.com" = { };

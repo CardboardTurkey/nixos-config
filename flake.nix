@@ -92,6 +92,7 @@
       ];
       sharedArgs = {
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
+        sops = inputs.sops;
       };
       hmSharedArgs = {
         catppuccin-hm = catppuccin.homeModules.catppuccin;
