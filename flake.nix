@@ -30,6 +30,10 @@
       url = "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-2/style-2.rasi";
       flake = false;
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs =
     {
@@ -45,6 +49,7 @@
       catppuccin-vsc,
       launcher-theme,
       rofi-emoji-theme,
+      sops-nix,
     }:
     let
       shared_modules = hm: [
@@ -52,6 +57,7 @@
         nix-index-database.nixosModules.nix-index
         catppuccin.nixosModules.catppuccin
         hm.nixosModules.home-manager
+        sops-nix.nixosModules.sops
         { nixpkgs.overlays = [ catppuccin-vsc.overlays.default ]; }
       ];
       systemModPaths = builtins.map (moduleName: "${self.outPath}/system-config/${moduleName}");
@@ -79,7 +85,6 @@
         "qmk.nix"
         "flatpak.nix"
         "upower.nix"
-        # "hedgedoc.nix"
         "nix-index-database.nix"
         "sops.nix"
         "hyprland.nix"
@@ -92,7 +97,7 @@
       ];
       sharedArgs = {
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
-        sops = inputs.sops;
+        inputs.sops-nix = sops-nix;
       };
       hmSharedArgs = {
         catppuccin-hm = catppuccin.homeModules.catppuccin;

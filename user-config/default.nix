@@ -4,7 +4,7 @@
   ...
 }:
 {
-  # For zsh compeletion (apparently)
+  # For zsh completion (apparently)
   environment.pathsToLink = [ "/share/zsh" ];
   programs.zsh.enable = true;
 

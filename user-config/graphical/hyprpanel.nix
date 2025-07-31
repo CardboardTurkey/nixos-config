@@ -28,8 +28,6 @@ in
     ", XF86AudioPrev, exec, ${lib.getExe pkgs.playerctl} previous"
   ];
 
-  sops.secrets."weatherapi.com" = { };
-
   programs.hyprpanel = {
     enable = true;
     settings = lib.recursiveUpdate themeColours {
@@ -190,7 +188,7 @@ in
           time.military = true;
           weather = {
             unit = "metric";
-            key = config.sops.secrets."weatherapi.com".path;
+            key = osConfig.weatherapi;
             location = "Manchester";
           };
         };
