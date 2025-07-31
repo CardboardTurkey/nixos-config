@@ -62,6 +62,10 @@ in
             monochrome = false;
             opacity = 100;
             dashboard.profile.radius = "${toString (osConfig.cornerRadius * 1.3)}px";
+            # Use shadows as a way to control menu position
+            enableShadow = true;
+            shadowMargins = "${toString osConfig.gapsOut}px ${toString osConfig.gapsOut}px";
+            shadow = "0px 0px 0px 0px #16161e";
           };
           transparent = true;
           floating = true;

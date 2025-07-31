@@ -45,18 +45,85 @@ in
         );
     };
   };
+  catppuccin.hyprlock.useDefaultConfig = false;
   programs.hyprlock = {
     enable = true;
     settings = {
-      general = {
-        no_fade_in = false;
-        disable_loading_bar = false;
-      };
-
-      # BACKGROUND
       background = {
         monitor = "";
         path = osConfig.pics.lock;
+        blur_passes = 1;
+        color = "$base";
+      };
+
+      animations = {
+        enabled = true;
+        bezier = [
+          "linear, 1, 1, 0, 0"
+          "easeInQuart, 0.5, 0, 0.75, 0"
+        ];
+        animation = [
+          "fadeIn, 1, 5, easeInQuart"
+          "fadeOut, 1, 5, easeInQuart"
+          "inputFieldDots, 1, 2, linear"
+        ];
+      };
+
+      label = [
+        {
+          monitor = "";
+          text = "$TIME";
+          color = "$peach";
+          font_size = 90;
+          font_family = "$font";
+          position = scaleArray [
+            0
+            150
+          ];
+          halign = "center";
+          valign = "center";
+        }
+        {
+          monitor = "";
+          text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
+          color = "$peach";
+          font_size = 25;
+          font_family = "$font";
+          position = scaleArray [
+            0
+            50
+          ];
+          halign = "center";
+          valign = "center";
+        }
+      ];
+
+      input-field = {
+        monitor = "";
+        size = scaleArray [
+          300
+          60
+        ];
+        outline_thickness = 3;
+        dots_size = 0.2;
+        dots_spacing = 0.2;
+        dots_center = true;
+        outer_color = "$peach";
+        inner_color = "$base";
+        font_color = "$peach";
+        fade_on_empty = true;
+        placeholder_text = "";
+        hide_input = false;
+        check_color = "$accent";
+        fail_color = "$red";
+        fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+        capslock_color = "$yellow";
+        position = scaleArray [
+          0
+          (-47)
+        ];
+        halign = "center";
+        valign = "center";
       };
     };
   };
