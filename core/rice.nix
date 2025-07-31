@@ -33,9 +33,15 @@ with types;
         );
         lock = builtins.toString (
           pkgs.fetchurl {
-            url = "https://unsplash.com/photos/p-kyrENoi6U/download";
-            hash = "sha256-UE6dDLRxLlSSHZzwMlaUC9PZ8WTvv/CFcalRoQu5Z7o=";
+            url = "https://raw.githubusercontent.com/orangci/walls-catppuccin-mocha/master/train-sideview.png";
+            hash = "sha256-kUepVhpcWZAN/lRH3KYH5+uMBx9XmQ94lzNj9QL0iXc=";
           }
+
+          # This one was also nice!
+          # pkgs.fetchurl {
+          #   url = "https://unsplash.com/photos/p-kyrENoi6U/download";
+          #   hash = "sha256-UE6dDLRxLlSSHZzwMlaUC9PZ8WTvv/CFcalRoQu5Z7o=";
+          # }
         );
       };
       type = attrs;
