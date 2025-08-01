@@ -161,7 +161,7 @@
               system_modules
               ++ [
                 "battery.nix"
-                # "data.nix"
+                "data.nix"
                 "sbuk.nix"
               ]
             )
