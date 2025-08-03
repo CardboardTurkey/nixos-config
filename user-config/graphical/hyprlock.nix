@@ -51,8 +51,9 @@ in
     settings = {
       background = {
         monitor = "";
-        path = osConfig.pics.lock;
-        blur_passes = 1;
+        path = if (osConfig.hostname == "Osprey") then osConfig.pics.lock else "screenshot";
+        blur_passes = 3;
+        blur_size = 8;
         color = "$base";
       };
 
@@ -60,67 +61,84 @@ in
         enabled = true;
         bezier = [
           "linear, 1, 1, 0, 0"
-          "easeInQuart, 0.5, 0, 0.75, 0"
+          "easeOutQuint, 0.22, 1, 0.36, 1"
+          "easeOutCubic, 0.33, 1, 0.68, 1"
         ];
         animation = [
-          "fadeIn, 1, 5, easeInQuart"
-          "fadeOut, 1, 5, easeInQuart"
+          "fadeIn, 1, 5, easeOutCubic"
+          "fadeOut, 1, 5, easeOutQuint"
           "inputFieldDots, 1, 2, linear"
         ];
       };
 
       label = [
         {
+          # Time
           monitor = "";
-          text = "$TIME";
-          color = "$peach";
-          font_size = 90;
-          font_family = "$font";
+          text = ''cmd[update:1000] echo "$TIME"'';
+          color = "$text";
+          font_size = osConfig.monitorScale * 55;
+          # font_family = "DejaVuSansM Nerd Font";
           position = scaleArray [
-            0
-            150
+            (builtins.fromJSON "-100")
+            (builtins.fromJSON "60")
           ];
-          halign = "center";
-          valign = "center";
-        }
-        {
-          monitor = "";
-          text = "cmd[update:43200000] date +\"%A, %d %B %Y\"";
-          color = "$peach";
-          font_size = 25;
-          font_family = "$font";
-          position = scaleArray [
-            0
-            50
-          ];
-          halign = "center";
-          valign = "center";
+          halign = "right";
+          valign = "bottom";
+          shadow_passes = 5;
+          shadow_size = osConfig.monitorScale * 10;
         }
       ];
 
       input-field = {
         monitor = "";
         size = scaleArray [
-          300
-          60
+          250
+          50
         ];
-        outline_thickness = 3;
-        dots_size = 0.2;
-        dots_spacing = 0.2;
+        outline_thickness = osConfig.monitorScale * 3;
+        dots_size = 0.33; # Scale of input-field height, 0.2 - 0.8
+        dots_spacing = 0.15; # Scale of dots' absolute size, 0.0 - 1.0
         dots_center = true;
-        outer_color = "$peach";
-        inner_color = "$base";
-        font_color = "$peach";
+        dots_rounding = -1; # -1 default circle, -2 follow input-field rounding
+        outer_color = "$teal";
+        inner_color = "$surface0";
+        font_color = "$text";
         fade_on_empty = true;
-        placeholder_text = "";
+        fade_timeout = 1000; # Milliseconds before fade_on_empty is triggered.
+        placeholder_text = "<i>the way is shut</i>"; # Text rendered in the input box when it's empty.
         hide_input = false;
-        check_color = "$accent";
-        fail_color = "$red";
-        fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-        capslock_color = "$yellow";
+        rounding = -1; # -1 means complete rounding (circle/oval)
+        check_color = "$peach";
+        fail_color = "$red"; # if authentication failed, changes outer_color and fail message color
+        fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>"; # can be set to empty
+        fail_transition = 300; # transition time in ms between normal outer_color and fail_color
+        capslock_color = -1;
+        numlock_color = -1;
+        bothlock_color = -1; # when both locks are active. -1 means don't change outer color (same for above)
+        invert_numlock = false; # change color if numlock is off
+        swap_font_color = false; # see below
         position = scaleArray [
           0
-          (-47)
+          (builtins.fromJSON "-20")
+        ];
+        halign = "center";
+        valign = "center";
+      };
+
+      image = {
+        monitor = "";
+        path = osConfig.pics.small;
+        size = osConfig.monitorScale * 280; # lesser side if not 1:1 ratio
+        rounding = -1; # negative values mean circle
+        border_size = osConfig.monitorScale * 3;
+        border_color = "$overlay2";
+        rotate = 0; # degrees, counter-clockwise
+        reload_time = -1; # seconds between reloading, 0 to reload with SIGUSR2
+        #    reload_cmd = ; # command to get new path. if empty, old path will be used. don't run "follow" commands like tail -F
+        position = scaleArray [
+          0
+          200
         ];
         halign = "center";
         valign = "center";

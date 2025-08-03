@@ -43,6 +43,12 @@ with types;
           #   hash = "sha256-UE6dDLRxLlSSHZzwMlaUC9PZ8WTvv/CFcalRoQu5Z7o=";
           # }
         );
+        small = builtins.toString (
+          pkgs.fetchurl {
+            url = "https://ichef.bbci.co.uk/ace/standard/976/cpsprodpb/8ef1/live/d2e11580-30ac-11f0-a620-b132f633f1b3.jpg";
+            hash = "sha256-OX0ASPbYOJDIVcvtgIbz8A040JoVdLFOnrvDQQd3h3U=";
+          }
+        );
       };
       type = attrs;
       description = "Paths to wallpapers";
