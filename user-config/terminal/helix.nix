@@ -1,6 +1,18 @@
-{ pkgs, lib, ... }:
+{
+  pkgs,
+  lib,
+  osConfig,
+  ...
+}:
 {
   home.sessionVariables.EDITOR = "hx";
+  catppuccin.helix.useItalics = true;
+  xdg.configFile = {
+    "helix/themes/my-theme.toml".text = ''
+      inherits = "catppuccin-${osConfig.flavour}"
+      "ui.background" = {}
+    '';
+  };
   programs.helix = {
     enable = true;
     extraPackages = with pkgs; [
@@ -19,11 +31,18 @@
           formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
           language-servers = [ "nixd" ];
         }
-
         {
           name = "markdown";
           language-servers = [
             "marksman"
+            "typos"
+          ];
+        }
+        {
+          name = "git-commit";
+          language-servers = [
+            "marksman"
+            "typos"
           ];
         }
         {
@@ -44,9 +63,11 @@
         nixd.command = lib.getExe pkgs.nixd;
         marksman.command = lib.getExe pkgs.marksman;
         ruff.command = lib.getExe pkgs.ruff;
+        typos.command = lib.getExe pkgs.typos-lsp;
       };
     };
     settings = {
+      theme = lib.mkForce "my-theme";
       editor = {
         line-number = "relative";
         soft-wrap.enable = true;
