@@ -14,14 +14,8 @@
   hardware.asahi = {
     withRust = true;
     useExperimentalGPUDriver = true;
+    peripheralFirmwareDirectory = ./firmware;
   };
-
-  ## FIRMWARE ##
-  # Might not actually need this:
-  # Specify path to peripheral firmware files.
-  # hardware.asahi.peripheralFirmwareDirectory = ./firmware;
-  # Or disable extraction and management of them completely.
-  # hardware.asahi.extractPeripheralFirmware = false;
 
   monitorScale = 2;
   root = "f7b8da31-abcd-4352-87a0-e354ecc3b8e8";

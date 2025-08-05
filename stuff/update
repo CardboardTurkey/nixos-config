@@ -21,4 +21,4 @@ then
 fi
 
 update-nix-fetchgit system-config/pkgs_mine/colorful_loop/default.nix&
-sudo nixos-rebuild --flake .#$1 switch --impure -p "$profile_name" "${@:2}"
+sudo nixos-rebuild --flake .#$1 switch -p "$profile_name" "${@:2}"
