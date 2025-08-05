@@ -3,10 +3,11 @@
   # home.packages = [ pkgs.atool pkgs.httpie ];
   gtk = {
     enable = true;
-    iconTheme = {
-      package = pkgs.zafiro-icons;
-      name = "Zafiro-icons-Dark";
-    };
+    # Set by catppuccin nix
+    # iconTheme = {
+    #   package = pkgs.papirus-icon-theme;
+    #   name = "Papirus-Dark";
+    # };
     theme = {
       name = "Colloid-Teal-Dark-Catppuccin";
       package = pkgs.colloid-gtk-theme.override {

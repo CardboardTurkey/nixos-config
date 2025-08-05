@@ -18,7 +18,7 @@ in
     extraConfig = {
       modi = "drun,run,ssh,combi";
       terminal = osConfig.emulator;
-      icon-theme = "Zafiro-icons-Dark";
+      icon-theme = "Papirus-Dark";
     };
   };
   xdg.configFile = {
