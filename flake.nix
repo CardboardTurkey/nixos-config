@@ -116,6 +116,7 @@
                 "logiops.nix"
                 "usbip_host.nix"
                 "sbuk.nix"
+                "rabbit.nix"
               ]
             )
             ++ [
