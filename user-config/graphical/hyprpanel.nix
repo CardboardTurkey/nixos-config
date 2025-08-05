@@ -83,7 +83,12 @@ in
           border.size = "3px";
         };
 
-        notification.border_radius = "${toString osConfig.gapsOut}";
+        notification = {
+          border_radius = "${toString osConfig.cornerRadius}px";
+          enableShadow = true;
+          shadowMargins = "${toString osConfig.gapsOut}px ${toString osConfig.gapsOut}px";
+          shadow = "0px 0px 0px 0px #16161e";
+        };
 
         font = {
           size = osConfig.fontSizeMedium;
@@ -106,21 +111,20 @@ in
             middle = [
               "clock"
             ];
-            right =
-              [
-                "cava"
-                "volume"
-                "network"
-                "bluetooth"
-              ]
-              # Include battery if not desktop
-              ++ (if (osConfig.hostname != "Osprey") then [ "battery" ] else [ ])
-              ++ [
-                "hypridle"
-                "systray"
-                "notifications"
-                "power"
-              ];
+            right = [
+              "cava"
+              "volume"
+              "network"
+              "bluetooth"
+            ]
+            # Include battery if not desktop
+            ++ (if (osConfig.hostname != "Osprey") then [ "battery" ] else [ ])
+            ++ [
+              "hypridle"
+              "systray"
+              "notifications"
+              "power"
+            ];
           };
         };
         clock = {
