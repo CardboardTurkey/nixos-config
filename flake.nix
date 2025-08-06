@@ -142,6 +142,7 @@
                 "jellyfin.nix"
                 "hedgedoc.nix"
                 "sbuk.nix"
+                "data.nix"
               ]
             )
             ++ [
@@ -162,7 +163,6 @@
               system_modules
               ++ [
                 "battery.nix"
-                "data.nix"
                 "sbuk.nix"
               ]
             )
