@@ -79,7 +79,7 @@ in
           margin_sides = "${toString (osConfig.gapsOut - 5)}px";
           outer_spacing = "0em";
           spacing = "5px";
-
+          dropdownGap = "0px";
         };
         osd = {
           radius = "10em";
