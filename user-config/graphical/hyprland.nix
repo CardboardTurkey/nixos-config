@@ -169,11 +169,6 @@ in
         # full screen
         "SUPER, F, fullscreen"
 
-        # Brightness raise
-        ", XF86MonBrightnessUp, exec, ${pkgs.swayosd}/bin/swayosd-client --brightness raise"
-        # Brightness lower
-        ", XF86MonBrightnessDown, exec, ${pkgs.swayosd}/bin/swayosd-client --brightness lower"
-
         # random bindings
         ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
         "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class=com.clipse -e ${pkgs.clipse}/bin/clipse"
@@ -273,7 +268,8 @@ in
           "border, 1, 50, liner"
           "layers, 1, 4, bounce, slidevert right"
 
-        ] ++ (if osConfig.hostname == "Osprey" then [ "borderangle, 1, 30, liner, loop" ] else [ ]);
+        ]
+        ++ (if osConfig.hostname == "Osprey" then [ "borderangle, 1, 30, liner, loop" ] else [ ]);
       };
       dwindle = {
         # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
