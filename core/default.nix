@@ -57,6 +57,7 @@ with types;
         "graphical/firefox.nix"
         "graphical/cursor.nix"
         "graphical/hyprpanel.nix"
+        "graphical/wlogout.nix"
 
         "terminal/atuin.nix"
         "terminal/git.nix"
