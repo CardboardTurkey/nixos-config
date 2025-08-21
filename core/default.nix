@@ -1,5 +1,6 @@
 {
   lib,
+  pkgs,
   ...
 }:
 
@@ -18,6 +19,12 @@ with types;
       default = "";
       type = uniq str;
       description = "Network hostname";
+    };
+    # See https://nixos.org/manual/nixos/stable/#module-services-postgres-upgrading for updating.
+    psqlPackage = mkOption {
+      default = pkgs.postgresql_17;
+      type = attrsOf anything;
+      description = "Use this to pin postgresql version";
     };
     allowed_unfree = mkOption {
       default = [ ];

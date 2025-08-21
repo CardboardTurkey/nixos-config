@@ -17,15 +17,12 @@
   ...
 }:
 {
+  imports = [ ./data.nix ];
   sops.secrets."backups/shell" = {
     owner = "postgres";
     group = "postgres";
   };
   services = {
-    postgresql = {
-      enable = true;
-      package = pkgs.postgresql_17;
-    };
     atuin = {
       enable = true;
       openFirewall = true;
