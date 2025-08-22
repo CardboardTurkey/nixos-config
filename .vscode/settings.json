@@ -87,6 +87,8 @@
         "pywal",
         "quassel",
         "quotedbl",
+        "rabbitmq",
+        "rabbitmqctl",
         "rasi",
         "resizewindow",
         "rofi",
