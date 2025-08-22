@@ -116,7 +116,6 @@
                 "logiops.nix"
                 "usbip_host.nix"
                 "sbuk.nix"
-                "rabbit.nix"
               ]
             )
             ++ [
@@ -143,6 +142,7 @@
                 "hedgedoc.nix"
                 "sbuk.nix"
                 "data.nix"
+                "rabbit.nix"
               ]
             )
             ++ [
