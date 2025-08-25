@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   influxdb2Port = 8086;
   sigmaDbs = [
@@ -108,9 +108,57 @@ in
       enableTCPIP = true;
     };
   };
-  systemd.services.postgresql-setup.postStart = ''
-    NEW_PASSWORD=$(<"${config.sops.secrets."postgres/sigma".path}");
-    psql -c "ALTER USER sigma WITH PASSWORD '$NEW_PASSWORD'";
-    ${grantStatements sigmaDbs "sigma"}
-  '';
+  systemd = {
+    services = {
+      postgresql-setup.postStart = ''
+        NEW_PASSWORD=$(<"${config.sops.secrets."postgres/sigma".path}");
+        psql -c "ALTER USER sigma WITH PASSWORD '$NEW_PASSWORD'";
+        ${grantStatements sigmaDbs "sigma"}
+      '';
+      # Creating the borg back repo:
+      #
+      # ```console
+      # > sudo borg init -e repokey /backup/psql
+      # > sudo chown -R postgres /backup/psql
+      # ```
+      postgresql-backup = {
+        enable = true;
+        description = "Backup psql data";
+        after = [
+          "network-online.target"
+          "postgres.service"
+        ];
+        wants = [
+          "network-online.target"
+          "postgres.service"
+        ];
+        serviceConfig = {
+          Type = "exec";
+          EnvironmentFile = config.sops.secrets."backups/postgres".path;
+          ExecStart = pkgs.writeScript "psql-backup" ''
+            #!${pkgs.bash}/bin/bash
+            ${config.services.postgresql.package}/bin/pg_dump -Fc --host=/run/postgresql > /tmp/psql.dump
+            ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/psql::$(date -Is)" /tmp/psql.dump
+            rm /tmp/psql.dump
+          '';
+          User = "postgres";
+        };
+        wantedBy = [ "multi-user.target" ];
+      };
+    };
+    timers = {
+      postgresql-backup = {
+        enable = true;
+        unitConfig = {
+          Description = "Regularly backup psql data";
+          PartOf = [ "postgresql-backup.service" ];
+        };
+        timerConfig = {
+          OnCalendar = "*-*-* 00:00:00";
+          Unite = "postgresql-backup.service";
+        };
+        wantedBy = [ "timers.target" ];
+      };
+    };
+  };
 }

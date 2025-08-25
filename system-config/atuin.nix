@@ -12,13 +12,8 @@
 # `atuin store rebuild history` - ensure your history.db is up to date after all these operations
 
 {
-  pkgs,
-  config,
-  ...
-}:
-{
   imports = [ ./data.nix ];
-  sops.secrets."backups/shell" = {
+  sops.secrets."backups/postgres" = {
     owner = "postgres";
     group = "postgres";
   };
@@ -29,48 +24,6 @@
       openRegistration = true;
       host = "0.0.0.0";
       database.createLocally = true;
-    };
-  };
-  systemd = {
-    services = {
-      shellBackup = {
-        enable = true;
-        description = "Backup shell data";
-        after = [
-          "network-online.target"
-          "atuin.service"
-        ];
-        wants = [
-          "network-online.target"
-          "atuin.service"
-        ];
-        serviceConfig = {
-          Type = "exec";
-          EnvironmentFile = config.sops.secrets."backups/shell".path;
-          ExecStart = pkgs.writeScript "shell-backup" ''
-            #!${pkgs.bash}/bin/bash
-            ${config.services.postgresql.package}/bin/pg_dump -Fc -d atuin --host=/run/postgresql > /tmp/atuin.dump
-            ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/shell::$(date -Is)" /tmp/atuin.dump
-            rm /tmp/atuin.dump
-          '';
-          User = "postgres";
-        };
-        wantedBy = [ "multi-user.target" ];
-      };
-    };
-    timers = {
-      shellBackup = {
-        enable = true;
-        unitConfig = {
-          Description = "Regularly backup shell data";
-          PartOf = [ "shellBackup.service" ];
-        };
-        timerConfig = {
-          OnCalendar = "*-*-* 00:00:00";
-          Unite = "shellBackup.service";
-        };
-        wantedBy = [ "timers.target" ];
-      };
     };
   };
 }
