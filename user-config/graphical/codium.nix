@@ -28,7 +28,6 @@ let
           };
         };
       })
-      catppuccin.catppuccin-vsc-icons
       rust-lang.rust-analyzer
       fill-labs.dependi
       streetsidesoftware.code-spell-checker
