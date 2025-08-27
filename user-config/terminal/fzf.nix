@@ -10,7 +10,7 @@ in
 {
   home = {
     packages = with pkgs; [
-      mdcat
+      glow
       pandoc
       grc
     ];
