@@ -73,7 +73,7 @@ in
             name = "InfluxDB";
             type = "influxdb";
             access = "proxy";
-            url = "http://localhost:${toString influxdb2Port}";
+            url = "https://influxdb.kiran.smoothbrained.co.uk";
             jsonData = {
               version = "Flux";
               organization = config.services.influxdb2.provision.initialSetup.organization;
