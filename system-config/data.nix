@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   influxdb2Port = 8086;
   sigmaDbs = [
@@ -6,12 +11,16 @@ let
     "accounting"
     "generative"
   ];
+  ldapUsers = [
+    "kostrolenk"
+    "aholmes"
+  ];
   grantStatements =
     dbNames: username:
     builtins.concatStringsSep "\n" (
       builtins.map (dbName: ''
-        psql -c 'GRANT CONNECT ON DATABASE ${dbName} TO ${username}'
-        psql -d ${dbName} -c 'GRANT ALL ON SCHEMA public TO ${username}'
+        psql -c 'GRANT CONNECT ON DATABASE ${dbName} TO "${username}"'
+        psql -d ${dbName} -c 'GRANT ALL ON SCHEMA public TO "${username}"'
       '') dbNames
     );
 in
@@ -31,6 +40,10 @@ in
       owner = "postgres";
       group = "postgres";
     };
+    "postgres/ldap" = {
+      owner = "postgres";
+      group = "postgres";
+    };
   };
 
   users.users.grafana.extraGroups = [ "influxdb2" ];
@@ -38,6 +51,41 @@ in
     influxdb2Port
     config.services.postgresql.settings.port
   ];
+
+  environment.etc = {
+    "pg_hba.conf" = {
+      text = ''
+        # SBUK auth
+        host all all 172.16.3.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
+          builtins.readFile config.sops.secrets."postgres/ldap".path
+        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
+        host all all 172.16.100.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
+          builtins.readFile config.sops.secrets."postgres/ldap".path
+        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
+        host all all 172.16.99.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
+          builtins.readFile config.sops.secrets."postgres/ldap".path
+        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
+        host all all 172.16.2.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
+          builtins.readFile config.sops.secrets."postgres/ldap".path
+        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
+        host all all 172.16.98.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
+          builtins.readFile config.sops.secrets."postgres/ldap".path
+        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
+        host all all 172.16.1.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
+          builtins.readFile config.sops.secrets."postgres/ldap".path
+        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
+
+        # default value of services.postgresql.authentication
+        local all postgres         peer map=postgres
+        local all all              peer
+        host  all all 127.0.0.1/32 md5
+        host  all all ::1/128      md5
+      '';
+      mode = "0640";
+      user = "postgres";
+      group = "postgres";
+    };
+  };
 
   services = {
     influxdb2 = {
@@ -89,32 +137,23 @@ in
     };
     postgresql = {
       enable = true;
-      package = config.psqlPackage;
-      authentication = ''
-        host all all 172.16.3.0/24 md5
-        host all all 172.16.100.0/24 md5
-        host all all 172.16.99.0/24 md5
-        host all all 172.16.2.0/24 md5
-        host all all 172.16.98.0/24 md5
-        host all all 172.16.1.0/24 md5
-      '';
-      ensureUsers = [
-        {
-          name = "sigma";
-          ensureClauses.login = true;
-        }
-      ];
-      ensureDatabases = sigmaDbs;
+      package = config.psqlPackage.override {
+        ldapSupport = true;
+      };
+      ensureUsers = builtins.map (user: {
+        name = user;
+        ensureClauses.login = true;
+        ensureDBOwnership = true;
+      }) ldapUsers;
+      ensureDatabases = sigmaDbs ++ ldapUsers;
       enableTCPIP = true;
+      # Need to override this so we can make sure file is not world-readable.
+      settings.hba_file = lib.mkForce "/etc/pg_hba.conf";
     };
   };
   systemd = {
     services = {
-      postgresql-setup.postStart = ''
-        NEW_PASSWORD=$(<"${config.sops.secrets."postgres/sigma".path}");
-        psql -c "ALTER USER sigma WITH PASSWORD '$NEW_PASSWORD'";
-        ${grantStatements sigmaDbs "sigma"}
-      '';
+      postgresql-setup.postStart = grantStatements sigmaDbs "kostrolenk";
       # Creating the borg back repo:
       #
       # ```console
