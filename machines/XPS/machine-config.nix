@@ -73,17 +73,17 @@ in
         no_hardware_cursors = true;
       };
     };
-    services.hypridle.settings.listener = [
-      {
-        timeout = 150; # 2.5min.
-        on-timeout = "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
-        on-resume = "brightnessctl -r"; # monitor backlight restore.
-      }
-      # {
-      #   timeout = 300; # 5min
-      #   on-timeout = "systemctl suspend"; # suspend pc
-      # }
-    ];
+    # services.hypridle.settings.listener = [
+    # {
+    #     timeout = 150; # 2.5min.
+    #     on-timeout = "brightnessctl -s set 10"; # set monitor backlight to minimum, avoid 0 on OLED monitor.
+    #     on-resume = "brightnessctl -r"; # monitor backlight restore.
+    # }
+    # {
+    #   timeout = 300; # 5min
+    #   on-timeout = "systemctl suspend"; # suspend pc
+    # }
+    # ];
   };
 
   # ------
