@@ -52,6 +52,12 @@ in
   ];
 
   home-manager.users.kiran = {
+    programs.zsh.initContent = ''
+      if ! ${pkgs.ripgrep}/bin/rg /dev/mapper/backup /proc/mounts 2>/dev/null 1>&2
+      then
+        echo "Looks like you need to mount backup"
+        sudo cryptsetup open /dev/sda1 backup && sudo mount /dev/mapper/backup /backup
+      fi'';
     wayland.windowManager.hyprland.settings = {
       env = [
         # nvidia stuff
@@ -161,16 +167,17 @@ in
       crypted = {
         device = "/dev/disk/by-partuuid/72c5fd60-a3d6-4a10-8832-3ca610a8d984";
         preLVM = true;
-        allowDiscards = true;
-      };
-      backup = {
-        device = "/dev/disk/by-partuuid/3344f210-67d7-46dd-a3a7-b8fdeb1a76ae";
-        preLVM = true;
-        allowDiscards = true;
       };
     };
   };
-  fileSystems."/backup".device = "/dev/mapper/backup";
+
+  # Doesn't seem to work for non-root device?
+  # boot.initrd.luks.devices.backup.device =
+  #   "/dev/disk/by-partuuid/3344f210-67d7-46dd-a3a7-b8fdeb1a76ae";
+  # fileSystems."/backup" = {
+  #   device = "/dev/disk/by-uuid/fef020b3-e8ae-45b2-9adf-e2fd47ae594c";
+  #   fsType = "ext4";
+  # };
 
   services.logind.lidSwitchExternalPower = "ignore";
 }
