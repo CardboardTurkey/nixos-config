@@ -44,6 +44,10 @@ in
       owner = "postgres";
       group = "postgres";
     };
+    "backups/grafana" = {
+      owner = "grafana";
+      group = "grafana";
+    };
   };
 
   users.users.grafana.extraGroups = [ "influxdb2" ];
@@ -184,6 +188,29 @@ in
         };
         wantedBy = [ "multi-user.target" ];
       };
+      grafana-backup = {
+        enable = true;
+        description = "Backup grafana data";
+        after = [
+          "network-online.target"
+          "grafana.service"
+        ];
+        wants = [
+          "network-online.target"
+          "grafana.service"
+        ];
+        serviceConfig = {
+          Type = "exec";
+          EnvironmentFile = config.sops.secrets."backups/grafana".path;
+          ExecStart = pkgs.writeScript "grafana-backup" ''
+            #!${pkgs.bash}/bin/bash
+            ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/grafana::$(date -Is)" /var/lib/grafana
+          '';
+          User = "grafana";
+        };
+        wantedBy = [ "multi-user.target" ];
+      };
+
     };
     timers = {
       postgresql-backup = {
@@ -195,6 +222,18 @@ in
         timerConfig = {
           OnCalendar = "*-*-* 00:00:00";
           Unite = "postgresql-backup.service";
+        };
+        wantedBy = [ "timers.target" ];
+      };
+      grafana-backup = {
+        enable = true;
+        unitConfig = {
+          Description = "Regularly backup grafana data";
+          PartOf = [ "grafana-backup.service" ];
+        };
+        timerConfig = {
+          OnCalendar = "*-*-* 00:00:00";
+          Unite = "grafana-backup.service";
         };
         wantedBy = [ "timers.target" ];
       };
