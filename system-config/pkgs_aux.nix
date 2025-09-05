@@ -18,7 +18,6 @@
     xorg.xev
     pavucontrol
     pwvucontrol
-    python3
     gimp
     ffmpeg
     local.newrust
