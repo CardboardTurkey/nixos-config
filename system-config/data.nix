@@ -23,6 +23,41 @@ let
         psql -d ${dbName} -c 'GRANT ALL ON SCHEMA public TO "${username}"'
       '') dbNames
     );
+  # Trash /var/lib/grafana if your changes aren't taking effect.
+  ldapConfigFile = pkgs.writeText "grafana-ldap.toml" ''
+    verbose_logging = true
+    [[servers]]
+    host = "ldap.smoothbrained.co.uk"
+    port = 636
+    use_ssl = true
+    start_tls = false
+    ssl_skip_verify = false
+
+    bind_dn = "cn=grafana,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk"
+    bind_password = "$__file{${config.sops.secrets."grafana".path}}"
+
+    timeout = 10
+
+    search_filter = "(uid=%s)"
+    search_base_dns = ["ou=people,dc=smoothbrained,dc=co,dc=uk"]
+
+    [servers.attributes]
+    member_of = "memberOf"
+    email =  "email"
+    name = "givenName"
+    surname = "sn"
+    username = "uid"
+
+    [[servers.group_mappings]]
+    group_dn = "cn=sbuk_admins,ou=groups,dc=smoothbrained,dc=co,dc=uk"
+    org_role = "Admin"
+    grafana_admin = true
+
+    [[servers.group_mappings]]
+    group_dn = "*"
+    org_role = "Editor"
+  '';
+
 in
 {
   sops.secrets = {
@@ -45,6 +80,10 @@ in
       group = "postgres";
     };
     "backups/grafana" = {
+      owner = "grafana";
+      group = "grafana";
+    };
+    "grafana" = {
       owner = "grafana";
       group = "grafana";
     };
@@ -112,7 +151,26 @@ in
       enable = true;
       openFirewall = true;
       settings = {
-        security.admin_password = "$__file{${config.sops.secrets."influxdb/password".path}}";
+        # Should you need to do some debugging:
+        # log = {
+        #   filters = "ldap:debug";
+        #   mode = "console";
+        #   level = "debug";
+        # };
+
+        # `ini` format seems to limit map depth
+        "auth.anonymous".enabled = false;
+        "auth.ldap" = {
+          enabled = true;
+          config_file = "${ldapConfigFile}";
+          allow_sign_up = true; # allow the LDAP driver to create new users in the Grafana DB
+        };
+        users = {
+          # Background text for the user field on the login page
+          login_hint = "LDAP username";
+          password_hint = "LDAP password";
+        };
+        security.disable_initial_admin_creation = true; # rely only on LDAP for admin users
         server = {
           http_port = 8999;
           http_addr = "0.0.0.0";
@@ -158,6 +216,7 @@ in
   systemd = {
     services = {
       postgresql-setup.postStart = grantStatements sigmaDbs "kostrolenk";
+      grafana.serviceConfig.EnvironmentFile = config.sops.secrets."grafana".path;
       # Creating the borg back repo:
       #
       # ```console
