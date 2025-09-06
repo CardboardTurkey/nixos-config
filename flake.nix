@@ -143,6 +143,7 @@
                 "sbuk.nix"
                 "data.nix"
                 "rabbit.nix"
+                "vaultwarden.nix"
               ]
             )
             ++ [
