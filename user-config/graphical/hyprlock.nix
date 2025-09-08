@@ -7,42 +7,63 @@
 let
   scaleArray = array: lib.concatStringsSep ", " (map (x: toString (x * osConfig.monitorScale)) array);
   lock_cmd = "pidof ${pkgs.hyprlock}/bin/hyprlock || { ${pkgs.hyprlock}/bin/hyprlock && ${pkgs.hyprland}/bin/hyprctl layers | ${pkgs.ripgrep}/bin/rg bar-0 || systemctl restart --user hyprpanel.service; }"; # avoid starting multiple hyprlock instances.
+  batteryStatus = pkgs.writeScript "battery_status" ''
+    #!/usr/bin/env bash
+
+    if [ ! -d /sys/class/power_supply/BAT0 ]; then
+    	exit 0
+    fi
+
+    battery_percentage=$(cat /sys/class/power_supply/BAT0/capacity)
+    battery_status=$(cat /sys/class/power_supply/BAT0/status)
+
+    battery_icons=("󰂃" "󰁺" "󰁻" "󰁼" "󰁽" "󰁾" "󰁿" "󰂀" "󰂁" "󰁹")
+    charging_icon="󰂄"
+
+    icon_index=$((battery_percentage / 10))
+    battery_icon=''${battery_icons[icon_index]}
+
+    if [ "$battery_status" = "Charging" ]; then
+    	battery_icon="$charging_icon"
+    fi
+
+    # TODO: colour code output using HTML
+    echo "$battery_percentage% $battery_icon"
+  '';
 in
 {
   wayland.windowManager.hyprland.settings.bind = [ "$mainMod, L, exec, ${lock_cmd}" ];
   services.hypridle = {
     enable = true;
     settings = {
-      general =
+      general = {
+        lock_cmd = lock_cmd;
+        before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
+
+      }
+      // lib.optionalAttrs (osConfig.hostname != "Osprey") {
+        after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
+      };
+
+      listener = [
+
         {
-          lock_cmd = lock_cmd;
-          before_sleep_cmd = "loginctl lock-session"; # lock before suspend.
-
+          timeout = 300; # 5min
+          on-timeout = "loginctl lock-session"; # lock screen when timeout has passed
         }
-        // lib.optionalAttrs (osConfig.hostname != "Osprey") {
-          after_sleep_cmd = "hyprctl dispatch dpms on"; # to avoid having to press a key twice to turn on the display.
-        };
-
-      listener =
-        [
-
-          {
-            timeout = 300; # 5min
-            on-timeout = "loginctl lock-session"; # lock screen when timeout has passed
-          }
-        ]
-        ++ (
-          if (osConfig.hostname != "Osprey") then
-            [
-              {
-                timeout = 330; # 5.5min
-                on-timeout = "hyprctl dispatch dpms off"; # screen off when timeout has passed
-                on-resume = "hyprctl dispatch dpms on"; # screen on when activity is detected after timeout has fired.
-              }
-            ]
-          else
-            [ ]
-        );
+      ]
+      ++ (
+        if (osConfig.hostname != "Osprey") then
+          [
+            {
+              timeout = 330; # 5.5min
+              on-timeout = "hyprctl dispatch dpms off"; # screen off when timeout has passed
+              on-resume = "hyprctl dispatch dpms on"; # screen on when activity is detected after timeout has fired.
+            }
+          ]
+        else
+          [ ]
+      );
     };
   };
   catppuccin.hyprlock.useDefaultConfig = false;
@@ -84,6 +105,22 @@ in
             (builtins.fromJSON "60")
           ];
           halign = "right";
+          valign = "bottom";
+          shadow_passes = 5;
+          shadow_size = osConfig.monitorScale * 10;
+        }
+        {
+          # Battery status
+          monitor = "";
+          text = ''cmd[update:1000] ${batteryStatus}'';
+          color = "$text";
+          font_size = osConfig.monitorScale * 55;
+          font_family = "DejaVuSansM Nerd Font";
+          position = scaleArray [
+            (builtins.fromJSON "100")
+            (builtins.fromJSON "60")
+          ];
+          halign = "left";
           valign = "bottom";
           shadow_passes = 5;
           shadow_size = osConfig.monitorScale * 10;
