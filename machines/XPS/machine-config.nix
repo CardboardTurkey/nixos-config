@@ -179,4 +179,5 @@ in
   # };
 
   services.logind.lidSwitchExternalPower = "ignore";
+
 }
