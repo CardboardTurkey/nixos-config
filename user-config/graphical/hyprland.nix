@@ -309,6 +309,7 @@ in
         "workspace 4, class:thunderbird"
         "workspace 5, class:quassel"
         "workspace 5, class:signal"
+        "workspace 5, class:WebCord"
         "workspace 6, class:steam"
         "workspace 7, class:Gimp"
         "workspace 8, title:btop"
