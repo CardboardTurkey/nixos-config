@@ -80,6 +80,7 @@
         "movefocus",
         "movetoworkspace",
         "movewindow",
+        "movewindowpixel",
         "mpris",
         "nerdfonts",
         "networkmanager",

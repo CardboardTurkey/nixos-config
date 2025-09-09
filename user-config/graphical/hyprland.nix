@@ -99,15 +99,18 @@ in
     systemd.enable = true;
     xwayland.enable = true;
     settings = {
+      "$mainMod" = "SUPER";
+      # Useful for configuring Firefox's PiP
+      "$pip" = "title:Picture-in-Picture";
+
       # source = [ "${hyde}/Configs/.config/hypr/animations/animations-me-1.conf" ];
       bind = [
         "SUPER, Return, exec, ${launchTerminal}"
         "MOD3, Return, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}&"
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        "$mainMod, Q, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}"
+        "$mainMod, Q, exec, ${lib.getBin pkgs.${osConfig.emulator}}"
         "$mainMod, C, killactive,"
-        "$mainMod, M, exit,"
         "$mainMod, V, togglefloating,"
         "$mainMod, P, pseudo, # dwindle"
         "$mainMod, J, togglesplit, # dwindle"
@@ -148,11 +151,11 @@ in
         "$mainMod ALT, up, movecurrentworkspacetomonitor, u"
         "$mainMod ALT, down, movecurrentworkspacetomonitor, d"
 
-        "$mainMod, S, togglespecialworkspace, magic"
-        "$mainMod, S, movetoworkspace, +0"
-        "$mainMod, S, togglespecialworkspace, magic"
-        "$mainMod, S, movetoworkspace, special:magic"
-        "$mainMod, S, togglespecialworkspace, magic"
+        "$mainMod, M, togglespecialworkspace, magic"
+        "$mainMod, M, movetoworkspace, +0"
+        "$mainMod, M, togglespecialworkspace, magic"
+        "$mainMod, M, movetoworkspace, special:magic"
+        "$mainMod, M, togglespecialworkspace, magic"
 
         # Scroll throurightgh existing workspaces with mainMod + scroll
         "$mainMod, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
@@ -167,13 +170,21 @@ in
         "MOD3, left, workspace, e-1"
 
         # full screen
-        "SUPER, F, fullscreen"
+        "$mainMod, F, fullscreen"
 
         # random bindings
         ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
-        "SUPER, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class=com.clipse -e ${pkgs.clipse}/bin/clipse"
-        "SUPER, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
+        "$mainMod, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class=com.clipse -e ${pkgs.clipse}/bin/clipse"
+        "$mainMod, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
         "MOD3, Space, exec, ${lib.getExe pkgs.playerctl} play-pause"
+
+        # PiP control
+        "$mainMod, W, movewindowpixel, 0 -220,$pip"
+        "$mainMod, A, movewindowpixel, exact 40 ${builtins.toString (1200 - 200 - 40)}, $pip"
+        "$mainMod, S, movewindowpixel, 0 220, $pip"
+        "$mainMod, D, movewindowpixel, exact ${builtins.toString (1920 - 355 - 40)} ${
+          builtins.toString (1200 - 200 - 40)
+        }, $pip"
       ];
 
       binde = [
@@ -317,11 +328,11 @@ in
         "float,class:(com.clipse)"
         "size 622 652,class:(com.clipse)"
 
-        "float,title:(Picture-in-Picture)"
-        "pin,title:(Picture-in-Picture)"
-        "opacity 1.0,title:(Picture-in-Picture)"
-        "size 533 300,title:(Picture-in-Picture)"
-        "move 100%-w-40 100%-w-40,title:(Picture-in-Picture)"
+        "float,$pip"
+        "pin,$pip"
+        "opacity 1.0,$pip"
+        "size 355 200,$pip"
+        "move 100%-w-40 100%-w-40,$pip"
 
         "float,class:(com.saivert.pwvucontrol)"
         "size 1200 600,class:(com.saivert.pwvucontrol)"
@@ -330,9 +341,6 @@ in
         "idleinhibit fullscreen, title:^(*)$"
         "idleinhibit fullscreen, fullscreen:1"
       ];
-
-      # See https://wiki.hyprland.org/Configuring/Keywords/ for more
-      "$mainMod" = "SUPER";
 
       exec-once = [
         "${pkgs.clipse}/bin/clipse -listen"
