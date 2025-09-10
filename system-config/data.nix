@@ -183,12 +183,12 @@ in
             name = "InfluxDB";
             type = "influxdb";
             access = "proxy";
-            url = "https://influxdb.kiran.smoothbrained.co.uk";
+            url = "https://influxdb.b.kiran.smoothbrained.co.uk";
             jsonData = {
               version = "Flux";
               organization = config.services.influxdb2.provision.initialSetup.organization;
               defaultBucket = config.services.influxdb2.provision.initialSetup.bucket;
-              tlsSkipVerify = true;
+              withCredentials = true;
             };
             secureJsonData = {
               token = "$__file{${config.sops.secrets."influxdb/token".path}}";
