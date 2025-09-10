@@ -21,15 +21,15 @@ let
     );
 in
 {
-  sops.secrets =
-    secretPermissions "vaultwarden" [
-      "vaultwarden/env"
-    ]
-    // secretPermissions "bwdc" [
-      "vaultwarden/ldap"
-      "vaultwarden/client_secret"
-      "vaultwarden/client_id"
-    ];
+  sops.secrets = secretPermissions "vaultwarden" [
+    "vaultwarden/env"
+  ]
+  # // secretPermissions "bwdc" [
+  #   "vaultwarden/ldap"
+  #   "vaultwarden/client_secret"
+  #   "vaultwarden/client_id"
+  # ]
+  ;
 
   networking.firewall.allowedTCPPorts = [ 9876 ];
   services = {
@@ -45,30 +45,32 @@ in
       };
       backupDir = "/var/backup/vaultwarden";
     };
-    bitwarden-directory-connector-cli = {
-      enable = true;
-      domain = "https://pass.kiran.smoothbrained.co.uk";
-      ldap = {
-        rootPath = "dc=smoothbrained,dc=co,dc=uk";
-        port = 636;
-        ssl = true;
-        hostname = "ldap.smoothbrained.co.uk";
-        username = "cn=vaultwarden,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk";
-      };
-      secrets = {
-        ldap = config.sops.secrets."vaultwarden/ldap".path;
-        bitwarden = {
-          client_path_id = config.sops.secrets."vaultwarden/client_id".path;
-          client_path_secret = config.sops.secrets."vaultwarden/client_secret".path;
-        };
-      };
-      sync = {
-        users = true;
-        userPath = "ou=people";
-        overwriteExisting = true;
-        groups = true;
-        removeDisabled = true;
-      };
-    };
+
+    # Use this if you want to try LDAP sync
+    # bitwarden-directory-connector-cli = {
+    #   enable = true;
+    #   domain = "https://pass.kiran.smoothbrained.co.uk";
+    #   ldap = {
+    #     rootPath = "dc=smoothbrained,dc=co,dc=uk";
+    #     port = 636;
+    #     ssl = true;
+    #     hostname = "ldap.smoothbrained.co.uk";
+    #     username = "cn=vaultwarden,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk";
+    #   };
+    #   secrets = {
+    #     ldap = config.sops.secrets."vaultwarden/ldap".path;
+    #     bitwarden = {
+    #       client_path_id = config.sops.secrets."vaultwarden/client_id".path;
+    #       client_path_secret = config.sops.secrets."vaultwarden/client_secret".path;
+    #     };
+    #   };
+    #   sync = {
+    #     users = true;
+    #     userPath = "ou=people";
+    #     overwriteExisting = true;
+    #     groups = true;
+    #     removeDisabled = true;
+    #   };
+    # };
   };
 }
