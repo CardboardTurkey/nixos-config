@@ -14,7 +14,6 @@ in
 {
   programs.rofi = {
     enable = true;
-    package = pkgs.rofi-wayland;
     extraConfig = {
       modi = "drun,run,ssh,combi";
       terminal = osConfig.emulator;
