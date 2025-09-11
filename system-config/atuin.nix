@@ -25,5 +25,19 @@
       host = "0.0.0.0";
       database.createLocally = true;
     };
+    gatus.settings = {
+      endpoints = [
+        {
+          name = "Atuin 🐢";
+          url = "https://atuin.kiran.smoothbrained.co.uk";
+          group = "Services";
+          interval = "5m";
+          conditions = [
+            "[STATUS] == 200"
+            "[RESPONSE_TIME] < 300"
+          ];
+        }
+      ];
+    };
   };
 }

@@ -14,6 +14,7 @@ let
   ldapUsers = [
     "kostrolenk"
     "aholmes"
+    "gatus-kiran"
   ];
   grantStatements =
     dbNames: username:
@@ -57,7 +58,10 @@ let
     group_dn = "*"
     org_role = "Editor"
   '';
-
+  # TODO: restrict filter to ou=people and ou=sysaccounts?
+  postgresAuth = ''ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
+    builtins.readFile config.sops.secrets."postgres/ldap".path
+  }" ldapbasedn="dc=smoothbrained,dc=co,dc=uk" ldapsearchfilter="(|(uid=$username)(cn=$username))"'';
 in
 {
   sops.secrets = {
@@ -99,24 +103,12 @@ in
     "pg_hba.conf" = {
       text = ''
         # SBUK auth
-        host all all 172.16.3.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
-          builtins.readFile config.sops.secrets."postgres/ldap".path
-        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
-        host all all 172.16.100.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
-          builtins.readFile config.sops.secrets."postgres/ldap".path
-        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
-        host all all 172.16.99.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
-          builtins.readFile config.sops.secrets."postgres/ldap".path
-        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
-        host all all 172.16.2.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
-          builtins.readFile config.sops.secrets."postgres/ldap".path
-        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
-        host all all 172.16.98.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
-          builtins.readFile config.sops.secrets."postgres/ldap".path
-        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
-        host all all 172.16.1.0/24 ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
-          builtins.readFile config.sops.secrets."postgres/ldap".path
-        }" ldapbasedn="ou=people,dc=smoothbrained,dc=co,dc=uk" ldapsearchattribute="uid"
+        host all all 172.16.3.0/24 ${postgresAuth}
+        host all all 172.16.100.0/24 ${postgresAuth}
+        host all all 172.16.99.0/24 ${postgresAuth}
+        host all all 172.16.2.0/24 ${postgresAuth}
+        host all all 172.16.98.0/24 ${postgresAuth}
+        host all all 172.16.1.0/24 ${postgresAuth}
 
         # default value of services.postgresql.authentication
         local all postgres         peer map=postgres
@@ -211,6 +203,40 @@ in
       enableTCPIP = true;
       # Need to override this so we can make sure file is not world-readable.
       settings.hba_file = lib.mkForce "/etc/pg_hba.conf";
+    };
+    gatus.settings = {
+      endpoints = [
+        {
+          name = "Grafana 📊";
+          group = "Services";
+          url = "https://observe.kiran.smoothbrained.co.uk/api/health";
+          interval = "5m";
+          conditions = [
+            "[STATUS] == 200"
+            "[RESPONSE_TIME] < 300"
+          ];
+        }
+        {
+          name = "InfluxDB 📉";
+          group = "Services";
+          url = "https://influxdb.b.kiran.smoothbrained.co.uk/health";
+          interval = "5m";
+          conditions = [
+            "[STATUS] == 200"
+            "[RESPONSE_TIME] < 300"
+          ];
+        }
+      ];
+      ui.buttons = [
+        {
+          name = "‣ Grafana";
+          link = "https://observe.kiran.smoothbrained.co.uk/";
+        }
+        {
+          name = "‣ InfluxDB";
+          link = "https://influxdb.b.kiran.smoothbrained.co.uk/";
+        }
+      ];
     };
   };
   systemd = {

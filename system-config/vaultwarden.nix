@@ -46,6 +46,27 @@ in
       backupDir = "/var/backup/vaultwarden";
     };
 
+    gatus.settings = {
+      endpoints = [
+        {
+          name = "Vaultwarden 🔒";
+          group = "Services";
+          url = "https://pass.kiran.smoothbrained.co.uk/alive";
+          interval = "5m";
+          conditions = [
+            "[STATUS] == 200"
+            "[RESPONSE_TIME] < 300"
+          ];
+        }
+      ];
+      ui.buttons = [
+        {
+          name = "‣ Vaultwarden";
+          link = "https://pass.kiran.smoothbrained.co.uk/";
+        }
+      ];
+    };
+
     # Use this if you want to try LDAP sync
     # bitwarden-directory-connector-cli = {
     #   enable = true;

@@ -36,6 +36,26 @@ in
         };
       };
     };
+    gatus.settings = {
+      endpoints = [
+        {
+          name = "Hedgedoc 🦔";
+          group = "Services";
+          url = "https://pad.kiran.smoothbrained.co.uk/status";
+          interval = "5m";
+          conditions = [
+            "[STATUS] == 200"
+            "[RESPONSE_TIME] < 300"
+          ];
+        }
+      ];
+      ui.buttons = [
+        {
+          name = "‣ Hedgedoc";
+          link = "https://pad.kiran.smoothbrained.co.uk/";
+        }
+      ];
+    };
   };
   systemd = {
     services = {

@@ -144,6 +144,7 @@
                 "data.nix"
                 "rabbit.nix"
                 "vaultwarden.nix"
+                "gatus.nix"
               ]
             )
             ++ [
