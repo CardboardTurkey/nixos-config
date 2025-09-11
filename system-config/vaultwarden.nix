@@ -6,7 +6,7 @@
 # Instead, create a user and an org manually. Then go to
 # Admin console > Settings > Organization info. You can find `client_id` and
 # `client_secret` under "View API key".
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   secretPermissions =
     user: secrets:
@@ -23,6 +23,7 @@ in
 {
   sops.secrets = secretPermissions "vaultwarden" [
     "vaultwarden/env"
+    "backups/vaultwarden"
   ]
   # // secretPermissions "bwdc" [
   #   "vaultwarden/ldap"
@@ -43,7 +44,6 @@ in
         rocketAddress = "0.0.0.0";
         rocketPort = 9876;
       };
-      backupDir = "/var/backup/vaultwarden";
     };
 
     gatus.settings = {
@@ -93,5 +93,44 @@ in
     #     removeDisabled = true;
     #   };
     # };
+  };
+  systemd = {
+    services = {
+      vaultwarden-backup = {
+        enable = true;
+        description = "Backup vaultwarden data";
+        after = [
+          "network-online.target"
+          "vaultwarden.service"
+        ];
+        wants = [
+          "network-online.target"
+          "vaultwarden.service"
+        ];
+        serviceConfig = {
+          Type = "exec";
+          EnvironmentFile = config.sops.secrets."backups/vaultwarden".path;
+          ExecStart = pkgs.writeScript "vaultwarden-backup" ''
+            #!${pkgs.bash}/bin/bash
+            ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/vaultwarden::$(date -Is)" /var/lib/vaultwarden
+          '';
+        };
+        wantedBy = [ "multi-user.target" ];
+      };
+    };
+    timers = {
+      vaultwarden-backup = {
+        enable = true;
+        unitConfig = {
+          Description = "Regularly backup vaultwarden data";
+          PartOf = [ "vaultwarden-backup.service" ];
+        };
+        timerConfig = {
+          OnCalendar = "*-*-* 00:00:00";
+          Unite = "vaultwarden-backup.service";
+        };
+        wantedBy = [ "timers.target" ];
+      };
+    };
   };
 }
