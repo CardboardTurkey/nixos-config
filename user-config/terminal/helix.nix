@@ -62,6 +62,7 @@
         };
         nixd.command = lib.getExe pkgs.nixd;
         marksman.command = lib.getExe pkgs.marksman;
+        pylsp.command = lib.getExe pkgs.python312Packages.python-lsp-server;
         ruff.command = lib.getExe pkgs.ruff;
         typos.command = lib.getExe pkgs.typos-lsp;
       };
