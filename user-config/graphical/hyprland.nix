@@ -295,12 +295,10 @@ in
         # new_status = slave
       };
 
-      gestures = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
-        workspace_swipe = true;
-        workspace_swipe_min_speed_to_force = 0;
-        workspace_swipe_cancel_ratio = 0.1;
-      };
+      gesture = [
+        "3, horizontal, workspace"
+      ];
+
       misc = {
         mouse_move_enables_dpms = true;
         # key_press_enables_dpms = true
