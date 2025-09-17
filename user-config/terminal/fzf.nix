@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  pkgs,
+  # lib,
+  # osConfig,
+  ...
+}:
 let
   fzf-tab-source = pkgs.fetchFromGitHub {
     owner = "Freed-Wu";
@@ -22,6 +27,12 @@ in
       "--border rounded"
       "--preview-window border-rounded"
     ];
+    # Doesn't work probably because of catppuccin nix:
+    # colors = {
+    #   bg = lib.mkForce "-1";
+    #   "bg+" = lib.mkForce osConfig.theme.crust.hex;
+    #   pointer = lib.mkForce osConfig.theme.maroon.hex;
+    # };
   };
   programs.zsh = {
     initContent = ''
