@@ -18,40 +18,6 @@
         description = "Kiran's services and websites hosted on the SBUK infra.";
         header = "Kiran's SBUK services and websites";
         logo = "https://gitlab.com/smoothbrained-uk/public-assets/-/raw/master/logo.svg";
-        # custom-css = ''
-        #   a {
-        #     font: bold 11px Arial;
-        #     text-decoration: none;
-        #     background-color: #EEEEEE;
-        #     color: #333333;
-        #     padding: 2px 6px 2px 6px;
-        #     border-top: 1px solid #CCCCCC;
-        #     border-right: 1px solid #333333;
-        #     border-bottom: 1px solid #333333;
-        #     border-left: 1px solid #CCCCCC;
-        #   }
-        #   a:link, a:visited {
-        #     font: bold 11px Arial;
-        #     text-decoration: none;
-        #     background-color: #EEEEEE;
-        #     color: #333333;
-        #     padding: 2px 6px 2px 6px;
-        #     border-top: 1px solid #CCCCCC;
-        #     border-right: 1px solid #333333;
-        #     border-bottom: 1px solid #333333;
-        #     border-left: 1px solid #CCCCCC;
-        #     display: inline-block; /* This can help with consistent padding and borders */
-        #   }
-
-        #   a:hover {
-        #     background-color: #DDDDDD;
-        #   }
-
-        #   a:active {
-        #     border-top: 1px solid #333333;
-        #     border-left: 1px solid #333333;
-        #   }
-        # '';
       };
       endpoints = [
         {
@@ -61,7 +27,7 @@
           interval = "5m";
           conditions = [
             "[STATUS] == 200"
-            "[RESPONSE_TIME] < 300"
+            "[RESPONSE_TIME] < 500"
           ];
         }
         {
@@ -71,7 +37,7 @@
           interval = "5m";
           conditions = [
             "[STATUS] == 200"
-            "[RESPONSE_TIME] < 300"
+            "[RESPONSE_TIME] < 500"
           ];
         }
         {
@@ -81,7 +47,7 @@
           interval = "5m";
           conditions = [
             "[STATUS] == 200"
-            "[RESPONSE_TIME] < 300"
+            "[RESPONSE_TIME] < 500"
           ];
         }
       ];
