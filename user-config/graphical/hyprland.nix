@@ -166,8 +166,10 @@ in
         "$mainMod SHIFT, KP_SUBTRACT, exec, hyprctl -q keyword cursor:zoom_factor 1"
         "$mainMod SHIFT, 0, exec, hyprctl -q keyword cursor:zoom_factor 1"
 
+        # Workspace navigation
         "MOD3, right, workspace, e+1"
         "MOD3, left, workspace, e-1"
+        "MOD3, backspace, workspace, previous"
 
         # full screen
         "$mainMod, F, fullscreen"
