@@ -51,6 +51,7 @@ let
       zxh404.vscode-proto3
       # github.copilot
       wholroyd.jinja
+      ms-python.python
     ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
@@ -199,6 +200,7 @@ in
           "!reference sequence"
           "!vault scalar"
         ];
+        python.defaultInterpreterPath = lib.getExe pkgs.python313;
         rust-analyzer = {
           checkOnSave = true;
           server.extraEnv = {
