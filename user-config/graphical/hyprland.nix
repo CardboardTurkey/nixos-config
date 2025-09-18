@@ -2,6 +2,7 @@
   pkgs,
   osConfig,
   lib,
+  hypr-dynamic-cursors,
   ...
 }:
 let
@@ -97,6 +98,9 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
+    plugins = [
+      hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors
+    ];
     systemd.enable = true;
     xwayland.enable = true;
     settings = {
@@ -374,6 +378,20 @@ in
         "ignorezero,notifications"
         "noanim,selection"
       ];
+
+      plugin = {
+        dynamic-cursors = {
+          # enables the plugin
+          enabled = true;
+
+          # sets the cursor behaviour, supports these values:
+          # tilt    - tilt the cursor based on x-velocity
+          # rotate  - rotate the cursor based on movement direction
+          # stretch - stretch the cursor shape based on direction and velocity
+          # none    - do not change the cursors behaviour
+          mode = "tilt";
+        };
+      };
     };
   };
 }
