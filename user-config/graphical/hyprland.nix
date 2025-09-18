@@ -96,6 +96,7 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
+    package = null;
     systemd.enable = true;
     xwayland.enable = true;
     settings = {

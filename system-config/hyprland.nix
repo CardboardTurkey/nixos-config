@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 {
   environment = {
     # Optional, hint electron apps to use wayland
@@ -17,6 +17,7 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
   programs.hyprlock.enable = true;
   services.hypridle.enable = true;

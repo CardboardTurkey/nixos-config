@@ -20,6 +20,9 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon/release-2025-05-17";
+
+    hyprland.url = "github:hyprwm/Hyprland/v0.51.0";
+
     catppuccin.url = "github:catppuccin/nix";
     catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*.tar.gz";
     launcher-theme = {
@@ -45,6 +48,7 @@
       nixos-hardware,
       nix-index-database,
       apple-silicon,
+      hyprland,
       catppuccin,
       catppuccin-vsc,
       launcher-theme,
@@ -88,6 +92,7 @@
         "nix-index-database.nix"
         "sops.nix"
         "hyprland.nix"
+        "cachix.nix"
         "bluetooth.nix"
         "gnupg.nix"
         "devenv.nix"
@@ -97,7 +102,7 @@
       ];
       sharedArgs = {
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
-        inputs.sops-nix = sops-nix;
+        inputs = { inherit sops-nix hyprland; };
       };
       hmSharedArgs = {
         catppuccin-hm = catppuccin.homeModules.catppuccin;
