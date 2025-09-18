@@ -296,6 +296,8 @@ in
         # new_status = slave
       };
 
+      gestures.workspace_swipe_cancel_ratio = 0;
+
       gesture = [
         "3, horizontal, workspace"
       ];
