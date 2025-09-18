@@ -238,6 +238,7 @@ in
         # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
         rounding = osConfig.cornerRadius;
+        rounding_power = 3;
         blur = {
           enabled = true;
           size = 12;
