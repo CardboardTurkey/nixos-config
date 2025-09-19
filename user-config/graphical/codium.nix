@@ -54,8 +54,8 @@ let
       {
         name = "geminicodeassist";
         publisher = "google";
-        version = "2.35.0";
-        sha256 = "sha256-4l1YKwYPkSShEJVoN+4m8SUQXLC5V3ioPNAKDuTVDsk=";
+        version = "2.50.0";
+        sha256 = "sha256-kyV0V8ykMGWRHOaYc2+8GOe36o74yu9H7TunUzFHlTQ=";
       }
       # {
       #   name = "vscode-devskim";
