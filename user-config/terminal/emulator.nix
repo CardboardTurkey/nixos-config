@@ -39,7 +39,7 @@
         cursor_trail = 1;
         font_family = "monospace";
         font_size = builtins.toString osConfig.fontSizeSmall;
-        window_padding_width = 4;
+        window_margin_width = 20;
         enable_audio_bell = false;
         background_opacity = 0.85;
       };
