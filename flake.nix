@@ -19,7 +19,7 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    apple-silicon.url = "github:tpwrules/nixos-apple-silicon/release-2025-05-17";
+    apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
 
     hyprland.url = "github:hyprwm/Hyprland/v0.51.0";
     hypr-dynamic-cursors = {

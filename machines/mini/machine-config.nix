@@ -11,11 +11,7 @@
   boot.loader.systemd-boot.enable = lib.mkForce true;
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
 
-  hardware.asahi = {
-    withRust = true;
-    useExperimentalGPUDriver = true;
-    peripheralFirmwareDirectory = ./firmware;
-  };
+  hardware.asahi.peripheralFirmwareDirectory = ./firmware;
 
   monitorScale = 2;
   root = "f7b8da31-abcd-4352-87a0-e354ecc3b8e8";
