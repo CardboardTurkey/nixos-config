@@ -34,14 +34,11 @@ let
       vadimcn.vscode-lldb
       mkhl.direnv
       xaver.clang-format
-      zhwu95.riscv
       davidanson.vscode-markdownlint
-      thenuprojectcontributors.vscode-nushell-lang
       asciidoctor.asciidoctor-vscode
       mattn.lisp
       gitlab.gitlab-workflow
       redhat.vscode-yaml
-      redhat.vscode-xml
       stkb.rewrap
       # nvarner.typst-lsp got removed
       tomoki1207.pdf
