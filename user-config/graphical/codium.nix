@@ -243,8 +243,11 @@ in
           ];
         };
         shellcheck.customArgs = [ "-x" ];
-        # Useless for rust
-        geminicodeassist.enable = true;
+        geminicodeassist = {
+          enable = true;
+          inlineSuggestions.enableAuto = false;
+          enableTelemetry = false;
+        };
         errorLens.excludeBySource = [
           "cSpell"
         ];
