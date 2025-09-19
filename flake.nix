@@ -124,10 +124,10 @@
     in
     {
       nixosConfigurations = {
-        Osprey = nixpkgs-stable.lib.nixosSystem {
+        Osprey = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           modules =
-            shared_modules home-manager-stable
+            shared_modules home-manager
             ++ systemModPaths (
               system_modules
               ++ [
