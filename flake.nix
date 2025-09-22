@@ -163,6 +163,7 @@
                 "rabbit.nix"
                 "vaultwarden.nix"
                 "gatus.nix"
+                "chatbot.nix"
               ]
             )
             ++ [

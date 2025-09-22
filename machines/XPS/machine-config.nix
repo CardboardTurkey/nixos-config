@@ -106,6 +106,7 @@ in
 
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
+    nvidia-container-toolkit.enable = true;
     nvidia = {
       # Modesetting is required.
       modesetting.enable = true;
