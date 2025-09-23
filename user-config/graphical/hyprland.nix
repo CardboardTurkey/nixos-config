@@ -190,10 +190,10 @@ in
 
         # PiP control
         "$mainMod, W, movewindowpixel, 0 -220,$pip"
-        "$mainMod, A, movewindowpixel, exact 40 ${builtins.toString (1200 - 200 - 40)}, $pip"
+        "$mainMod, A, movewindowpixel, exact 40 ${builtins.toString (1080 - 200 - 40)}, $pip"
         "$mainMod, S, movewindowpixel, 0 220, $pip"
         "$mainMod, D, movewindowpixel, exact ${builtins.toString (1920 - 355 - 40)} ${
-          builtins.toString (1200 - 200 - 40)
+          builtins.toString (1080 - 200 - 40)
         }, $pip"
       ];
 
