@@ -75,7 +75,7 @@ in
           ExecStart = pkgs.writeScript "hedgedoc-backup" ''
             #!${pkgs.bash}/bin/bash
             ${pkgs.sqlite}/bin/sqlite3 ${dataDir}/db.sqlite ".backup '${dataDir}/backup.sq3'"
-            ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/hedgedoc::$(date -Is)" ${dataDir}/backup.sq3 ${dataDir}/uploads
+            BORG_PASSPHRASE="$BORG_PASSPHRASE_LOCAL" ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/hedgedoc::$(date -Is)" ${dataDir}/backup.sq3 ${dataDir}/uploads
           '';
         };
         wantedBy = [ "multi-user.target" ];

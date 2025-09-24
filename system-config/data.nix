@@ -266,7 +266,7 @@ in
           ExecStart = pkgs.writeScript "psql-backup" ''
             #!${pkgs.bash}/bin/bash
             ${config.services.postgresql.package}/bin/pg_dump -Fc --host=/run/postgresql > /tmp/psql.dump
-            ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/psql::$(date -Is)" /tmp/psql.dump
+            BORG_PASSPHRASE="$BORG_PASSPHRASE_LOCAL" ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/psql::$(date -Is)" /tmp/psql.dump
             rm /tmp/psql.dump
           '';
           User = "postgres";
@@ -289,7 +289,7 @@ in
           EnvironmentFile = config.sops.secrets."backups/grafana".path;
           ExecStart = pkgs.writeScript "grafana-backup" ''
             #!${pkgs.bash}/bin/bash
-            ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/grafana::$(date -Is)" /var/lib/grafana
+            BORG_PASSPHRASE="$BORG_PASSPHRASE_LOCAL" ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/grafana::$(date -Is)" /var/lib/grafana
           '';
           User = "grafana";
         };

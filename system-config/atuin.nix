@@ -1,7 +1,3 @@
-# Create backup:
-# 1. `sudo borg init -e repokey /backup/shell` (using password from secrets file)
-# 2. `sudo chown -R postgres /backup/shell`
-#
 # Restore from backup with `sudo -u postgres pg_restore --clean -d atuin --host=/run/postgresql < /tmp/atuin.dump`
 #
 # Afterwards you might need to re-encrypt:

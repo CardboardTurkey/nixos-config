@@ -116,7 +116,7 @@ in
           EnvironmentFile = config.sops.secrets."backups/vaultwarden".path;
           ExecStart = pkgs.writeScript "vaultwarden-backup" ''
             #!${pkgs.bash}/bin/bash
-            ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/vaultwarden::$(date -Is)" /var/lib/vaultwarden
+            BORG_PASSPHRASE="$BORG_PASSPHRASE_LOCAL" ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/vaultwarden::$(date -Is)" /var/lib/vaultwarden
           '';
         };
         wantedBy = [ "multi-user.target" ];
