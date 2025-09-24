@@ -1,4 +1,8 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 let
   ipAddress = "172.16.100.3";
   port = 61967;
@@ -45,7 +49,7 @@ in
           interval = "5m";
           conditions = [
             "[STATUS] == 200"
-            "[RESPONSE_TIME] < 300"
+            "[RESPONSE_TIME] < ${builtins.toString config.maxResponseTime}"
           ];
         }
       ];

@@ -213,7 +213,7 @@ in
           interval = "5m";
           conditions = [
             "[STATUS] == 200"
-            "[RESPONSE_TIME] < 300"
+            "[RESPONSE_TIME] < ${builtins.toString config.maxResponseTime}"
           ];
         }
         {
@@ -223,7 +223,7 @@ in
           interval = "5m";
           conditions = [
             "[STATUS] == 200"
-            "[RESPONSE_TIME] < 300"
+            "[RESPONSE_TIME] < ${builtins.toString config.maxResponseTime}"
           ];
         }
       ];

@@ -6,7 +6,11 @@
 # Instead, create a user and an org manually. Then go to
 # Admin console > Settings > Organization info. You can find `client_id` and
 # `client_secret` under "View API key".
-{ config, pkgs, ... }:
+{
+  config,
+  pkgs,
+  ...
+}:
 let
   secretPermissions =
     user: secrets:
@@ -55,7 +59,7 @@ in
           interval = "5m";
           conditions = [
             "[STATUS] == 200"
-            "[RESPONSE_TIME] < 300"
+            "[RESPONSE_TIME] < ${builtins.toString config.maxResponseTime}"
           ];
         }
       ];

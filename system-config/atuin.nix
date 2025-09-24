@@ -11,6 +11,7 @@
 # `atuin store pull --force` - this does the opposite to (3). Delete all local data in the store, and pull from the remote
 # `atuin store rebuild history` - ensure your history.db is up to date after all these operations
 
+{ config, ... }:
 {
   imports = [ ./data.nix ];
   sops.secrets."backups/postgres" = {
@@ -34,7 +35,7 @@
           interval = "5m";
           conditions = [
             "[STATUS] == 200"
-            "[RESPONSE_TIME] < 300"
+            "[RESPONSE_TIME] < ${builtins.toString config.maxResponseTime}"
           ];
         }
       ];
