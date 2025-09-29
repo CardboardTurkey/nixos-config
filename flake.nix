@@ -22,14 +22,10 @@
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
 
     hyprland.url = "github:hyprwm/Hyprland/v0.51.0";
-    hypr-dynamic-cursors = {
-      url = "github:VirtCode/hypr-dynamic-cursors";
-      inputs.hyprland.follows = "hyprland"; # to make sure that the plugin is built for the correct version of hyprland
+    hyprland-plugins = {
+      url = "github:hyprwm/hyprland-plugins";
+      inputs.hyprland.follows = "hyprland";
     };
-    # hyprland-plugins = {
-    #   url = "github:hyprwm/hyprland-plugins";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
 
     catppuccin.url = "github:catppuccin/nix";
     catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*.tar.gz";
@@ -57,7 +53,7 @@
       nix-index-database,
       apple-silicon,
       hyprland,
-      hypr-dynamic-cursors,
+      hyprland-plugins,
       catppuccin,
       catppuccin-vsc,
       launcher-theme,
@@ -118,7 +114,7 @@
         inherit
           launcher-theme
           rofi-emoji-theme
-          hypr-dynamic-cursors
+          hyprland-plugins
           ;
       };
     in

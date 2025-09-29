@@ -2,7 +2,7 @@
   pkgs,
   osConfig,
   lib,
-  # hypr-dynamic-cursors,
+  hyprland-plugins,
   ...
 }:
 let
@@ -98,12 +98,10 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
-    # plugins =
-    #   # Plugin only works on x86: https://github.com/VirtCode/hypr-dynamic-cursors/issues/82
-    #   if pkgs.system == "x86_64-linux" then
-    #     [ hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors ]
-    #   else
-    #     [ ];
+    plugins = with hyprland-plugins.packages.${pkgs.system}; [
+      # hyprbars
+      # hyprexpo
+    ];
     systemd.enable = true;
     xwayland.enable = true;
     settings = {
@@ -239,7 +237,7 @@ in
         "col.active_border" = "$surface0 $accent 45deg";
         "col.inactive_border" = "$surface0";
 
-        layout = "dwindle";
+        layout = "scrolling";
       };
 
       decoration = {
@@ -383,16 +381,9 @@ in
       ];
 
       plugin = {
-        dynamic-cursors = {
-          # enables the plugin
-          enabled = true;
-
-          # sets the cursor behaviour, supports these values:
-          # tilt    - tilt the cursor based on x-velocity
-          # rotate  - rotate the cursor based on movement direction
-          # stretch - stretch the cursor shape based on direction and velocity
-          # none    - do not change the cursors behaviour
-          mode = "tilt";
+        hyprscrolling = {
+          column_width = 0.7;
+          fullscreen_on_one_column = true;
         };
       };
     };
