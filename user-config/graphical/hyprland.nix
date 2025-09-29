@@ -2,7 +2,7 @@
   pkgs,
   osConfig,
   lib,
-  hypr-dynamic-cursors,
+  # hypr-dynamic-cursors,
   ...
 }:
 let
@@ -98,12 +98,12 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
-    plugins =
-      # Plugin only works on x86: https://github.com/VirtCode/hypr-dynamic-cursors/issues/82
-      if pkgs.system == "x86_64-linux" then
-        [ hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors ]
-      else
-        [ ];
+    # plugins =
+    #   # Plugin only works on x86: https://github.com/VirtCode/hypr-dynamic-cursors/issues/82
+    #   if pkgs.system == "x86_64-linux" then
+    #     [ hypr-dynamic-cursors.packages.${pkgs.system}.hypr-dynamic-cursors ]
+    #   else
+    #     [ ];
     systemd.enable = true;
     xwayland.enable = true;
     settings = {
