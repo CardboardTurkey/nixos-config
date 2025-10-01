@@ -65,6 +65,7 @@ with types;
         "graphical/cursor.nix"
         "graphical/hyprpanel.nix"
         "graphical/wlogout.nix"
+        "graphical/zed.nix"
 
         "terminal/atuin.nix"
         "terminal/git.nix"
