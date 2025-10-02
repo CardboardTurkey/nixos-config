@@ -54,8 +54,8 @@ let
       {
         name = "geminicodeassist";
         publisher = "google";
-        version = "2.50.0";
-        sha256 = "sha256-kyV0V8ykMGWRHOaYc2+8GOe36o74yu9H7TunUzFHlTQ=";
+        version = "2.51.0";
+        sha256 = "sha256-3Xa4WkwiiRCr86w/a2sNdqCpiUTzV1kXuhLKwScSyYQ=";
       }
       # {
       #   name = "vscode-devskim";
@@ -243,11 +243,11 @@ in
           ];
         };
         shellcheck.customArgs = [ "-x" ];
-        geminicodeassist = {
-          enable = true;
-          inlineSuggestions.enableAuto = false;
-          enableTelemetry = false;
-        };
+        "geminicodeassist.enable" = true;
+        "geminicodeassist.chat.changeView" = "Default diff view";
+        "geminicodeassist.enableTelemetry" = false;
+        "geminicodeassist.inlineSuggestions.enableAuto" = false;
+
         errorLens.excludeBySource = [
           "cSpell"
         ];
