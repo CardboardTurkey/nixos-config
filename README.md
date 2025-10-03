@@ -1,11 +1,9 @@
 # NixOS config
 
-## Install
-
-e.g. to install for XPS machine:
+## Rebuild
 
 ```sh
-./stuff/update XPS
+./stuff/update $HOST --impure
 ```
 
 ## First boot
@@ -34,15 +32,13 @@ root partition though (`parted /dev/sda -- mkpart lvm 512MB -8GB` seems to
 work).
 
 In principle you could also use lvm (with the `-C` flag for contiguous) for the
-swap parition but apparently it doesn't make much difference:
+swap partition but apparently it doesn't make much difference:
 <https://unix.stackexchange.com/a/144597>
 
 [guide]: https://nixos.org/manual/nixos/stable/#sec-installation-manual
 [lvm]: https://linuxhandbook.com/lvm-guide/
 
 ## Annoyances
-
-Wallpapers need to be copied across. Git repos need to be reinstantiated.
 
 Need to enable touch detector `systemctl --user enable yubikey-touch-detector.service`
 
@@ -59,10 +55,6 @@ Can use sean's image because it already has a swap space applied. Remember to up
 ## TODO
 
 * Sort out router
-* Upgrade rust-ci
-* Nix config
-  * Machines
-* Drop custom rofi themes
 * zerossl rust lib
 
 ## Links
@@ -99,6 +91,19 @@ Can use sean's image because it already has a swap space applied. Remember to up
 
 ```sh
 nix --extra-experimental-features repl-flake repl ".#nixosConfigurations.\"$NAME\""
+```
+
+### Bumping system version
+
+Some people say you should never do this but some features are gated behind
+`system.stateVersion` so that doesn't make sense.
+
+What you can do is build (but not switch) with an updated version and then check
+to see what it would change.
+
+```sh
+nixos-rebuild --flake .#$1 --impure build
+nix-diff result /run/current-system
 ```
 
 ### Overriding attributes
