@@ -14,6 +14,7 @@ in
 {
   programs.rofi = {
     enable = true;
+    plugins = with pkgs; [ rofi-calc ];
     extraConfig = {
       modi = "drun,run,ssh,combi";
       terminal = osConfig.emulator;
