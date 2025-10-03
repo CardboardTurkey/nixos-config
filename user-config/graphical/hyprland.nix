@@ -237,7 +237,7 @@ in
         "col.active_border" = "$surface0 $accent 45deg";
         "col.inactive_border" = "$surface0";
 
-        layout = "scrolling";
+        layout = "dwindle";
       };
 
       decoration = {
