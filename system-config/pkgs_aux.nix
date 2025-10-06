@@ -35,5 +35,6 @@
     brightnessctl
     pulseaudio # for pactl
     webcord
+    sums
   ];
 }
