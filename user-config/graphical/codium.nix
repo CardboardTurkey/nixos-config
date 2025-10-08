@@ -198,6 +198,7 @@ in
           "!vault scalar"
         ];
         python.defaultInterpreterPath = lib.getExe pkgs.python313;
+        git.openRepositoryInParentFolders = "never";
         rust-analyzer = {
           checkOnSave = true;
           server.extraEnv = {
