@@ -48,6 +48,7 @@ let
       zxh404.vscode-proto3
       # github.copilot
       wholroyd.jinja
+      charliermarsh.ruff
       ms-python.python
     ])
     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
@@ -198,6 +199,19 @@ in
           "!vault scalar"
         ];
         python.defaultInterpreterPath = lib.getExe pkgs.python313;
+        "[python]" = {
+          "editor.formatOnSave" = true;
+          "editor.codeActionsOnSave" = {
+            "source.fixAll" = "explicit";
+            "source.organizeImports" = "explicit";
+          };
+          "editor.defaultFormatter" = "charliermarsh.ruff";
+        };
+        ruff = {
+          interpreter = [ (lib.getExe pkgs.python313) ];
+          path = [ (lib.getExe pkgs.ruff) ];
+          nativeServer = "on";
+        };
         git.openRepositoryInParentFolders = "never";
         rust-analyzer = {
           checkOnSave = true;
