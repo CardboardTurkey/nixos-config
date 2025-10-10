@@ -212,7 +212,10 @@ in
           path = [ (lib.getExe pkgs.ruff) ];
           nativeServer = "on";
         };
-        git.openRepositoryInParentFolders = "never";
+        git = {
+          blame.editorDecoration.enabled = true;
+          openRepositoryInParentFolders = "never";
+        };
         rust-analyzer = {
           checkOnSave = true;
           server.extraEnv = {
