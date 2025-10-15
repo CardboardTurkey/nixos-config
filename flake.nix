@@ -104,6 +104,7 @@
         "trash.nix"
         "system_channel.nix"
         "usbip.nix"
+        "xdg.nix"
       ];
       sharedArgs = {
         userModPaths = builtins.map (moduleName: "${self.outPath}/user-config/${moduleName}");
