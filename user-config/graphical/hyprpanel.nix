@@ -181,6 +181,7 @@ in
             "[cC]odium" = "";
             "[wW]ebcord" = "";
             "[sS]ignal" = "";
+            "title:Picture-in-Picture" = "";
           };
 
         };
