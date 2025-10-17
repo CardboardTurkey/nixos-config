@@ -14,6 +14,8 @@ let
       }
     )
   );
+  fontSize =
+    if osConfig.hostname == "Osprey" then osConfig.fontSizeMedium else osConfig.fontSizeSmall;
 in
 {
   wayland.windowManager.hyprland.settings = {
@@ -43,7 +45,7 @@ in
             enableBorders = true;
             workspaces = {
               enableBorder = false;
-              fontSize = osConfig.fontSizeMedium;
+              inherit fontSize;
             };
             radius = "${toString (osConfig.cornerRadius * 1.3)}px";
             padding_x = "0.7rem";
@@ -97,7 +99,7 @@ in
         };
 
         font = {
-          size = osConfig.fontSizeMedium;
+          size = fontSize;
           weight = 500;
           # name = "SF Pro Display";
         };

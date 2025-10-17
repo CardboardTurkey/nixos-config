@@ -208,11 +208,11 @@ in
         "$mainMod, mouse:273, resizewindow"
       ];
 
-      bindl = [
-        # switches
-        '',switch:on:Lid Switch,exec, hyprctl keyword monitor "eDP-1, disable"''
-        '',switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"''
-      ];
+      # bindl = [
+      #   # switches
+      #   '',switch:on:Lid Switch,exec, hyprctl keyword monitor "eDP-1, disable"''
+      #   '',switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"''
+      # ];
 
       input = {
         kb_layout = "";
@@ -360,6 +360,7 @@ in
       monitor = [
         ",highres,auto,1"
         "HDMI-A-1,preferred,0x0,2"
+        "eDP-1,preferred,0x0,1.5"
         "FALLBACK,1920x1080@60,auto,1"
       ];
 
