@@ -2,14 +2,20 @@
   osConfig,
   pkgs,
   lib,
-  launcher-theme,
-  rofi-emoji-theme,
   ...
 }:
 let
   borderGradient = "window { background-image: linear-gradient(45deg,#${osConfig.theme.surface0.hex},#${
     osConfig.theme.${osConfig.accent}.hex
   }); padding: 3px; border-radius: 15px; } mainbox { border-radius: 13px; background-color: @base; }";
+  launcher-theme = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-3/style-1.rasi";
+    hash = "sha256-sPpelWT/tNJO/VxQSSB+tG4jQyzRxogNB13iSl5HjJE=";
+  };
+  rofi-emoji-theme = pkgs.fetchurl {
+    url = "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-2/style-2.rasi";
+    hash = "sha256-G9Mvz7SBsAuR9LXzb1dLfWP2JddhujalpIGWL7DfgEA=";
+  };
 in
 {
   programs.rofi = {

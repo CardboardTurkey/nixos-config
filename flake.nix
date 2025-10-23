@@ -29,14 +29,6 @@
 
     catppuccin.url = "github:catppuccin/nix";
     catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*.tar.gz";
-    launcher-theme = {
-      url = "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-3/style-1.rasi";
-      flake = false;
-    };
-    rofi-emoji-theme = {
-      url = "https://raw.githubusercontent.com/adi1090x/rofi/refs/heads/master/files/launchers/type-2/style-2.rasi";
-      flake = false;
-    };
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -56,8 +48,6 @@
       hyprland-plugins,
       catppuccin,
       catppuccin-vsc,
-      launcher-theme,
-      rofi-emoji-theme,
       sops-nix,
     }:
     let
@@ -113,8 +103,6 @@
       hmSharedArgs = {
         catppuccin-hm = catppuccin.homeModules.catppuccin;
         inherit
-          launcher-theme
-          rofi-emoji-theme
           hyprland-plugins
           ;
       };
