@@ -360,7 +360,8 @@ in
       monitor = [
         ",highres,auto,1"
         "HDMI-A-1,preferred,0x0,2"
-        "eDP-1,preferred,0x0,1.5"
+        "eDP-1,preferred,auto,1.333333"
+        # "eDP-1,preferred,0x0,1.5"
         "FALLBACK,1920x1080@60,auto,1"
       ];
 
