@@ -49,10 +49,18 @@
           name = "python";
           # Make sure lsp is present in dev env
           language-servers = [
-            "pylsp"
+            "pyright"
             "ruff"
+            "pylyzer" # TODO: switch to ty when it's ready
           ];
-          formatter.command = "${lib.getExe pkgs.ruff} check --select I --fix - | ${lib.getExe pkgs.ruff} format -";
+          auto-format = true;
+          formatter = {
+            command = lib.getExe pkgs.ruff;
+            args = [
+              "format"
+              "-"
+            ];
+          };
         }
       ];
       language-server = {
@@ -62,8 +70,18 @@
         };
         nixd.command = lib.getExe pkgs.nixd;
         marksman.command = lib.getExe pkgs.marksman;
-        pylsp.command = lib.getExe pkgs.python312Packages.python-lsp-server;
-        ruff.command = lib.getExe pkgs.ruff;
+        ruff = {
+          command = lib.getExe pkgs.ruff;
+          args = [ "server" ];
+        };
+        pylyzer = {
+          command = lib.getExe pkgs.pylyzer;
+          args = [ "--server" ];
+        };
+        pyright = {
+          command = lib.getExe pkgs.pyright;
+          config.python.analysis.typeCheckingMode = "basic";
+        };
         typos.command = lib.getExe pkgs.typos-lsp;
       };
     };
