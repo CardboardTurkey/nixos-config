@@ -1,14 +1,7 @@
 {
-  # For the future
-  # services.logind.settings.Login = {
-  #   HandleLidSwitchExternalPower = "ignore";
-  #   HandleLidSwitchDocked = "ignore";
-  #   HandleLidSwitch = "suspend-then-hibernate";
-  # };
-
-  services.logind = {
-    lidSwitchDocked = "ignore";
-    lidSwitch = "suspend-then-hibernate";
+  services.logind.settings.Login = {
+    HandleLidSwitchDocked = "ignore";
+    HandleLidSwitch = "suspend-then-hibernate";
   };
   systemd.sleep.extraConfig = "HibernateDelaySec=6h";
   # Battery threshold
