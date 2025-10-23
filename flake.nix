@@ -8,12 +8,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nixpkgs-stable.url = "github:NixOS/nixpkgs/nixos-25.05";
-    home-manager-stable = {
-      url = "github:nix-community/home-manager/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs-stable";
-    };
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
@@ -29,6 +23,7 @@
 
     catppuccin.url = "github:catppuccin/nix";
     catppuccin-vsc.url = "https://flakehub.com/f/catppuccin/vscode/*.tar.gz";
+
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -39,8 +34,6 @@
       self,
       nixpkgs,
       home-manager,
-      nixpkgs-stable,
-      home-manager-stable,
       nixos-hardware,
       nix-index-database,
       apple-silicon,
