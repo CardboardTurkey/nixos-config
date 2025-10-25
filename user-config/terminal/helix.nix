@@ -113,10 +113,35 @@
           # Minimum severity to show a diagnostic on other lines:
           # other-lines = "error"
         };
+        statusline = {
+          center = [
+            # "file-encoding"
+            # "file-type"
+            # "file-line-ending"
+            # "separator"
+            "read-only-indicator"
+            "version-control"
+            "spacer"
+            "file-modification-indicator"
+          ];
+          left = [
+            "mode"
+            "spinner"
+            # "selections"
+            # "primary-selection-length"
+            # "separator"
+            "position"
+            "file-name"
+            "diagnostics"
+          ];
+          right = [
+            "workspace-diagnostics"
+            "spacer"
+            "position-percentage"
+          ];
+        };
       };
       keys.normal = {
-        space.w = ":w";
-        space.q = ":q";
         space.space.b = ":sh ${pkgs.git}/bin/git blame -L %{cursor_line},%{cursor_line} %{buffer_name}";
         esc = [
           "collapse_selection"
