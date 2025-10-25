@@ -17,7 +17,6 @@
     enable = true;
     extraPackages = with pkgs; [
       yaml-language-server
-      ansible-language-server
       yamllint
       ansible-lint
     ];
