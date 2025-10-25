@@ -119,6 +119,15 @@
       ## Disable flow control
       [[ $- == *i* ]] && stty -ixon
 
+      function Resume {
+        fg
+        zle push-input
+        BUFFER=""
+        zle accept-line
+      }
+      zle -N Resume
+      bindkey "^Z" Resume
+
       source ${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
     '';
     envExtra = ''
