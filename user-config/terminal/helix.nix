@@ -146,18 +146,21 @@
           ];
         };
       };
-      keys.normal = {
-        space.space.b = ":sh ${pkgs.git}/bin/git blame -L %{cursor_line},%{cursor_line} %{buffer_name}";
-        esc = [
-          "collapse_selection"
-          "keep_primary_selection"
-        ];
-        C-g = [
-          ":write-all"
-          ":insert-output ${lib.getExe pkgs.lazygit} >/dev/tty"
-          ":redraw"
-          ":reload-all"
-        ];
+      keys = {
+        insert.j.j = "normal_mode";
+        normal = {
+          space.space.b = ":sh ${pkgs.git}/bin/git blame -L %{cursor_line},%{cursor_line} %{buffer_name}";
+          esc = [
+            "collapse_selection"
+            "keep_primary_selection"
+          ];
+          C-g = [
+            ":write-all"
+            ":insert-output ${lib.getExe pkgs.lazygit} >/dev/tty"
+            ":redraw"
+            ":reload-all"
+          ];
+        };
       };
     };
   };
