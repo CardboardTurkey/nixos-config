@@ -113,6 +113,11 @@
           # Minimum severity to show a diagnostic on other lines:
           # other-lines = "error"
         };
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
         statusline = {
           center = [
             # "file-encoding"
