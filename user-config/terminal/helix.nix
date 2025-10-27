@@ -62,6 +62,16 @@
           #   ];
           # };
         }
+        {
+          name = "toml";
+          formatter = {
+            command = lib.getExe pkgs.taplo;
+            args = [
+              "fmt"
+              "-"
+            ];
+          };
+        }
       ];
       language-server = {
         rust-analyzer.config = {
@@ -86,6 +96,7 @@
           };
         };
         typos.command = lib.getExe pkgs.typos-lsp;
+        taplo.command = lib.getExe pkgs.taplo;
       };
     };
     settings = {
