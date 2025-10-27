@@ -2,11 +2,11 @@
   programs.ssh = {
     enable = true;
     matchBlocks = {
-      "*" = {
-        controlPersist = "2h";
-        controlMaster = "auto";
-        forwardAgent = true;
-      };
+      # "*" = {
+      #   controlPersist = "2h";
+      #   controlMaster = "auto";
+      #   forwardAgent = true;
+      # };
       "fw1" = {
         hostname = "fw1.core.smoothbrained.co.uk";
         user = "local-kostrolenk";
