@@ -77,6 +77,10 @@
           check.command = "clippy";
           files.watcher = "server";
         };
+        yaml-language-server.config.yaml.customTags = [
+          "!vault scalar"
+          "!reference sequence"
+        ];
         nixd.command = lib.getExe pkgs.nixd;
         marksman.command = lib.getExe pkgs.marksman;
         pylsp = {
