@@ -22,6 +22,7 @@ let
       builtins.map (dbName: ''
         psql -c 'GRANT CONNECT ON DATABASE ${dbName} TO "${username}"'
         psql -d ${dbName} -c 'GRANT ALL ON SCHEMA public TO "${username}"'
+        psql -d ${dbName} -c 'GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO "${username}"'
       '') dbNames
     );
   # Trash /var/lib/grafana if your changes aren't taking effect.
