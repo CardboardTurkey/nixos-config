@@ -153,6 +153,31 @@
       keys = {
         insert.j.j = "normal_mode";
         normal = {
+          # Reproduce vim `*` and `#`
+          "*" = [
+            "move_char_right"
+            "move_prev_word_start"
+            "move_next_word_end"
+            "search_selection"
+            "make_search_word_bounded"
+            "search_next"
+          ];
+          "#" = [
+            "move_char_right"
+            "move_prev_word_start"
+            "move_next_word_end"
+            "search_selection"
+            "make_search_word_bounded"
+            "search_prev"
+          ];
+          "@" = [
+            "move_char_right"
+            "move_prev_word_start"
+            "move_next_word_end"
+            "search_selection"
+            "make_search_word_bounded"
+            "global_search"
+          ];
           space.space.b = ":sh ${pkgs.git}/bin/git blame -L %{cursor_line},%{cursor_line} %{buffer_name}";
           esc = [
             "collapse_selection"
