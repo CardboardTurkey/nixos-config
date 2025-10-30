@@ -7,6 +7,11 @@
 {
   imports = [ ../pc_common.nix ];
 
+  allowed_unfree = [
+    "1password"
+    "1password-cli"
+  ];
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = lib.mkForce true;
   boot.loader.efi.canTouchEfiVariables = lib.mkForce false;
@@ -36,6 +41,16 @@
   };
 
   users.users.kiran.openssh.authorizedKeys.keys = [ "${config.pgp_auth_2_ssh}" ];
+
+  programs = {
+    _1password.enable = true;
+    _1password-gui = {
+      # required for cli auth
+      enable = true;
+      # this makes system auth etc. work properly
+      polkitPolicyOwners = [ "kiran" ];
+    };
+  };
 
   # services.datadog-agent = {
   #   enable = true;
