@@ -149,6 +149,13 @@
             "position-percentage"
           ];
         };
+        auto-save = {
+          focus-lost = true;
+          after-delay = {
+            enable = true;
+            timeout = 500;
+          };
+        };
       };
       keys = {
         insert.j.j = "normal_mode";
