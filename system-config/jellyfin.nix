@@ -15,6 +15,13 @@
     80
     443
   ];
+  users = {
+    groups.media = { };
+    users = {
+      kiran.extraGroups = [ "media" ];
+      jellyfin.extraGroups = [ "media" ];
+    };
+  };
   security.acme = {
     acceptTerms = true;
     defaults = {
@@ -45,8 +52,6 @@
     jellyfin = {
       enable = true;
       openFirewall = true;
-      user = "kiran";
-      group = "kiran";
     };
   };
   systemd = {
