@@ -16,6 +16,8 @@
     443
   ];
   users = {
+    # Directory containing videos should be of `media` group and have mode `770`.
+    # All directories above need to be of media group and have mode `710`.
     groups.media = { };
     users = {
       kiran.extraGroups = [ "media" ];
