@@ -10,13 +10,13 @@
       qt6.qtwayland
       libsForQt5.qt5.qtwayland
       libsForQt5.qt5ct
-      xwayland
+      # xwayland
     ];
   };
 
   programs.hyprland = {
     enable = true;
-    xwayland.enable = true;
+    xwayland.enable = false;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
   };
   programs.hyprlock.enable = true;

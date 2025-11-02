@@ -103,7 +103,7 @@ in
       # hyprexpo
     ];
     systemd.enable = true;
-    xwayland.enable = true;
+    xwayland.enable = false;
     settings = {
       "$mainMod" = "SUPER";
       # Useful for configuring Firefox's PiP
@@ -365,9 +365,9 @@ in
         "FALLBACK,1920x1080@60,auto,1"
       ];
 
-      xwayland = {
-        force_zero_scaling = true;
-      };
+      # xwayland = {
+      #   force_zero_scaling = true;
+      # };
 
       # toolkit-specific scale
       env = [
