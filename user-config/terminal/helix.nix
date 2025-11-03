@@ -107,6 +107,7 @@
       editor = {
         line-number = "relative";
         soft-wrap.enable = true;
+        file-picker.hidden = false;
 
         # Minimum severity to show a diagnostic after the end of a line:
         end-of-line-diagnostics = "hint";
