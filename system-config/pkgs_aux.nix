@@ -36,5 +36,6 @@
     pulseaudio # for pactl
     webcord
     sums
+    wcalc
   ];
 }
