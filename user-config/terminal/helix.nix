@@ -105,6 +105,7 @@
     settings = {
       theme = lib.mkForce "my-theme";
       editor = {
+        lsp.display-inlay-hints = true;
         line-number = "relative";
         soft-wrap.enable = true;
         file-picker.hidden = false;
