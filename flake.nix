@@ -67,7 +67,6 @@
         "location.nix"
         "network.nix"
         "sound.nix"
-        "office_vpn.nix"
         "containers.nix"
         "boot.nix"
         "printing.nix"
@@ -113,6 +112,7 @@
                 "logiops.nix"
                 "usbip_host.nix"
                 "sbuk.nix"
+                "office_vpn.nix"
               ]
             )
             ++ [

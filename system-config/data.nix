@@ -61,7 +61,7 @@ let
   '';
   # TODO: restrict filter to ou=people and ou=sysaccounts?
   postgresAuth = ''ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
-    builtins.readFile config.sops.secrets."postgres/ldap".path
+    builtins.readFile config.sops.secrets."postgres_ldap".path
   }" ldapbasedn="dc=smoothbrained,dc=co,dc=uk" ldapsearchfilter="(|(uid=$username)(cn=$username))"'';
 in
 {
@@ -76,11 +76,7 @@ in
       owner = "influxdb2";
       group = "influxdb2";
     };
-    "postgres/sigma" = {
-      owner = "postgres";
-      group = "postgres";
-    };
-    "postgres/ldap" = {
+    "postgres_ldap" = {
       owner = "postgres";
       group = "postgres";
     };

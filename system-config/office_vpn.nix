@@ -9,7 +9,8 @@
   #   };
   # };
 
+  sops.secrets."sigma_vpn" = { };
   environment.systemPackages = [
-    (pkgs.writeScriptBin "vpnup" "pass -c vpn/sigma && nmcli c u sigma --ask; sudo ip route delete default dev tun0")
+    (pkgs.writeScriptBin "vpnup" "sudo nmcli c u sigma passwd-file /run/secrets/sigma_vpn; sudo ip route delete default dev tun0")
   ];
 }
