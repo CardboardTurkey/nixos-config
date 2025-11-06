@@ -164,6 +164,7 @@
               ++ [
                 "battery.nix"
                 "sbuk.nix"
+                "usbip_host.nix"
               ]
             )
             ++ [

@@ -19,8 +19,7 @@
     };
     # Determine the busid of the slot you want to expose with `usbip list -l`.
     # Use the busid in the service name, in my case it's 1-1.
-    "usbip-bind@1-1" = {
-      enable = true;
+    "usbip-bind@" = {
       description = "USB-IP Binding on bus id %I";
       after = [
         "network-online.target"
