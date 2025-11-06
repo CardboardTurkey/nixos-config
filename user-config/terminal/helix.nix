@@ -19,6 +19,7 @@
       yaml-language-server
       yamllint
       ansible-lint
+      bash-language-server
     ];
     languages = {
       language = [
@@ -115,7 +116,7 @@
         inline-diagnostics = {
           # Minimum severity to show a diagnostic on the primary cursor's line.
           # Note that `cursor-line` diagnostics are hidden in insert mode.
-          cursor-line = "error";
+          cursor-line = "hint";
           # Minimum severity to show a diagnostic on other lines:
           # other-lines = "error"
         };
