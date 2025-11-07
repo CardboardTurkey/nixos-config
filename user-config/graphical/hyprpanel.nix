@@ -123,7 +123,8 @@ in
             right = [
               "cava"
               "volume"
-              "network"
+              # barely fucking works
+              # "network"
               "bluetooth"
             ]
             # Include battery if not desktop
