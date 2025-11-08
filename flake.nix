@@ -15,7 +15,7 @@
     };
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.51.1";
+    hyprland.url = "github:hyprwm/Hyprland/v0.52.0";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
@@ -79,7 +79,7 @@
         "nix-index-database.nix"
         "sops.nix"
         "hyprland.nix"
-        "cachix.nix"
+        # "cachix.nix"
         "bluetooth.nix"
         "gnupg.nix"
         "devenv.nix"
@@ -127,32 +127,40 @@
         };
         Kestrel = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules =
-            shared_modules home-manager
-            ++ systemModPaths (
-              system_modules
-              ++ [
-                "atuin.nix"
-                "ayden_vpn.nix"
-                "battery.nix"
-                "jellyfin.nix"
-                "hedgedoc.nix"
-                "sbuk.nix"
-                "data.nix"
-                "rabbit.nix"
-                "vaultwarden.nix"
-                "gatus.nix"
-                "chatbot.nix"
-              ]
-            )
+          modules = [
+            {
+              nix.settings = {
+                substituters = [ "https://hyprland.cachix.org" ];
+                trusted-substituters = [ "https://hyprland.cachix.org" ];
+                trusted-public-keys = [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
+              };
+            }
+          ]
+          ++ shared_modules home-manager
+          ++ systemModPaths (
+            system_modules
             ++ [
-              ./machines/XPS/machine-config.nix
-              ./machines/XPS/hardware-configuration.nix
-              nixos-hardware.nixosModules.dell-xps-15-7590
-              {
-                home-manager.extraSpecialArgs = hmSharedArgs;
-              }
-            ];
+              "atuin.nix"
+              "ayden_vpn.nix"
+              "battery.nix"
+              "jellyfin.nix"
+              "hedgedoc.nix"
+              "sbuk.nix"
+              "data.nix"
+              "rabbit.nix"
+              "vaultwarden.nix"
+              "gatus.nix"
+              "chatbot.nix"
+            ]
+          )
+          ++ [
+            ./machines/XPS/machine-config.nix
+            ./machines/XPS/hardware-configuration.nix
+            nixos-hardware.nixosModules.dell-xps-15-7590
+            {
+              home-manager.extraSpecialArgs = hmSharedArgs;
+            }
+          ];
           specialArgs = sharedArgs;
         };
         Harrier = nixpkgs.lib.nixosSystem {
