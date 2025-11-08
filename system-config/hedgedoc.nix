@@ -4,7 +4,6 @@
   ...
 }:
 let
-  ipAddress = "172.16.100.3";
   port = 61967;
   domain = "pad.kiran.smoothbrained.co.uk";
   dataDir = "/var/lib/hedgedoc";
@@ -25,7 +24,7 @@ in
       settings = {
         loglevel = "debug";
         port = port;
-        host = ipAddress;
+        host = config.sbukAddress;
         domain = domain;
         protocolUseSSL = true;
         email = false;

@@ -15,7 +15,7 @@
 
   services.rabbitmq = {
     enable = true;
-    listenAddress = "100.103.252.84";
+    listenAddress = config.tailscaleAddress;
   };
   networking.firewall.allowedTCPPorts = [ config.services.rabbitmq.port ];
 }

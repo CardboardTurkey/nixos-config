@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 
 let
   sbuk_if = "sbuk";
@@ -20,7 +20,7 @@ let
     else if (config.hostname == "Kestrel") then
       {
         key = "sbuk/service_key";
-        address = "172.16.100.3/32";
+        address = "${config.sbukAddress}/32";
         peer = "7u+PJ5NQrC1lAIb4K2OSNHT/fgxSSj++VIejnYw93mk=";
         endpoint = "6312";
       }
@@ -29,20 +29,31 @@ let
 in
 {
   imports = [ ../system-config/sops.nix ];
-  sops.secrets."${wg.key}" = { };
-  networking.wg-quick.interfaces.${sbuk_if} = {
-    address = [ "${wg.address}" ];
-    privateKeyFile = config.sops.secrets."${wg.key}".path;
-    postUp = "resolvectl dns ${sbuk_if} 172.16.1.254; resolvectl domain ${sbuk_if} smoothbrained.co.uk";
-    # dns = [ "172.16.1.254" ];
-    peers = [
-      {
-        endpoint = "128.140.103.62:${wg.endpoint}";
-        publicKey = "${wg.peer}";
-        allowedIPs = [
-          "172.16.0.0/16"
-        ];
-      }
-    ];
+
+  options = {
+    sbukAddress = lib.mkOption {
+      default = "172.16.100.3";
+      type = with lib.types; uniq str;
+      description = "Kestrel address on SBUK";
+    };
+  };
+
+  config = {
+    sops.secrets."${wg.key}" = { };
+    networking.wg-quick.interfaces.${sbuk_if} = {
+      address = [ "${wg.address}" ];
+      privateKeyFile = config.sops.secrets."${wg.key}".path;
+      postUp = "resolvectl dns ${sbuk_if} 172.16.1.254; resolvectl domain ${sbuk_if} smoothbrained.co.uk";
+      # dns = [ "172.16.1.254" ];
+      peers = [
+        {
+          endpoint = "128.140.103.62:${wg.endpoint}";
+          publicKey = "${wg.peer}";
+          allowedIPs = [
+            "172.16.0.0/16"
+          ];
+        }
+      ];
+    };
   };
 }

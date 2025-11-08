@@ -21,8 +21,7 @@
     ollama = {
       enable = true;
       openFirewall = true;
-      # Temporary. Remove this once chatbot server is running on kestrel.
-      host = "100.103.252.84";
+      host = config.tailscaleAddress;
       package = pkgs.ollama-cuda;
       loadModels = [ "phi4-mini" ];
       acceleration = "cuda";
@@ -38,7 +37,7 @@
       settings = {
         service = {
           # Temporary. Remove this once chatbot server is running on kestrel.
-          host = "100.103.252.84";
+          host = config.tailscaleAddress;
           http_port = 6333;
           grpc_port = 6334;
         };
