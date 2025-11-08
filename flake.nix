@@ -151,6 +151,7 @@
               "vaultwarden.nix"
               "gatus.nix"
               "chatbot.nix"
+              "homepage.nix"
             ]
           )
           ++ [
