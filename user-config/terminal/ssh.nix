@@ -7,16 +7,15 @@
         # controlMaster = "auto";
         forwardAgent = true;
       };
-      "fw1" = {
-        hostname = "fw1.core.smoothbrained.co.uk";
-        user = "local-kostrolenk";
-      };
       "github.com" = {
         hostname = "github.com";
         user = "git";
         controlPersist = "2h";
         controlMaster = "auto";
-        # forwardAgent = true;
+      };
+      "fw1" = {
+        hostname = "fw1.core.smoothbrained.co.uk";
+        user = "local-kostrolenk";
       };
       "fw1.core.smoothbrained.co.uk" = {
         hostname = "fw1.core.smoothbrained.co.uk";
@@ -25,10 +24,14 @@
       "www2" = {
         hostname = "www2.mgmt.smoothbrained.co.uk";
         user = "local-kostrolenk";
+        controlPersist = "2h";
+        controlMaster = "auto";
       };
       "www2.mgmt.smoothbrained.co.uk" = {
         hostname = "www2.mgmt.smoothbrained.co.uk";
         user = "local-kostrolenk";
+        controlPersist = "2h";
+        controlMaster = "auto";
       };
       "rpi" = {
         hostname = "100.64.201.123";
