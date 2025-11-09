@@ -82,7 +82,7 @@
         ${pkgs.eza}/bin/eza -hl --git --color=always --icons "$1"
       # https://github.com/wofr06/lesspipe/pull/110
       elif [ "$kind" = pdf ]; then
-        ${pkgs.poppler_utils}/bin/pdftotext -q "$1" - | sed "s/\f/$(hr ─)\n/g"
+        ${pkgs.poppler-utils}/bin/pdftotext -q "$1" - | sed "s/\f/$(hr ─)\n/g"
       # https://github.com/wofr06/lesspipe/pull/115
       elif [ "$kind" = rfc822 ]; then
         ${pkgs.bat}/bin/bat --color=always -lEmail "$1"
