@@ -76,7 +76,7 @@ in
       owner = "influxdb2";
       group = "influxdb2";
     };
-    "postgres_ldap" = {
+    "ldap/postgres" = {
       owner = "postgres";
       group = "postgres";
     };

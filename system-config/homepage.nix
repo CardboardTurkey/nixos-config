@@ -1,10 +1,13 @@
 { config, ... }:
 {
+  sops.secrets.homepage = { };
+
   services = {
     glances.enable = true;
     homepage-dashboard = {
       enable = true;
       openFirewall = true;
+      environmentFile = config.sops.secrets.homepage.path;
       allowedHosts = "localhost:${builtins.toString config.services.homepage-dashboard.listenPort},127.0.0.1:${builtins.toString config.services.homepage-dashboard.listenPort},${config.sbukAddress}:${builtins.toString config.services.homepage-dashboard.listenPort}";
       settings = {
         title = "Kiran SBUK";
@@ -55,11 +58,22 @@
               };
             }
             {
-              Graphana = {
-                icon = "grafana";
-                href = "https://observe.kiran.smoothbrained.co.uk";
-                description = "Data dashboards.";
-              };
+              Graphana =
+                let
+                  url = "https://observe.kiran.smoothbrained.co.uk";
+                in
+                {
+                  icon = "grafana";
+                  href = url;
+                  description = "Data dashboards.";
+                  widget = {
+                    type = "grafana";
+                    version = 2; # optional, default is 1
+                    inherit url;
+                    username = "{{HOMEPAGE_GRAFANA_USERNAME}}";
+                    password = "{{HOMEPAGE_GRAFANA_PASSWORD}}";
+                  };
+                };
             }
           ];
         }

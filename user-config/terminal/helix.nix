@@ -106,11 +106,24 @@
     settings = {
       theme = lib.mkForce "my-theme";
       editor = {
-        lsp.display-inlay-hints = true;
+        lsp = {
+          display-inlay-hints = true;
+          display-progress-messages = true;
+        };
         line-number = "relative";
         soft-wrap.enable = true;
         file-picker.hidden = false;
-
+        whitespace.render = {
+          space = "none";
+          tab = "all";
+          nbsp = "all";
+          nnbsp = "all";
+          newline = "all";
+        };
+        indent-guides = {
+          character = "╎";
+          render = true;
+        };
         # Minimum severity to show a diagnostic after the end of a line:
         end-of-line-diagnostics = "hint";
         inline-diagnostics = {
