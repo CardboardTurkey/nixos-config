@@ -138,7 +138,7 @@ in
           };
         };
         clock = {
-          format = "%a %b %d     %H:%M:%S";
+          format = "%a %b %d     %H:%M";
           icon = "";
         };
         windowtitle.title_map = [
