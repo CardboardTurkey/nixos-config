@@ -98,9 +98,8 @@ in
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
-    plugins = with hyprland-plugins.packages.${pkgs.system}; [
-      # hyprbars
-      # hyprexpo
+    plugins = [
+      ./hyprland-plugins/hyprmodoro.nix
     ];
     systemd.enable = true;
     xwayland.enable = false;
