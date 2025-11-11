@@ -36,7 +36,7 @@ let
     ssl_skip_verify = false
 
     bind_dn = "cn=grafana,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk"
-    bind_password = "$__file{${config.sops.secrets."grafana".path}}"
+    bind_password = "$__file{${config.sops.secrets."ldap/grafana".path}}"
 
     timeout = 10
 
@@ -60,9 +60,10 @@ let
     org_role = "Editor"
   '';
   # TODO: restrict filter to ou=people and ou=sysaccounts?
-  postgresAuth = ''ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${
-    builtins.readFile config.sops.secrets."ldap/postgres".path
-  }" ldapbasedn="dc=smoothbrained,dc=co,dc=uk" ldapsearchfilter="(|(uid=$username)(cn=$username))"'';
+  postgresAuth = ''
+    ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="
+        ${builtins.readFile config.sops.secrets."ldap/postgres".path}
+      " ldapbasedn="dc=smoothbrained,dc=co,dc=uk" ldapsearchfilter="(|(uid=$username)(cn=$username))"'';
 in
 {
   sops.secrets = {
@@ -80,11 +81,11 @@ in
       owner = "postgres";
       group = "postgres";
     };
-    "backups/grafana" = {
+    "ldap/grafana" = {
       owner = "grafana";
       group = "grafana";
     };
-    "grafana" = {
+    "backups/grafana" = {
       owner = "grafana";
       group = "grafana";
     };
@@ -239,7 +240,6 @@ in
   systemd = {
     services = {
       postgresql-setup.postStart = grantStatements sigmaDbs "kostrolenk";
-      grafana.serviceConfig.EnvironmentFile = config.sops.secrets."grafana".path;
       # Creating the borg back repo:
       #
       # ```console
