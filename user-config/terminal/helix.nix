@@ -26,25 +26,32 @@
         {
           name = "rust";
           auto-format = true;
+          language-servers = [
+            "rust-analyzer"
+            "harper-ls"
+          ];
         }
         {
           name = "nix";
           auto-format = true;
           formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
-          language-servers = [ "nixd" ];
+          language-servers = [
+            "nixd"
+            "harper-ls"
+          ];
         }
         {
           name = "markdown";
           language-servers = [
             "marksman"
-            "typos"
+            "harper-ls"
           ];
         }
         {
           name = "git-commit";
           language-servers = [
             "marksman"
-            "typos"
+            "harper-ls"
           ];
         }
         {
@@ -52,6 +59,7 @@
           # Make sure lsp is present in dev env
           language-servers = [
             "pylsp"
+            "harper-ls"
           ];
           auto-format = true;
           # formatter = {
@@ -78,6 +86,10 @@
           check.command = "clippy";
           files.watcher = "server";
         };
+        harper-ls = {
+          command = lib.getExe pkgs.harper;
+          args = [ "--stdio" ];
+        };
         yaml-language-server.config.yaml.customTags = [
           "!vault scalar"
           "!reference sequence"
@@ -99,7 +111,6 @@
             format = [ "I" ];
           };
         };
-        typos.command = lib.getExe pkgs.typos-lsp;
         taplo.command = lib.getExe pkgs.taplo;
       };
     };
