@@ -4,14 +4,14 @@
     enableDefaultConfig = false;
     matchBlocks = {
       "*" = {
-        # controlPersist = "2h";
+        # controlPersist = "yes";
         # controlMaster = "auto";
         forwardAgent = true;
       };
       "github.com" = {
         hostname = "github.com";
         user = "git";
-        controlPersist = "2h";
+        controlPersist = "yes";
         controlMaster = "auto";
       };
       "fw1" = {
@@ -25,14 +25,16 @@
       "www2" = {
         hostname = "www2.mgmt.smoothbrained.co.uk";
         user = "local-kostrolenk";
-        controlPersist = "2h";
+        controlPersist = "yes";
         controlMaster = "auto";
+        controlPath = "~/.ssh/controlmasters/%r@%h:%p";
       };
       "www2.mgmt.smoothbrained.co.uk" = {
         hostname = "www2.mgmt.smoothbrained.co.uk";
         user = "local-kostrolenk";
-        controlPersist = "2h";
+        controlPersist = "yes";
         controlMaster = "auto";
+        controlPath = "~/.ssh/controlmasters/%r@%h:%p";
       };
       "rpi" = {
         hostname = "100.64.201.123";
