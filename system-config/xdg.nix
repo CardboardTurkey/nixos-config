@@ -6,6 +6,7 @@
     portal = {
       enable = true;
       configPackages = [ pkgs.xdg-desktop-portal-gtk ];
+      config.common.default = "*";
     };
   };
 }
