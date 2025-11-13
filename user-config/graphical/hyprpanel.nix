@@ -186,8 +186,8 @@ in
             "[wW]ebcord" = "";
             "[sS]ignal" = "";
             "title:Picture-in-Picture" = "";
+            "title:btop" = "";
           };
-
         };
         media = {
           truncation_size = 30;

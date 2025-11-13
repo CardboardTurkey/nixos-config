@@ -323,6 +323,7 @@ in
         # Assign program to workspace
         "workspace 2, class:codium"
         "workspace 2, class:codium-url-handler"
+        "workspace 2, title:^(btop)$"
         "workspace 3, class:firefox"
         "workspace 3, class:firefox-default"
         "workspace 4, class:thunderbird"
@@ -331,7 +332,6 @@ in
         "workspace 5, class:WebCord"
         "workspace 6, class:steam"
         "workspace 7, class:Gimp"
-        "workspace 8, title:btop"
 
         "float,class:(com.clipse)"
         "size 622 652,class:(com.clipse)"
@@ -353,6 +353,7 @@ in
       exec-once = [
         "${pkgs.clipse}/bin/clipse -listen"
         "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular"
+        (lib.getExe pkgs.btop)
       ];
 
       # change monitor to hires, the last argument is the scale factor
