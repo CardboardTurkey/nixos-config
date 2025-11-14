@@ -16,13 +16,22 @@
         title = "Kiran SBUK";
         description = "The services hosted on Kiran's SBUK box";
         hideVersion = true;
-        background = "https://unsplash.com/photos/p-kyrENoi6U/download";
-        cardBlur = "md";
+        background = "https://unsplash.com/photos/arxL6nIJ7_A/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTI2fHx0cmFpbnxlbnwwfDB8fHwxNzYzMTUwMzIxfDA&force=true&w=2400";
+        cardBlur = "xl";
         favicon = "https://gitlab.com/api/v4/projects/74365490/packages/generic/sbuk-assets/1.0.2/imgs/favicon-48.png";
+        layout = {
+          Monitoring = {
+            style = "row";
+            columns = "2";
+          };
+          Cloud = {
+            style = "row";
+            columns = "2";
+          };
+        };
       };
       widgets = [
         {
-          logo.icon = "https://gitlab.com/smoothbrained-uk/public-assets/-/raw/master/logo.svg";
           glances = {
             url = "http://localhost:${builtins.toString config.services.glances.port}";
             version = 4; # required only if running glances v4 or higher, defaults to 3
@@ -34,19 +43,17 @@
             diskUnits = "bytes"; # optional, bytes (default) or bbytes. Only applies to disk
           };
         }
+        {
+          greeting = {
+            text_size = "2xl";
+            text = "        SBUK Kiran";
+          };
+        }
+        {
+          logo.icon = "https://gitlab.com/smoothbrained-uk/public-assets/-/raw/master/logo.svg";
+        }
       ];
       services = [
-        {
-          Cloud = [
-            {
-              "Hedgedoc" = {
-                icon = "hedgedoc";
-                href = "https://pad.kiran.smoothbrained.co.uk";
-                description = "Collaborative markdown editor.";
-              };
-            }
-          ];
-        }
         {
           Monitoring = [
             {
@@ -77,6 +84,42 @@
                     password = "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}";
                   };
                 };
+            }
+          ];
+        }
+        {
+          Cloud = [
+            {
+              "Hedgedoc" = rec {
+                icon = "hedgedoc";
+                href = "https://${ping}";
+                description = "Collaborative markdown editor.";
+                ping = "pad.kiran.smoothbrained.co.uk";
+              };
+            }
+            {
+              "Vaultwarden" = rec {
+                icon = "vaultwarden";
+                href = "https://${ping}";
+                description = "Password manager";
+                ping = "pass.kiran.smoothbrained.co.uk";
+              };
+            }
+            {
+              "InfluxDB" = rec {
+                icon = "influxdb";
+                href = "https://${ping}";
+                description = "Time series database";
+                ping = "influxdb.b.kiran.smoothbrained.co.uk";
+              };
+            }
+            {
+              "Atuin" = rec {
+                icon = "atuin";
+                href = "https://${ping}";
+                description = "Distributed shell history";
+                ping = "atuin.kiran.smoothbrained.co.uk";
+              };
             }
           ];
         }
