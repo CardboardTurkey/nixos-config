@@ -75,7 +75,7 @@
           EnvironmentFile = config.sops.secrets."backups/media".path;
           ExecStart = pkgs.writeScript "media-backup" ''
             #!${pkgs.bash}/bin/bash
-            BORG_PASSPHRASE="$BORG_PASSPHRASE_LOCAL" ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/media::$(date -Is)" /var/lib/jellyfin /home/kiran/Media/TV /home/kiran/Media/Movies
+            BORG_PASSPHRASE="$BORG_PASSPHRASE_LOCAL" ${pkgs.borgbackup}/bin/borg create -v --stats --progress --show-rc --compression lz4 --exclude-caches "/backup/media::$(date -Is)" /var/lib/jellyfin /media/TV /media/Movies
           '';
         };
         wantedBy = [ "multi-user.target" ];
