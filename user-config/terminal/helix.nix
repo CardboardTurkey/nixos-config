@@ -28,7 +28,7 @@
           auto-format = true;
           language-servers = [
             "rust-analyzer"
-            "harper-ls"
+            "codebook"
           ];
         }
         {
@@ -37,21 +37,21 @@
           formatter.command = lib.getExe pkgs.nixfmt-rfc-style;
           language-servers = [
             "nixd"
-            "harper-ls"
+            "codebook"
           ];
         }
         {
           name = "markdown";
           language-servers = [
             "marksman"
-            "harper-ls"
+            "codebook"
           ];
         }
         {
           name = "git-commit";
           language-servers = [
             "marksman"
-            "harper-ls"
+            "codebook"
           ];
         }
         {
@@ -59,7 +59,7 @@
           # Make sure lsp is present in dev env
           language-servers = [
             "pylsp"
-            "harper-ls"
+            "codebook"
           ];
           auto-format = true;
           # formatter = {
@@ -86,9 +86,9 @@
           check.command = "clippy";
           files.watcher = "server";
         };
-        harper-ls = {
-          command = lib.getExe pkgs.harper;
-          args = [ "--stdio" ];
+        codebook = {
+          command = lib.getExe pkgs.codebook;
+          args = [ "serve" ];
         };
         yaml-language-server.config.yaml.customTags = [
           "!vault scalar"
