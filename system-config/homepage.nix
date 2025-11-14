@@ -1,6 +1,9 @@
 { config, ... }:
 {
-  sops.secrets.homepage = { };
+  sops.secrets.homepage = {
+    owner = "homepage-dashboard";
+    group = "homepage-dashboard";
+  };
 
   services = {
     glances.enable = true;
@@ -70,8 +73,8 @@
                     type = "grafana";
                     version = 2; # optional, default is 1
                     inherit url;
-                    username = "{{HOMEPAGE_GRAFANA_USERNAME}}";
-                    password = "{{HOMEPAGE_GRAFANA_PASSWORD}}";
+                    username = "{{HOMEPAGE_VAR_GRAFANA_USERNAME}}";
+                    password = "{{HOMEPAGE_VAR_GRAFANA_PASSWORD}}";
                   };
                 };
             }
