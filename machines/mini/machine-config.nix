@@ -63,4 +63,7 @@
   #   };
   # };
 
+  # Open a random port, useful for testing
+  networking.firewall.allowedTCPPorts = [ 63235 ];
+
 }
