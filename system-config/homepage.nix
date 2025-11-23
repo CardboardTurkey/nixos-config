@@ -1,8 +1,8 @@
 { config, ... }:
 {
   sops.secrets.homepage = {
-    owner = "homepage-dashboard";
-    group = "homepage-dashboard";
+    # owner = "homepage-dashboard";
+    # group = "homepage-dashboard";
   };
 
   services = {
@@ -11,12 +11,12 @@
       enable = true;
       openFirewall = true;
       environmentFile = config.sops.secrets.homepage.path;
-      allowedHosts = "localhost:${builtins.toString config.services.homepage-dashboard.listenPort},127.0.0.1:${builtins.toString config.services.homepage-dashboard.listenPort},${config.sbukAddress}:${builtins.toString config.services.homepage-dashboard.listenPort}";
+      allowedHosts = "localhost:${builtins.toString config.services.homepage-dashboard.listenPort},127.0.0.1:${builtins.toString config.services.homepage-dashboard.listenPort},${config.sbukAddress}:${builtins.toString config.services.homepage-dashboard.listenPort},kiran.smoothbrained.co.uk";
       settings = {
         title = "Kiran SBUK";
         description = "The services hosted on Kiran's SBUK box";
         hideVersion = true;
-        background = "https://unsplash.com/photos/arxL6nIJ7_A/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTI2fHx0cmFpbnxlbnwwfDB8fHwxNzYzMTUwMzIxfDA&force=true&w=2400";
+        background = "https://unsplash.com/photos/3Kv48NS4WUU/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzYzOTA2ODAzfA&force=true&w=2400";
         cardBlur = "xl";
         favicon = "https://gitlab.com/api/v4/projects/74365490/packages/generic/sbuk-assets/1.0.2/imgs/favicon-48.png";
         layout = {
@@ -32,6 +32,15 @@
       };
       widgets = [
         {
+          logo.icon = "https://gitlab.com/smoothbrained-uk/public-assets/-/raw/master/logo.svg";
+        }
+        {
+          greeting = {
+            text_size = "2xl";
+            text = "Kiran's SBUK web servers";
+          };
+        }
+        {
           glances = {
             url = "http://localhost:${builtins.toString config.services.glances.port}";
             version = 4; # required only if running glances v4 or higher, defaults to 3
@@ -43,15 +52,7 @@
             diskUnits = "bytes"; # optional, bytes (default) or bbytes. Only applies to disk
           };
         }
-        {
-          greeting = {
-            text_size = "2xl";
-            text = "        SBUK Kiran";
-          };
-        }
-        {
-          logo.icon = "https://gitlab.com/smoothbrained-uk/public-assets/-/raw/master/logo.svg";
-        }
+
       ];
       services = [
         {
