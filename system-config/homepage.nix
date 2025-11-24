@@ -16,7 +16,7 @@
         title = "Kiran SBUK";
         description = "The services hosted on Kiran's SBUK box";
         hideVersion = true;
-        background = "https://unsplash.com/photos/3Kv48NS4WUU/download?ixid=M3wxMjA3fDB8MXxhbGx8fHx8fHx8fHwxNzYzOTA2ODAzfA&force=true&w=2400";
+        background = "https://lh3.googleusercontent.com/pw/AP1GczMciRvT57Tt_GPezyK-ABhV1mROI8_ELgwn-9iggdUQGZ0nhMc5e9fltKk5pdV6FYVCS9urncOPxNqKzCWLJ7U3KqAy9j5Y8dwOriHkhFMM_-0-la_VZIrpxEeWue15KRaf_Y9uyZ1PtUtdIr4yiY1z3g=w3452-h1942-s-no?authuser=0";
         cardBlur = "xl";
         favicon = "https://gitlab.com/api/v4/projects/74365490/packages/generic/sbuk-assets/1.0.2/imgs/favicon-48.png";
         layout = {
@@ -37,7 +37,7 @@
         {
           greeting = {
             text_size = "2xl";
-            text = "Kiran's SBUK web servers";
+            text = "Kiran's SBUK web services";
           };
         }
         {
@@ -58,13 +58,13 @@
         {
           Monitoring = [
             {
-              Gatus = {
+              Gatus = rec {
                 icon = "gatus";
-                href = "https://kiran.smoothbrained.co.uk";
+                href = "https://status.kiran.smoothbrained.co.uk";
                 description = "Health status of Kiran SBUK services";
                 widget = {
                   type = "gatus";
-                  url = "https://kiran.smoothbrained.co.uk";
+                  url = href;
                 };
               };
             }
