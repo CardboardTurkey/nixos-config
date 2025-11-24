@@ -61,9 +61,7 @@ let
   '';
   # TODO: restrict filter to ou=people and ou=sysaccounts?
   postgresAuth = ''
-    ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="
-        ${builtins.readFile config.sops.secrets."ldap/postgres".path}
-      " ldapbasedn="dc=smoothbrained,dc=co,dc=uk" ldapsearchfilter="(|(uid=$username)(cn=$username))"'';
+    ldap ldapserver=ldap.smoothbrained.co.uk ldapscheme=ldaps ldapbinddn="cn=postgres,ou=sysaccounts,dc=smoothbrained,dc=co,dc=uk" ldapbindpasswd="${builtins.readFile config.sops.secrets."ldap/postgres".path}" ldapbasedn="dc=smoothbrained,dc=co,dc=uk" ldapsearchfilter="(|(uid=$username)(cn=$username))"'';
 in
 {
   sops.secrets = {
