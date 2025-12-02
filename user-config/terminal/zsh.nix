@@ -128,6 +128,13 @@
       zle -N Resume
       bindkey "^Z" Resume
 
+      # Logout tty after timeout
+      if [[ $(tty) =~ /dev/tty ]]
+      then
+        export TMOUT=SECONDS
+        export TMOUT=600
+      fi
+
       source ${pkgs.zsh-you-should-use}/share/zsh/plugins/you-should-use/you-should-use.plugin.zsh
     '';
     envExtra = ''
