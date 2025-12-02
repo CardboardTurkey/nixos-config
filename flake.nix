@@ -15,7 +15,7 @@
     };
     apple-silicon.url = "github:tpwrules/nixos-apple-silicon";
 
-    hyprland.url = "github:hyprwm/Hyprland/v0.52.0";
+    hyprland.url = "github:hyprwm/Hyprland/v0.52.1";
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
       inputs.hyprland.follows = "hyprland";
