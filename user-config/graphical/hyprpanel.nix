@@ -110,7 +110,7 @@ in
 
       bar = {
         layouts = {
-          "0" = {
+          "*" = {
             left = [
               "dashboard"
               "workspaces"
