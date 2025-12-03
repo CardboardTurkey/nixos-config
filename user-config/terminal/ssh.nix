@@ -7,6 +7,8 @@
         controlPersist = "yes";
         controlMaster = "auto";
         controlPath = "~/.ssh/controlmasters/%r@%h:%p";
+        forwardAgent = true;
+        addKeysToAgent = "yes";
       };
       "github.com" = {
         hostname = "github.com";
