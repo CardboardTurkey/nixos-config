@@ -103,292 +103,296 @@ in
     ];
     systemd.enable = true;
     xwayland.enable = false;
-    settings = {
-      "$mainMod" = "SUPER";
-      # Useful for configuring Firefox's PiP
-      "$pip" = "title:Picture-in-Picture";
+    settings =
+      let
+        eDP1Settings = "eDP-1,preferred,auto,1.333333";
+      in
+      {
+        "$mainMod" = "SUPER";
+        # Useful for configuring Firefox's PiP
+        "$pip" = "title:Picture-in-Picture";
 
-      # source = [ "${hyde}/Configs/.config/hypr/animations/animations-me-1.conf" ];
-      bind = [
-        "SUPER, Return, exec, ${launchTerminal}"
-        "MOD3, Return, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}&"
+        # source = [ "${hyde}/Configs/.config/hypr/animations/animations-me-1.conf" ];
+        bind = [
+          "SUPER, Return, exec, ${launchTerminal}"
+          "MOD3, Return, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator}&"
 
-        # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
-        "$mainMod, Q, exec, ${lib.getBin pkgs.${osConfig.emulator}}"
-        "$mainMod, C, killactive,"
-        "$mainMod, V, togglefloating,"
-        "$mainMod, P, pseudo, # dwindle"
-        "$mainMod, J, togglesplit, # dwindle"
+          # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
+          "$mainMod, Q, exec, ${lib.getBin pkgs.${osConfig.emulator}}"
+          "$mainMod, C, killactive,"
+          "$mainMod, V, togglefloating,"
+          "$mainMod, P, pseudo, # dwindle"
+          "$mainMod, J, togglesplit, # dwindle"
 
-        # Move focus with mainMod + arrow keys
-        "$mainMod, left, movefocus, l"
-        "$mainMod, right, movefocus, r"
-        "$mainMod, up, movefocus, u"
-        "$mainMod, down, movefocus, d"
+          # Move focus with mainMod + arrow keys
+          "$mainMod, left, movefocus, l"
+          "$mainMod, right, movefocus, r"
+          "$mainMod, up, movefocus, u"
+          "$mainMod, down, movefocus, d"
 
-        # Switch workspaces with mainMod + [0-9]
-        "$mainMod, 1, workspace, 1"
-        "$mainMod, 2, workspace, 2"
-        "$mainMod, 3, workspace, 3"
-        "$mainMod, 4, workspace, 4"
-        "$mainMod, 5, workspace, 5"
-        "$mainMod, 6, workspace, 6"
-        "$mainMod, 7, workspace, 7"
-        "$mainMod, 8, workspace, 8"
-        "$mainMod, 9, workspace, 9"
-        "$mainMod, 0, workspace, 10"
+          # Switch workspaces with mainMod + [0-9]
+          "$mainMod, 1, workspace, 1"
+          "$mainMod, 2, workspace, 2"
+          "$mainMod, 3, workspace, 3"
+          "$mainMod, 4, workspace, 4"
+          "$mainMod, 5, workspace, 5"
+          "$mainMod, 6, workspace, 6"
+          "$mainMod, 7, workspace, 7"
+          "$mainMod, 8, workspace, 8"
+          "$mainMod, 9, workspace, 9"
+          "$mainMod, 0, workspace, 10"
 
-        # Move active window to a workspace with mainMod + SHIFT + [0-9]
-        "$mainMod SHIFT, 1, movetoworkspace, 1"
-        "$mainMod SHIFT, 2, movetoworkspace, 2"
-        "$mainMod SHIFT, 3, movetoworkspace, 3"
-        "$mainMod SHIFT, 4, movetoworkspace, 4"
-        "$mainMod SHIFT, 5, movetoworkspace, 5"
-        "$mainMod SHIFT, 6, movetoworkspace, 6"
-        "$mainMod SHIFT, 7, movetoworkspace, 7"
-        "$mainMod SHIFT, 8, movetoworkspace, 8"
-        "$mainMod SHIFT, 9, movetoworkspace, 9"
-        "$mainMod SHIFT, 0, movetoworkspace, 10"
+          # Move active window to a workspace with mainMod + SHIFT + [0-9]
+          "$mainMod SHIFT, 1, movetoworkspace, 1"
+          "$mainMod SHIFT, 2, movetoworkspace, 2"
+          "$mainMod SHIFT, 3, movetoworkspace, 3"
+          "$mainMod SHIFT, 4, movetoworkspace, 4"
+          "$mainMod SHIFT, 5, movetoworkspace, 5"
+          "$mainMod SHIFT, 6, movetoworkspace, 6"
+          "$mainMod SHIFT, 7, movetoworkspace, 7"
+          "$mainMod SHIFT, 8, movetoworkspace, 8"
+          "$mainMod SHIFT, 9, movetoworkspace, 9"
+          "$mainMod SHIFT, 0, movetoworkspace, 10"
 
-        # Move workspace to monitor
-        "$mainMod ALT, left, movecurrentworkspacetomonitor, l"
-        "$mainMod ALT, right, movecurrentworkspacetomonitor, r"
-        "$mainMod ALT, up, movecurrentworkspacetomonitor, u"
-        "$mainMod ALT, down, movecurrentworkspacetomonitor, d"
+          # Move workspace to monitor
+          "$mainMod ALT, left, movecurrentworkspacetomonitor, l"
+          "$mainMod ALT, right, movecurrentworkspacetomonitor, r"
+          "$mainMod ALT, up, movecurrentworkspacetomonitor, u"
+          "$mainMod ALT, down, movecurrentworkspacetomonitor, d"
 
-        "$mainMod, M, togglespecialworkspace, magic"
-        "$mainMod, M, movetoworkspace, +0"
-        "$mainMod, M, togglespecialworkspace, magic"
-        "$mainMod, M, movetoworkspace, special:magic"
-        "$mainMod, M, togglespecialworkspace, magic"
+          "$mainMod, M, togglespecialworkspace, magic"
+          "$mainMod, M, movetoworkspace, +0"
+          "$mainMod, M, togglespecialworkspace, magic"
+          "$mainMod, M, movetoworkspace, special:magic"
+          "$mainMod, M, togglespecialworkspace, magic"
 
-        # Scroll throurightgh existing workspaces with mainMod + scroll
-        "$mainMod, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
-        "$mainMod, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
-        "$mainMod SHIFT, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor 1"
-        "$mainMod SHIFT, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor 1"
-        "$mainMod SHIFT, minus, exec, hyprctl -q keyword cursor:zoom_factor 1"
-        "$mainMod SHIFT, KP_SUBTRACT, exec, hyprctl -q keyword cursor:zoom_factor 1"
-        "$mainMod SHIFT, 0, exec, hyprctl -q keyword cursor:zoom_factor 1"
+          # Scroll throurightgh existing workspaces with mainMod + scroll
+          "$mainMod, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
+          "$mainMod, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
+          "$mainMod SHIFT, mouse_up, exec, hyprctl -q keyword cursor:zoom_factor 1"
+          "$mainMod SHIFT, mouse_down, exec, hyprctl -q keyword cursor:zoom_factor 1"
+          "$mainMod SHIFT, minus, exec, hyprctl -q keyword cursor:zoom_factor 1"
+          "$mainMod SHIFT, KP_SUBTRACT, exec, hyprctl -q keyword cursor:zoom_factor 1"
+          "$mainMod SHIFT, 0, exec, hyprctl -q keyword cursor:zoom_factor 1"
 
-        # Workspace navigation
-        "MOD3, right, workspace, e+1"
-        "MOD3, left, workspace, e-1"
-        "MOD3, backspace, workspace, previous"
+          # Workspace navigation
+          "MOD3, right, workspace, e+1"
+          "MOD3, left, workspace, e-1"
+          "MOD3, backspace, workspace, previous"
 
-        # full screen
-        "$mainMod, F, fullscreen"
+          # full screen
+          "$mainMod, F, fullscreen"
 
-        # random bindings
-        ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
-        "$mainMod, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class=com.clipse -e ${pkgs.clipse}/bin/clipse"
-        "$mainMod, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
-        "MOD3, Space, exec, ${lib.getExe pkgs.playerctl} play-pause"
+          # random bindings
+          ''$mainMod SHIFT, S, exec, ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | ${pkgs.swappy}/bin/swappy -f -''
+          "$mainMod, X, exec, ${pkgs.${osConfig.emulator}}/bin/${osConfig.emulator} --class=com.clipse -e ${pkgs.clipse}/bin/clipse"
+          "$mainMod, T, exec, ${lib.getExe pkgs.firefox} --new-window https://pad.kiran.smoothbrained.co.uk/EyFToF4NTzCOEvTaqTVHGw"
+          "MOD3, Space, exec, ${lib.getExe pkgs.playerctl} play-pause"
 
-        # PiP control
-        "$mainMod, W, movewindowpixel, 0 -220,$pip"
-        "$mainMod, A, movewindowpixel, exact 40 ${builtins.toString (1080 - 200 - 40)}, $pip"
-        "$mainMod, S, movewindowpixel, 0 220, $pip"
-        "$mainMod, D, movewindowpixel, exact ${builtins.toString (1920 - 355 - 40)} ${
-          builtins.toString (1080 - 200 - 40)
-        }, $pip"
-      ];
-
-      binde = [
-        "$mainMod, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
-        "$mainMod, minus, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
-        "$mainMod, KP_ADD, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
-        "$mainMod, KP_SUBTRACT, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
-      ];
-
-      bindm = [
-        # Move/resize windows with mainMod + LMB/RMB and dragging
-        "$mainMod, mouse:272, movewindow"
-        "$mainMod, mouse:273, resizewindow"
-      ];
-
-      # bindl = [
-      #   # switches
-      #   '',switch:on:Lid Switch,exec, hyprctl keyword monitor "eDP-1, disable"''
-      #   '',switch:off:Lid Switch,exec,hyprctl keyword monitor "eDP-1, preferred, auto, 1"''
-      # ];
-
-      input = {
-        kb_layout = "";
-        # kb_options = ctrl:swapcaps_hyper
-        kb_file = "${myCustomLayout}";
-
-        follow_mouse = 1;
-
-        touchpad = {
-          natural_scroll = false;
-        };
-
-        sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
-      };
-
-      general = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
-        gaps_in = 4;
-        gaps_out = osConfig.gapsOut;
-        border_size = 2;
-        "col.active_border" = "$surface0 $accent 45deg";
-        "col.inactive_border" = "$surface0";
-
-        layout = "dwindle";
-      };
-
-      decoration = {
-        # See https://wiki.hyprland.org/Configuring/Variables/ for more
-
-        rounding = osConfig.cornerRadius;
-        rounding_power = 3;
-        blur = {
-          enabled = true;
-          size = 12;
-          passes = 5;
-          new_optimizations = true;
-          xray = false;
-        };
-
-        shadow = {
-          enabled = true;
-          color = "rgba(1a1a1aee)";
-          range = 4;
-          render_power = 3;
-        };
-      };
-      # https://github.com/prasanthrangan/hyprdots/blob/47572bbcac007d1d51e9251debb5dad5df4bbbb9/Configs/.config/hypr/animations/animations-diablo-1.conf
-      animations = {
-        enabled = true;
-        bezier = [
-          "default, 0.05, 0.9, 0.1, 1.05"
-          "wind, 0.05, 0.9, 0.1, 1.05"
-          "overshot, 0.13, 0.99, 0.29, 1.08"
-          "liner, 1, 1, 1, 1"
-          "bounce, 0.4, 0.9, 0.6, 1.0"
-          "snappyReturn, 0.4, 0.9, 0.6, 1.0"
-          "slideInFromRight, 0.5, 0.0, 0.5, 1.0"
+          # PiP control
+          "$mainMod, W, movewindowpixel, 0 -220,$pip"
+          "$mainMod, A, movewindowpixel, exact 40 ${builtins.toString (1080 - 200 - 40)}, $pip"
+          "$mainMod, S, movewindowpixel, 0 220, $pip"
+          "$mainMod, D, movewindowpixel, exact ${builtins.toString (1920 - 355 - 40)} ${
+            builtins.toString (1080 - 200 - 40)
+          }, $pip"
         ];
-        animation = [
-          "windows, 1, 5,  snappyReturn, slidevert"
-          "windowsIn, 1, 5, snappyReturn, slidevert right"
-          "windowsOut, 1, 5, snappyReturn, slide"
-          "windowsMove, 1, 6, bounce, slide"
-          "layersOut, 1, 5, bounce, slidevert right"
-          "fadeIn, 1, 10, default"
-          "fadeOut, 1, 10, default"
-          "fadeSwitch, 1, 10, default"
-          "fadeShadow, 1, 10, default"
-          "fadeDim, 1, 10, default"
-          "fadeLayers, 1, 10, default"
-          "workspaces, 1, 7, overshot, slide"
-          "border, 1, 50, liner"
-          "layers, 1, 4, bounce, slidevert right"
 
-        ]
-        ++ (if osConfig.hostname == "Osprey" then [ "borderangle, 1, 30, liner, loop" ] else [ ]);
-      };
-      dwindle = {
-        # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
-        pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
-        preserve_split = true; # you probably want this
-      };
+        binde = [
+          "$mainMod, equal, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
+          "$mainMod, minus, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
+          "$mainMod, KP_ADD, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 1.1}')"
+          "$mainMod, KP_SUBTRACT, exec, hyprctl -q keyword cursor:zoom_factor $(hyprctl getoption cursor:zoom_factor | awk '/^float.*/ {print $2 * 0.9}')"
+        ];
 
-      master = {
-        # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
-        # new_status = slave
-      };
+        bindm = [
+          # Move/resize windows with mainMod + LMB/RMB and dragging
+          "$mainMod, mouse:272, movewindow"
+          "$mainMod, mouse:273, resizewindow"
+        ];
 
-      gestures.workspace_swipe_cancel_ratio = 0;
+        bindl = [
+          # Trigger when the switch is turning on.
+          ", switch:on:Lid Switch, exec, hyprctl keyword monitor \"eDP-1, disable\""
+          # Trigger when the switch is turning off.
+          ", switch:off:Lid Switch, exec, hyprctl keyword monitor \"${eDP1Settings}\""
+        ];
 
-      gesture = [
-        "3, horizontal, workspace"
-      ];
+        input = {
+          kb_layout = "";
+          # kb_options = ctrl:swapcaps_hyper
+          kb_file = "${myCustomLayout}";
 
-      misc = {
-        mouse_move_enables_dpms = true;
-        # key_press_enables_dpms = true
-        animate_manual_resizes = true;
-        animate_mouse_windowdragging = true;
-        focus_on_activate = true;
-      };
+          follow_mouse = 1;
 
-      windowrulev2 = [
-        "opacity 1.0 0.7, title:^(.*)$"
-        "float,title:^(Firefox — Sharing Indicator)$"
-        "float,title:^(Password Required - Mozilla Firefox)$"
+          touchpad = {
+            natural_scroll = false;
+          };
 
-        # Assign program to workspace
-        "workspace 2, class:codium"
-        "workspace 2, class:codium-url-handler"
-        "workspace 2, title:^(btop)$"
-        "workspace 3, class:firefox"
-        "workspace 3, class:firefox-default"
-        "workspace 4, class:thunderbird"
-        "workspace 5, class:quassel"
-        "workspace 5, class:signal"
-        "workspace 5, class:WebCord"
-        "workspace 6, class:steam"
-        "workspace 7, class:Gimp"
+          sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
+        };
 
-        "float,class:(com.clipse)"
-        "size 622 652,class:(com.clipse)"
+        general = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-        "float,$pip"
-        "pin,$pip"
-        "opacity 1.0,$pip"
-        "size 355 200,$pip"
-        "move 100%-w-40 100%-w-40,$pip"
+          gaps_in = 4;
+          gaps_out = osConfig.gapsOut;
+          border_size = 2;
+          "col.active_border" = "$surface0 $accent 45deg";
+          "col.inactive_border" = "$surface0";
 
-        "float,class:(com.saivert.pwvucontrol)"
-        "size 1200 600,class:(com.saivert.pwvucontrol)"
+          layout = "dwindle";
+        };
 
-        "idleinhibit fullscreen, class:^(*)$"
-        "idleinhibit fullscreen, title:^(*)$"
-        "idleinhibit fullscreen, fullscreen:1"
-      ];
+        decoration = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
-      exec-once = [
-        "${pkgs.clipse}/bin/clipse -listen"
-        "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular"
-        (lib.getExe pkgs.btop)
-      ];
+          rounding = osConfig.cornerRadius;
+          rounding_power = 3;
+          blur = {
+            enabled = true;
+            size = 12;
+            passes = 5;
+            new_optimizations = true;
+            xray = false;
+          };
 
-      # change monitor to hires, the last argument is the scale factor
-      monitor = [
-        ",highres,auto,1"
-        "HDMI-A-1,preferred,0x0,2"
-        "DP-2,preferred,0x0,2,bitdepth,10"
-        "eDP-1,preferred,auto,1.333333"
-        # "eDP-1,preferred,0x0,1.5"
-        "FALLBACK,1920x1080@60,auto,1"
-      ];
+          shadow = {
+            enabled = true;
+            color = "rgba(1a1a1aee)";
+            range = 4;
+            render_power = 3;
+          };
+        };
+        # https://github.com/prasanthrangan/hyprdots/blob/47572bbcac007d1d51e9251debb5dad5df4bbbb9/Configs/.config/hypr/animations/animations-diablo-1.conf
+        animations = {
+          enabled = true;
+          bezier = [
+            "default, 0.05, 0.9, 0.1, 1.05"
+            "wind, 0.05, 0.9, 0.1, 1.05"
+            "overshot, 0.13, 0.99, 0.29, 1.08"
+            "liner, 1, 1, 1, 1"
+            "bounce, 0.4, 0.9, 0.6, 1.0"
+            "snappyReturn, 0.4, 0.9, 0.6, 1.0"
+            "slideInFromRight, 0.5, 0.0, 0.5, 1.0"
+          ];
+          animation = [
+            "windows, 1, 5,  snappyReturn, slidevert"
+            "windowsIn, 1, 5, snappyReturn, slidevert right"
+            "windowsOut, 1, 5, snappyReturn, slide"
+            "windowsMove, 1, 6, bounce, slide"
+            "layersOut, 1, 5, bounce, slidevert right"
+            "fadeIn, 1, 10, default"
+            "fadeOut, 1, 10, default"
+            "fadeSwitch, 1, 10, default"
+            "fadeShadow, 1, 10, default"
+            "fadeDim, 1, 10, default"
+            "fadeLayers, 1, 10, default"
+            "workspaces, 1, 7, overshot, slide"
+            "border, 1, 50, liner"
+            "layers, 1, 4, bounce, slidevert right"
 
-      # xwayland = {
-      #   force_zero_scaling = true;
-      # };
+          ]
+          ++ (if osConfig.hostname == "Osprey" then [ "borderangle, 1, 30, liner, loop" ] else [ ]);
+        };
+        dwindle = {
+          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+          pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+          preserve_split = true; # you probably want this
+        };
 
-      # toolkit-specific scale
-      env = [
-        "GDK_SCALE,1"
-        "XCURSOR_SIZE,16"
-      ];
+        master = {
+          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          # new_status = slave
+        };
 
-      # layers
-      layerrule = [
-        "blur,notifications"
-        "ignorezero,notifications"
-        "noanim,selection"
-      ];
+        gestures.workspace_swipe_cancel_ratio = 0;
 
-      plugin = {
-        hyprscrolling = {
-          column_width = 0.7;
-          fullscreen_on_one_column = true;
+        gesture = [
+          "3, horizontal, workspace"
+        ];
+
+        misc = {
+          mouse_move_enables_dpms = true;
+          # key_press_enables_dpms = true
+          animate_manual_resizes = true;
+          animate_mouse_windowdragging = true;
+          focus_on_activate = true;
+        };
+
+        windowrulev2 = [
+          "opacity 1.0 0.7, title:^(.*)$"
+          "float,title:^(Firefox — Sharing Indicator)$"
+          "float,title:^(Password Required - Mozilla Firefox)$"
+
+          # Assign program to workspace
+          "workspace 2, class:codium"
+          "workspace 2, class:codium-url-handler"
+          "workspace 2, title:^(btop)$"
+          "workspace 3, class:firefox"
+          "workspace 3, class:firefox-default"
+          "workspace 4, class:thunderbird"
+          "workspace 5, class:quassel"
+          "workspace 5, class:signal"
+          "workspace 5, class:WebCord"
+          "workspace 6, class:steam"
+          "workspace 7, class:Gimp"
+
+          "float,class:(com.clipse)"
+          "size 622 652,class:(com.clipse)"
+
+          "float,$pip"
+          "pin,$pip"
+          "opacity 1.0,$pip"
+          "size 355 200,$pip"
+          "move 100%-w-40 100%-w-40,$pip"
+
+          "float,class:(com.saivert.pwvucontrol)"
+          "size 1200 600,class:(com.saivert.pwvucontrol)"
+
+          "idleinhibit fullscreen, class:^(*)$"
+          "idleinhibit fullscreen, title:^(*)$"
+          "idleinhibit fullscreen, fullscreen:1"
+        ];
+
+        exec-once = [
+          "${pkgs.clipse}/bin/clipse -listen"
+          "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular"
+          (lib.getExe pkgs.btop)
+        ];
+
+        # change monitor to hires, the last argument is the scale factor
+        monitor = [
+          ",highres,auto,1"
+          "HDMI-A-1,preferred,0x0,2"
+          "DP-2,preferred,0x0,2,bitdepth,10"
+          eDP1Settings
+          "FALLBACK,1920x1080@60,auto,1"
+        ];
+
+        # xwayland = {
+        #   force_zero_scaling = true;
+        # };
+
+        # toolkit-specific scale
+        env = [
+          "GDK_SCALE,1"
+          "XCURSOR_SIZE,16"
+        ];
+
+        # layers
+        layerrule = [
+          "blur,notifications"
+          "ignorezero,notifications"
+          "noanim,selection"
+        ];
+
+        plugin = {
+          hyprscrolling = {
+            column_width = 0.7;
+            fullscreen_on_one_column = true;
+          };
         };
       };
-    };
   };
 }
