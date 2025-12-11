@@ -152,6 +152,7 @@
               "gatus.nix"
               "chatbot.nix"
               "homepage.nix"
+              "pocket-id.nix"
             ]
           )
           ++ [
