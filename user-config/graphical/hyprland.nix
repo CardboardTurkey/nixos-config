@@ -355,6 +355,11 @@ in
           "idleinhibit fullscreen, fullscreen:1"
         ];
 
+        windowrule = [
+          # "match:title ^(Extension. .Bitwarden Password Manager. - Bitwarden . Mozilla Firefox)$, float on, size 622 652"
+          # "match:class ^(ghostty.hyprdrop)$, float on, size 1280 720, center on"
+        ];
+
         exec-once = [
           "${pkgs.clipse}/bin/clipse -listen"
           "${pkgs.wl-clip-persist}/bin/wl-clip-persist --clipboard regular"
