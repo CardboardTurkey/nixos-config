@@ -153,6 +153,7 @@
               "chatbot.nix"
               "homepage.nix"
               "pocket-id.nix"
+              "paperless.nix"
             ]
           )
           ++ [
