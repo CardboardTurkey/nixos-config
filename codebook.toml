@@ -3,6 +3,7 @@ words = [
     "bindkey",
     "bitdepth",
     "bitwarden",
+    "catppuccin",
     "dbhost",
     "esac",
     "fetchurl",
@@ -16,4 +17,5 @@ words = [
     "tika",
     "tmout",
     "tty",
+    "xdg",
 ]

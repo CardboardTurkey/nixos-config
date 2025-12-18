@@ -12,6 +12,30 @@
       inherits = "catppuccin-${osConfig.flavour}"
       "ui.background" = {}
     '';
+    "codebook/codebook.toml".source = (pkgs.formats.toml { }).generate "codebook-config.toml" {
+      words = [
+        "ansible"
+        "dbg"
+        "gatus"
+        "grafana"
+        "graphana"
+        "healthcheck"
+        "hostable"
+        "kiran"
+        "lookback"
+        "openai"
+        "protoc"
+        "pydantic"
+        "pyproject"
+        "ripgrep"
+        "sbuk"
+      ];
+      dictionaries = [
+        "en_us"
+        "en_gb"
+      ];
+
+    };
   };
   programs.helix = {
     enable = true;
