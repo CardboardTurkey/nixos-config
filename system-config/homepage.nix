@@ -122,6 +122,20 @@
                 ping = "atuin.kiran.smoothbrained.co.uk";
               };
             }
+            {
+              Paperless = rec {
+                icon = "paperless-ngx";
+                href = "https://${ping}";
+                ping = "bureau.kiran.smoothbrained.co.uk";
+                description = "Document management system";
+                widget = {
+                  type = "paperlessngx";
+                  url = href;
+                  username = "{{HOMEPAGE_VAR_PAPERLESS_USERNAME}}";
+                  password = "{{HOMEPAGE_VAR_PAPERLESS_PASSWORD}}";
+                };
+              };
+            }
           ];
         }
       ];
