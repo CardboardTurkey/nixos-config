@@ -11,6 +11,7 @@
     {
       "paperless/env" = ownership config.services.paperless.user;
       "paperless/admin_password" = ownership config.services.paperless.user;
+      "backups/paperless/local" = { };
     };
   services = {
     postgresql = {
@@ -22,6 +23,26 @@
           ensureClauses.login = true;
         }
       ];
+    };
+    borgbackup.jobs = {
+      localPaperlessBackup = {
+        paths = "/var/lib/paperless";
+        repo = "/backup/paperless";
+        doInit = false;
+        encryption = {
+          mode = "repokey";
+          passCommand = "cat ${config.sops.secrets."backups/paperless/local".path}";
+        };
+        compression = "auto,lzma";
+        startAt = "daily";
+        removableDevice = true;
+        prune.keep = {
+          daily = 7;
+          weekly = 4;
+          monthly = 6;
+          yearly = 1;
+        };
+      };
     };
     paperless = {
       enable = true;
