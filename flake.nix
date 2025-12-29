@@ -154,6 +154,7 @@
               "homepage.nix"
               "pocket-id.nix"
               "paperless.nix"
+              "beszel.nix"
             ]
           )
           ++ [
