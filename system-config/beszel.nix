@@ -1,4 +1,9 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  lib,
+  ...
+}:
 {
   networking.firewall.allowedTCPPorts = [ config.services.beszel.hub.port ];
   # For some reason user doesn't get created by default
@@ -6,7 +11,7 @@
     groups = {
       beszel-hub = { };
       beszel-agent = { };
-      disk.members = [ "beszel-agent" ];
+      # disk.members = [ "beszel-agent" ];
     };
     users =
       let
@@ -30,12 +35,13 @@
       group = "beszel-hub";
     };
     "beszel/agent" = {
-      owner = "beszel-agent";
-      group = "beszel-agent";
+      # owner = "beszel-agent";
+      # group = "beszel-agent";
     };
   };
 
   systemd.services.beszel-agent.serviceConfig = {
+    User = lib.mkForce "root";
     DeviceAllow = [
       # NVIDIA GPU
       "/dev/nvidiactl rw"
@@ -52,6 +58,15 @@
       "CAP_SYS_RAWIO"
       "CAP_SYS_ADMIN"
     ];
+    ProtectKernelLogs = lib.mkForce "no";
+    ProtectSystem = lib.mkForce "no";
+    KeyringMode = lib.mkForce "inherit";
+    LockPersonality = lib.mkForce "no";
+    ProtectClock = lib.mkForce "no";
+    ProtectHome = lib.mkForce "no";
+    ProtectHostname = lib.mkForce "no";
+    RemoveIPC = lib.mkForce "no";
+    RestrictSUIDSGID = lib.mkForce "false";
   };
   services.beszel = {
     hub = {
@@ -70,7 +85,11 @@
         linuxPackages.nvidia_x11
         smartmontools
       ];
-      environment.HUB_URL = "http://${config.services.beszel.hub.host}:${builtins.toString config.services.beszel.hub.port}";
+      environment = {
+        HUB_URL = "http://${config.services.beszel.hub.host}:${builtins.toString config.services.beszel.hub.port}";
+        SMART_DEVICES = "/dev/nvme0,/dev/sda";
+        LOG_LEVEL = "debug";
+      };
       environmentFile = config.sops.secrets."beszel/agent".path;
     };
   };
