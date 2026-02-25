@@ -101,6 +101,23 @@
       };
     in
     {
+      homeConfigurations."kiran-dev-machine" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
+        modules = [ ./machines/kiran-dev-machine/home.nix ];
+        extraSpecialArgs = {
+          osConfig = {
+            emulator = "kitty";
+            fontSizeSmall = 12.0;
+            fontSizeMedium = 15.0;
+            fontSizeLargs = 19.0;
+            pgp_sign = "8BC774E4A2EC75073B61A6470BBB1C8B1C3639EE";
+            flavour = "frappe";
+            accent = "teal";
+          };
+          userModPaths = sharedArgs.userModPaths;
+          catppuccin-hm = catppuccin.homeModules.catppuccin;
+        };
+      };
       nixosConfigurations = {
         Osprey = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
